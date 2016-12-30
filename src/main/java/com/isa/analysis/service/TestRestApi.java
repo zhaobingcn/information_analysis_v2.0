@@ -17,15 +17,16 @@ public class TestRestApi {
     @Autowired
     private RestQuery restQuery;
 
+    String CYPHER_URL = "http://neo4j:654321@localhost:7474/db/data/cypher/";
+
     public void test(){
-        String url = "http://neo4j:654321@localhost:7474/db/data/cypher/";
         try{
             JSONObject queryparams = new JSONObject();
             queryparams.put("query", "match (m:Movie{title:{title}}) return m");
             JSONObject params = new JSONObject();
             params.put("title", "Unforgiven");
             queryparams.put("params", params);
-            JSONObject jsonObject = restQuery.httpPost(url, queryparams);
+            JSONObject jsonObject = restQuery.httpPost(CYPHER_URL, queryparams);
 //            Map<String, Object> map = jsonObject.toMap();
             System.out.println(jsonObject.toString());
         }catch (Exception e){
