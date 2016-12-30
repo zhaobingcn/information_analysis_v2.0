@@ -1,0 +1,687 @@
+{
+  "nodes" : [ {
+    "name" : "詹毅",
+    "category" : 0,
+    "value" : 13
+  }, {
+    "name" : "赵知劲",
+    "category" : 0,
+    "value" : 83
+  }, {
+    "name" : "李淼",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "楼才义",
+    "category" : 0,
+    "value" : 13
+  }, {
+    "name" : "张鹏",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "徐世宇",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "张秀梅",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "胡波",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "郑仕链",
+    "category" : 0,
+    "value" : 13
+  }, {
+    "name" : "郑晓华",
+    "category" : 0,
+    "value" : 11
+  }, {
+    "name" : "彭庆",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "张伟卫",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "王海泉",
+    "category" : 0,
+    "value" : 17
+  }, {
+    "name" : "徐世宇",
+    "category" : 0,
+    "value" : 8
+  }, {
+    "name" : "王海泉",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "张鹏",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "李飞祥",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "胡俊伟",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "严平平",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "徐春云",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "杨进丽",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "陈京来",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "吴棫",
+    "category" : 0,
+    "value" : 3
+  }, {
+    "name" : "赵治栋",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "张璐苹",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "尚俊娜",
+    "category" : 0,
+    "value" : 14
+  }, {
+    "name" : "杨小牛",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "郑仕链",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "杨进丽",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "彭振",
+    "category" : 0,
+    "value" : 9
+  }, {
+    "name" : "吴金沂",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "詹毅",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "杨小牛",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "杨小牛",
+    "category" : 0,
+    "value" : 63
+  }, {
+    "name" : "赖海超",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "胡伟康",
+    "category" : 0,
+    "value" : 11
+  }, {
+    "name" : "尚俊娜",
+    "category" : 0,
+    "value" : 21
+  }, {
+    "name" : "汪扬",
+    "category" : 0,
+    "value" : 3
+  }, {
+    "name" : "严平平",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "付柏成",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "刘中健",
+    "category" : 0,
+    "value" : 3
+  }, {
+    "name" : "李淼*",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "赖海超",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "司锡才",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "陆满君",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "姚俊良",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "陈顺阳",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "曾兴雯",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "王文勇",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "李文华",
+    "category" : 0,
+    "value" : 11
+  }, {
+    "name" : "刘勤",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "姚俊良",
+    "category" : 0,
+    "value" : 9
+  }, {
+    "name" : "徐建良",
+    "category" : 0,
+    "value" : 10
+  }, {
+    "name" : "雪亚林",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "邓杰锋",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "卢宏",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "刘勤",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "李钊",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "张琰",
+    "category" : 0,
+    "value" : 10
+  }, {
+    "name" : "张琰",
+    "category" : 0,
+    "value" : 9
+  }, {
+    "name" : "韩维佳",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "赵知劲",
+    "category" : 0,
+    "value" : 50
+  }, {
+    "name" : "石华",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "李渝舟",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "李钊",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "刘乃安",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "付卫红",
+    "category" : 0,
+    "value" : 5
+  }, {
+    "name" : "李建东",
+    "category" : 0,
+    "value" : 12
+  }, {
+    "name" : "付卫红",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "翟海莹",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "张福洪",
+    "category" : 0,
+    "value" : 4
+  }, {
+    "name" : "李建东",
+    "category" : 0,
+    "value" : 14
+  }, {
+    "name" : "郑杰",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "李建东",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "郑杰",
+    "category" : 0,
+    "value" : 6
+  }, {
+    "name" : "熊刚",
+    "category" : 0,
+    "value" : 7
+  }, {
+    "name" : "赵惠昌",
+    "category" : 0,
+    "value" : 8
+  }, {
+    "name" : "赵跃",
+    "category" : 0,
+    "value" : 4
+  } ],
+  "links" : [ {
+    "source" : 1,
+    "value" : 2,
+    "target" : 0
+  }, {
+    "source" : 2,
+    "value" : 2,
+    "target" : 1
+  }, {
+    "source" : 3,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 4,
+    "value" : 2,
+    "target" : 1
+  }, {
+    "source" : 5,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 6,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 7,
+    "value" : 2,
+    "target" : 1
+  }, {
+    "source" : 8,
+    "value" : 3,
+    "target" : 1
+  }, {
+    "source" : 9,
+    "value" : 2,
+    "target" : 1
+  }, {
+    "source" : 10,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 11,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 12,
+    "value" : 5,
+    "target" : 1
+  }, {
+    "source" : 13,
+    "value" : 2,
+    "target" : 1
+  }, {
+    "source" : 14,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 15,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 16,
+    "value" : 1,
+    "target" : 1
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 17
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 18
+  }, {
+    "source" : 1,
+    "value" : 3,
+    "target" : 19
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 20
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 21
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 22
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 23
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 24
+  }, {
+    "source" : 1,
+    "value" : 3,
+    "target" : 25
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 26
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 27
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 28
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 29
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 30
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 31
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 32
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 34
+  }, {
+    "source" : 1,
+    "value" : 3,
+    "target" : 35
+  }, {
+    "source" : 1,
+    "value" : 9,
+    "target" : 36
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 37
+  }, {
+    "source" : 1,
+    "value" : 2,
+    "target" : 38
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 39
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 40
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 41
+  }, {
+    "source" : 1,
+    "value" : 1,
+    "target" : 42
+  }, {
+    "source" : 43,
+    "value" : 1,
+    "target" : 0
+  }, {
+    "source" : 43,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 44,
+    "value" : 1,
+    "target" : 43
+  }, {
+    "source" : 30,
+    "value" : 2,
+    "target" : 0
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 0
+  }, {
+    "source" : 45,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 8,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 46,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 47,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 48,
+    "value" : 3,
+    "target" : 33
+  }, {
+    "source" : 49,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 50,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 51,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 3,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 52,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 53,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 54,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 55,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 56,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 29,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 57,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 58,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 59,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 60,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 61,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 44,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 13,
+    "value" : 2,
+    "target" : 33
+  }, {
+    "source" : 62,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 63,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 64,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 65,
+    "value" : 1,
+    "target" : 33
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 66
+  }, {
+    "source" : 33,
+    "value" : 2,
+    "target" : 67
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 68
+  }, {
+    "source" : 33,
+    "value" : 3,
+    "target" : 69
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 70
+  }, {
+    "source" : 33,
+    "value" : 3,
+    "target" : 71
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 72
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 73
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 74
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 75
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 76
+  }, {
+    "source" : 33,
+    "value" : 1,
+    "target" : 77
+  }, {
+    "source" : 44,
+    "value" : 1,
+    "target" : 0
+  } ],
+  "categories": [
+    {
+      "name": "HTMLElement",
+      "keyword": {},
+      "base": "HTMLElement"
+    },
+    {
+      "name": "WebGL",
+      "keyword": {},
+      "base": "WebGLRenderingContext"
+    },
+    {
+      "name": "SVG",
+      "keyword": {},
+      "base": "SVGElement"
+    },
+    {
+      "name": "CSS",
+      "keyword": {},
+      "base": "CSSRule"
+    },
+    {
+      "name": "Other",
+      "keyword": {}
+    }
+  ],
+  "type" : "force"
+}

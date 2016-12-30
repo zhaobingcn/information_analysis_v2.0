@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>军事科研情报分析</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- 给页面page部分加上neo4j的背景图片 -->
+    <style type="text/css">
+        .page-wrapper{
+            background-image: url(../img/neo4j_background.gif);
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">军事科研情报分析系统</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>Read All Messages</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-messages -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 1</strong>
+                                    <span class="pull-right text-muted">40% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 2</strong>
+                                    <span class="pull-right text-muted">20% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                        <span class="sr-only">20% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 3</strong>
+                                    <span class="pull-right text-muted">60% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 4</strong>
+                                    <span class="pull-right text-muted">80% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Tasks</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-tasks -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-tasks fa-fw"></i> New Task
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <!-- 左侧导航栏部分 -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="flot.html">专家能力度量</a>
+                            </li>
+                            <li>
+                                <a href="morris.html">专家合作分析</a>
+                            </li>
+                            <li>
+                                <a href="professorRecommend.html">专家推荐</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 科研重点演化</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研机构能力度量<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="panels-wells.html">Panels and Wells</a>
+                            </li>
+                            <li>
+                                <a href="buttons.html">Buttons</a>
+                            </li>
+                            <li>
+                                <a href="notifications.html">Notifications</a>
+                            </li>
+                            <li>
+                                <a href="typography.html">Typography</a>
+                            </li>
+                            <li>
+                                <a href="icons.html"> Icons</a>
+                            </li>
+                            <li>
+                                <a href="grid.html">Grid</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> 技术体系分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">技术体系生成</a>
+                            </li>
+                            <li>
+                                <a href="#">科研热点追踪</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="blank.html">Blank Page</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Login Page</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper" class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">领域专家推荐</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 搜索想要查找的专家
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">关键词</span>
+                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">关键词</span>
+                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">关键词</span>
+                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">关键词</span>
+                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">回避机构</span>
+                                        <input type="text" class="form-control" placeholder="回避单位名称/人员姓名(选填)">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">回避机构</span>
+                                        <input type="text" class="form-control" placeholder="回避单位名称/人员姓名(选填)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>选择推荐方式</label>
+                                        <select class="form-control">
+                                            <option>按照专家影响力推荐</option>
+                                            <option>按照专家成果推荐</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>选择备选推荐数量</label>
+                                        <select class="form-control">
+                                            <option>5</option>
+                                            <option>10</option>
+                                            <option>20</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-outline btn-primary btn-block">检索</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            查询方式详解
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#关键词" data-toggle="tab">关键词</a>
+                                </li>
+                                <li><a href="#回避机构" data-toggle="tab">回避机构</a>
+                                </li>
+                                <li><a href="#查询方式" data-toggle="tab">查询方式</a>
+                                </li>
+                                <li><a href="#备选数量" data-toggle="tab">备选数量</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="关键词">
+                                    <h4>查询关键词的方式</h4>
+                                    <p class="text-danger">可以输入多个关键词，多个关键词之间要相关，按关键词的关键性程度排序</p>
+                                </div>
+                                <div class="tab-pane fade" id="回避机构">
+                                    <h4>输入回避单位详情</h4>
+                                    <p class="text-danger">输入要回避的单位名称与人员姓名，单位名称与人员姓名之间用/隔开，可以不填</p>
+                                </div>
+                                <div class="tab-pane fade" id="查询方式">
+                                    <h4>选择要推荐的方式</h4>
+                                    <p class="text-danger">按影响力推荐是按专家在节点中的位置推荐，按成果推荐是按专家的论文成果推荐</p>
+                                </div>
+                                <div class="tab-pane fade" id="备选数量">
+                                    <h4>选择要推荐的方式</h4>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <!--<h4>输入要查询关键词的方式</h4>-->
+                            <!--<blockquote>-->
+                                <!--<h5 class="text-primary">可以输入多个关键词，多个关键词之间要相关，按关键词的关键性程度排序</h5>-->
+                            <!--</blockquote>-->
+                            <!--<h4>输入要回避的单位详情</h4>-->
+                            <!--<blockquote>-->
+                                <!--<h5 class="text-success">输入要回避的单位名称与人员姓名，单位名称与人员姓名之间用/隔开，可以不填</h5>-->
+                            <!--</blockquote>-->
+                            <!--<h4>选择推荐的方式</h4>-->
+                            <!--<blockquote>-->
+                                <!--<h5 class="text-capitalize">按影响力推荐是按专家在节点中的位置推荐，按成果推荐是按专家的论文成果推荐</h5>-->
+                            <!--</blockquote>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row2 -->
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 推荐专家列表
+                        </div>
+                        <div class="panel-body">
+                                <div class="table-responsive table-bordered">
+                                    <table class="table">
+                                        <thead>
+                                        <tr >
+                                            <th>#</th>
+                                            <th>姓名</th>
+                                            <th>所属机构</th>
+                                            <th>论文数</th>
+                                            <th>查看详情</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="info">
+                                            <td>1</td>
+                                            <td>墨倾池</td>
+                                            <td>中国电子科技集团26所</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>2</td>
+                                            <td>叹稀奇</td>
+                                            <td>中核工业集团</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>3</td>
+                                            <td>剑非道</td>
+                                            <td>中航工业集团</td>
+                                            <td>
+                                                35
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>4</td>
+                                            <td>墨倾池</td>
+                                            <td>中国电子科技集团26所</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>5</td>
+                                            <td>叹稀奇</td>
+                                            <td>中核工业集团</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>6</td>
+                                            <td>剑非道</td>
+                                            <td>中航工业集团</td>
+                                            <td>55</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>7</td>
+                                            <td>墨倾池</td>
+                                            <td>中国电子科技集团26所</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>8</td>
+                                            <td>叹稀奇</td>
+                                            <td>中核工业集团</td>
+                                            <td>34</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>9</td>
+                                            <td>剑非道</td>
+                                            <td>中航工业集团</td>
+                                            <td>55</td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="">
+                                                        <!--<span class="pull-left">查看详情</span>-->
+                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 推荐专家能力详情
+                        </div>
+                        <div class="panel-body" id="professor-list" style="width: 100%;height: 422px">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row3 -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+
+<script src="../js/echarts.js"></script>
+
+<!-- 专家能力排行图 -->
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("professor-list"));
+
+    option = {
+//        color: ['#3398DB'],
+
+        title :{
+            text : '按照专家影响力推荐',
+            x : 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        yAxis: [{
+            type: 'category',
+            data: ['墨倾池', '叹稀奇', '剑非道', '墨倾池', '叹稀奇', '剑非道', '墨倾池', '叹稀奇', '剑非道'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }],
+        xAxis: [{
+            type: 'value'
+        }],
+        backgroundColor: '#ffffff',
+        series: [{
+            name: 'Top 10',
+            type: 'bar',
+            data: [7700, 8800, 9900, 11100, 14200, 16000, 18400, 20500, 22600],
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight',
+                    textStyle: {
+                        color: 'white' //color of value
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: 'lightBlue' // 0% 处的颜色
+                    }, {
+                        offset: 1,
+                        color: '#3398DB' // 100% 处的颜色
+                    }], false)
+                }
+            }
+        }]
+    };
+    myChart.setOption(option);
+</script>
+
+</body>
+
+</html>
