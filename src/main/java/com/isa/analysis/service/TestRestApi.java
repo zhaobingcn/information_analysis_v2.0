@@ -15,7 +15,7 @@ import java.util.Map;
 public class TestRestApi {
 
     @Autowired
-    RestQuery restQuery;
+    private RestQuery restQuery;
 
     public void test(){
         String url = "http://localhost:7474/db/data/cypher";
