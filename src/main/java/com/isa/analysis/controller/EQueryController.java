@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by hexu on 2016/12/30.
  */
 @Controller
-public class BlankController {
-    @RequestMapping(value = "/blank")
-    public String blank(){
-        return "blank";
+public class EQueryController {
+
+    @RequestMapping(value = "/queryOfExpert")
+    public String expertQuery(){
+        return "queryOfExpert";
     }
 }
