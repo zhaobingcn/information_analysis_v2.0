@@ -18,19 +18,24 @@ public class TestRestApi {
     private RestQuery restQuery;
 
     public void test(){
-        String url = "http://localhost:7474/db/data/cypher";
+        String url = "http://neo4j:654321@localhost:7474/db/data/cypher/";
         try{
             JSONObject queryparams = new JSONObject();
-            queryparams.put("query", "match (m:Movie{title:{title}}) return n");
+            queryparams.put("query", "match (m:Movie{title:{title}}) return m");
             JSONObject params = new JSONObject();
             params.put("title", "Unforgiven");
             queryparams.put("params", params);
             JSONObject jsonObject = restQuery.httpPost(url, queryparams);
+//            Map<String, Object> map = jsonObject.toMap();
             System.out.println(jsonObject.toString());
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
+
+//    public static void main(String[] args){
+//        TestRestApi t = new TestRestApi();
+//        t.test();
+//    }
 
 }

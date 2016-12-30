@@ -35,13 +35,17 @@ public class RestQuery {
      * @return
      */
     public JSONObject httpPost(String url,JSONObject jsonParam, boolean noNeedResponse){
-        //post请求返回结果
+        /**
+         * post请求返回结果
+         */
         CloseableHttpClient httpClient = HttpClients.createDefault();
         JSONObject jsonResult = null;
         HttpPost method = new HttpPost(url);
         try {
             if (null != jsonParam) {
-                //解决中文乱码问题
+                /**
+                 * 解决中文乱码问题
+                 */
                 StringEntity entity = new StringEntity(jsonParam.toString(), "utf-8");
                 entity.setContentEncoding("UTF-8");
                 entity.setContentType("application/json");
@@ -77,11 +81,15 @@ public class RestQuery {
      * @return
      */
     public JSONObject httpGet(String url){
-        //get请求返回结果
+        /**
+         * get请求返回结果
+         */
         JSONObject jsonResult = null;
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
-            //发送get请求
+            /**
+             * 发送get请求
+             */
             HttpGet request = new HttpGet(url);
             CloseableHttpResponse response = httpClient.execute(request);
 

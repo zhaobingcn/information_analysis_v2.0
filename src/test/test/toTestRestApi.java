@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by hexu on 2016/12/30.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(classes = Neo4jConfig.class)
+@SpringApplicationConfiguration(classes = Neo4jConfig.class)
 public class toTestRestApi {
 
     @Autowired
-    TestRestApi testRestApi;
+    private TestRestApi testRestApi;
 
     @Test
     public void testrestapi(){
