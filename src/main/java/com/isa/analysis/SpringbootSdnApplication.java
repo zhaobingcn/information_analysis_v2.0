@@ -9,7 +9,6 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
  * @author zhaobing
  */
 @SpringBootApplication
-@Import(RepositoryRestMvcConfiguration.class)
 public class SpringbootSdnApplication {
 
     public static void main(String[] args){
