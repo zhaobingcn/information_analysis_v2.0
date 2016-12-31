@@ -38,8 +38,8 @@ public class RestQuery {
         /**
          * post请求返回结果
          */
-        CloseableHttpClient httpClient = HttpClients.createDefault();
         JSONObject jsonResult = null;
+        CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost method = new HttpPost(url);
         try {
             if (null != jsonParam) {
