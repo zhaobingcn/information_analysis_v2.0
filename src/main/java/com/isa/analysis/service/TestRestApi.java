@@ -1,12 +1,9 @@
 package com.isa.analysis.service;
 
-import com.isa.analysis.restapi.RestQuery;
+import com.isa.analysis.restapi.httprequest.RestQuery;
 import org.neo4j.ogm.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * Created by hexu on 2016/12/30.

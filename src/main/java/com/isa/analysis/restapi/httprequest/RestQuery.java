@@ -1,4 +1,4 @@
-package com.isa.analysis.restapi;
+package com.isa.analysis.restapi.httprequest;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
