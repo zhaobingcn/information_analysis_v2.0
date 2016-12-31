@@ -21,7 +21,10 @@ public class Author {
     @Property(name = "name")
     private String name;
 
-    @Relationship(type = "work_in", direction = Relationship.OUTGOING)
+    @Property(name = "institution")
+    private String institution;
+
+    @Relationship(type = "works_in", direction = Relationship.OUTGOING)
     private Work work;
 
     @Relationship(type = "publish", direction = Relationship.OUTGOING)
