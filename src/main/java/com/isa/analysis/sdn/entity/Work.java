@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.*;
 /**
  * @author zhaobing
  */
-@RelationshipEntity(type = "work_in")
+@RelationshipEntity(type = "works_in")
 public class Work {
     @GraphId
     private Long id;
