@@ -22,8 +22,23 @@ public class Institution {
     @Property(name = "name")
     private String name;
 
-    @Relationship(type = "work_in", direction = Relationship.INCOMING)
+    @Property(name = "location")
+    private String location;
+
+    @Relationship(type = "works_in", direction = Relationship.INCOMING)
     private List<Author> authors;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public Long getId() {
         return id;

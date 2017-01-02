@@ -30,8 +30,8 @@ public class Paper {
     @Relationship(type = "publish", direction = Relationship.INCOMING)
     private List<Author> authors;
 
-    @Relationship(type = "involve", direction = Relationship.OUTGOING)
-    private List<Keyword> keywords;
+    @Relationship(type = "involve", direction = Relationship.INCOMING)
+    private List<Involve> involves;
 
     public Long getId() {
         return id;
@@ -77,11 +77,4 @@ public class Paper {
         this.authors = authors;
     }
 
-    public List<Keyword> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(List<Keyword> keywords) {
-        this.keywords = keywords;
-    }
 }

@@ -22,10 +22,23 @@ public class Keyword {
     @Property(name = "name")
     private String name;
 
-    @Relationship(type = "involve", direction = Relationship.INCOMING)
+    @Relationship(type = "involve", direction = Relationship.OUTGOING)
     private List<Paper> papers;
 
+    @Relationship(type = "similar", direction = Relationship.UNDIRECTED)
+    private List<Similar> silimars;
 
+    public String getName() {
+        return name;
+    }
+
+    public List<Similar> getSilimars() {
+        return silimars;
+    }
+
+    public void setSilimars(List<Similar> silimars) {
+        this.silimars = silimars;
+    }
 
     public Long getId() {
         return id;

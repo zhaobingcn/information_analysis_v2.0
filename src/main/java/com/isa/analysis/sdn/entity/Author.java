@@ -25,10 +25,37 @@ public class Author {
     private String institution;
 
     @Relationship(type = "works_in", direction = Relationship.OUTGOING)
-    private Work work;
+    private WorksIn work;
 
     @Relationship(type = "publish", direction = Relationship.OUTGOING)
-    private List<Paper> papers;
+    private List<Publish> publishes;
+
+    @Relationship(type = "work_together", direction = Relationship.UNDIRECTED)
+    private List<WorkTogether> worksTogethers;
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
+    public List<Publish> getPublishes() {
+        return publishes;
+    }
+
+    public void setPublishes(List<Publish> publishes) {
+        this.publishes = publishes;
+    }
+
+    public List<WorkTogether> getWorksTogethers() {
+        return worksTogethers;
+    }
+
+    public void setWorksTogethers(List<WorkTogether> worksTogethers) {
+        this.worksTogethers = worksTogethers;
+    }
 
     public Long getId() {
         return id;
@@ -42,19 +69,13 @@ public class Author {
         this.name = name;
     }
 
-    public Work getWork() {
+    public WorksIn getWork() {
         return work;
     }
 
-    public void setWork(Work work) {
+    public void setWork(WorksIn work) {
         this.work = work;
     }
 
-    public List<Paper> getPapers() {
-        return papers;
-    }
 
-    public void setPapers(List<Paper> papers) {
-        this.papers = papers;
-    }
 }

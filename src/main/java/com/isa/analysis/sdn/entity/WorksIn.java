@@ -6,11 +6,11 @@ import org.neo4j.ogm.annotation.*;
  * @author zhaobing
  */
 @RelationshipEntity(type = "works_in")
-public class Work {
+public class WorksIn {
     @GraphId
     private Long id;
-    @Property(name = "name")
-    private String name;
+    @Property
+    private long weight;
     @StartNode
     private Author author;
     @EndNode
@@ -22,12 +22,16 @@ public class Work {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getWeight() {
+        return weight;
+    }
+
+    public void setWeight(long weight) {
+        this.weight = weight;
     }
 
     public Author getAuthor() {
