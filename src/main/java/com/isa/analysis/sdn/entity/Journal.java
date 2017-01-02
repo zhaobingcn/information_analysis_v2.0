@@ -1,6 +1,8 @@
 package com.isa.analysis.sdn.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
@@ -12,6 +14,7 @@ import java.util.Collection;
 /**
  * Created by zhzy on 2016/12/30.
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity(label = "Journal")
 public class Journal{
 

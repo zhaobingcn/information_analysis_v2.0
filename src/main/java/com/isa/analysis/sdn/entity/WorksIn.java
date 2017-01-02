@@ -1,10 +1,13 @@
 package com.isa.analysis.sdn.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.*;
 
 /**
  * @author zhaobing
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @RelationshipEntity(type = "works_in")
 public class WorksIn {
     @GraphId

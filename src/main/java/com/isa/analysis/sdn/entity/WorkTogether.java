@@ -1,5 +1,7 @@
 package com.isa.analysis.sdn.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.RelationshipEntity;
@@ -8,6 +10,7 @@ import org.neo4j.ogm.annotation.StartNode;
 /**
  * Created by zhzy on 2017/1/2.
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @RelationshipEntity(type = "work_together")
 public class WorkTogether {
 

@@ -1,10 +1,13 @@
 package com.isa.analysis.sdn.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.*;
 
 /**
  * Created by zhzy on 2017/1/2.
  */
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @RelationshipEntity(type = "involve")
 public class Involve {
 
