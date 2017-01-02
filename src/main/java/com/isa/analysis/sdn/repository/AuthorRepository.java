@@ -1,6 +1,7 @@
 package com.isa.analysis.sdn.repository;
 
 import com.isa.analysis.sdn.entity.Author;
+import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthorRepository extends GraphRepository<Author>{
 
+    @Query
+    Long getAuthorsCount();
 
 
 }
