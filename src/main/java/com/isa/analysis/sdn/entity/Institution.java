@@ -28,6 +28,9 @@ public class Institution {
     @Relationship(type = "works_in", direction = Relationship.INCOMING)
     private List<Author> authors;
 
+    @Relationship(type = "cooperate", direction = Relationship.UNDIRECTED)
+    private List<Cooperate> cooperates;
+
     public void setId(Long id) {
         this.id = id;
     }

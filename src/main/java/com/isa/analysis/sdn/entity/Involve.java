@@ -14,6 +14,12 @@ public class Involve {
     @Property(name = "weight")
     private long weight;
 
+    @StartNode
+    private Paper paper;
+
+    @EndNode
+    private Keyword keyword;
+
     public Long getId() {
         return id;
     }
@@ -46,11 +52,7 @@ public class Involve {
         this.keyword = keyword;
     }
 
-    @StartNode
-    private Paper paper;
 
-    @EndNode
-    private Keyword keyword;
 
 
 }

@@ -16,8 +16,6 @@ public class WorksIn {
     @EndNode
     private Institution institution;
 
-
-
     public Long getId() {
         return id;
     }

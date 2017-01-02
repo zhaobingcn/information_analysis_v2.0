@@ -6,12 +6,12 @@ import org.neo4j.ogm.annotation.*;
  * Created by zhzy on 2017/1/2.
  */
 @RelationshipEntity(type = "included_in")
-public class IncludeIn {
+public class IncludedIn {
 
     @GraphId
     private Long id;
 
-    @Property
+    @Property(name = "weight")
     private long weight;
 
     @StartNode
