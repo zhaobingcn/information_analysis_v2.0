@@ -23,7 +23,7 @@ public class RestApiRepositoryImpl implements RestApiRepository{
     private final String CYPHER_URL = "http://neo4j:654321@localhost:7474/db/data/cypher";
 
     @Override
-    public JSONObject generateWorkTogetherGraph(String name, String institution, int depath){
+    public JSONObject getWorkTogetherPaths(String name, String institution, int depath){
 
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);

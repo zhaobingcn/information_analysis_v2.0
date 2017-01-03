@@ -9,4 +9,12 @@ import java.util.Map;
  */
 public interface RestApiService {
 
+    /**
+     * 生成可以在echarts展示的数据
+     * @param name
+     * @param institution
+     * @param depath
+     * @return
+     */
+    Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath);
 }
