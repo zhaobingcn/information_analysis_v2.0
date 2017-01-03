@@ -1,5 +1,6 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.restapi.httprepository.RestApiRepository;
 import com.isa.analysis.service.IndexPageService;
 import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONObject;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class EDetailController {
 
     @Autowired
-    private RestApiService restApiService;
+    private RestApiRepository restApiRepository;
 
     @RequestMapping(value = "/detailOfExpert")
     public String eDetail(){
@@ -32,8 +33,8 @@ public class EDetailController {
             @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
             @RequestParam(value = "depath", required = false, defaultValue = "1")int depath
     ){
-        System.out.println(restApiService.generateWorkTogetherGraph(name, institution, depath).toString());
+        System.out.println(restApiRepository.generateWorkTogetherGraph(name, institution, depath).toString());
 
-        return restApiService.generateWorkTogetherGraph(name, institution, depath).toString();
+        return restApiRepository.generateWorkTogetherGraph(name, institution, depath).toString();
     }
 }
