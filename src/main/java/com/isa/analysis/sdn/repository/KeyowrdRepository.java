@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface KeyowrdRepository extends GraphRepository<Keyword> {
+
 }

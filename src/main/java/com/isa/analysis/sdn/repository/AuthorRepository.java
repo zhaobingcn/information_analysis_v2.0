@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthorRepository extends GraphRepository<Author>{
 
-    @Query
-    Long getAuthorsCount();
+
+
 
 
 }
