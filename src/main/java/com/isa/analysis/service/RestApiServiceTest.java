@@ -2,16 +2,22 @@ package com.isa.analysis.service;
 
 import com.isa.analysis.restapi.httprequest.RestQuery;
 import com.isa.analysis.sdn.entity.Author;
+import org.apache.commons.collections.map.HashedMap;
 import org.neo4j.ogm.json.JSONArray;
 import org.neo4j.ogm.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by hexu on 2016/12/30.
  */
 @Service
-public class TestRestApi {
+public class RestApiServiceTest {
 
     @Autowired
     private RestQuery restQuery;
@@ -57,7 +63,14 @@ public class TestRestApi {
         }
     }
 
-    public JSONObject generateGraph(String name, String institution){
+    public JSONObject generateWorkTogetherGraph(String name, String institution){
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", name);
+        parameters.put("institution", institution);
+
+        String[] resultDataContents = new String[] {"graph"};
+
 
 
         return null;
@@ -69,5 +82,23 @@ public class TestRestApi {
 //        TestRestApi t = new TestRestApi();
 //        t.test();
 //    }
+
+    public JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents){
+        Map<String, Object> commitParams = new HashMap<>();
+
+        List<Map<String, Object>> statements = new ArrayList<>();
+
+        Map<String, Object> statement = new HashMap<>();
+
+        statement.put("statement", query);
+        statement.put("parameters", parameters);
+        statement.put("resultDataContents", resultDataContents);
+
+        statements.add(statement);
+
+        commitParams.put("statements", statements);
+
+        return new JSONObject(commitParams);
+    }
 
 }

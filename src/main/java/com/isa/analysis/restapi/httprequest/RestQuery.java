@@ -1,6 +1,9 @@
 package com.isa.analysis.restapi.httprequest;
 
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
 import org.apache.http.HttpStatus;
+import org.apache.http.ParseException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -41,6 +44,8 @@ public class RestQuery {
         JSONObject jsonResult = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost method = new HttpPost(url);
+//        method.addHeader("Accept", "text/html");
+        method.addHeader("Accept-Charset", "utf-8");
         try {
             if (null != jsonParam) {
                 /**
@@ -101,7 +106,6 @@ public class RestQuery {
                 jsonResult = new JSONObject(strResult);
                 url = URLDecoder.decode(url, "UTF-8");
             } else {
-
             }
         } catch (Exception e) {
             e.printStackTrace();

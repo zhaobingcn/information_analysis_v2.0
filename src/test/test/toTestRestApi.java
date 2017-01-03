@@ -1,6 +1,5 @@
-import com.isa.analysis.config.Neo4jConfig;
 import com.isa.analysis.config.TestNeo4jConfig;
-import com.isa.analysis.service.TestRestApi;
+import com.isa.analysis.service.RestApiServiceTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class toTestRestApi {
 
     @Autowired
-    private TestRestApi testRestApi;
+    private RestApiServiceTest testRestApi;
 
     @Test
     @DirtiesContext
