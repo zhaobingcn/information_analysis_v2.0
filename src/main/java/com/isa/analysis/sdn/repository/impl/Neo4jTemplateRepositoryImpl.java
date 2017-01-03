@@ -25,14 +25,14 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     private MapUtil mapUtil;
 
     @Override
-    public Long countOfEntities(Class entityClass) {
+    public Long getCountOfEntities(Class entityClass) {
         Long entityCount = neo4jTemplate.count(entityClass);
         return entityCount;
     }
 
     @Override
     @Transactional
-    public Map<String, Long> influentialEntities(String entityName, int limit) {
+    public Map<String, Long> getInfluentialEntities(String entityName, int limit) {
         String cypher = "";
         switch (entityName){
             case "Institution":

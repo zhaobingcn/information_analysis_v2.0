@@ -14,12 +14,12 @@ public interface Neo4jTemplateRepository {
      * @param entityClass
      * @return
      */
-    Long countOfEntities(Class entityClass);
+    Long getCountOfEntities(Class entityClass);
 
     /**
      * 查询全局范围内主要的机构，关键词，作者，杂志
      * @param entityName
      * @return
      */
-    Map<String, Long> influentialEntities(String entityName, int limit);
+    Map<String, Long> getInfluentialEntities(String entityName, int limit);
 }

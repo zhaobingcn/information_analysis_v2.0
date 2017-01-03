@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
  * Created by zhzy on 2016/12/31.
  */
 @Repository
-public class Neo4jSessionRepositoryImpl implements Neo4jTemplateRepository {
+public class Neo4jSessionRepositoryImpl {
 }
