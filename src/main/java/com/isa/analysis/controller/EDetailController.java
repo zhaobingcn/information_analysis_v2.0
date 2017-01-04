@@ -33,9 +33,7 @@ public class EDetailController {
             @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
             @RequestParam(value = "depath", required = false, defaultValue = "1")int depath
     ){
-        System.out.println(.(name, institution, depath).toString());
 
-        return restApiRepository.generateWorkTogetherGraph(name, institution, depath).toString();
-        return null;
+        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
     }
 }

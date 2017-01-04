@@ -71,6 +71,7 @@ public class RestApiServiceImpl implements RestApiService {
                         checkRels.add(Long.parseLong(arelationship.get("id").toString()));
                         int startNodeId, endNodeId;
 
+
                     }
 
                 }
