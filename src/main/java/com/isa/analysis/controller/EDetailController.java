@@ -21,6 +21,9 @@ public class EDetailController {
     @Autowired
     private RestApiRepository restApiRepository;
 
+    @Autowired
+    private RestApiService restApiService;
+
     @RequestMapping(value = "/detailOfExpert")
     public String eDetail(){
         return "detailOfExpert";
@@ -28,12 +31,14 @@ public class EDetailController {
 
     @RequestMapping(value = "/detailOfExpert/cooperateOfAuthor")
     public @ResponseBody
-    String cooperateRelation(
+    Map<String, Object> cooperateRelation(
             @RequestParam(value = "name", required = false, defaultValue = "詹毅")String name,
             @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
             @RequestParam(value = "depath", required = false, defaultValue = "1")int depath
     ){
 
-        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
+//        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
+        return restApiService.generateWorkTogetherGraph(name, institution, depath);
     }
+
 }

@@ -2,6 +2,7 @@ package com.isa.analysis.service.serviceimpl;
 
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
 import com.isa.analysis.restapi.httprequest.RestQuery;
+import com.isa.analysis.service.MapUtil;
 import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONArray;
 import org.neo4j.ogm.json.JSONObject;
@@ -18,6 +19,9 @@ public class RestApiServiceImpl implements RestApiService {
 
     @Autowired
     private RestApiRepository restApiRepository;
+
+    @Autowired
+    private MapUtil mapUtil;
 
     @Override
     public Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath) {
@@ -37,10 +41,10 @@ public class RestApiServiceImpl implements RestApiService {
              */
             for(int pathIndex=0; pathIndex<length; pathIndex++){
                 JSONObject path =  paths.getJSONObject(pathIndex).getJSONObject("graph");
-                List<Map<String, Object>> pathRelationships = (List<Map<String, Object>>)path.getJSONArray("relationships");
-                List<Map<String, Object>> pathNodes = (List<Map<String, Object>>)path.getJSONArray("nodes");
+                JSONArray pathRelationships = path.getJSONArray("relationships");
+                JSONArray pathNodes = path.getJSONArray("nodes");
                 int pathNodeIndex = 0;
-                for(Map<String, Object> anode:pathNodes){
+                for(JSONObject anode:pathNodes){
                     if(checkNodes.containsKey(Long.parseLong(anode.get("id").toString()))){
                         /**
                          * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
@@ -70,8 +74,15 @@ public class RestApiServiceImpl implements RestApiService {
                     }else{
                         checkRels.add(Long.parseLong(arelationship.get("id").toString()));
                         int startNodeId, endNodeId;
+                        startNodeId = checkNodes.get(Long.parseLong(arelationship.get("startNode").toString()));
+                        endNodeId = checkNodes.get(Long.parseLong(arelationship.get("endNode").toString()));
 
-
+                        HashMap<String, Object> rel = new HashMap<>();
+                        rel.put("source", startNodeId);
+                        rel.put("target", endNodeId);
+                        rel.put("value", ((Map<String, Object>)arelationship.get("properties")).get("weight"));
+                        rel.put("type", arelationship.get("type"));
+                        rels.add(rel);
                     }
 
                 }
@@ -80,6 +91,11 @@ public class RestApiServiceImpl implements RestApiService {
             e.printStackTrace();
         }
 
-        return null;
+        List<Map<String, Object>> categories = new ArrayList<>();
+        categories.add(mapUtil.map("name", "专家", "keyword", null, "base", "Author"));
+        for(int categoryIndex=1; categoryIndex<categoriesCount; categoryIndex++){
+            categories.add(mapUtil.map("name", categoryIndex + "层合作关系", "keyword", null, "base", "Author"));
+        }
+        return mapUtil.map("type", "force", "categories", categories, "nodes", nodes, "links", rels);
     }
 }
