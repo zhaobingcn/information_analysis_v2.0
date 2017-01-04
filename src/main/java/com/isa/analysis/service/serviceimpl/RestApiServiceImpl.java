@@ -41,10 +41,10 @@ public class RestApiServiceImpl implements RestApiService {
              */
             for(int pathIndex=0; pathIndex<length; pathIndex++){
                 JSONObject path =  paths.getJSONObject(pathIndex).getJSONObject("graph");
-                JSONArray pathRelationships = path.getJSONArray("relationships");
-                JSONArray pathNodes = path.getJSONArray("nodes");
+                List<Map<String, Object>> pathRelationships = (List<Map<String, Object>>)path.getJSONArray("relationships");
+                List<Map<String, Object>> pathNodes = (List<Map<String, Object>>)path.getJSONArray("nodes");
                 int pathNodeIndex = 0;
-                for(JSONObject anode:pathNodes){
+                for(Map<String, Object> anode:pathNodes){
                     if(checkNodes.containsKey(Long.parseLong(anode.get("id").toString()))){
                         /**
                          * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
