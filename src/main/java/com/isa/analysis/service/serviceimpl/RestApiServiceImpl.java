@@ -45,7 +45,17 @@ public class RestApiServiceImpl implements RestApiService {
                         /**
                          * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
                          */
-                        if(pathNodeIndex < Long.parseLong())
+                        if(pathNodeIndex < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.get("id").toString()))).get("category").toString())){
+                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.get("id").toString())));
+                            author.replace("category",  pathNodeIndex);
+                        }
+                        pathNodeIndex ++;
+                        continue;
+                    }else{
+                        Map<String, Object> author = new HashMap<>();
+                        author.put("name", anode.get("name"));
+                        author.put("institution", anode.get("institution"));
+//                        author.put("value", )
                     }
                 }
             }

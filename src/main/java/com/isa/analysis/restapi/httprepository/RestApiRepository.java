@@ -23,4 +23,12 @@ public interface RestApiRepository {
      * @return
      */
     JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents);
+
+    /**
+     *
+     * @param id
+     * @param type all, in, out, relationshiptype
+     * @return
+     */
+    Long getDegreeOfNode(Long id, String type);
 }

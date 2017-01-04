@@ -112,4 +112,31 @@ public class RestQuery {
         }
         return jsonResult;
     }
+    public Long httpGetLong(String url){
+        /**
+         * get请求返回结果
+         */
+        Long result = 0l;
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            /**
+             * 发送get请求
+             */
+            HttpGet request = new HttpGet(url);
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            /**请求发送成功，并得到响应**/
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                /**读取服务器返回过来的json字符串数据**/
+                String strResult = EntityUtils.toString(response.getEntity());
+                /**把json字符串转换成json对象**/
+                result = Long.parseLong(strResult);
+                url = URLDecoder.decode(url, "UTF-8");
+            } else {
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

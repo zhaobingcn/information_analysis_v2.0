@@ -21,6 +21,7 @@ public class RestApiRepositoryImpl implements RestApiRepository{
 
     private final String TRANSACTION_URL = "http://neo4j:654321@localhost:7474/db/data/transaction/commit";
     private final String CYPHER_URL = "http://neo4j:654321@localhost:7474/db/data/cypher";
+    private final String NODE_URL = "http://neo4j:654321@localhost:7474/db/data/node";
 
     @Override
     public JSONObject getWorkTogetherPaths(String name, String institution, int depath){
@@ -50,4 +51,16 @@ public class RestApiRepositoryImpl implements RestApiRepository{
 
         return new JSONObject(commitParams);
     }
+
+    @Override
+    public Long getDegreeOfNode(Long id, String type) {
+        String degreeEndpoint = "/" + id + "/degree" + "/" + type;
+        Long nodeDegree = restQuery.httpGetLong(NODE_URL + degreeEndpoint);
+        return nodeDegree;
+    }
+
+//    public static void main(String[] args){
+//        RestApiRepositoryImpl a = new RestApiRepositoryImpl();
+//        a.getDegreeOfNode(34l, "all");
+//    }
 }
