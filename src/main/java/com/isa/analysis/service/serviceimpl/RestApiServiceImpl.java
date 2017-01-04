@@ -55,8 +55,24 @@ public class RestApiServiceImpl implements RestApiService {
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.get("name"));
                         author.put("institution", anode.get("institution"));
-//                        author.put("value", )
+                        author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.get("id").toString()), "cooperate"));
+                        author.put("category", pathNodeIndex);
+                        pathNodeIndex++;
+                        checkNodes.put(Long.parseLong(anode.get("id").toString()), nodeId);
+                        nodeId++;
+                        nodes.add(author);
                     }
+                }
+
+                for(Map<String, Object> arelationship:pathRelationships){
+                    if(checkRels.contains(Long.parseLong(arelationship.get("id").toString()))){
+                        continue;
+                    }else{
+                        checkRels.add(Long.parseLong(arelationship.get("id").toString()));
+                        int startNodeId, endNodeId;
+
+                    }
+
                 }
             }
         }catch(Exception e){

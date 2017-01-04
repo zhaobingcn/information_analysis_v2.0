@@ -59,8 +59,4 @@ public class RestApiRepositoryImpl implements RestApiRepository{
         return nodeDegree;
     }
 
-//    public static void main(String[] args){
-//        RestApiRepositoryImpl a = new RestApiRepositoryImpl();
-//        a.getDegreeOfNode(34l, "all");
-//    }
 }
