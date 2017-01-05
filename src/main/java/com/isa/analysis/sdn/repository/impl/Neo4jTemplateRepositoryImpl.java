@@ -8,6 +8,7 @@ import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -62,8 +63,21 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public Map<String, Object> getKeywordsByAuthor(String name, String institution) {
-        return null;
+        String query = "match (a:Author{name:{name}, institution:{institution}})" +
+                "-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) return k.name as kname, count(i) as times";
+        Map<String, Object> params =  new HashMap<>();
+        params.put("name", name);
+        params.put("institution", institution);
+        Result result = neo4jTemplate.query(query, params);
+        Iterator<Map<String, Object>> resultKeywords = result.iterator();
+        Map<String, Object> keywords = new HashMap<>();
+        while (resultKeywords.hasNext()){
+            Map<String, Object> row = resultKeywords.next();
+            keywords.put(row.get("kname").toString(), row.get("times"));
+        }
+        return keywords;
     }
 
 
