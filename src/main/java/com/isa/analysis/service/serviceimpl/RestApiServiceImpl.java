@@ -43,7 +43,7 @@ public class RestApiServiceImpl implements RestApiService {
                 JSONObject path =  paths.getJSONObject(pathIndex).getJSONObject("graph");
                 JSONArray pathRelationships = path.getJSONArray("relationships");
                 JSONArray pathNodes = path.getJSONArray("nodes");
-                for(int pathNodeIndex=0; pathNodeIndex < pathNodes.length(); pathNodeIndex++){
+                for(int pathNodeIndex = 0; pathNodeIndex < pathNodes.length(); pathNodeIndex++){
                     JSONObject anode = pathNodes.getJSONObject(pathNodeIndex);
                     if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
                         /**
@@ -53,7 +53,7 @@ public class RestApiServiceImpl implements RestApiService {
                             Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
                             author.replace("category",  pathNodeIndex);
                         }
-                        continue;
+//                        continue;
                     }else{
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.getJSONObject("properties").getString("name"));
@@ -84,7 +84,6 @@ public class RestApiServiceImpl implements RestApiService {
                         rel.put("type", arelationship.getString("type"));
                         rels.add(rel);
                     }
-
                 }
             }
         }catch(Exception e){
