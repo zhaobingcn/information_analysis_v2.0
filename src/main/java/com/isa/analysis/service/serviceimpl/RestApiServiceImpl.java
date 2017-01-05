@@ -45,26 +45,25 @@ public class RestApiServiceImpl implements RestApiService {
                 JSONArray pathNodes = path.getJSONArray("nodes");
                 for(int pathNodeIndex = 0; pathNodeIndex < pathNodes.length(); pathNodeIndex++){
                     JSONObject anode = pathNodes.getJSONObject(pathNodeIndex);
-                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
-                        /**
-                         * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
-                         */
-                        if(pathNodeIndex < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
-                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
-                            author.replace("category",  pathNodeIndex);
-                        }
-//                        continue;
-                    }else{
+//                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
+//                        /**
+//                         * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
+//                         */
+//                        if(pathNodes.length() - pathNodeIndex - 1 < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
+//                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
+//                            author.replace("category",  pathNodes.length() - pathNodeIndex - 1);
+//                        }
+//                    }else{
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.getJSONObject("properties").getString("name"));
                         author.put("institution", anode.getJSONObject("properties").getString("institution"));
                         System.out.println(anode.getJSONObject("properties").getString("institution"));
                         author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
-                        author.put("category", pathNodeIndex);
+//                        author.put("category", pathNodes.length() - pathNodeIndex - 1);
                         checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);
                         nodeId++;
                         nodes.add(author);
-                    }
+//                    }
                 }
 
                 for(int relationshipIndex = 0; relationshipIndex < pathRelationships.length(); relationshipIndex++){

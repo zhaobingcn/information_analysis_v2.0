@@ -1,9 +1,6 @@
 package com.isa.analysis.restapi.httprequest;
 
-import org.apache.http.Header;
-import org.apache.http.HeaderElement;
 import org.apache.http.HttpStatus;
-import org.apache.http.ParseException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -69,7 +66,7 @@ public class RestQuery {
                     /**读取服务器返回过来的json字符串数据**/
                     str = EntityUtils.toString(result.getEntity());
                     str = new String(str.getBytes("latin1"), "utf-8");
-//                    System.out.println(str);
+                    System.out.println(str);
                     if (noNeedResponse) {
                         return null;
                     }
@@ -108,6 +105,7 @@ public class RestQuery {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 /**读取服务器返回过来的json字符串数据**/
                 String strResult = EntityUtils.toString(response.getEntity());
+                strResult = new String(strResult.getBytes("latin1"), "utf-8");
                 /**把json字符串转换成json对象**/
                 jsonResult = new JSONObject(strResult);
                 url = URLDecoder.decode(url, "UTF-8");

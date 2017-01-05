@@ -27,35 +27,35 @@ public class RestApiServiceTest {
 
     public void test(){
         try{
-//            JSONObject queryparams = new JSONObject();
-//            queryparams.put("query", "match path = (a:Author{name:{name}, institution:{institution}}) " +
-//                    "-[:work_together*" + 3 + "]-(b:Author) return path");
-//            JSONObject params = new JSONObject();
-//            params.put("name", "詹毅");
-//            params.put("institution", "电子科技集团36所");
-//            queryparams.put("params", params);
-//            JSONObject jsonObject = restQuery.httpPost(CYPHER_URL, queryparams);
-//            Map<String, Object> map = jsonObject.toMap();
-//            System.out.println(jsonObject.toString());
-
-            JSONObject queryparams1 = new JSONObject();
-            queryparams1.put("statement", "match path = (a:Author)-[:work_together*" + 3 + "]-(b:Author) return path limit 10");
-            queryparams1.put("resultDataContents", new String[] {"graph"});
-
-            System.out.println(queryparams1.toString());
-
-            JSONArray querystatements = new JSONArray();
-            querystatements.put(queryparams1);
-
-            System.out.println(querystatements.toString());
-
-            JSONObject finaldata = new JSONObject();
-            finaldata.put("statements", querystatements);
-
-            System.out.println(finaldata.toString());
-
-            JSONObject jsonObject = restQuery.httpPost(CYPHER_URL, finaldata);
+            JSONObject queryparams = new JSONObject();
+            queryparams.put("query", "match path = (a:Author{name:{name}, institution:{institution}}) " +
+                    "-[:work_together*" + 3 + "]-(b:Author) return path");
+            JSONObject params = new JSONObject();
+            params.put("name", "詹毅");
+            params.put("institution", "电子科技集团36所");
+            queryparams.put("params", params);
+            JSONObject jsonObject = restQuery.httpPost(CYPHER_URL, queryparams);
+            Map<String, Object> map = jsonObject.toMap();
             System.out.println(jsonObject.toString());
+
+//            JSONObject queryparams1 = new JSONObject();
+//            queryparams1.put("statement", "match path = (a:Author)-[:work_together*" + 3 + "]-(b:Author) return path limit 10");
+//            queryparams1.put("resultDataContents", new String[] {"graph"});
+//
+//            System.out.println(queryparams1.toString());
+//
+//            JSONArray querystatements = new JSONArray();
+//            querystatements.put(queryparams1);
+//
+//            System.out.println(querystatements.toString());
+//
+//            JSONObject finaldata = new JSONObject();
+//            finaldata.put("statements", querystatements);
+//
+//            System.out.println(finaldata.toString());
+//
+//            JSONObject jsonObject = restQuery.httpPost(CYPHER_URL, finaldata);
+//            System.out.println(jsonObject.toString());
 
 
         }catch (Exception e){
@@ -79,7 +79,7 @@ public class RestApiServiceTest {
 
 
 //    public static void main(String[] args){
-//        TestRestApi t = new TestRestApi();
+//        RestApiServiceTest t = new RestApiServiceTest();
 //        t.test();
 //    }
 

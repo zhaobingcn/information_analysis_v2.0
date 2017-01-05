@@ -61,7 +61,7 @@ public class RestApiRepositoryImpl implements RestApiRepository{
 
 //    public static void main(String[] args){
 //        RestApiRepositoryImpl a = new RestApiRepositoryImpl();
-//        a.getWorkTogetherPaths("詹毅", "电子科技集团36所", 1);
+//        a.getWorkTogetherPaths("詹毅", "电子科技集团36所", 2);
 //    }
 
 }
