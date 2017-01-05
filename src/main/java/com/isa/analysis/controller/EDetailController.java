@@ -34,7 +34,7 @@ public class EDetailController {
     Map<String, Object> cooperateRelation(
             @RequestParam(value = "name", required = false, defaultValue = "詹毅")String name,
             @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
-            @RequestParam(value = "depath", required = false, defaultValue = "1")int depath
+            @RequestParam(value = "depath", required = false, defaultValue = "3")int depath
     ){
 
 //        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();

@@ -26,48 +26,70 @@ public class RestApiServiceImpl implements RestApiService {
     @Override
     public Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath) {
         JSONObject restResult = restApiRepository.getWorkTogetherPaths(name, institution, depath);
+        /**
+         * 两个结果list  node的和relationship的
+         */
         List<Map<String, Object>> nodes = new ArrayList<>();
         List<Map<String, Object>> rels = new ArrayList<>();
+        /**
+         * 用来查询node和elationship是否多次出现过
+         */
         Map<Long, Integer> checkNodes = new HashMap<>();
         HashSet<Long> checkRels = new HashSet<>();
         int categoriesCount = depath+1;
         int nodeId = 0;
-
         try{
             JSONArray paths  = restResult.getJSONArray("results").getJSONObject(0).getJSONArray("data");
             int length = paths.length();
             /**
-             * 遍历每一条作者合作路径
+             * 遍历每一条作者合作路径，既返回graph又返回rest
              */
             for(int pathIndex=0; pathIndex<length; pathIndex++){
-                JSONObject path =  paths.getJSONObject(pathIndex).getJSONObject("graph");
-                JSONArray pathRelationships = path.getJSONArray("relationships");
-                JSONArray pathNodes = path.getJSONArray("nodes");
-                for(int pathNodeIndex = 0; pathNodeIndex < pathNodes.length(); pathNodeIndex++){
-                    JSONObject anode = pathNodes.getJSONObject(pathNodeIndex);
-//                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
-//                        /**
-//                         * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
-//                         */
-//                        if(pathNodes.length() - pathNodeIndex - 1 < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
-//                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
-//                            author.replace("category",  pathNodes.length() - pathNodeIndex - 1);
-//                        }
-//                    }else{
+                JSONObject graphPath =  paths.getJSONObject(pathIndex).getJSONObject("graph");
+                JSONObject restPath = paths.getJSONObject(pathIndex).getJSONArray("rest").getJSONObject(0);
+
+                JSONArray graphPathRelationships = graphPath.getJSONArray("relationships");
+                JSONArray graphPathNodes = graphPath.getJSONArray("nodes");
+
+                /**
+                 * 利用rest返回的node url构建node id的list,为了在下一步解决是起始节点的几层关系
+                 */
+                JSONArray restPathNodes = restPath.getJSONArray("nodes");
+                List<String> restPathNodesIds = new ArrayList<>();
+                for(int restNodeIndex = 0; restNodeIndex < restPathNodes.length(); restNodeIndex ++){
+                    String restNodeUrl = restPathNodes.getString(restNodeIndex);
+                    int beginIndex = restNodeUrl.lastIndexOf("node/") + 5;
+                    String restNodeId = restNodeUrl.substring(beginIndex);
+//                    System.out.println(restNodeId);
+                    restPathNodesIds.add(restNodeId);
+                }
+
+
+                for(int pathNodeIndex = 0; pathNodeIndex < graphPathNodes.length(); pathNodeIndex++){
+                    JSONObject anode = graphPathNodes.getJSONObject(pathNodeIndex);
+                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
+                        /**
+                         * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
+                         */
+                        if(restPathNodesIds.indexOf(anode.getString("id")) < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
+                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
+                            author.replace("category",  restPathNodesIds.indexOf(anode.getString("id")));
+                        }
+                    }else{
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.getJSONObject("properties").getString("name"));
                         author.put("institution", anode.getJSONObject("properties").getString("institution"));
                         System.out.println(anode.getJSONObject("properties").getString("institution"));
                         author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
-//                        author.put("category", pathNodes.length() - pathNodeIndex - 1);
+                        author.put("category", restPathNodesIds.indexOf(anode.getString("id")));
                         checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);
                         nodeId++;
                         nodes.add(author);
-//                    }
+                    }
                 }
 
-                for(int relationshipIndex = 0; relationshipIndex < pathRelationships.length(); relationshipIndex++){
-                    JSONObject arelationship = pathRelationships.getJSONObject(relationshipIndex);
+                for(int relationshipIndex = 0; relationshipIndex < graphPathRelationships.length(); relationshipIndex++){
+                    JSONObject arelationship = graphPathRelationships.getJSONObject(relationshipIndex);
                     if(checkRels.contains(Long.parseLong(arelationship.getString("id")))){
                         continue;
                     }else{
@@ -75,7 +97,6 @@ public class RestApiServiceImpl implements RestApiService {
                         int startNodeId, endNodeId;
                         startNodeId = checkNodes.get(Long.parseLong(arelationship.getString("startNode")));
                         endNodeId = checkNodes.get(Long.parseLong(arelationship.getString("endNode")));
-
                         HashMap<String, Object> rel = new HashMap<>();
                         rel.put("source", startNodeId);
                         rel.put("target", endNodeId);

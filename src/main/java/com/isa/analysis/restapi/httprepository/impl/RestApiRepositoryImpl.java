@@ -29,7 +29,7 @@ public class RestApiRepositoryImpl implements RestApiRepository{
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
         parameters.put("institution", institution);
-        String[] resultDataContents = new String[] {"graph"};
+        String[] resultDataContents = new String[] {"graph", "rest"};
         String query = "match path = (a:Author{name:{name}, institution:{institution}}) " +
                 "-[:work_together*" + depath + "]-(b:Author) return path";
         JSONObject commitParams = generateStatements(query, parameters, resultDataContents);

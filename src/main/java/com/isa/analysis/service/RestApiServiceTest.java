@@ -69,10 +69,7 @@ public class RestApiServiceTest {
         parameters.put("name", name);
         parameters.put("institution", institution);
 
-        String[] resultDataContents = new String[] {"graph"};
-
-
-
+        String[] resultDataContents = new String[] {"graph", "rest"};
         return null;
     }
 
