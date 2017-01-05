@@ -12,9 +12,9 @@ function loadRelationshipPersonal(depath) {
         type: "get",
         dataType : "json",
         data:{
-            "name" : authorName,
-            "institution" : authorInstitution,
-            "depath" : depath
+            "name" : "詹毅",
+            "institution" : "电子科技集团36所",
+            "depath" : 2
         },
         success : function (graph) {
         myChart.hideLoading();

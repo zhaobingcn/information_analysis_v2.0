@@ -41,47 +41,47 @@ public class RestApiServiceImpl implements RestApiService {
              */
             for(int pathIndex=0; pathIndex<length; pathIndex++){
                 JSONObject path =  paths.getJSONObject(pathIndex).getJSONObject("graph");
-                List<Map<String, Object>> pathRelationships = (List<Map<String, Object>>)path.getJSONArray("relationships");
-                List<Map<String, Object>> pathNodes = (List<Map<String, Object>>)path.getJSONArray("nodes");
-                int pathNodeIndex = 0;
-                for(Map<String, Object> anode:pathNodes){
-                    if(checkNodes.containsKey(Long.parseLong(anode.get("id").toString()))){
+                JSONArray pathRelationships = path.getJSONArray("relationships");
+                JSONArray pathNodes = path.getJSONArray("nodes");
+                for(int pathNodeIndex=0; pathNodeIndex < pathNodes.length(); pathNodeIndex++){
+                    JSONObject anode = pathNodes.getJSONObject(pathNodeIndex);
+                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
                         /**
                          * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
                          */
-                        if(pathNodeIndex < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.get("id").toString()))).get("category").toString())){
-                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.get("id").toString())));
+                        if(pathNodeIndex < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
+                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
                             author.replace("category",  pathNodeIndex);
                         }
-                        pathNodeIndex ++;
                         continue;
                     }else{
                         Map<String, Object> author = new HashMap<>();
-                        author.put("name", anode.get("name"));
-                        author.put("institution", anode.get("institution"));
-                        author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.get("id").toString()), "cooperate"));
+                        author.put("name", anode.getJSONObject("properties").getString("name"));
+                        author.put("institution", anode.getJSONObject("properties").getString("institution"));
+                        System.out.println(anode.getJSONObject("properties").getString("institution"));
+                        author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
                         author.put("category", pathNodeIndex);
-                        pathNodeIndex++;
-                        checkNodes.put(Long.parseLong(anode.get("id").toString()), nodeId);
+                        checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);
                         nodeId++;
                         nodes.add(author);
                     }
                 }
 
-                for(Map<String, Object> arelationship:pathRelationships){
-                    if(checkRels.contains(Long.parseLong(arelationship.get("id").toString()))){
+                for(int relationshipIndex = 0; relationshipIndex < pathRelationships.length(); relationshipIndex++){
+                    JSONObject arelationship = pathRelationships.getJSONObject(relationshipIndex);
+                    if(checkRels.contains(Long.parseLong(arelationship.getString("id")))){
                         continue;
                     }else{
-                        checkRels.add(Long.parseLong(arelationship.get("id").toString()));
+                        checkRels.add(Long.parseLong(arelationship.getString("id")));
                         int startNodeId, endNodeId;
-                        startNodeId = checkNodes.get(Long.parseLong(arelationship.get("startNode").toString()));
-                        endNodeId = checkNodes.get(Long.parseLong(arelationship.get("endNode").toString()));
+                        startNodeId = checkNodes.get(Long.parseLong(arelationship.getString("startNode")));
+                        endNodeId = checkNodes.get(Long.parseLong(arelationship.getString("endNode")));
 
                         HashMap<String, Object> rel = new HashMap<>();
                         rel.put("source", startNodeId);
                         rel.put("target", endNodeId);
-                        rel.put("value", ((Map<String, Object>)arelationship.get("properties")).get("weight"));
-                        rel.put("type", arelationship.get("type"));
+                        rel.put("value", arelationship.getJSONObject("properties").getString("weight"));
+                        rel.put("type", arelationship.getString("type"));
                         rels.add(rel);
                     }
 

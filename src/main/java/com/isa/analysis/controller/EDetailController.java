@@ -40,5 +40,4 @@ public class EDetailController {
 //        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
         return restApiService.generateWorkTogetherGraph(name, institution, depath);
     }
-
 }

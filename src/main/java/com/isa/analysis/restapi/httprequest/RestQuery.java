@@ -45,7 +45,9 @@ public class RestQuery {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost method = new HttpPost(url);
 //        method.addHeader("Accept", "text/html");
-        method.addHeader("Accept-Charset", "utf-8");
+        method.setHeader("Accept", "application/json; charset=UTF-8");
+        method.setHeader("Content-Type", "application/json");
+//        method.addHeader();
         try {
             if (null != jsonParam) {
                 /**
@@ -57,6 +59,8 @@ public class RestQuery {
                 method.setEntity(entity);
             }
             CloseableHttpResponse result = httpClient.execute(method);
+//            result.setHeader("Accept-Charset", "utf-8");
+//            result.setHeader("Content-Type", "application/json");
             url = URLDecoder.decode(url, "UTF-8");
             /**请求发送成功，并得到响应**/
             if (result.getStatusLine().getStatusCode() == 200) {
@@ -64,6 +68,7 @@ public class RestQuery {
                 try {
                     /**读取服务器返回过来的json字符串数据**/
                     str = EntityUtils.toString(result.getEntity());
+                    str = new String(str.getBytes("utf-8"), "utf-8");
                     if (noNeedResponse) {
                         return null;
                     }
