@@ -1,4 +1,4 @@
-package com.isa.analysis.service.serviceimpl;
+package com.isa.analysis.service.impl;
 
 import com.isa.analysis.sdn.entity.Author;
 import com.isa.analysis.sdn.entity.Institution;

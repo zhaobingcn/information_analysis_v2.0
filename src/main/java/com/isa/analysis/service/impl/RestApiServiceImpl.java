@@ -1,7 +1,6 @@
-package com.isa.analysis.service.serviceimpl;
+package com.isa.analysis.service.impl;
 
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
-import com.isa.analysis.restapi.httprequest.RestQuery;
 import com.isa.analysis.service.MapUtil;
 import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONArray;
@@ -79,7 +78,7 @@ public class RestApiServiceImpl implements RestApiService {
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.getJSONObject("properties").getString("name"));
                         author.put("institution", anode.getJSONObject("properties").getString("institution"));
-                        System.out.println(anode.getJSONObject("properties").getString("institution"));
+//                        System.out.println(anode.getJSONObject("properties").getString("institution"));
                         author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
                         author.put("category", restPathNodesIds.indexOf(anode.getString("id")));
                         checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);

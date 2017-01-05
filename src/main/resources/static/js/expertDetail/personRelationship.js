@@ -14,7 +14,7 @@ function loadRelationshipPersonal(depath) {
         data:{
             "name" : "詹毅",
             "institution" : "电子科技集团36所",
-            "depath" : 2
+            "depath" : depath
         },
         success : function (graph) {
         myChart.hideLoading();

@@ -61,5 +61,10 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         return influentialEntity;
     }
 
+    @Override
+    public Map<String, Object> getKeywordsByAuthor(String name, String institution) {
+        return null;
+    }
+
 
 }

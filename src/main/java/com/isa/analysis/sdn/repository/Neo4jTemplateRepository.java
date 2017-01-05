@@ -22,4 +22,9 @@ public interface Neo4jTemplateRepository {
      * @return
      */
     Map<String, Long> getInfluentialEntities(String entityName, int limit);
+    /**
+     * 查询图中作者的研究方向信息
+     * @return 关键词详情
+     */
+    Map<String, Object> getKeywordsByAuthor(String name, String institution);
 }
