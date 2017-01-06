@@ -1,9 +1,11 @@
 package com.isa.analysis.controller;
 
 import com.isa.analysis.sdn.entity.Author;
+import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.entity.WorkTogether;
 import com.isa.analysis.sdn.repository.AuthorRepository;
+import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.PaperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ public class TestController {
     private PaperRepository paperRepository;
     @Autowired
     private AuthorRepository authorRepository;
+    @Autowired
+    private InstitutionRepository institutionRepository;
 
     @RequestMapping(value = "/test")
     public Collection<Paper> test(){
@@ -30,7 +34,13 @@ public class TestController {
     }
 
     @RequestMapping(value = "/test1")
-    List<Map<Author, WorkTogether>> test1(){
+    public List<Map<Author, WorkTogether>> test1(){
         return authorRepository.getWorkTogetherAuthorsByAuthor("詹毅", "电子科技集团36所");
+    }
+
+    @RequestMapping(value = "/test2")
+    public String test2(){
+        institutionRepository.getCooperateInstitutionByAuthor("詹毅", "电子科技集团36所");
+        return  null;
     }
 }

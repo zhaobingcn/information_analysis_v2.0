@@ -2,7 +2,9 @@ package com.isa.analysis.sdn.repository;
 
 import com.isa.analysis.sdn.entity.Institution;
 import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.annotation.QueryResult;
 import org.springframework.data.neo4j.repository.GraphRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +21,11 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
      */
     @Query("match (a:Author{name:{name}, institution:{institution}})-[w:work_together]-(b:Author)-[r:works_in]->(i:Institution)" +
             " return i, count(r) as times order by times desc limit 8")
-    List<Map<Institution, Long>> getCooperateInstitutionByAuthor(String name, String institution);
+    List<InstitutionAndCooperateTimes> getCooperateInstitutionByAuthor(@Param(value = "name") String name, @Param(value = "institution") String institution);
+
+    @QueryResult
+    public class InstitutionAndCooperateTimes{
+        Institution i;
+        Long times;
+    }
 }
