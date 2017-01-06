@@ -1,9 +1,6 @@
 package com.isa.analysis.controller;
 
-import com.isa.analysis.sdn.entity.Author;
-import com.isa.analysis.sdn.entity.Institution;
-import com.isa.analysis.sdn.entity.Paper;
-import com.isa.analysis.sdn.entity.WorkTogether;
+import com.isa.analysis.sdn.entity.*;
 import com.isa.analysis.sdn.repository.AuthorRepository;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.PaperRepository;
@@ -28,6 +25,7 @@ public class TestController {
     @Autowired
     private InstitutionRepository institutionRepository;
 
+
     @RequestMapping(value = "/test")
     public Collection<Paper> test(){
         return paperRepository.findByAuthor("詹毅", "电子科技集团36所");
@@ -39,8 +37,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "/test2")
-    public String test2(){
-        institutionRepository.getCooperateInstitutionByAuthor("詹毅", "电子科技集团36所");
-        return  null;
+    public List<InstitutionAndCooperateTimes> test2(){
+        return  institutionRepository.getCooperateInstitutionByAuthor("詹毅", "电子科技集团36所");
     }
 }

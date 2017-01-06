@@ -23,5 +23,4 @@ public interface AuthorRepository extends GraphRepository<Map<Author, WorkTogeth
             "by w.weight desc limit 8")
     List<Map<Author, WorkTogether>> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 
-
 }
