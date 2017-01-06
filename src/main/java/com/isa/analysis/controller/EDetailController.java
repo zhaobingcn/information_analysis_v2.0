@@ -1,6 +1,7 @@
 package com.isa.analysis.controller;
 
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
+import com.isa.analysis.service.ExpertDetailPageService;
 import com.isa.analysis.service.IndexPageService;
 import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONObject;
@@ -22,6 +23,9 @@ public class EDetailController {
     private RestApiRepository restApiRepository;
 
     @Autowired
+    private ExpertDetailPageService expertDetailPageService;
+
+    @Autowired
     private RestApiService restApiService;
 
     @RequestMapping(value = "/detailOfExpert")
@@ -39,5 +43,13 @@ public class EDetailController {
 
 //        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
         return restApiService.generateWorkTogetherGraph(name, institution, depath);
+    }
+
+    @RequestMapping(value = "/detailOfExpert/InterestOfExpert")
+    public @ResponseBody Map<String, Object> interestOfExpert(
+            @RequestParam(value = "name", required = false)String name,
+            @RequestParam(value = "institution", required = false)String institution
+    ){
+        return expertDetailPageService.generateKeywordsDetails("詹毅", "电子科技集团36所");
     }
 }
