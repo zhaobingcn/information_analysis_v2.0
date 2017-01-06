@@ -23,15 +23,18 @@ public class Paper {
     @Property(name = "link")
     private String link;
     @Property(name = "quote")
-    private int quote;
+    private String quote;
     @Property(name = "date")
     private String date;
 
     @Relationship(type = "publish", direction = Relationship.INCOMING)
     private List<Author> authors;
 
-    @Relationship(type = "involve", direction = Relationship.INCOMING)
+    @Relationship(type = "involve", direction = Relationship.OUTGOING)
     private List<Involve> involves;
+
+    @Relationship(type = "included_in", direction = Relationship.OUTGOING)
+    private List<IncludedIn> includedIns;
 
     public Long getId() {
         return id;
@@ -45,6 +48,26 @@ public class Paper {
         this.title = title;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Involve> getInvolves() {
+        return involves;
+    }
+
+    public void setInvolves(List<Involve> involves) {
+        this.involves = involves;
+    }
+
+    public List<IncludedIn> getIncludedIns() {
+        return includedIns;
+    }
+
+    public void setIncludedIns(List<IncludedIn> includedIns) {
+        this.includedIns = includedIns;
+    }
+
     public String getLink() {
         return link;
     }
@@ -53,11 +76,11 @@ public class Paper {
         this.link = link;
     }
 
-    public int getQuote() {
+    public String getQuote() {
         return quote;
     }
 
-    public void setQuote(int quote) {
+    public void setQuote(String quote) {
         this.quote = quote;
     }
 

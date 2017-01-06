@@ -77,6 +77,4 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         return keywords;
     }
 
-
-
 }

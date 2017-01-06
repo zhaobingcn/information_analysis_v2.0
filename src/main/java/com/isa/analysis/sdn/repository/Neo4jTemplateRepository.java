@@ -2,6 +2,7 @@ package com.isa.analysis.sdn.repository;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,4 +28,5 @@ public interface Neo4jTemplateRepository {
      * @return 关键词详情
      */
     Map<String, Object> getKeywordsByAuthor(String name, String institution);
+
 }
