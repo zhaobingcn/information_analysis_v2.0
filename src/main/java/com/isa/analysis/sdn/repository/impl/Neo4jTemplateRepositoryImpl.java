@@ -58,25 +58,4 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         }
         return influentialEntity;
     }
-
-    @Override
-    @Transactional
-    public Map<String, Object> getKeywordsByAuthor(String name, String institution) {
-        String query = "match (a:Author{name:{name}, institution:{institution}})" +
-                "-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) return k.name as kname, count(i) as times";
-        Map<String, Object> params =  new HashMap<>();
-        params.put("name", name);
-        params.put("institution", institution);
-        Result result = neo4jTemplate.query(query, params);
-        Iterator<Map<String, Object>> resultKeywords = result.iterator();
-        System.out.println("+++++++++++++++++");
-        Map<String, Object> keywords = new HashMap<>();
-        while (resultKeywords.hasNext()){
-            Map<String, Object> row = resultKeywords.next();
-            System.out.println(row.toString());
-            keywords.put(row.get("kname").toString(), row.get("times"));
-        }
-        return keywords;
-    }
-
 }

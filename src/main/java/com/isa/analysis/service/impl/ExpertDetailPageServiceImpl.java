@@ -1,5 +1,7 @@
 package com.isa.analysis.service.impl;
 
+import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
+import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.ExpertDetailPageService;
 import com.isa.analysis.service.MapUtil;
@@ -21,14 +23,17 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     private Neo4jTemplateRepository neo4jTemplateRepository;
 
     @Autowired
+    private KeywordRepository keywordRepository;
+
+    @Autowired
     private MapUtil mapUtil;
 
     @Override
     public Map<String, Object> generateKeywordsDetails(String name, String institution) {
-        Map<String, Object> keywordsDetail = neo4jTemplateRepository.getKeywordsByAuthor(name, institution);
+        List<KeywordAndInvolveTimes> keywordsDetail = keywordRepository.getKeywordsByAuthor(name, institution);
         List<Map<String, Object>> dataGroup = new ArrayList<>();
-        for(Map.Entry<String, Object> oneKeyword:keywordsDetail.entrySet()){
-            dataGroup.add(mapUtil.map("name", oneKeyword.getKey(), "value", oneKeyword.getValue()));
+        for(KeywordAndInvolveTimes keywordDetail: keywordsDetail){
+            dataGroup.add(mapUtil.map("name", keywordDetail.getKeyword().getName(), "value", keywordDetail.getTimes()));
         }
         Map<String, Object> finalExpertInterestData = new HashMap<>();
         finalExpertInterestData.put("data", dataGroup);

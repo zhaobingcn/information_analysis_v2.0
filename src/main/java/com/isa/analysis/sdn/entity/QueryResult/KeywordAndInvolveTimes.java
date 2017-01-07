@@ -12,4 +12,20 @@ public class KeywordAndInvolveTimes {
 
     Keyword keyword;
     Long times;
+
+    public Keyword getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(Keyword keyword) {
+        this.keyword = keyword;
+    }
+
+    public Long getTimes() {
+        return times;
+    }
+
+    public void setTimes(Long times) {
+        this.times = times;
+    }
 }

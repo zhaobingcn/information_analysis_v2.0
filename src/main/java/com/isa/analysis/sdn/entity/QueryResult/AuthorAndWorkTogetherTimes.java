@@ -13,4 +13,20 @@ import org.springframework.data.neo4j.annotation.QueryResult;
 public class AuthorAndWorkTogetherTimes {
     Author author;
     Long times;
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Long getTimes() {
+        return times;
+    }
+
+    public void setTimes(Long times) {
+        this.times = times;
+    }
 }

@@ -12,4 +12,20 @@ import org.springframework.data.neo4j.annotation.QueryResult;
 public class InstitutionAndCooperateTimes{
     Institution ins;
     Long times;
+
+    public Institution getIns() {
+        return ins;
+    }
+
+    public void setIns(Institution ins) {
+        this.ins = ins;
+    }
+
+    public Long getTimes() {
+        return times;
+    }
+
+    public void setTimes(Long times) {
+        this.times = times;
+    }
 }
