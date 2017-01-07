@@ -37,7 +37,7 @@ public class TestController {
 
     @RequestMapping(value = "/test1")
     public @ResponseBody List<AuthorAndWorkTogetherTimes> test1(){
-        return authorRepository.getWorkTogetherAuthorsByAuthor("詹毅", "电子科技集团36所");
+        return authorRepository.getSortedWorkTogetherAuthorsByAuthor("詹毅", "电子科技集团36所");
     }
 
     @RequestMapping(value = "/test2")

@@ -9,6 +9,7 @@ import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,11 @@ public interface AuthorRepository extends GraphRepository{
      */
     @Query("match (a:Author{name:{name}, institution:{institution}})-[w:work_together]-(b:Author) return b as author, w.weight as times order " +
             "by w.weight desc limit 8")
-    List<AuthorAndWorkTogetherTimes> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
+    List<AuthorAndWorkTogetherTimes> getSortedWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 
+    /**
+     * 查询和一个作者合作过的其他作者
+     */
+    @Query("match (a:Author{name:{name}, institution:{institution}})-[w:Work_together]-(b:Author) return b as aurhors")
+    Collection<Author> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 }
