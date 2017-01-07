@@ -31,4 +31,6 @@ public interface AuthorRepository extends GraphRepository{
      */
     @Query("match (a:Author{name:{name}, institution:{institution}})-[w:Work_together]-(b:Author) return b as aurhors")
     Collection<Author> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
+
+
 }

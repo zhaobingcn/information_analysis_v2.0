@@ -1,6 +1,10 @@
 package com.isa.analysis.service.impl;
 
+import com.isa.analysis.restapi.httprepository.RestApiRepository;
+import com.isa.analysis.sdn.entity.Author;
+import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
+import com.isa.analysis.sdn.repository.AuthorRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.ExpertDetailPageService;
@@ -8,10 +12,7 @@ import com.isa.analysis.service.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by zhzy on 2017/1/5.
@@ -23,7 +24,13 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     private Neo4jTemplateRepository neo4jTemplateRepository;
 
     @Autowired
+    private RestApiRepository restApiRepository;
+
+    @Autowired
     private KeywordRepository keywordRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
     @Autowired
     private MapUtil mapUtil;
@@ -42,7 +49,8 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
 
     @Override
     public Map<String, Object> generateAuthorAbility(String name, String institution) {
-        int resarchWidth, coorpeateAuthors=0, quoteCount=0, papersCount, resarchInfluence;
+        int resarchWidth, quoteCount=0, papersCount, resarchInfluence;
+        long cooperateAuthors;
         double rearchDepath;
         List<KeywordAndInvolveTimes> keywords = keywordRepository.getKeywordsByAuthor(name, institution);
         resarchWidth = keywords.size();
@@ -57,7 +65,14 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
         if(rearchDepath > 2.0){
             rearchDepath = 2.0;
         }
-
+        Collection<Author> workTogetherAuthors = authorRepository.getWorkTogetherAuthorsByAuthor(name, institution);
+        cooperateAuthors = workTogetherAuthors.stream().map(author -> author.getId()).map(id -> {
+            return restApiRepository.getDegreeOfNode(id, "all");
+        }).reduce(0l , Long::sum);
+        if(cooperateAuthors > 200){
+            cooperateAuthors = 200;
+        }
+        Collection<Paper>
         return null;
     }
 
