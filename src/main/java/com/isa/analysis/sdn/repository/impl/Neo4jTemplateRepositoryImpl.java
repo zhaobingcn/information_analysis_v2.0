@@ -69,9 +69,11 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         params.put("institution", institution);
         Result result = neo4jTemplate.query(query, params);
         Iterator<Map<String, Object>> resultKeywords = result.iterator();
+        System.out.println("+++++++++++++++++");
         Map<String, Object> keywords = new HashMap<>();
         while (resultKeywords.hasNext()){
             Map<String, Object> row = resultKeywords.next();
+            System.out.println(row.toString());
             keywords.put(row.get("kname").toString(), row.get("times"));
         }
         return keywords;

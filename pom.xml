@@ -112,7 +112,7 @@
 
         <dependency>
             <groupId>org.neo4j</groupId>
-            <artifactId>neo4j-ogm-embedded-driver</artifactId>
+            <artifactId>neo4j-ogm-http-driver</artifactId>
             <version>${ogm-version}</version>
             <exclusions>
                 <exclusion>

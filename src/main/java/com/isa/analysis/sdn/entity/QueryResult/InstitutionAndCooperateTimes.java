@@ -1,5 +1,6 @@
-package com.isa.analysis.sdn.entity;
+package com.isa.analysis.sdn.entity.QueryResult;
 
+import com.isa.analysis.sdn.entity.Institution;
 import org.springframework.data.neo4j.annotation.QueryResult;
 
 /**
@@ -7,6 +8,6 @@ import org.springframework.data.neo4j.annotation.QueryResult;
  */
 @QueryResult
 public class InstitutionAndCooperateTimes{
-    String ins;
-    Long times;
+    private Institution ins;
+    private Long times;
 }

@@ -2,6 +2,7 @@ package com.isa.analysis.config;
 
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @Import(RepositoryRestMvcConfiguration.class)
 //启动类的@SpringBootApplication会自动扫描同级包以及子包，所以下面的@ComponentScan不加应该没关系
-//@ComponentScan("com.isa.analysis.sdn.repository")
+@ComponentScan("com.isa.analysis.sdn.repository")
 @EnableNeo4jRepositories("com.isa.analysis.sdn.repository")
 @EnableTransactionManagement
 public class Neo4jConfig extends Neo4jConfiguration {
