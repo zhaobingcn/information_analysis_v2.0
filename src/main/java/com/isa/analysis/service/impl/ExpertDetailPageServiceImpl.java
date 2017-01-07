@@ -42,6 +42,22 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
 
     @Override
     public Map<String, Object> generateAuthorAbility(String name, String institution) {
+        int resarchWidth, coorpeateAuthors=0, quoteCount=0, papersCount, resarchInfluence;
+        double rearchDepath;
+        List<KeywordAndInvolveTimes> keywords = keywordRepository.getKeywordsByAuthor(name, institution);
+        resarchWidth = keywords.size();
+        if(resarchWidth > 50){
+            resarchWidth = 50;
+        }
+        long allKeywordsCount = 0;
+        for(KeywordAndInvolveTimes keywordDetail:keywords){
+            allKeywordsCount += keywordDetail.getTimes();
+        }
+        rearchDepath = (double)allKeywordsCount/resarchWidth;
+        if(rearchDepath > 2.0){
+            rearchDepath = 2.0;
+        }
+
         return null;
     }
 
