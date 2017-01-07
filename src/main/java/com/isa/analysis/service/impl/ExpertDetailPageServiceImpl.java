@@ -34,4 +34,34 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
         finalExpertInterestData.put("data", dataGroup);
         return finalExpertInterestData;
     }
+
+    @Override
+    public Map<String, Object> generateAuthorAbility(String name, String institution) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> generateAuthorsPapersPages(String name, String institution, int skip, int limit) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> generateAuthorsPapers(String name, String institution) {
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> generateAuthorsCoorpeate(String name, String institution) {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> generateAuthorsCooperateInstitution(String name, String institution) {
+        return null;
+    }
+
+    @Override
+    public int generateAuthorsPapersCount(String name, String institution) {
+        return 0;
+    }
 }
