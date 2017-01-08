@@ -66,7 +66,7 @@ public class RestQuery {
                     /**读取服务器返回过来的json字符串数据**/
                     str = EntityUtils.toString(result.getEntity());
                     str = new String(str.getBytes("latin1"), "utf-8");
-                    System.out.println(str);
+//                    System.out.println(str);
                     if (noNeedResponse) {
                         return null;
                     }
