@@ -37,7 +37,7 @@ public interface PaperRepository extends GraphRepository<Paper> {
      * @return
      */
     @Query("match (a:Author{name:{name}, institution:{institution}})-[:publish]->(p:Paper) return count(p) as pcount")
-    Long getPapersCountByAuthor(@Param("name")String name, @Param("institution")String institution);
+    int getPapersCountByAuthor(@Param("name")String name, @Param("institution")String institution);
 
     /**
      * 查询一个作者发的论文，有分页

@@ -37,7 +37,7 @@ public interface ExpertDetailPageService {
     /**
      * 作者合作过的专家列表
      */
-    List<Map<String, Object>> generateAuthorsCoorpeate(String name, String institution);
+    List<Map<String, Object>> generateAuthorsCooperate(String name, String institution);
 
     /**
      * 作者合作过的机构列表

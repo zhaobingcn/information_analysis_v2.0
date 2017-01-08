@@ -3,12 +3,13 @@ package com.isa.analysis.service.impl;
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
 import com.isa.analysis.sdn.entity.Author;
 import com.isa.analysis.sdn.entity.Paper;
+import com.isa.analysis.sdn.entity.QueryResult.AuthorAndWorkTogetherTimes;
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
-import com.isa.analysis.sdn.repository.AuthorRepository;
-import com.isa.analysis.sdn.repository.KeywordRepository;
-import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
+import com.isa.analysis.sdn.repository.*;
 import com.isa.analysis.service.ExpertDetailPageService;
 import com.isa.analysis.service.MapUtil;
+import org.apache.commons.collections.map.LinkedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,6 @@ import java.util.*;
 public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
 
     @Autowired
-    private Neo4jTemplateRepository neo4jTemplateRepository;
-
-    @Autowired
     private RestApiRepository restApiRepository;
 
     @Autowired
@@ -31,6 +29,12 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private PaperRepository paperRepository;
+
+    @Autowired
+    private InstitutionRepository institutionRepository;
 
     @Autowired
     private MapUtil mapUtil;
@@ -49,8 +53,7 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
 
     @Override
     public Map<String, Object> generateAuthorAbility(String name, String institution) {
-        int resarchWidth, quoteCount=0, papersCount, resarchInfluence;
-        long cooperateAuthors;
+        int resarchWidth=0, quoteCount=0, papersCount=0, resarchInfluence=0,cooperateAuthors=0;
         double rearchDepath;
         List<KeywordAndInvolveTimes> keywords = keywordRepository.getKeywordsByAuthor(name, institution);
         resarchWidth = keywords.size();
@@ -66,38 +69,96 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
             rearchDepath = 2.0;
         }
         Collection<Author> workTogetherAuthors = authorRepository.getWorkTogetherAuthorsByAuthor(name, institution);
-        cooperateAuthors = workTogetherAuthors.stream().map(author -> author.getId()).map(id -> {
-            return restApiRepository.getDegreeOfNode(id, "all");
-        }).reduce(0l , Long::sum);
+        for(Author author: workTogetherAuthors){
+                cooperateAuthors += restApiRepository.getDegreeOfNode(author.getId(), "all");
+                System.out.println("++++++++++++++++++++++++" + cooperateAuthors);
+        }
+
         if(cooperateAuthors > 200){
             cooperateAuthors = 200;
         }
-        Collection<Paper>
-        return null;
+        Collection<Paper>  authorPapers = paperRepository.findByAuthor(name, institution);
+        papersCount = authorPapers.size();
+        if(papersCount > 30){
+            papersCount = 30;
+        }
+        for(Paper paper: authorPapers){
+            quoteCount += Integer.parseInt(paper.getQuote());
+        }
+        if(quoteCount > 200){
+            quoteCount = 200;
+        }
+        resarchInfluence = quoteCount + papersCount * 10;
+        if(resarchInfluence > 200){
+            resarchInfluence = 200;
+        }
+        Map<String, Object> abilityData = new HashMap<>();
+        List<Object> data = new ArrayList<>();
+        data.add(papersCount);
+        data.add(quoteCount);
+        data.add(rearchDepath);
+        data.add(resarchWidth);
+        data.add(cooperateAuthors);
+        data.add(resarchInfluence);
+        abilityData.put("data", data);
+        return abilityData;
     }
 
     @Override
     public List<Map<String, Object>> generateAuthorsPapersPages(String name, String institution, int skip, int limit) {
-        return null;
+        List<Paper> papers = paperRepository.getPapersByAuthorWithPages(name, institution, skip, limit);
+        List<Map<String, Object>> papersInMap = new ArrayList<>();
+        for(Paper paper: papers){
+            Map<String, Object> paperInMap = new HashMap<>();
+            paperInMap.put("title", paper.getTitle());
+            paperInMap.put("link", paper.getLink());
+            paperInMap.put("quote", paper.getQuote());
+            papersInMap.add(paperInMap);
+        }
+        return papersInMap;
     }
 
     @Override
     public List<Map<String, Object>> generateAuthorsPapers(String name, String institution) {
-        return null;
+        Collection<Paper> papers = paperRepository.findByAuthor(name, institution);
+        List<Map<String, Object>> papersInMap = new ArrayList<>();
+        for(Paper paper: papers){
+            Map<String, Object> paperInMap = new HashMap<>();
+            paperInMap.put("title", paper.getTitle());
+            paperInMap.put("link", paper.getLink());
+            paperInMap.put("quote", paper.getQuote());
+            papersInMap.add(paperInMap);
+        }
+        return papersInMap;
     }
 
     @Override
-    public List<Map<String, Object>> generateAuthorsCoorpeate(String name, String institution) {
-        return null;
+    public List<Map<String, Object>> generateAuthorsCooperate(String name, String institution) {
+        List<AuthorAndWorkTogetherTimes> sortedCooperateAuthors = authorRepository.getSortedWorkTogetherAuthorsByAuthor(name, institution);
+        List<Map<String, Object>> cooperateAuthors = new ArrayList<>();
+        for(AuthorAndWorkTogetherTimes authorAndWorkTogetherTimes:sortedCooperateAuthors){
+            Map<String, Object> author = new HashMap<>();
+            author.put("name", authorAndWorkTogetherTimes.getAuthor().getName());
+            author.put("institution", authorAndWorkTogetherTimes.getAuthor().getInstitution());
+            author.put("times", authorAndWorkTogetherTimes.getTimes());
+            cooperateAuthors.add(author);
+        }
+        return cooperateAuthors;
     }
 
     @Override
     public Map<String, Object> generateAuthorsCooperateInstitution(String name, String institution) {
-        return null;
+        List<InstitutionAndCooperateTimes> institutionAndCooperateTimes = institutionRepository.getCooperateInstitutionByAuthor(name, institution);
+        Map<String, Object> cooperateInstitution = new LinkedMap();
+        for(InstitutionAndCooperateTimes ainstitution: institutionAndCooperateTimes){
+            cooperateInstitution.put(ainstitution.getIns().getName(), ainstitution.getTimes());
+        }
+        return cooperateInstitution;
     }
 
     @Override
     public int generateAuthorsPapersCount(String name, String institution) {
-        return 0;
+        int papersCount = paperRepository.getPapersCountByAuthor(name, institution);
+        return papersCount;
     }
 }

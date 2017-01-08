@@ -7,10 +7,13 @@ import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +32,30 @@ public class EDetailController {
     private RestApiService restApiService;
 
     @RequestMapping(value = "/detailOfExpert")
-    public String eDetail(){
+    public String eDetail(Model model,
+                          @RequestParam(name = "name", required = false, defaultValue = "詹毅")String name,
+                          @RequestParam(name = "institution", required = false, defaultValue = "电子科技集团36所")String institution
+    ){
+        int skip=0, limit=8;
+        List<Map<String, Object>> authorsPapersList = expertDetailPageService.generateAuthorsPapersPages(name, institution, skip, limit);
+        List<Map<String, Object>> cooperateAuthorsList = expertDetailPageService.generateAuthorsCooperate(name, institution);
+        Map<String, Object> cooperateInstitutionsList = expertDetailPageService.generateAuthorsCooperateInstitution(name, institution);
+        model.addAttribute("authorsPapersList", authorsPapersList);
+        model.addAttribute("cooperateAuthorsList",cooperateAuthorsList);
+        model.addAttribute("cooperateInstitutionsList", cooperateInstitutionsList);
+        List<Map<String, Object>> allAuthorsPapers = expertDetailPageService.generateAuthorsPapers(name, institution);
+        Map<String, Object> authorsDetail = new HashMap<>();
+        int authorsPapersCount = allAuthorsPapers.size();
+        int quote = 0;
+        for(Map<String, Object> paper: allAuthorsPapers){
+            quote += Integer.parseInt(paper.get("quote").toString());
+        }
+        authorsDetail.put("name", name);
+        authorsDetail.put("institution", institution);
+        authorsDetail.put("quote", quote);
+        authorsDetail.put("authorsPapersCount", authorsPapersCount);
+
+        model.addAttribute("authorsDetail", authorsDetail);
         return "detailOfExpert";
     }
 
@@ -50,6 +76,29 @@ public class EDetailController {
             @RequestParam(value = "name", required = false)String name,
             @RequestParam(value = "institution", required = false)String institution
     ){
-        return expertDetailPageService.generateKeywordsDetails("詹毅", "电子科技集团36所");
+        return expertDetailPageService.generateKeywordsDetails(name, institution);
     }
+
+    @RequestMapping(value = "/detailOfExpert/abilityOfExpert")
+    public @ResponseBody Map<String, Object> abilityOfExpert(
+            @RequestParam(value = "name", required = false)String name,
+            @RequestParam(value = "institution", required = false)String institution
+    ){
+        return expertDetailPageService.generateAuthorAbility(name, institution);
+    }
+
+    @RequestMapping(value = "/detailOfExpert/papersWithPages")
+    public @ResponseBody Map<String, Object> papersWithPages(
+            @RequestParam(value = "name", required = false)String name,
+            @RequestParam(value = "institution", required = false)String institution,
+            @RequestParam(value = "skip", required = false)int skip,
+            @RequestParam(value = "limit", required = false)int limit
+    ){
+        List<Map<String, Object>> authorsPapersList = expertDetailPageService.generateAuthorsPapersPages(name, institution, skip, limit);
+        Map<String, Object> finalPapersData = new HashMap<>();
+        finalPapersData.put("data", authorsPapersList);
+        return  finalPapersData;
+    }
+
+
 }
