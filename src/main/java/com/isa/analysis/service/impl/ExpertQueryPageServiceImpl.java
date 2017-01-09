@@ -6,7 +6,9 @@ import com.isa.analysis.service.ExpertQueryPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2017/1/5.
@@ -16,10 +18,11 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
 
     @Autowired
     private AuthorRepository authorRepository;
-
+    @Autowired
+    private MapUtil mapUtil;
 
     @Override
-    public List<Author> generateSearchAuthors(String name, String institution) {
+    public List<Map<String, Object>> generateSearchAuthors(String name, String institution) {
         String queryContext = "";
         if(name != null && institution != null){
             queryContext = "name:(" + name + ") AND " + "institution:(" + institution + ")";
@@ -28,6 +31,18 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
         }else if(institution == null){
             queryContext = "name:(" + name + ")";
         }
-        return authorRepository.findByFulltextIndexSearch("author", queryContext, 18);
+        List<Author> authors = authorRepository.findByFulltextIndexSearch(name, institution, 18);
+        List<Map<String, Object>> authorsResult = new ArrayList<>();
+        for(Author author:authors){
+            authorsResult.add(
+                mapUtil.map(
+                    "name", author.getName(),
+                        "institution", author.getInstitution(),
+                        "papersCount", author.getPublishes().size(),
+                        "qouteCount", author.getPublishes().stream().map(publish -> Integer.parseInt(publish.getPaper().getQuote())).reduce(0,Integer::sum)
+                )
+            );
+        }
+        return authorsResult;
     }
 }

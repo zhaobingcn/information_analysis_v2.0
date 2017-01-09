@@ -3,6 +3,7 @@ package com.isa.analysis.service;
 import com.isa.analysis.sdn.entity.Author;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2017/1/5.
@@ -15,5 +16,5 @@ public interface ExpertQueryPageService {
      * @param institution
      * @return
      */
-    List<Author> generateSearchAuthors(String name, String institution);
+    List<Map<String, Object>> generateSearchAuthors(String name, String institution);
 }

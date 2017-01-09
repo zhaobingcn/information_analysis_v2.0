@@ -35,7 +35,6 @@ public interface AuthorRepository extends GraphRepository{
     /**
      * 利用全文索引查找作者信息
      */
-    @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit}) yield authors")
+    @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
     List<Author> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
-
 }
