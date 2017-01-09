@@ -1,6 +1,7 @@
 package com.isa.analysis.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,10 @@ public interface ExpertDetailPageService {
      * 作者的论文数量
      */
     int generateAuthorsPapersCount(String name, String institution);
+    /**
+     * 作者发表的论文，按照年份排序，2006-2016
+     */
+    Map<Integer, ArrayList<Integer>> generateAuthorsAchievement(String name, String institution);
 
 
 }

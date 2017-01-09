@@ -1,4 +1,4 @@
-package com.isa.analysis.service;
+package com.isa.analysis.service.impl;
 
 import org.springframework.stereotype.Service;
 

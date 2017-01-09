@@ -29,7 +29,7 @@ public interface AuthorRepository extends GraphRepository{
     /**
      * 查询和一个作者合作过的其他作者
      */
-    @Query("match (a:Author{name:{name}, institution:{institution}})-[w:Work_together]-(b:Author) return b as aurhors")
+    @Query("match (a:Author{name:{name}, institution:{institution}})-[w:work_together]-(b:Author) return b as authors")
     Collection<Author> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 
 

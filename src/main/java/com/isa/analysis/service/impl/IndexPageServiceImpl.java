@@ -6,7 +6,6 @@ import com.isa.analysis.sdn.entity.Keyword;
 import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.IndexPageService;
-import com.isa.analysis.service.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,8 +67,6 @@ public class EDetailController {
             @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
             @RequestParam(value = "depath", required = false, defaultValue = "3")int depath
     ){
-
-//        return restApiRepository.getWorkTogetherPaths(name, institution, depath).toString();
         return restApiService.generateWorkTogetherGraph(name, institution, depath);
     }
 
@@ -98,6 +97,24 @@ public class EDetailController {
         Map<String, Object> finalPapersData = new HashMap<>();
         finalPapersData.put("data", authorsPapersList);
         return  finalPapersData;
+    }
+
+    @RequestMapping(value = "/detailOfExpert/authorsAchievement")
+    public @ResponseBody Map<String, Object> authorsAchievement(
+            @RequestParam(value = "name", required = false, defaultValue = "詹毅")String name,
+            @RequestParam(value = "institution", required = false, defaultValue = "电子科技集团36所")String institution
+    ){
+        Map<Integer, ArrayList<Integer>> authorsAchievement = expertDetailPageService.generateAuthorsAchievement(name, institution);
+        List<Integer> quoteInYear = new ArrayList<>();
+        List<Integer> publishInYear = new ArrayList<>();
+        for(Map.Entry<Integer, ArrayList<Integer>> achievementInYear: authorsAchievement.entrySet()){
+            quoteInYear.add(achievementInYear.getValue().get(1));
+            publishInYear.add(achievementInYear.getValue().get(0));
+        }
+        Map<String, Object> finalAchievementData = new HashMap<>();
+        finalAchievementData.put("quote", quoteInYear);
+        finalAchievementData.put("publish", publishInYear);
+        return finalAchievementData;
     }
 
 

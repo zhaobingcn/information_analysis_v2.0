@@ -8,7 +8,6 @@ import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.*;
 import com.isa.analysis.service.ExpertDetailPageService;
-import com.isa.analysis.service.MapUtil;
 import org.apache.commons.collections.map.LinkedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,7 +70,6 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
         Collection<Author> workTogetherAuthors = authorRepository.getWorkTogetherAuthorsByAuthor(name, institution);
         for(Author author: workTogetherAuthors){
                 cooperateAuthors += restApiRepository.getDegreeOfNode(author.getId(), "all");
-                System.out.println("++++++++++++++++++++++++" + cooperateAuthors);
         }
 
         if(cooperateAuthors > 200){
@@ -160,5 +158,26 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     public int generateAuthorsPapersCount(String name, String institution) {
         int papersCount = paperRepository.getPapersCountByAuthor(name, institution);
         return papersCount;
+    }
+
+    @Override
+    public Map<Integer, ArrayList<Integer>> generateAuthorsAchievement(String name, String institution) {
+
+        Collection<Paper> papers = paperRepository.findByAuthor(name, institution);
+        Map<Integer, ArrayList<Integer>> authorsAchievement = new LinkedHashMap<>();
+        for(int i=2006; i<2017; i++){
+            ArrayList<Integer> countAndQuote = new ArrayList<>();
+            countAndQuote.add(0);
+            countAndQuote.add(0);
+            authorsAchievement.put(i, countAndQuote);
+        }
+        for(Paper paper: papers){
+            int year = Integer.parseInt(paper.getDate().substring(0,4));
+            if(year >=2006 && year <=2016){
+                authorsAchievement.get(year).set(0, authorsAchievement.get(year).get(0) + 1);
+                authorsAchievement.get(year).set(1, authorsAchievement.get(year).get(1) + Integer.parseInt(paper.getQuote()));
+            }
+        }
+        return authorsAchievement;
     }
 }

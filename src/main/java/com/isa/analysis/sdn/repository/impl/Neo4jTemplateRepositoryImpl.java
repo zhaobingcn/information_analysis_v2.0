@@ -1,7 +1,7 @@
 package com.isa.analysis.sdn.repository.impl;
 
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
-import com.isa.analysis.service.MapUtil;
+import com.isa.analysis.service.impl.MapUtil;
 import org.neo4j.ogm.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.template.Neo4jOperations;

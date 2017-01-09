@@ -1,7 +1,6 @@
 package com.isa.analysis.service.impl;
 
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
-import com.isa.analysis.service.MapUtil;
 import com.isa.analysis.service.RestApiService;
 import org.neo4j.ogm.json.JSONArray;
 import org.neo4j.ogm.json.JSONObject;
