@@ -81,7 +81,7 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
             papersCount = 30;
         }
         for(Paper paper: authorPapers){
-            quoteCount += Integer.parseInt(paper.getQuote());
+            quoteCount += paper.getQuote();
         }
         if(quoteCount > 200){
             quoteCount = 200;
@@ -175,7 +175,7 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
             int year = Integer.parseInt(paper.getDate().substring(0,4));
             if(year >=2006 && year <=2016){
                 authorsAchievement.get(year).set(0, authorsAchievement.get(year).get(0) + 1);
-                authorsAchievement.get(year).set(1, authorsAchievement.get(year).get(1) + Integer.parseInt(paper.getQuote()));
+                authorsAchievement.get(year).set(1, authorsAchievement.get(year).get(1) + paper.getQuote());
             }
         }
         return authorsAchievement;

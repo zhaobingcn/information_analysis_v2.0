@@ -37,4 +37,7 @@ public interface AuthorRepository extends GraphRepository{
      */
     @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
     List<Author> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
+
+    @Query("match (a:Author{name:{name}, institution:{institution}})-[:publish]->(p:Paper) return sum(p.quote) as quoteCount")
+    int getPapersQuoteCount(@Param("name")String name, @Param("institution")String institution);
 }

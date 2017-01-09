@@ -23,7 +23,7 @@ public class Paper {
     @Property(name = "link")
     private String link;
     @Property(name = "quote")
-    private String quote;
+    private int quote;
     @Property(name = "date")
     private String date;
 
@@ -76,11 +76,11 @@ public class Paper {
         this.link = link;
     }
 
-    public String getQuote() {
+    public int getQuote() {
         return quote;
     }
 
-    public void setQuote(String quote) {
+    public void setQuote(int quote) {
         this.quote = quote;
     }
 

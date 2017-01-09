@@ -2,6 +2,7 @@ package com.isa.analysis.service.impl;
 
 import com.isa.analysis.sdn.entity.Author;
 import com.isa.analysis.sdn.repository.AuthorRepository;
+import com.isa.analysis.sdn.repository.PaperRepository;
 import com.isa.analysis.service.ExpertQueryPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private PaperRepository paperRepository;
+
     @Autowired
     private MapUtil mapUtil;
 
@@ -31,15 +36,16 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
         }else if(institution == null){
             queryContext = "name:(" + name + ")";
         }
-        List<Author> authors = authorRepository.findByFulltextIndexSearch(name, institution, 18);
+        List<Author> authors = authorRepository.findByFulltextIndexSearch("author", queryContext , 18);
         List<Map<String, Object>> authorsResult = new ArrayList<>();
         for(Author author:authors){
+            System.out.println(author.getName());
             authorsResult.add(
                 mapUtil.map(
                     "name", author.getName(),
                         "institution", author.getInstitution(),
-                        "papersCount", author.getPublishes().size(),
-                        "qouteCount", author.getPublishes().stream().map(publish -> Integer.parseInt(publish.getPaper().getQuote())).reduce(0,Integer::sum)
+                        "papersCount", paperRepository.getPapersCountByAuthor(author.getName(), author.getInstitution()),
+                        "qouteCount", authorRepository.getPapersQuoteCount(author.getName(), author.getInstitution())
                 )
             );
         }
