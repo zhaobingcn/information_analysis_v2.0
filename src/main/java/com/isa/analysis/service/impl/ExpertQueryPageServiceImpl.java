@@ -39,7 +39,7 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
         List<Author> authors = authorRepository.findByFulltextIndexSearch("author", queryContext , 18);
         List<Map<String, Object>> authorsResult = new ArrayList<>();
         for(Author author:authors){
-            System.out.println(author.getName());
+            System.out.println(author.getName() + author.getInstitution());
             authorsResult.add(
                 mapUtil.map(
                     "name", author.getName(),

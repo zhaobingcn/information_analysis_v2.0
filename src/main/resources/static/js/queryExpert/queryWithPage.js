@@ -7,6 +7,7 @@ var allPagesCount = 3;
 var thePageSize = 6;
 document.getElementById("searchAuthors").onclick = function () {
     authors = getQueryData();
+    theCurrentPage = 0;
     loadNextPage(theCurrentPage);
 }
 
