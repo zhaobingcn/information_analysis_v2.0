@@ -4,20 +4,20 @@
 var authors;
 var theCurrentPage = 0;
 var allPagesCount = 3;
-var pageSize = 6;
+var thePageSize = 6;
 document.getElementById("searchAuthors").onclick = function () {
     authors = getQueryData();
     loadNextPage(theCurrentPage);
 }
 
-document.getElementById("page-button-one").onclick = function () {
+document.getElementById("query-result-button-one").onclick = function () {
     if(theCurrentPage > 1){
         loadPreviousPage(theCurrentPage);
     }
     setButtonValue();
 }
 
-document.getElementById("page-button-two").onclick = function () {
+document.getElementById("query-result-button-two").onclick = function () {
     if(theCurrentPage < allPagesCount){
         loadNextPage(theCurrentPage);
     }
@@ -58,7 +58,7 @@ function getQueryData() {
 function loadPreviousPage() {
     theCurrentPage = theCurrentPage - 1;
     $authorsList = $("#author-list-div").empty();
-    for(var i=(theCurrentPage-1) * thePageSize; i<pageSize; i++){
+    for(var i=(theCurrentPage-1) * thePageSize; i<theCurrentPage * thePageSize; i++){
         $authorsList.append(
         "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
@@ -99,7 +99,7 @@ function loadPreviousPage() {
 function loadNextPage() {
     theCurrentPage = theCurrentPage + 1;
     $authorsList = $("#author-list-div").empty();
-    for(var i=(theCurrentPage-1) * thePageSize; i<pageSize; i++){
+    for(var i=(theCurrentPage-1) * thePageSize; i< theCurrentPage * thePageSize; i++){
         $authorsList.append(
             "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +

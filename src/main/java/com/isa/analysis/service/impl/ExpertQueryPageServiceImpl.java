@@ -45,7 +45,7 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
                     "name", author.getName(),
                         "institution", author.getInstitution(),
                         "papersCount", paperRepository.getPapersCountByAuthor(author.getName(), author.getInstitution()),
-                        "qouteCount", authorRepository.getPapersQuoteCount(author.getName(), author.getInstitution())
+                        "quoteCount", authorRepository.getPapersQuoteCount(author.getName(), author.getInstitution())
                 )
             );
         }

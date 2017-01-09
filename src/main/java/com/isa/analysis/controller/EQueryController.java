@@ -29,6 +29,6 @@ public class EQueryController {
                                                                @RequestParam(value = "institution", required = false)String institution
                                                                ){
 
-        return expertQueryPageService.generateSearchAuthors("詹毅", "电子科技集团");
+        return expertQueryPageService.generateSearchAuthors(name, institution);
     }
 }
