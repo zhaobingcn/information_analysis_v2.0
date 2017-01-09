@@ -32,5 +32,10 @@ public interface AuthorRepository extends GraphRepository{
     @Query("match (a:Author{name:{name}, institution:{institution}})-[w:work_together]-(b:Author) return b as authors")
     Collection<Author> getWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 
+    /**
+     * 利用全文索引查找作者信息
+     */
+    @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit}) yield authors")
+    List<Author> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
 
 }
