@@ -3,8 +3,6 @@
  */
 var thePageSize = 8;
 var theCurrentPage = 1;
-// var allPagesCount = Number('<%=request.getParameter("allPagesCount")%>');
-// var allPagesCount = 3;
 var authorName = $("#authorsName").text();
 var authorInstitution = $("#authorsInstitution").val();
 var authorPapersCount = Number($("#authorsPapersCount").val());

@@ -414,7 +414,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline btn-danger btn-block" oncl>检索</button>
+                                            <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchAuthors">检索</button>
                                         </div>
                                     </div>
                                 </form>
