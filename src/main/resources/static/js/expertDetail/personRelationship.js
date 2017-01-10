@@ -12,8 +12,8 @@ function loadRelationshipPersonal(depath) {
         type: "get",
         dataType : "json",
         data:{
-            "name" : "詹毅",
-            "institution" : "电子科技集团36所",
+            "name" : authorName,
+            "institution" : authorInstitution,
             "depath" : depath
         },
         success : function (graph) {
@@ -70,7 +70,7 @@ function loadRelationshipPersonal(depath) {
                     lineStyle: {
                         normal: {
                             color: 'source',
-                            curveness: 0.4
+                            curveness: 0.0
                         }
                     },
                     edgeSymbol: ['arrow', 'arrow'],

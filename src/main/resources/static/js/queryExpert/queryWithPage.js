@@ -5,7 +5,13 @@ var authors;
 var theCurrentPage = 0;
 var allPagesCount = 3;
 var thePageSize = 6;
+var t = $("#addprofessor").empty();
 document.getElementById("searchAuthors").onclick = function () {
+    var name = $("#authorsName").val();
+    var institution = $("#authorsInstitution").val();
+    if(name=="" && institution==""){
+        return;
+    }
     authors = getQueryData();
     theCurrentPage = 0;
     loadNextPage(theCurrentPage);
@@ -40,7 +46,7 @@ function setButtonValue() {
 
 function getQueryData() {
     var name = $("#authorsName").val();
-    var institution = $("authorsInstitution").val();
+    var institution = $("#authorsInstitution").val();
     var authorsDetail;
     $.ajax({
         url : "/queryOfExpert/commitQuery",
@@ -58,9 +64,9 @@ function getQueryData() {
 
 function loadPreviousPage() {
     theCurrentPage = theCurrentPage - 1;
-    $authorsList = $("#author-list-div").empty();
+    var authorsList = $("#author-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i<theCurrentPage * thePageSize; i++){
-        $authorsList.append(
+        $(
         "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
             "<div class=\"panel-heading\" style='height: 100px'>" +
@@ -71,12 +77,9 @@ function loadPreviousPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-
             "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + authors[i].name + "</a></span> </div>" +
         "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-
         "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
-
         "</div>" +
         "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
@@ -89,15 +92,19 @@ function loadPreviousPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).appendTo(authorsList).click(function () {
+            $(this).children().clone().appendTo(t).click(function () {
+                $(this).remove();
+            });
+        });
     }
 }
 
 function loadNextPage() {
     theCurrentPage = theCurrentPage + 1;
-    $authorsList = $("#author-list-div").empty();
+    var authorsList = $("#author-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i< theCurrentPage * thePageSize; i++){
-        $authorsList.append(
+        $(
             "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
             "<div class=\"panel-heading\" style='height: 100px'>" +
@@ -108,14 +115,9 @@ function loadNextPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + authors[i].name + "</a></span> </div>" +
-
-
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].name +"&&institution=" + authors[i].institution + "\">" + authors[i].name + "</a></span> </div>" +
             "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-
             "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
-
             "</div>" +
             "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
@@ -128,6 +130,10 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).appendTo(authorsList).click(function () {
+           $(this).children().clone().appendTo(t).click(function () {
+               $(this).remove();
+           });
+        });
     }
 }

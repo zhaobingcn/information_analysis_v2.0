@@ -29,11 +29,11 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
     @Override
     public List<Map<String, Object>> generateSearchAuthors(String name, String institution) {
         String queryContext = "";
-        if(name != null && institution != null){
+        if(!name.equals("") && !institution.equals("")){
             queryContext = "name:(" + name + ") AND " + "institution:(" + institution + ")";
-        }else if(name == null){
+        }else if(name.equals("")){
             queryContext = "institution:(" + institution + ")";
-        }else if(institution == null){
+        }else if(institution.equals("")){
             queryContext = "name:(" + name + ")";
         }
         List<Author> authors = authorRepository.findByFulltextIndexSearch("author", queryContext , 18);
