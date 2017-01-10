@@ -26,6 +26,9 @@
     <!-- Custom Fonts -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- 其他主题的css -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -438,101 +441,30 @@
 
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-2" style="text-align: center">
-                                                            <i class="fa fa-user fa-4x"></i>
-                                                            <i class="fa fa-plus" id="add"></i>
-                                                        </div>
-                                                        <div class="col-lg-5 col-md-5">
-                                                            <a href="detailOfExpert.vm">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
-                                                            </div>
-                                                            </a>
-                                                            <div>
-                                                                <span style="font-size: large">中国电子科技集团33所</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-5 col-md-5">
-                                                            <div>
-                                                                <span style="font-size: large">发表文章：</span>
-                                                                <span style="font-size: large">26</span>
-                                                            </div>
-                                                            <div>
-                                                                <span style="font-size: large">被引用次数：</span>
-                                                                <span style="font-size: large">69</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
-
                                             <div class="panel-heading">
                                                 <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
                                                         <i class="fa fa-user fa-4x"></i>
-##                                                        <a href="#">
                                                         <i class="fa fa-plus" id="add"></i>
-##                                                        </a>
                                                     </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
-                                                            </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                                    <div class="col-lg-10 col-xs-10">
+                                                            <div id="small_stats" class="cf">
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2" style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
+
+                                                                <!-- .stat -->
+
+                                                                <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                                <!-- .stat -->
+
+                                                                <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                                <!-- .stat -->
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
-                                                        </div>
+                                                            <div id="small_stats" class="cf">
+                                                                <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
+                                                                </div>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -548,76 +480,29 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="panel panel-default">
-
                                             <div class="panel-heading">
                                                 <div class="row">
-                                                    <div class="col-xs-2" style="text-align: center">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
                                                         <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
+                                                        <i class="fa fa-plus" id="add"></i>
                                                     </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
-                                                            </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    <div class="col-lg-10 col-xs-10">
+                                                        <div id="small_stats" class="cf">
 
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                                            <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                            <!-- .stat -->
+                                                        </div>
+                                                        <div id="small_stats" class="cf">
+                                                            <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -636,30 +521,27 @@
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
                                                         <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
+                                                        <i class="fa fa-plus" id="add"></i>
                                                     </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                    <div class="col-lg-10 col-xs-10">
+                                                        <div id="small_stats" class="cf">
+
+                                                            <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
+
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                            <!-- .stat -->
+                                                        </div>
+                                                        <div id="small_stats" class="cf">
+                                                            <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -672,6 +554,115 @@
                                             <!--<div class="clearfix"></div>-->
                                             <!--</div>-->
                                             <!--</a>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
+                                                        <i class="fa fa-user fa-4x"></i>
+                                                        <i class="fa fa-plus" id="add"></i>
+                                                    </div>
+                                                    <div class="col-lg-10 col-xs-10">
+                                                        <div id="small_stats" class="cf">
+
+                                                            <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
+
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                            <!-- .stat -->
+                                                        </div>
+                                                        <div id="small_stats" class="cf">
+                                                            <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--<a href="#">-->
+                                            <!--<div class="panel-footer">-->
+                                            <!--<span class="pull-left">查看详情</span>-->
+                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                            <!--<div class="clearfix"></div>-->
+                                            <!--</div>-->
+                                            <!--</a>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
+                                                        <i class="fa fa-user fa-4x"></i>
+                                                        <i class="fa fa-plus" id="add"></i>
+                                                    </div>
+                                                    <div class="col-lg-10 col-xs-10">
+                                                        <div id="small_stats" class="cf">
+
+                                                            <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
+
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                            <!-- .stat -->
+                                                        </div>
+                                                        <div id="small_stats" class="cf">
+                                                            <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--<a href="#">-->
+                                            <!--<div class="panel-footer">-->
+                                            <!--<span class="pull-left">查看详情</span>-->
+                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                            <!--<div class="clearfix"></div>-->
+                                            <!--</div>-->
+                                            <!--</a>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-xs-2" style="text-align: center">
+                                                        <i class="fa fa-user fa-4x"></i>
+                                                        <i class="fa fa-plus" id="add"></i>
+                                                    </div>
+                                                    <div class="col-lg-10 col-xs-10">
+                                                        <div id="small_stats" class="cf">
+
+                                                            <div class="stat"> <i class="fa fa-link"></i> <span class="value"><a href="#">詹毅</a></span> </div>
+
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-star"></i> <span class="value">435</span> </div>
+                                                            <!-- .stat -->
+
+                                                            <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                                            <!-- .stat -->
+                                                        </div>
+                                                        <div id="small_stats" class="cf">
+                                                            <div class="stat">
+                                                                <span class="value">中国电子尔科技集团信息科学研究院</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

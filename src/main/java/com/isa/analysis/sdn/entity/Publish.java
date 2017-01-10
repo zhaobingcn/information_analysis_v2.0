@@ -15,7 +15,7 @@ public class Publish {
     private Long id;
 
     @Property
-    private long Weight;
+    private long weight;
 
     @StartNode
     private Author author;
@@ -32,11 +32,11 @@ public class Publish {
     }
 
     public long getWeight() {
-        return Weight;
+        return weight;
     }
 
     public void setWeight(long weight) {
-        Weight = weight;
+        this.weight = weight;
     }
 
     public Author getAuthor() {

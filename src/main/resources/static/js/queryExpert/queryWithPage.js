@@ -63,34 +63,30 @@ function loadPreviousPage() {
         $authorsList.append(
         "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
-                "<div class=\"panel-heading\">" +
-                    "<div class=\"row\">" +
-                        "<div class=\"col-xs-2\" style=\"text-align: center\">" +
-                        "<i class=\"fa fa-user fa-4x\"></i>" +
-                        "<i class=\"fa fa-plus\" id=\"add\"></i>" +
-                        "</div>" +
-                        "<div class=\"col-lg-5 col-md-5\">" +
-                        "<a href=\"detailOfExpert.vm\">" +
-                        "<div>" +
-                        "<span style=\"font-size: large\">" + authors[i].name + "</span>" +
-                        "</div>" +
-                        "</a>" +
-                        "<div>" +
-                        "<span style=\"font-size: large\">" + authors[i].institution + "</span>" +
-                        "</div>" +
-                        "</div>" +
-                        "<div class=\"col-lg-5 col-md-5\">" +
-                        "<div>" +
-                        "<span style=\"font-size: large\">发表文章：</span>" +
-                        "<span style=\"font-size: large\">" + authors[i].papersCount + "</span>" +
-                        "</div>" +
-                        "<div>" +
-                        "<span style=\"font-size: large\">被引用次数：</span>" +
-                        "<span style=\"font-size: large\">" + authors[i].quoteCount + "</span>" +
-                        "</div>" +
-                        "</div>" +
-                    "</div>" +
-                "</div>" +
+            "<div class=\"panel-heading\" style='height: 100px'>" +
+            "<div class=\"row\">" +
+            "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
+            "<i class=\"fa fa-user fa-4x\"></i>" +
+            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            "</div>" +
+            "<div class=\"col-lg-10 col-xs-10\">" +
+            "<div id=\"small_stats\" class=\"cf\">" +
+
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + authors[i].name + "</a></span> </div>" +
+        "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
+
+        "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
+
+        "</div>" +
+        "<div id=\"small_stats\" class=\"cf\">" +
+            "<div class=\"stat\">" +
+            "<span class=\"value\">" + authors[i].institution + "</span>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
             "</div>" +
             "</div>"
         );
@@ -104,30 +100,28 @@ function loadNextPage() {
         $authorsList.append(
             "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
-            "<div class=\"panel-heading\">" +
+            "<div class=\"panel-heading\" style='height: 100px'>" +
             "<div class=\"row\">" +
-            "<div class=\"col-xs-2\" style=\"text-align: center\">" +
+            "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
             "<i class=\"fa fa-user fa-4x\"></i>" +
             "<i class=\"fa fa-plus\" id=\"add\"></i>" +
             "</div>" +
-            "<div class=\"col-lg-5 col-md-5\">" +
-            "<a href=\"detailOfExpert.vm\">" +
-            "<div>" +
-            "<span style=\"font-size: large\">" + authors[i].name + "</span>" +
+            "<div class=\"col-lg-10 col-xs-10\">" +
+            "<div id=\"small_stats\" class=\"cf\">" +
+
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + authors[i].name + "</a></span> </div>" +
+
+
+            "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
+
+            "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
+
             "</div>" +
-            "</a>" +
-            "<div>" +
-            "<span style=\"font-size: large\">" + authors[i].institution + "</span>" +
+            "<div id=\"small_stats\" class=\"cf\">" +
+            "<div class=\"stat\">" +
+            "<span class=\"value\">" + authors[i].institution + "</span>" +
             "</div>" +
             "</div>" +
-            "<div class=\"col-lg-5 col-md-5\">" +
-            "<div>" +
-            "<span style=\"font-size: large\">发表文章：</span>" +
-            "<span style=\"font-size: large\">" + authors[i].papersCount + "</span>" +
-            "</div>" +
-            "<div>" +
-            "<span style=\"font-size: large\">被引用次数：</span>" +
-            "<span style=\"font-size: large\">" + authors[i].quoteCount + "</span>" +
             "</div>" +
             "</div>" +
             "</div>" +
