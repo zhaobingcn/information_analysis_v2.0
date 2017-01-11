@@ -12,6 +12,7 @@ document.getElementById("searchAuthors").onclick = function () {
     if(name=="" && institution==""){
         return;
     }
+    
     authors = getQueryData();
     theCurrentPage = 0;
     loadNextPage(theCurrentPage);

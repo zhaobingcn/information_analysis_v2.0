@@ -431,7 +431,7 @@
 
                 <div class="col-lg-8">
                     <div class="panel panel-red">
-                        <div class="panel-heading">
+                        <div class="panel-heading" >
                             为您检索到如下结果：
                         </div>
                         <!-- /.panel-heading -->
@@ -494,6 +494,8 @@
     <script src="/dist/js/sb-admin-2.js"></script>
 
     <script src="/js/queryExpert/queryWithPage.js"></script>
+
+    <script src = "/js/echarts.js"></script>
 
     <script type="text/javascript">
         var t = $("#addprofessor").empty();
