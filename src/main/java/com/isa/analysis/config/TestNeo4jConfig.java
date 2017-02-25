@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @Profile({"embedded", "test"})
 public class TestNeo4jConfig extends Neo4jConfiguration {
-    /**
+    /* *
      * 嵌入式连接
      *
      * @return
