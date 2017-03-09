@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ECooperateController {
-    @RequestMapping(value = "/cooperateOfExpert")
+    @RequestMapping(value = "/ComparisonofExpert")
     public String eCooperate(){
-        return "cooperateOfExpert";
+        return "ComparisonofExpert";
     }
 }
