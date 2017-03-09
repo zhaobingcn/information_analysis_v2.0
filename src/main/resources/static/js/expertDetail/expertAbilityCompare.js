@@ -54,7 +54,23 @@ function loadAbilityExpertCompare() {
                     name : '专家二'
                 }
             ]
-        }]
+        },
+            {
+                name: '科研机构能力度量',
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data : [
+                    {
+                        value : [5,110,1,35,170,127],
+                        name : '专家一'
+                    },
+                    {
+                        value : [15,130,1,45,190,177],
+                        name : '专家二'
+                    }
+                ]
+            }
+        ]
     };
     myChart.setOption(option);
     // }
