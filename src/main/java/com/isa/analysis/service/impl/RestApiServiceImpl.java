@@ -58,7 +58,6 @@ public class RestApiServiceImpl implements RestApiService {
                     String restNodeUrl = restPathNodes.getString(restNodeIndex);
                     int beginIndex = restNodeUrl.lastIndexOf("node/") + 5;
                     String restNodeId = restNodeUrl.substring(beginIndex);
-//                    System.out.println(restNodeId);
                     restPathNodesIds.add(restNodeId);
                 }
 
@@ -77,7 +76,6 @@ public class RestApiServiceImpl implements RestApiService {
                         Map<String, Object> author = new HashMap<>();
                         author.put("name", anode.getJSONObject("properties").getString("name"));
                         author.put("institution", anode.getJSONObject("properties").getString("institution"));
-//                        System.out.println(anode.getJSONObject("properties").getString("institution"));
                         author.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
                         author.put("category", restPathNodesIds.indexOf(anode.getString("id")));
                         checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);

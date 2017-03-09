@@ -293,7 +293,13 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研机构分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="ComparisonofExpert.vm">Panels and Wells</a>
+                            </li>
+                        </ul>
+
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 科研重点演化</a>
