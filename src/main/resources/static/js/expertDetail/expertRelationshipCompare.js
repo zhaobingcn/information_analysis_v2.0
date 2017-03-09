@@ -16,7 +16,7 @@ function loadRelationshipExpertCompare(depath) {
         }
         graph.nodes.forEach(function (node) {
             node.itemStyle = null;
-            node.symbolSize = 10;
+            node.symbolSize = 30;
             node.value = node.symbolSize;
             node.category = node.attributes.modularity_class;
             // Use random x, y
@@ -50,7 +50,8 @@ function loadRelationshipExpertCompare(depath) {
                     roam: true,
                     label: {
                         normal: {
-                            position: 'right'
+                            position: 'top',
+                            formatter: '{b}'
                         }
                     },
                     force: {
