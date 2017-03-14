@@ -94,6 +94,7 @@ function loadPreviousPage() {
             "</div>" +
             "</div>"
         ).appendTo(authorsList).click(function () {
+            console.info("adada")
             $(this).children().clone().appendTo(t).click(function () {
                 $(this).remove();
             });
@@ -132,6 +133,8 @@ function loadNextPage() {
             "</div>" +
             "</div>"
         ).appendTo(authorsList).click(function () {
+            console.info("adada")
+            console.info(t.children.length)
            $(this).children().clone().appendTo(t).click(function () {
                $(this).remove();
            });

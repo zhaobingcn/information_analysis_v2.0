@@ -413,7 +413,6 @@
                         </div>
                         <div class="panel-footer">
                             <button type="button" id="cooperate-button" class="btn btn-outline btn-default btn-block">专家对比分析</button>
-                            <button type="button" id="contrast-button" class="btn btn-outline btn-default btn-block">专家合作分析</button>
                         </div>
                     </div>
                 </div>
@@ -443,11 +442,10 @@
     <script src = "/js/echarts.js"></script>
 
     <script type="text/javascript">
-        var t = $("#addprofessor").empty();
-        $("i#add").click(function () {
-            $(this).parent().parent().parent().parent().clone().appendTo(t).click(function () {
-                $(this).remove();
-            });
+        $("#cooperate-button").click(function () {
+            alert("i touch ")
+            var t = $("#addprofessor").text()
+            alert(t)
         })
     </script>
 
