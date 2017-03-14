@@ -15,8 +15,8 @@ public class ECooperateController {
     }
 
     @RequestMapping(value = "/ComparisonofExpert/commitComparison")
-    public String cComparison (@RequestParam(value = "id1", required = false)Long id1,
-                               @RequestParam(value = "id2", required = false)Long id2
+    public String cComparison (@RequestParam(value = "id1", required = false, defaultValue = "12")Long id1,
+                               @RequestParam(value = "id2", required = false, defaultValue = "34")Long id2
                                )
     {
         return "ComparisonofExpert";
