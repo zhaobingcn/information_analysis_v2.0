@@ -23,4 +23,8 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
             " return i as ins, count(r) as times order by times desc limit 8")
     List<InstitutionAndCooperateTimes> getCooperateInstitutionByAuthor(@Param(value = "name") String name, @Param(value = "institution") String institution);
 
+    @Query("match (a:Author)-[w:work_together]-(b:Author)-[r:works_in]->(i:Institution)" +
+            " where id(a)={id} return i as ins, count(r) as times order by times desc limit 8")
+    List<InstitutionAndCooperateTimes> getCooperateInstitutionByAuthorId(@Param(value = "id") Long id);
+
 }
