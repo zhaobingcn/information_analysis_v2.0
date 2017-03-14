@@ -43,8 +43,9 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
             authorsResult.add(
                 mapUtil.map(
                         "author", author,
-                        "papersCount", paperRepository.getPapersCountByAuthor(author.getName(), author.getInstitution()),
-                        "quoteCount", authorRepository.getPapersQuoteCount(author.getName(), author.getInstitution())
+                        "id", author.getId(),
+                        "papersCount", paperRepository.getPapersCountByAuthorId(author.getId()),
+                        "quoteCount", authorRepository.getPapersQuoteCountById(author.getId())
                 )
             );
         }

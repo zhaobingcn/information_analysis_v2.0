@@ -65,5 +65,5 @@ public interface AuthorRepository extends GraphRepository{
      * @return
      */
     @Query("match (a:Author)-[:publish]->(p:Paper) where id(a) = {id} return sum(p.quote) as quoteCount")
-    int getPapersQuoteCount(@Param("ide")Long id);
+    int getPapersQuoteCountById(@Param("id")Long id);
 }

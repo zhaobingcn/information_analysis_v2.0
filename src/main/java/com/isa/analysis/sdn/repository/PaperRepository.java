@@ -30,6 +30,9 @@ public interface PaperRepository extends GraphRepository<Paper> {
     @Query("match (a:Author{name:{name}, institution:{institution}})-[:publish]->(p:Paper) return p")
     Collection<Paper> findByAuthor(@Param("name")String name, @Param("institution")String institution);
 
+    @Query("match (a:Author)-[:publish]-(p:Paper) where id(a) = {authorId} return p")
+    Collection<Paper> findByAuthorId(@Param("authorId")Long authorId);
+
     /**
      * 得到一个作者的论文的数
      * @param name
@@ -38,6 +41,10 @@ public interface PaperRepository extends GraphRepository<Paper> {
      */
     @Query("match (a:Author{name:{name}, institution:{institution}})-[:publish]->(p:Paper) return count(p) as pcount")
     int getPapersCountByAuthor(@Param("name")String name, @Param("institution")String institution);
+
+    @Query("match (a:Author)-[:publish]->(p:Paper) where id(a)={authorId} return count(p) as pcount")
+    int getPapersCountByAuthorId(@Param("authorId")Long authorId);
+
 
     /**
      * 查询一个作者发的论文，有分页
@@ -51,4 +58,8 @@ public interface PaperRepository extends GraphRepository<Paper> {
             "return p order by p.date desc skip {skip} limit {limit}")
     List<Paper> getPapersByAuthorWithPages(@Param(value = "name") String name, @Param(value = "institution")
             String institution, @Param(value = "skip") int skip, @Param(value = "limit") int limit);
+
+    @Query("match (a:Author)-[:publish]-(p:Paper) where id(a) = {authorId}" +
+            "return p order by p.date desc skip {skip} limit {limit}")
+    List<Paper> getPapersByAuthorIdWithPages(@Param(value = "authorId")Long authorId, @Param(value = "skip") int skip, @Param(value = "limit") int limit);
 }
