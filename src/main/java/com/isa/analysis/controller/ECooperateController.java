@@ -14,13 +14,12 @@ public class ECooperateController {
         return "ComparisonofExpert";
     }
 
-//    @RequestMapping(value = "/ComparisonofExpert/commitComparison")
-//    public String cComparison (@RequestParam(name = "name1", required = false, defaultValue = "詹毅")String name,
-//                               @RequestParam(name = "institution", required = false, defaultValue = "电子科技集团36所")String institution,
-//
-//                               )
-//    {
-//
-//    }
+    @RequestMapping(value = "/ComparisonofExpert/commitComparison")
+    public String cComparison (@RequestParam(value = "id1", required = false)Long id1,
+                               @RequestParam(value = "id2", required = false)Long id2
+                               )
+    {
+        return "ComparisonofExpert";
+    }
 
 }

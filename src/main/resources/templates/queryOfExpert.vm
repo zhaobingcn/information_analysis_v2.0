@@ -444,8 +444,6 @@
     <script type="text/javascript">
         $("#cooperate-button").click(function () {
             alert("i touch ")
-            var t = $("#addprofessor").text()
-            alert(t)
         })
     </script>
 
