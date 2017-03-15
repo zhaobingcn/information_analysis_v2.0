@@ -24,4 +24,9 @@ public interface Neo4jTemplateRepository {
      */
     Map<String, Long> getInfluentialEntities(String entityName, int limit);
 
+
+    /**
+     * 查询一个作者的主要研究方向论文，饮用量
+     */
+
 }
