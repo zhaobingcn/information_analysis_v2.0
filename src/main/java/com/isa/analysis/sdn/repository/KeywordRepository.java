@@ -21,7 +21,12 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
     List<KeywordAndInvolveTimes> getKeywordsByAuthor(@Param(value = "name")String name,
                                                      @Param(value = "institution")String institution);
 
-    //TODO
-   "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)=65 with k.name as keywords,"+
-    "count(i) as times, sum(p.quote) as cited order by times desc limit 3 return keywords, times, cited"
+    @Query( "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} return k as keyword, count(i) as times")
+    List<KeywordAndInvolveTimes> getKeywordsByAuthorId(@Param(value = "id")Long id);
+
+    @Query("match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} return k as keyword, " +
+            "count(i) as times order by times desc limit {limit}")
+    List<KeywordAndInvolveTimes> getSortedKeywordsByAuthorId(@Param(value = "id")Long id, @Param(value = "limit")int limit);
+
+
 }
