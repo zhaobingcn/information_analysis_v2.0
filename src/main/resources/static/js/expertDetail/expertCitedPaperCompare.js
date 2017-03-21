@@ -40,7 +40,7 @@ function loadCitedPaperExpertCompare () {
             {
                 name:'专家2',
                 type:'line',
-                data:[123,234,345,456,345,467,345,89,344,278,456]
+                data:[123,23,345,456,323,467,345,89,344,278,456]
                 /*markPoint: {
                  data: [
                  {type: 'max', name: '最大值'},

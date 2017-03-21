@@ -3,6 +3,8 @@
 
 <head>
 
+    <!--link rel="stylesheet" type="text/css" href="css/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css"/-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,18 +14,24 @@
     <title>军事科研情报分析</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,10 +43,9 @@
     <!-- 给页面page部分加上neo4j的背景图片 -->
     <style type="text/css">
         .page-wrapper{
-            background-image: url(../img/neo4j_background.gif);
+            background-image: url(/img/neo4j_background.gif);
         }
     </style>
-
 </head>
 
 <body>
@@ -268,6 +275,7 @@
             </ul>
             <!-- /.navbar-top-links -->
 
+            <!-- 左侧导航栏部分 -->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -275,10 +283,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -301,7 +309,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
+                            <a href="tables.vm"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 科研重点演化</a>
@@ -360,11 +368,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="ComparisonofInstitutions.html">Blank Page</a>
+                                    <a href="ComparisonofInstitutions.vm">Blank Page</a>
                                 </li>
                                 <li>
                                     <a href="login.html">Login Page</a>
@@ -379,35 +387,42 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <!-- Page Content -->
         <div id="page-wrapper" class="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">科研机构对比</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">科研机构信息详情</h1>
                 </div>
-                <!-- /.row -->
-
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-green">
                         <div class="panel-heading">
-                            科研机构对比
+                            科研机构详情
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="col-lg-5">
-                                <div class="middle text-center">中国电子科技集团38所</div>
+                            <div class="col-lg-4 col-xs-4">
+                                <i class="fa fa-institution fa-5x"></i>
+                                <div class="middle">某某某科研机构</div>
                             </div>
-
-                            <div class="col-lg-2">
-                                <p class="middle text-center">VS</p>
+                            <div class="col-lg-8 col-xs-8">
+                                <div>
+                                    <div id="big_stats" class="cf">
+                                        <div class="stat"> <i class="fa fa-link"></i> <span class="value">77</span> </div>
+                                        <!-- .stat -->
+                                        <div class="stat"> <i class="fa fa-star"></i> <span class="value">34</span> </div>
+                                        <!-- .stat -->
+                                        <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                        <!-- .stat -->
+                                        <div class="stat"> <i class="fa fa-won"></i> <span class="value">66</span> </div>
+                                        <!-- .stat -->
+                                    </div>
+                                    <!-- /#big_stats-->
+                                </div>
                             </div>
-                            <div class="col-lg-5">
-                                <div class="middle text-center">中国电子科技集团28所</div>
-                            </div>
+                            <!-- col-lg-8 col-xs-8-->
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -418,303 +433,229 @@
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8"><!-- http://gallery.echartsjs.com/editor.html?c=xH1r--HZKx -->
                     <div class="panel panel-green">
                         <div class="panel-heading">
-                            科研机构一研究方向聚焦
+                            科研机构研究成果汇总
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="first-institution-interest" style="width: 100%; height: 275px;">
-
-                            </div>
-
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover text-center">
-                                <thead>
-                                <tr>
-                                    <th style="text-align: center">Top 3</th>
-                                    <th style="text-align: center">研究方向</th>
-                                    <th style="text-align: center">论文数量</th>
-                                    <th style="text-align: center">专利数量</th>
-                                    <th style="text-align: center">项目数量</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>方向一</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstinstitutionpaper"> 55</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>方向二</td>
-                                    <td>50</td>
-                                    <td>20</td>
-                                    <td>15</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>方向三</td>
-                                    <td>45</td>
-                                    <td>15</td>
-                                    <td>5</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.panel panel-green -->
-                </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            科研机构二研究方向聚焦
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="second-institution-interest" style="width: 100%; height: 275px;">
-
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover text-center">
-                                <thead>
-                                <tr>
-                                    <th style="text-align: center">Top 3</th>
-                                    <th style="text-align: center">研究方向</th>
-                                    <th style="text-align: center">论文数量</th>
-                                    <th style="text-align: center">专利数量</th>
-                                    <th style="text-align: center">项目数量</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>方向一</td>
-                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondinstitutionpaper"> 65</div></td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>方向二</td>
-                                    <td>50</td>
-                                    <td>20</td>
-                                    <td>15</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>方向三</td>
-                                    <td>45</td>
-                                    <td>15</td>
-                                    <td>5</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.panel panel-green -->
-                </div>
-                <!-- /.col-lg-6 -->
-            </div>
-            <!-- /.row -->
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            某某某科研机构1人员组成
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="first-institutional-staff" style="width: 100%; height: 300px;">
-
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel panel-green -->
-                </div>
-                <!-- /.col-lg-6 -->
-
-                <div class="col-lg-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            某某某科研机构2人员组成
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="second-institutional-staff" style="width: 100%; height: 300px;">
-
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel panel-green -->
-                </div>
-                <!-- /.col-lg-6 -->
-            </div>
-            <!-- /.row -->
-
-                <div class="row">  <!-- http://gallery.echartsjs.com/editor.html?c=mix-timeline-finance -->
-                    <div class="col-lg-12">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                科研机构研究成果比较
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="col-lg-4">
-                                    <div id="institution-publish-paper-comparison" style="width: 100%; height: 350px;">
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div id="institution-patent-comparison" style="width: 100%; height: 350px;">
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div id="institution-program-comparison" style="width: 100%; height: 350px;">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                        <!-- /.panel panel-green -->
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            科研机构合作关系比较
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="institution-relationship-comparison" style="width: 100%; height: 350px;">
+                            <div id="themeriver" style="width: 100%; height: 300px;">
 
                             </div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel panel-green-->
+
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            主要合作研究机构
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="institution-relationship" style="width: 100%; height: 400px;">
+
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel panel-green-->
+
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            主要竞争机构
+                        </div>
+                        <!-- /.panel-heading -->
+                        <ul class="list-group">
+                                <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                        </ul>
+                        <!-- /.list-group -->
+                    </div>
+                    <!-- /.panel panel-green-->
+
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            潜在合作机构
+                        </div>
+                        <!-- /.panel-heading -->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                            </li>
+                        </ul>
+                        <!-- /.list-group -->
+                    </div>
+                    <!-- /.panel panel-green-->
                 </div>
-                <!-- /.col-lg-12-->
+                <!-- /.col-lg-8 -->
+
+                <div class="col-lg-4">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            研究方向聚焦
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="institution-research-point" style="width: 100%; height: 300px;">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            经常合作的机构
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
+                                    <span class="pull-right text-muted small"><em>40 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+                                    <span class="pull-right text-muted small"><em>12 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+                                    <span class="pull-right text-muted small"><em>25 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团17所
+                                    <span class="pull-right text-muted small"><em>70 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+                                    <span class="pull-right text-muted small"><em>82 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
+                                    <span class="pull-right text-muted small"><em>65 次</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+                                    <span class="pull-right text-muted small"><em>33 次</em>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="#" class="btn btn-default btn-block">查看详情</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            科研机构人员构成
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="institutional-staff" style="width: 100%; height: 300px;">
+
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel panel-green-->
+
+
+                </div>
+                <!-- /.col-lg-4 -->
             </div>
             <!-- /.row -->
 
-
-            </div>
-        <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
 
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        模态框（Modal）标题
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    点击关闭按钮检查事件功能。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                        关闭
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        提交更改
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
 
     <!-- echarts.js -->
-    <script src="../js/echarts.js"></script>
-    <script src="../js/echarts-wordcloud.min.js"></script>
+    <script src="/js/echarts.js"></script>
+    <script src="/js/echarts-wordcloud.min.js"></script>
 
     <!-- china.js -->
-    <script src="../js/china.js"></script>
+    <script src="/js/china.js"></script>
 
 
-    <!-- 科研机构合作关系对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionRelationshipCompare.js"></script>
-    <!-- 科研机构论文发表量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionPublishPaperCompare.js"></script>
-    <!-- 科研机构专利申请量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionPatentCompare.js"></script>
-    <!-- 科研机构项目承接量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionProgramCompare.js"></script>
-    <!-- 科研机构一研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionInterestCompare.js"></script>
-    <!-- 科研机构二研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionInterestCompare.js"></script>
-    <!-- 科研机构一人员组成图 -->
-    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionStaffCompare.js"></script>
-    <!-- 科研机构二人员组成图 -->
-    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionStaffCompare.js"></script>
 
-    <!--<script type="text/javascript">
-    window.onresize = function () {
-        loadProgramInstitutionCompare ();
-    }
+    <!-- 事件河流图 -->
+    <script type="text/javascript" src = "../js/expertDetail/institutionAchievementThemeRiver.js"></script>
+    <!-- 研究机构关系图 -->
+    <script type="text/javascript" src = "../js/expertDetail/institutionRelationship.js"></script>
+    <!-- 研究成员构成图 -->
+    <script type="text/javascript" src = "../js/expertDetail/institutionalStaff.js"></script>
+    <!-- 研究方向聚焦云图 -->
+    <script type="text/javascript" src = "../js/expertDetail/institutionInterest.js"></script>
+
+    <!--script type="text/javascript">
+        window.onresize = function () {
+            loadAbilityInstitution();
+            loadAchievementInstitutionData();
+            loadRelationshipInstitution();
+            loadStaffInstitution();
+            loadInterestInstitution();
+        }
     </script>-->
-
-    <!-- 模态框 -->
-    <script>
-        $(function () {
-            $('#myModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
-                var recipient = button.data('whatever'); // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this);
-                modal.find('.modal-title').text('New message to ' + recipient);
-                modal.find('.modal-body input').val(recipient)
-            });
-        });
-    </script>
 </body>
 
 </html>

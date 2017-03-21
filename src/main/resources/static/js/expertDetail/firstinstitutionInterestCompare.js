@@ -46,75 +46,67 @@ function loadInterestFirstInstitution() {
                     shadowColor: '#333'
                 }
             },
-            data:[{
-                name: 'Sam S Club',
-                value: 100,
-                textStyle: {
-                    normal: {
-                        color: 'black'
-                    },
-                    emphasis: {
-                        color: 'red'
-                    }
-                }
+            data:[ {
+                "name" : "直扩信号检测",
+                "value" : 1
             }, {
-                name: 'Macys',
-                value: 6181
+                "name" : "wideband detection",
+                "value" : 1
             }, {
-                name: 'Amy Schumer',
-                value: 4386
+                "name" : "非周期长码直扩",
+                "value" : 1
             }, {
-                name: 'Jurassic World',
-                value: 4055
+                "name" : "码片速率",
+                "value" : 1
             }, {
-                name: 'Charter Communications',
-                value: 2467
+                "name" : "autocorrelation",
+                "value" : 1
             }, {
-                name: 'Chick Fil A',
-                value: 2244
+                "name" : "non-cooperative",
+                "value" : 1
             }, {
-                name: 'Planet Fitness',
-                value: 1898
+                "name" : "宽带检测",
+                "value" : 1
             }, {
-                name: 'Pitch Perfect',
-                value: 1484
+                "name" : "细微特征",
+                "value" : 1
             }, {
-                name: 'Express',
-                value: 1112
+                "name" : "correlation estimators",
+                "value" : 1
             }, {
-                name: 'Home',
-                value: 965
+                "name" : "delay-product",
+                "value" : 1
             }, {
-                name: 'Johnny Depp',
-                value: 847
+                "name" : "自相关",
+                "value" : 1
             }, {
-                name: 'Lena Dunham',
-                value: 582
+                "name" : "DSSS signal interception",
+                "value" : 1
             }, {
-                name: 'Lewis Hamilton',
-                value: 555
+                "name" : "特征提取",
+                "value" : 1
             }, {
-                name: 'KXAN',
-                value: 550
+                "name" : "个体识别",
+                "value" : 1
             }, {
-                name: 'Mary Ellen Mark',
-                value: 462
+                "name" : "波动相关法",
+                "value" : 1
             }, {
-                name: 'Farrah Abraham',
-                value: 366
+                "name" : "非合作",
+                "value" : 1
             }, {
-                name: 'Rita Ora',
-                value: 360
+                "name" : "non-periodic long-code Direct Sequence Spread Spectrum(DSSS)",
+                "value" : 1
             }, {
-                name: 'Serena Williams',
-                value: 282
+                "name" : "chip-rate",
+                "value" : 1
             }, {
-                name: 'NCAA baseball tournament',
-                value: 273
+                "name" : "通信侦察",
+                "value" : 1
             }, {
-                name: 'Point Break',
-                value: 265
-            }]
+                "name" : "延迟相乘",
+                "value" : 1
+            } ]
         }]
     };
     myChart.setOption(option);

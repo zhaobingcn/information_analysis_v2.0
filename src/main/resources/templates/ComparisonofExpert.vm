@@ -344,7 +344,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="col-lg-5">
-                                <div class="huge text-center">战役</div>
+                                <div class="huge text-center">詹毅</div>
                             </div>
 
                             <div class="col-lg-2">
@@ -352,7 +352,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <div class="huge text-center">杨小牛</div>
+                                <div class="huge text-center">赵知劲</div>
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -409,19 +409,19 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>方向一</td>
+                                    <td>力学性能</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertpublishipaper"> 55</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">25</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>方向二</td>
-                                    <td>50</td>
-                                    <td>20</td>
+                                    <td>热分解</td>
+                                    <td>51</td>
+                                    <td>19</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>方向三</td>
+                                    <td>数据采集</td>
                                     <td>45</td>
                                     <td>15</td>
                                 </tr>
@@ -458,19 +458,19 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>方向一</td>
+                                    <td>数值模拟</td>
                                     <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondexpertpublishpaper"> 65</div></td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="secondexpertcitedpaper">25</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>方向二</td>
+                                    <td>结构设计</td>
                                     <td>50</td>
                                     <td>20</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>方向三</td>
+                                    <td>有限元分析</td>
                                     <td>45</td>
                                     <td>15</td>
                                 </tr>
@@ -536,19 +536,19 @@
                             <!-- /.panel-heading -->
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
+                                    <i class="fa fa-institution fa-fw"></i> 杭州电子科技大学
                                     <span class="pull-right text-muted small"><em>40 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+                                    <i class="fa fa-institution fa-fw"></i> 浙江工业大学
                                     <span class="pull-right text-muted small"><em>12 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
                                     <span class="pull-right text-muted small"><em>25 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团17所
+                                    <i class="fa fa-institution fa-fw"></i> 中航工业集团22所
                                     <span class="pull-right text-muted small"><em>70 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
@@ -578,7 +578,7 @@
                             <!-- /.panel-heading -->
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
+                                    <i class="fa fa-institution fa-fw"></i> 西安电子科技大圩
                                     <span class="pull-right text-muted small"><em>40 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
@@ -590,7 +590,7 @@
                                     <span class="pull-right text-muted small"><em>25 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团17所
+                                    <i class="fa fa-institution fa-fw"></i> 西安交通大学
                                     <span class="pull-right text-muted small"><em>70 次</em></span>
                                 </a>
                                 <a href="#" class="list-group-item">
