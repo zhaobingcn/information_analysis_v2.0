@@ -405,18 +405,18 @@
                         <div class="panel-body">
                             <div class="col-lg-4 col-xs-4">
                                 <i class="fa fa-institution fa-5x"></i>
-                                <div class="middle">某某某科研机构</div>
+                                <div class="middle">中国电子科技集团38所</div>
                             </div>
                             <div class="col-lg-8 col-xs-8">
                                 <div>
                                     <div id="big_stats" class="cf">
-                                        <div class="stat"> <i class="fa fa-link"></i> <span class="value">77</span> </div>
+                                        <div class="stat"> <i class="fa fa-link"></i> <span class="value">1057</span> </div>
                                         <!-- .stat -->
-                                        <div class="stat"> <i class="fa fa-star"></i> <span class="value">34</span> </div>
+                                        <div class="stat"> <i class="fa fa-star"></i> <span class="value">2327</span> </div>
                                         <!-- .stat -->
-                                        <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">56</span> </div>
+                                        <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">2536</span> </div>
                                         <!-- .stat -->
-                                        <div class="stat"> <i class="fa fa-won"></i> <span class="value">66</span> </div>
+                                        <div class="stat"> <i class="fa fa-won"></i> <span class="value">3053</span> </div>
                                         <!-- .stat -->
                                     </div>
                                     <!-- /#big_stats-->
@@ -469,19 +469,19 @@
                         <!-- /.panel-heading -->
                         <ul class="list-group">
                                 <li class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
-                                    <span class="pull-right">
-                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
-                                    </span>
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团15所
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs">加 入 对 比</button>
                                     </span>
                                 </li>
                                 <li class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团41所
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs">加 入 对 比</button>
                                     </span>
@@ -500,7 +500,7 @@
                             <li class="list-group-item">
                                 <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
                                     <span class="pull-right">
-                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                        <button class="btn btn-default btn-xs" id = "compare-institution">加 入 对 比</button>
                                     </span>
                             </li>
                             <li class="list-group-item">
@@ -656,6 +656,12 @@
             loadInterestInstitution();
         }
     </script>-->
+
+    <script type="text/javascript">
+        $("#compare-institution").click(function () {
+            window.open("/ComparisonofInstitutions");
+        })
+    </script>
 </body>
 
 </html>

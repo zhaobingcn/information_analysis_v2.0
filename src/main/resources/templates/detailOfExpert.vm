@@ -486,7 +486,7 @@
                         <div class="panel-body">
                             <div class="list-group">
                                 #foreach($institution in $cooperateInstitutionsList.entrySet())
-                                    <a href="#" class="list-group-item">
+                                    <a href="/tables" class="list-group-item">
                                         <i class="fa fa-institution fa-fw"></i> $institution.key
                                         <span class="pull-right text-muted small"><em>$institution.value 次</em>
                                     </span>

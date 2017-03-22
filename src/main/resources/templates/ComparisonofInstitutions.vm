@@ -445,21 +445,21 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>方向一</td>
+                                    <td>直扩信号检测</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="firstinstitutionpaper"> 55</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>方向二</td>
+                                    <td>自相关</td>
                                     <td>50</td>
                                     <td>20</td>
                                     <td>15</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>方向三</td>
+                                    <td>特征提取</td>
                                     <td>45</td>
                                     <td>15</td>
                                     <td>5</td>
@@ -498,21 +498,21 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>方向一</td>
+                                    <td>正交分码</td>
                                     <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondinstitutionpaper"> 65</div></td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>方向二</td>
+                                    <td>格码正交化</td>
                                     <td>50</td>
                                     <td>20</td>
                                     <td>15</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>方向三</td>
+                                    <td>盲源分离</td>
                                     <td>45</td>
                                     <td>15</td>
                                     <td>5</td>
