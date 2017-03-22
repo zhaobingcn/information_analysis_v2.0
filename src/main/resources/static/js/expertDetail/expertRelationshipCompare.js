@@ -4,64 +4,82 @@
 function loadRelationshipExpertCompare(depath) {
     var myChart = echarts.init(document.getElementById('expert-relationship-comparison'));
     //myChart.showLoading();
-    $.get('../data/les-miserables.gexf', function (xml) {
-        myChart.hideLoading();
-
-        var graph = echarts.dataTool.gexf.parse(xml);
-        var categories = [];
-        for (var i = 0; i < 2; i++) {
-            categories[i] = {
-                name: '专家' + (i+1)
-            };
-        }
-        graph.nodes.forEach(function (node) {
-            node.itemStyle = null;
-            node.symbolSize = 30;
-            node.value = node.symbolSize;
-            node.category = node.attributes.modularity_class;
-            // Use random x, y
-            node.x = node.y = null;
-            node.draggable = true;
-        });
-        var option = {
-            title: {
-                text: '与其他专家的合作关系比较',
-                //subtext: 'Default layout',
-                //top: 'bottom',
-                left: 'center'
-            },
-            tooltip: {},
-            legend: [{
-                // selectedMode: 'single',
-                data: categories.map(function (a) {
-                    return a.name;
-                }),
-                top: 'bottom'
-            }],
-            animation: false,
-            series : [
-                {
-                    name: 'Les Miserables',
-                    type: 'graph',
-                    layout: 'force',
-                    data: graph.nodes,
-                    links: graph.links,
-                    categories: categories,
-                    roam: true,
-                    label: {
-                        normal: {
-                            position: 'top',
-                            formatter: '{b}'
-                        }
-                    },
-                    force: {
-                        repulsion: 100
+    $.ajax({
+        url : "/detailOfExpert/cooperateOfAuthor",
+        type: "get",
+        dataType : "json",
+        data:{
+            "name" : "詹毅",
+            "institution" : "电子科技集团36所",
+            "depath" : depath
+        },
+        success : function (graph) {
+            myChart.hideLoading();
+            graph.nodes.forEach(function (node) {
+                node.itemStyle = null;
+                node.value = node.value;
+                node.symbolSize = Math.sqrt(node.value)*7;
+                node.label = {
+                    normal: {
+                        show: node.symbolSize > 5
                     }
-                }
-            ]
-        };
-
-        myChart.setOption(option);
-    }, 'xml');
+                };
+                node.category = node.category;
+            });
+            var legendData = [];
+            var categoriesLength = graph.categories.length;
+            for(var i=0; i<categoriesLength; i++){
+                legendData[i] = graph.categories[i].name;
+            }
+            option = {
+                title: {
+                    text: '作者合作关系图',
+                    top: 'bottom',
+                    left: 'right'
+                },
+                tooltip: {},
+                legend: {
+                    data: legendData
+                },
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series : [
+                    {
+                        name: '专家',
+                        type: 'graph',
+                        layout: 'force',
+                        // circular: {
+                        //     rotateLabel: true
+                        // },
+                        data: graph.nodes.map(function (node, idx) {
+                            node.id = idx;
+                            return node;
+                        }),
+                        links: graph.links,
+                        categories: graph.categories,
+                        roam: true,
+                        label: {
+                            normal: {
+                                position: 'top',
+                                formatter: '{b}'
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: 'source',
+                                curveness: 0.0
+                            }
+                        },
+                        edgeSymbol: ['arrow', 'arrow'],
+                        force: {
+                            repulsion: 100,
+                            edgeLength: 100
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+    });
 }
 loadRelationshipExpertCompare();

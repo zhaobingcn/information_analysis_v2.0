@@ -443,7 +443,7 @@
 
     <script type="text/javascript">
         $("#cooperate-button").click(function () {
-            alert("i touch ")
+            window.open("/ComparisonofExpert");
         })
     </script>
 
