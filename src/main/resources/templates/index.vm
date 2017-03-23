@@ -497,7 +497,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>机构名称</th>
-                                                    <th>论文数量</th>
+                                                    <th>论文贡献值</th>
                                                 </tr>
                                             </thead>
                                             <tbody id = "table-ten-institutions">
@@ -586,7 +586,7 @@
                                             <thead>
                                             <tr>
                                                 <th>专家名称</th>
-                                                <th>论文数量</th>
+                                                <th>论文贡献值</th>
                                             </tr>
                                             </thead>
                                             <tbody id = "table-ten-authors">

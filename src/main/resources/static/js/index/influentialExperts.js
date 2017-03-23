@@ -46,7 +46,7 @@ var myChart = echarts.init(document.getElementById("10-hot-authors"));
                 },
                 series: [
                     {
-                        name: '发表论文数量',
+                        name: '论文贡献值',
                         type: 'bar',
                         data: expertsValue
                     },

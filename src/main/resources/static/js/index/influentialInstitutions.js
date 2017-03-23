@@ -46,7 +46,7 @@ function loadInstitutionData(){
                 },
                 series: [
                     {
-                        name: '发表论文数量',
+                        name: '论文贡献值',
                         type: 'bar',
                         data: institutionsValue
                     },
