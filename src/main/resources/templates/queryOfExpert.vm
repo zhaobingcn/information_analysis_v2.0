@@ -409,9 +409,6 @@
                             专家合作以及对比分析
                         </div>
                         <div class="panel-body" id="addprofessor">
-##                            <div>
-                                测试使用
-##                            </div>
                         </div>
                         <div class="panel-footer">
                             <button type="button" id="cooperate-button" class="btn btn-outline btn-default btn-block" onclick="comparsionPage()">专家对比分析</button>

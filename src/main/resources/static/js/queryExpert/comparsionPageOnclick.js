@@ -4,7 +4,8 @@
 
 function comparsionPage() {
 
-    alert($("#addprofessor").text());
+    var id = $("#addprofessor").children().last().find("#queryAuthorId").val()
 
+    console.info(id)
     console.info("asdada")
 }
