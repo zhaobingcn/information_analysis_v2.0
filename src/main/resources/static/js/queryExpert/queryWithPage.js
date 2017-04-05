@@ -78,13 +78,14 @@ function loadPreviousPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + authors[i].author.name + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
         "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
         "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
         "</div>" +
         "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
             "<span class=\"value\">" + authors[i].author.institution + "</span>" +
+            "<input type='hidden' value='authors[i].id' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -94,10 +95,11 @@ function loadPreviousPage() {
             "</div>" +
             "</div>"
         ).appendTo(authorsList).click(function () {
-            console.info("adada")
-            $(this).children().clone().appendTo(t).click(function () {
-                $(this).remove();
-            });
+            if(t.children.length < 2){
+                $(this).children().clone().appendTo(t).click(function () {
+                    $(this).remove();
+                });
+            }
         });
     }
 }
@@ -124,6 +126,7 @@ function loadNextPage() {
             "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
             "<span class=\"value\">" + authors[i].author.institution + "</span>" +
+            "<input type='hidden' value='authors[i].id' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -133,11 +136,11 @@ function loadNextPage() {
             "</div>" +
             "</div>"
         ).appendTo(authorsList).click(function () {
-            console.info("adada")
-            console.info(t.children.length)
-           $(this).children().clone().appendTo(t).click(function () {
-               $(this).remove();
-           });
+            if (t.children().length < 2){
+                $(this).children().clone().appendTo(t).click(function () {
+                    $(this).remove();
+                });
+            }
         });
     }
 }

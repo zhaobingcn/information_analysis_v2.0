@@ -27,4 +27,8 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
             " where id(a)={id} return i as ins, count(r) as times order by times desc limit 8")
     List<InstitutionAndCooperateTimes> getCooperateInstitutionByAuthorId(@Param(value = "id") Long id);
 
+    /**
+     * 查询一个机构的合作机构
+     */
+
 }

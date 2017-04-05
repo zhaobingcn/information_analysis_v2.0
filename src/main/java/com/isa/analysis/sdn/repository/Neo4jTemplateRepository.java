@@ -26,7 +26,7 @@ public interface Neo4jTemplateRepository {
 
 
     /**
-     * 查询一个作者的主要研究方向论文，饮用量
+     * 查询一个作者的主要研究方向论文
      */
 
 }
