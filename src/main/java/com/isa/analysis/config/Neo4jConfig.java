@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class Neo4jConfig extends Neo4jConfiguration {
     /**
-     * 嵌入式连接
+     * `服务器模式连接
      * @return
      */
     @Bean
