@@ -26,7 +26,10 @@ public interface Neo4jTemplateRepository {
 
 
     /**
-     * 查询一个作者的主要研究方向论文
+     * 查询一个作者的主要研究方向，研究方向论文，引用数等信息
      */
+
+    List<Map<String, Object>> getAuthorsComparsionInformations(Long id);
+
 
 }

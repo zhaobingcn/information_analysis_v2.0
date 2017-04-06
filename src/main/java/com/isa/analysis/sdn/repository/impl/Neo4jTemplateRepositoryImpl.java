@@ -58,4 +58,21 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         }
         return influentialEntity;
     }
+
+    @Override
+    public List<Map<String, Object>> getAuthorsComparsionInformations(Long id) {
+
+        String cypher = "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)=303 with k.name as keyword" +
+                " count(i) as involveTimes, count(p) as papersCount, collect(p) as papers order by involveTimes desc limit 3" +
+                " return keyword, involveTimes, papersCount, reduce(sum=0, p in papers| sum+p.quote) as papersQuote";
+
+        Result result = neo4jTemplate.query(cypher, mapUtil.map("id", id));
+        Iterator<Map<String, Object>> resultMap = result.iterator();
+        List<Map<String, Object>> comparsionInformations = new ArrayList<>();
+        while(resultMap.hasNext()){
+            Map<String, Object> row = resultMap.next();
+            comparsionInformations.add(row);
+        }
+        return comparsionInformations;
+    }
 }

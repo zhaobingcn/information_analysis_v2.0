@@ -28,5 +28,4 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
             "count(i) as times order by times desc limit {limit}")
     List<KeywordAndInvolveTimes> getSortedKeywordsByAuthorId(@Param(value = "id")Long id, @Param(value = "limit")int limit);
 
-
 }

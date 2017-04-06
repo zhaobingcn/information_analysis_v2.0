@@ -7,6 +7,7 @@ import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.annotation.QueryResult;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -17,7 +18,7 @@ import java.util.Map;
  * Created by zhzy on 2016/12/30.
  */
 @Repository
-public interface AuthorRepository extends GraphRepository{
+public interface AuthorRepository extends GraphRepository<Author>{
 
     /**
      * 查询和一个作者紧密合作的作者，按照合作次数排序，使用姓名和机构作为参数
@@ -26,6 +27,8 @@ public interface AuthorRepository extends GraphRepository{
             "by w.weight desc limit 8")
     List<AuthorAndWorkTogetherTimes> getSortedWorkTogetherAuthorsByAuthor(@Param("name")String name, @Param("institution") String institution);
 
+    @Query("match (a:Author) where id(a)={id} return a")
+    Author findById(@Param("id") Long id);
     /**
      * 查询和一个作者紧密合作的作者，按照合作次序排序，使用id作为参数
      */

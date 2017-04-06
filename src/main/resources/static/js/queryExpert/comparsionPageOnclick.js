@@ -4,8 +4,7 @@
 
 function comparsionPage() {
 
-    var id = $("#addprofessor").children().last().find("#queryAuthorId").val()
-
-    console.info(id)
-    console.info("asdada")
+    var id1 = $("#addprofessor").children().first().find("#queryAuthorId").val()
+    var id2 = $("#addprofessor").children().last().find("#queryAuthorId").val()
+    window.open("/ComparisonofExpert/commitComparison?id1="+id1+"&&id2="+id2);
 }

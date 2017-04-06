@@ -62,4 +62,5 @@ public interface PaperRepository extends GraphRepository<Paper> {
     @Query("match (a:Author)-[:publish]-(p:Paper) where id(a) = {authorId}" +
             "return p order by p.date desc skip {skip} limit {limit}")
     List<Paper> getPapersByAuthorIdWithPages(@Param(value = "authorId")Long authorId, @Param(value = "skip") int skip, @Param(value = "limit") int limit);
+
 }

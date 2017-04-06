@@ -85,7 +85,7 @@ function loadPreviousPage() {
         "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
             "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value= " + authors[i].id + " + id='queryAuthorId'>" +
+            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -126,7 +126,7 @@ function loadNextPage() {
             "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
             "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value='authors[i].id' id='queryAuthorId'>" +
+            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
