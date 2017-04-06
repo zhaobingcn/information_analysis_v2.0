@@ -344,7 +344,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="col-lg-5">
-                                <div class="huge text-center">詹毅</div>
+                                <div class="huge text-center">$author1.getName()</div>
                             </div>
 
                             <div class="col-lg-2">
@@ -352,7 +352,7 @@
                             </div>
 
                             <div class="col-lg-5">
-                                <div class="huge text-center">赵知劲</div>
+                                <div class="huge text-center">$author2.getName()</div>
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -407,24 +407,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>力学性能</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertpublishipaper"> 55</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">25</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>热分解</td>
-                                    <td>51</td>
-                                    <td>19</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>数据采集</td>
-                                    <td>45</td>
-                                    <td>15</td>
-                                </tr>
+                                #set($iter = 1)
+                                #foreach($comparsion in $comparsion1)
+                                    <tr>
+                                        <td>$iter</td>
+                                        #set($iter = $iter+1)
+                                        <td>$comparsion.keyword</td>
+                                        <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertpublishipaper"> $comparsion.papersCount</td>
+                                        <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">$comparsion.papersQuote</td>
+                                    </tr>
+                                #end
+##                                <tr>
+##                                    <td>1</td>
+##                                    <td>力学性能</td>
+##                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertpublishipaper"> 55</td>
+##                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">25</td>
+##                                </tr>
+##                                <tr>
+##                                    <td>2</td>
+##                                    <td>热分解</td>
+##                                    <td>51</td>
+##                                    <td>19</td>
+##                                </tr>
+##                                <tr>
+##                                    <td>3</td>
+##                                    <td>数据采集</td>
+##                                    <td>45</td>
+##                                    <td>15</td>
+##                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -456,24 +466,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>数值模拟</td>
-                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondexpertpublishpaper"> 65</div></td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="secondexpertcitedpaper">25</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>结构设计</td>
-                                    <td>50</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>有限元分析</td>
-                                    <td>45</td>
-                                    <td>15</td>
-                                </tr>
+                                    #set($iter = 1)
+                                    #foreach($comparsion in $comparsion2)
+                                        <tr>
+                                            <td>$iter</td>
+                                            #set($iter = $iter+1)
+                                            <td>$comparsion.keyword</td>
+                                            <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertpublishipaper"> $comparsion.papersCount</td>
+                                            <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">$comparsion.papersQuote</td>
+                                        </tr>
+                                    #end
+##                                <tr>
+##                                    <td>1</td>
+##                                    <td>数值模拟</td>
+##                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondexpertpublishpaper"> 65</div></td>
+##                                    <td data-toggle="modal" data-target="#myModal" data-whatever="secondexpertcitedpaper">25</td>
+##                                </tr>
+##                                <tr>
+##                                    <td>2</td>
+##                                    <td>结构设计</td>
+##                                    <td>50</td>
+##                                    <td>20</td>
+##                                </tr>
+##                                <tr>
+##                                    <td>3</td>
+##                                    <td>有限元分析</td>
+##                                    <td>45</td>
+##                                    <td>15</td>
+##                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -535,34 +555,41 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 杭州电子科技大学
-                                    <span class="pull-right text-muted small"><em>40 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 浙江工业大学
-                                    <span class="pull-right text-muted small"><em>12 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
-                                    <span class="pull-right text-muted small"><em>25 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中航工业集团22所
-                                    <span class="pull-right text-muted small"><em>70 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-                                    <span class="pull-right text-muted small"><em>82 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
-                                    <span class="pull-right text-muted small"><em>65 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-                                    <span class="pull-right text-muted small"><em>33 次</em></span>
-                                </a>
+                                #foreach($institution in $cooperateInstitutions1)
+                                    <a href="/tables" class="list-group-item">
+                                        <i class="fa fa-institution fa-fw"></i> $institution.getInstitution().getName()
+                                        <span class="pull-right text-muted small"><em>$institution.getTimes() 次</em>
+                                    </span>
+                                    </a>
+                                #end
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 杭州电子科技大学
+##                                    <span class="pull-right text-muted small"><em>40 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 浙江工业大学
+##                                    <span class="pull-right text-muted small"><em>12 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+##                                    <span class="pull-right text-muted small"><em>25 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中航工业集团22所
+##                                    <span class="pull-right text-muted small"><em>70 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+##                                    <span class="pull-right text-muted small"><em>82 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
+##                                    <span class="pull-right text-muted small"><em>65 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+##                                    <span class="pull-right text-muted small"><em>33 次</em></span>
+##                                </a>
                             </div>
                             <!-- /.list-group -->
                         </div>
@@ -577,34 +604,41 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 西安电子科技大圩
-                                    <span class="pull-right text-muted small"><em>40 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
-                                    <span class="pull-right text-muted small"><em>12 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
-                                    <span class="pull-right text-muted small"><em>25 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 西安交通大学
-                                    <span class="pull-right text-muted small"><em>70 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-                                    <span class="pull-right text-muted small"><em>82 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
-                                    <span class="pull-right text-muted small"><em>65 次</em></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-                                    <span class="pull-right text-muted small"><em>33 次</em></span>
-                                </a>
+                                #foreach($institution in $cooperateInstitutions2)
+                                    <a href="/tables" class="list-group-item">
+                                        <i class="fa fa-institution fa-fw"></i> $institution.getInstitution().getName()
+                                        <span class="pull-right text-muted small"><em>$institution.getTimes() 次</em>
+                                    </span>
+                                    </a>
+                                #end
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 西安电子科技大圩
+##                                    <span class="pull-right text-muted small"><em>40 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
+##                                    <span class="pull-right text-muted small"><em>12 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
+##                                    <span class="pull-right text-muted small"><em>25 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 西安交通大学
+##                                    <span class="pull-right text-muted small"><em>70 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+##                                    <span class="pull-right text-muted small"><em>82 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
+##                                    <span class="pull-right text-muted small"><em>65 次</em></span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
+##                                    <span class="pull-right text-muted small"><em>33 次</em></span>
+##                                </a>
                             </div>
                             <!-- /.list-group -->
                         </div>

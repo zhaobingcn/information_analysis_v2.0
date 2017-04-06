@@ -13,11 +13,11 @@ public class InstitutionAndCooperateTimes{
     Institution ins;
     Long times;
 
-    public Institution getIns() {
+    public Institution getInstitution() {
         return ins;
     }
 
-    public void setIns(Institution ins) {
+    public void setInstitution(Institution ins) {
         this.ins = ins;
     }
 

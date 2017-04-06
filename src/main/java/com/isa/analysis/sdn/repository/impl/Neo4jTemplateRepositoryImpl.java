@@ -62,7 +62,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     @Override
     public List<Map<String, Object>> getAuthorsComparsionInformations(Long id) {
 
-        String cypher = "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)=303 with k.name as keyword" +
+        String cypher = "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} with k.name as keyword, " +
                 " count(i) as involveTimes, count(p) as papersCount, collect(p) as papers order by involveTimes desc limit 3" +
                 " return keyword, involveTimes, papersCount, reduce(sum=0, p in papers| sum+p.quote) as papersQuote";
 

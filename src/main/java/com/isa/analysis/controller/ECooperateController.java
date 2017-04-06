@@ -1,8 +1,9 @@
 package com.isa.analysis.controller;
 
 import com.isa.analysis.sdn.entity.Author;
-import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.repository.AuthorRepository;
+import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class ECooperateController {
     @Autowired
     private Neo4jTemplateRepository neo4jTemplateRepository;
 
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
     @RequestMapping(value = "/ComparisonofExpert/commitComparison")
     public String eComparison (Model model,
                                @RequestParam(value = "id1", required = false, defaultValue = "12")Long id1,
@@ -36,6 +40,7 @@ public class ECooperateController {
                                )
     {
 
+        //作者详情
         Author author1 = authorRepository.findById(id1);
         Author author2 = authorRepository.findById(id2);
 
@@ -44,6 +49,15 @@ public class ECooperateController {
         List<Map<String, Object>> authorsComparsionInformations2 = neo4jTemplateRepository.getAuthorsComparsionInformations(id2);
 
         //top5常用合作机构
+        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions1 = institutionRepository.getCooperateInstitutionByAuthorId(id1, 5);
+        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions2 = institutionRepository.getCooperateInstitutionByAuthorId(id2, 5);
+
+        model.addAttribute("author1", author1);
+        model.addAttribute("author2", author2);
+        model.addAttribute("comparsion1", authorsComparsionInformations1);
+        model.addAttribute("comparsion2", authorsComparsionInformations2);
+        model.addAttribute("cooperateInstitutions1", authorsCooperateInstitutions1);
+        model.addAttribute("cooperateInstitutions2", authorsCooperateInstitutions2);
 
         return "ComparisonofExpert";
     }

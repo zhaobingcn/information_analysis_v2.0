@@ -149,7 +149,7 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
         List<InstitutionAndCooperateTimes> institutionAndCooperateTimes = institutionRepository.getCooperateInstitutionByAuthor(name, institution);
         Map<String, Object> cooperateInstitution = new LinkedMap();
         for(InstitutionAndCooperateTimes ainstitution: institutionAndCooperateTimes){
-            cooperateInstitution.put(ainstitution.getIns().getName(), ainstitution.getTimes());
+            cooperateInstitution.put(ainstitution.getInstitution().getName(), ainstitution.getTimes());
         }
         return cooperateInstitution;
     }
