@@ -51,6 +51,18 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     }
 
     @Override
+    public Map<String, Object> generateKeywordsDetails(Long id) {
+        List<KeywordAndInvolveTimes> keywordsDetail = keywordRepository.getKeywordsByAuthor(id);
+        List<Map<String, Object>> dataGroup = new ArrayList<>();
+        for(KeywordAndInvolveTimes keywordDetail: keywordsDetail){
+            dataGroup.add(mapUtil.map("name", keywordDetail.getKeyword().getName(), "value", keywordDetail.getTimes()));
+        }
+        Map<String, Object> finalExpertInterestData = new HashMap<>();
+        finalExpertInterestData.put("data", dataGroup);
+        return finalExpertInterestData;
+    }
+
+    @Override
     public Map<String, Object> generateAuthorAbility(String name, String institution) {
         int resarchWidth=0, quoteCount=0, papersCount=0, resarchInfluence=0,cooperateAuthors=0;
         double rearchDepath;

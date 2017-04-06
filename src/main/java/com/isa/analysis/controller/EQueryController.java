@@ -28,7 +28,6 @@ public class EQueryController {
     public @ResponseBody List<Map<String, Object>> commitQuery(@RequestParam(value = "name", required = false)String name,
                                                                @RequestParam(value = "institution", required = false)String institution
                                                                ){
-
         return expertQueryPageService.generateSearchAuthors(name, institution);
     }
 }

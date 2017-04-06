@@ -15,6 +15,8 @@ public interface ExpertDetailPageService {
      * @return json格式数据
      */
     Map<String, Object> generateKeywordsDetails(String name, String institution);
+
+    Map<String, Object> generateKeywordsDetails(Long id);
     /**
      * 生成专家能力雷达图
      *

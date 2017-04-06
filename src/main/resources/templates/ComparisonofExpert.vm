@@ -345,7 +345,7 @@
                         <div class="panel-body">
                             <div class="col-lg-5">
                                 <div class="huge text-center">$author1.getName()</div>
-                                <input type="hidden" value="$author1.getId()">
+                                <input type="hidden" value="$author1.getId()" id = "author-1-id">
                             </div>
 
                             <div class="col-lg-2">
@@ -354,7 +354,7 @@
 
                             <div class="col-lg-5">
                                 <div class="huge text-center">$author2.getName()</div>
-                                <input type="hidden" value="$author2.getId">
+                                <input type="hidden" value="$author2.getId" id = "author-2-id">
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -478,24 +478,6 @@
                                             <td data-toggle="modal" data-target="#myModal" data-whatever="firstexpertcitedpaper">$comparsion.papersQuote</td>
                                         </tr>
                                     #end
-##                                <tr>
-##                                    <td>1</td>
-##                                    <td>数值模拟</td>
-##                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondexpertpublishpaper"> 65</div></td>
-##                                    <td data-toggle="modal" data-target="#myModal" data-whatever="secondexpertcitedpaper">25</td>
-##                                </tr>
-##                                <tr>
-##                                    <td>2</td>
-##                                    <td>结构设计</td>
-##                                    <td>50</td>
-##                                    <td>20</td>
-##                                </tr>
-##                                <tr>
-##                                    <td>3</td>
-##                                    <td>有限元分析</td>
-##                                    <td>45</td>
-##                                    <td>15</td>
-##                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -564,34 +546,6 @@
                                     </span>
                                     </a>
                                 #end
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 杭州电子科技大学
-##                                    <span class="pull-right text-muted small"><em>40 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 浙江工业大学
-##                                    <span class="pull-right text-muted small"><em>12 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
-##                                    <span class="pull-right text-muted small"><em>25 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中航工业集团22所
-##                                    <span class="pull-right text-muted small"><em>70 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-##                                    <span class="pull-right text-muted small"><em>82 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
-##                                    <span class="pull-right text-muted small"><em>65 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-##                                    <span class="pull-right text-muted small"><em>33 次</em></span>
-##                                </a>
                             </div>
                             <!-- /.list-group -->
                         </div>
@@ -613,34 +567,6 @@
                                     </span>
                                     </a>
                                 #end
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 西安电子科技大圩
-##                                    <span class="pull-right text-muted small"><em>40 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团38所
-##                                    <span class="pull-right text-muted small"><em>12 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团55所
-##                                    <span class="pull-right text-muted small"><em>25 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 西安交通大学
-##                                    <span class="pull-right text-muted small"><em>70 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-##                                    <span class="pull-right text-muted small"><em>82 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团12所
-##                                    <span class="pull-right text-muted small"><em>65 次</em></span>
-##                                </a>
-##                                <a href="#" class="list-group-item">
-##                                    <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
-##                                    <span class="pull-right text-muted small"><em>33 次</em></span>
-##                                </a>
                             </div>
                             <!-- /.list-group -->
                         </div>

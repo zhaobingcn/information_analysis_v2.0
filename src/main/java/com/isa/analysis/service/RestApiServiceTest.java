@@ -94,7 +94,6 @@ public class RestApiServiceTest {
         statements.add(statement);
 
         commitParams.put("statements", statements);
-
         return new JSONObject(commitParams);
     }
 

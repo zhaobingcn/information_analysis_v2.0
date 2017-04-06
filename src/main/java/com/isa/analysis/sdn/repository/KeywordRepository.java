@@ -22,7 +22,7 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
                                                      @Param(value = "institution")String institution);
 
     @Query( "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} return k as keyword, count(i) as times")
-    List<KeywordAndInvolveTimes> getKeywordsByAuthorId(@Param(value = "id")Long id);
+    List<KeywordAndInvolveTimes> getKeywordsByAuthor(@Param(value = "id")Long id);
 
     @Query("match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} return k as keyword, " +
             "count(i) as times order by times desc limit {limit}")

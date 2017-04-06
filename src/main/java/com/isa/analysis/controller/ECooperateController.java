@@ -2,15 +2,21 @@ package com.isa.analysis.controller;
 
 import com.isa.analysis.sdn.entity.Author;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
+import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.AuthorRepository;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
+import com.isa.analysis.service.ExpertComparisonService;
+import com.isa.analysis.service.ExpertDetailPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +39,12 @@ public class ECooperateController {
     @Autowired
     private InstitutionRepository institutionRepository;
 
+    @Autowired
+    private ExpertComparisonService expertComparisonService;
+
+    @Autowired
+    private ExpertDetailPageService expertDetailPageService;
+
     @RequestMapping(value = "/ComparisonofExpert/commitComparison")
     public String eComparison (Model model,
                                @RequestParam(value = "id1", required = false, defaultValue = "12")Long id1,
@@ -49,8 +61,8 @@ public class ECooperateController {
         List<Map<String, Object>> authorsComparsionInformations2 = neo4jTemplateRepository.getAuthorsComparsionInformations(id2);
 
         //top5常用合作机构
-        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions1 = institutionRepository.getCooperateInstitutionByAuthorId(id1, 5);
-        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions2 = institutionRepository.getCooperateInstitutionByAuthorId(id2, 5);
+        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions1 = institutionRepository.getCooperateInstitutionByAuthorId(id1, 7);
+        List<InstitutionAndCooperateTimes> authorsCooperateInstitutions2 = institutionRepository.getCooperateInstitutionByAuthorId(id2, 7);
 
         model.addAttribute("author1", author1);
         model.addAttribute("author2", author2);
@@ -61,5 +73,12 @@ public class ECooperateController {
 
         return "ComparisonofExpert";
     }
+
+    @RequestMapping(value = "/ComparisonofExpert/ExpertInsterests")
+    public @ResponseBody List<KeywordAndInvolveTimes> eInterests(@RequestParam(value = "id", required = false)Long id){
+
+        return keywordRepository.getKeywordsByAuthor(id);
+    }
+
 
 }
