@@ -345,6 +345,7 @@
                         <div class="panel-body">
                             <div class="col-lg-5">
                                 <div class="huge text-center">$author1.getName()</div>
+                                <input type="hidden" value="$author1.getId()">
                             </div>
 
                             <div class="col-lg-2">
@@ -353,6 +354,7 @@
 
                             <div class="col-lg-5">
                                 <div class="huge text-center">$author2.getName()</div>
+                                <input type="hidden" value="$author2.getId">
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -715,9 +717,9 @@
     <!-- 专家论文发表与引用量对比图 -->
     <script type="text/javascript" src = "../js/expertComparsion/expertPaperCompare.js"></script>
     <!-- 专家一研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertComparsion/firstinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/firstExpertInterestCompare.js"></script>
     <!-- 专家二研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertComparsion/secondinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/secondExpertInterestCompare.js"></script>
 
     <!--<script type="text/javascript">
     window.onresize = function () {
