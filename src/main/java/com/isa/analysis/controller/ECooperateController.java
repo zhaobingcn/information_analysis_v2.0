@@ -39,12 +39,6 @@ public class ECooperateController {
     @Autowired
     private InstitutionRepository institutionRepository;
 
-    @Autowired
-    private ExpertComparisonService expertComparisonService;
-
-    @Autowired
-    private ExpertDetailPageService expertDetailPageService;
-
     @RequestMapping(value = "/ComparisonofExpert/commitComparison")
     public String eComparison (Model model,
                                @RequestParam(value = "id1", required = false, defaultValue = "12")Long id1,
@@ -79,6 +73,4 @@ public class ECooperateController {
 
         return keywordRepository.getKeywordsByAuthor(id);
     }
-
-
 }

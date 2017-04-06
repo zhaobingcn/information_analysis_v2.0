@@ -1,12 +1,11 @@
 /**
  * Created by lsy on 2017/2/23.
  */
-
 var id1 = $("#author-1-id").val()
 function loadInterestFirstInstitution(id) {
+    alert(id);
     var $loadWindow = document.getElementById('first-institution-interest');
     var myChart = echarts.init($loadWindow);
-
      $.ajax({
      url : "/ComparisonofExpert/ExpertInsterests",
      type : "get",
