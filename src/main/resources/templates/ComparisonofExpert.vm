@@ -709,15 +709,15 @@
 
 
     <!-- 专家能力值对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/expertAbilityCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/expertAbilityCompare.js"></script>
     <!-- 专家合作关系对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/expertRelationshipCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/expertRelationshipCompare.js"></script>
     <!-- 专家论文发表与引用量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/expertPaperCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/expertPaperCompare.js"></script>
     <!-- 专家一研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/firstinstitutionInterestCompare.js"></script>
     <!-- 专家二研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/secondinstitutionInterestCompare.js"></script>
 
     <!--<script type="text/javascript">
     window.onresize = function () {
