@@ -17,4 +17,8 @@ public interface RestApiService {
      * @return
      */
     Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath);
+
+    Map<String, Object> generateWorkTogetherGraph(Long id, int depath);
+
+    Map<String, Object> generateGraph(JSONObject restResult, int depath);
 }

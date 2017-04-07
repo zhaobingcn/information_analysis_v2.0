@@ -37,6 +37,18 @@ public class RestApiRepositoryImpl implements RestApiRepository{
         return graphResult;
     }
 
+    @Override
+    public JSONObject getWorkTogetherPaths(Long id, int depath) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", id);
+        String[] resultDataContents = new String[] {"graph", "rest"};
+        String query = "match path = (a:Author})" +
+                "-[:work_together*" + depath + "]-(b:Author) where id(a)={id} return path";
+        JSONObject commitParams = generateStatements(query, parameters, resultDataContents);
+        JSONObject graphResult = restQuery.httpPost(TRANSACTION_URL, commitParams);
+        return graphResult;
+    }
+
 
     @Override
     public JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents){

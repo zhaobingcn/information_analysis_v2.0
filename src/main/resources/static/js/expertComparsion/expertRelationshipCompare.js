@@ -3,14 +3,14 @@
  */
 function loadRelationshipExpertCompare(depath) {
     var myChart = echarts.init(document.getElementById('expert-relationship-comparison'));
-    //myChart.showLoading();
+    myChart.showLoading();
+
     $.ajax({
         url : "/detailOfExpert/cooperateOfAuthor",
         type: "get",
         dataType : "json",
         data:{
-            "name" : "詹毅",
-            "institution" : "电子科技集团36所",
+            "id":id,
             "depath" : depath
         },
         success : function (graph) {

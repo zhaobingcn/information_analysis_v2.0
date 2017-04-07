@@ -24,13 +24,24 @@ public class RestApiServiceImpl implements RestApiService {
     @Override
     public Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath) {
         JSONObject restResult = restApiRepository.getWorkTogetherPaths(name, institution, depath);
+        return generateGraph(restResult, depath);
+    }
+
+    @Override
+    public Map<String, Object> generateWorkTogetherGraph(Long id, int depath) {
+        JSONObject restResult = restApiRepository.getWorkTogetherPaths(id, depath);
+        return generateGraph(restResult, depath);
+    }
+
+    @Override
+    public Map<String, Object> generateGraph(JSONObject restResult, int depath) {
         /**
          * 两个结果list  node的和relationship的
          */
         List<Map<String, Object>> nodes = new ArrayList<>();
         List<Map<String, Object>> rels = new ArrayList<>();
         /**
-         * 用来查询node和elationship是否多次出现过
+         * 用来查询node和relationship是否多次出现过
          */
         Map<Long, Integer> checkNodes = new HashMap<>();
         HashSet<Long> checkRels = new HashSet<>();

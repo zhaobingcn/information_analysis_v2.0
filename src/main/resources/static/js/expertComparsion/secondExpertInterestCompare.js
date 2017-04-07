@@ -1,9 +1,10 @@
 /**
  * Created by lsy on 2017/2/24.
  */
-var id2 = $("#author-2-id").val()
-function loadInterestSecondInstitution(id) {
-    var $loadWindow = document.getElementById('second-institution-interest');
+// var id2 = $("#author-2-id").val()
+// var window2 = 'second-institution-interest'
+function loadInterestSecondInstitution(id, winsow) {
+    var $loadWindow = document.getElementById(window);
     var myChart = echarts.init($loadWindow);
      $.ajax({
      url : "/ComparisonOfExpert/expertInterests",
@@ -57,5 +58,3 @@ function loadInterestSecondInstitution(id) {
       }
     })
 }
-
-loadInterestSecondInstitution(id2);

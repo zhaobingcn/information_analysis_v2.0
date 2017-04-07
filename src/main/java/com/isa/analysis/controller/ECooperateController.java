@@ -7,12 +7,9 @@ import com.isa.analysis.sdn.repository.AuthorRepository;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
-import com.isa.analysis.service.ExpertComparisonService;
-import com.isa.analysis.service.ExpertDetailPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,5 +69,8 @@ public class ECooperateController {
     public @ResponseBody List<KeywordAndInvolveTimes> eInterests(@RequestParam(value = "id", required = false)Long id){
         return keywordRepository.getKeywordsByAuthor(id);
     }
+
+//    @RequestMapping(value = "/ComparisonOfExpert/comparisonAcievements")
+//    public @ResponseBody List<>
 
 }

@@ -16,6 +16,12 @@ public interface RestApiRepository {
     JSONObject getWorkTogetherPaths(String name, String institution, int depath);
 
     /**
+     * 查询图中作者合作关系的子图,可以定义深度,使用id作为参数
+     */
+
+    JSONObject getWorkTogetherPaths(Long id, int depath);
+
+    /**
      * 生成rest 请求的参数格式
      * @param query
      * @param parameters
