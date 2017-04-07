@@ -39,7 +39,7 @@ public class ECooperateController {
     @Autowired
     private InstitutionRepository institutionRepository;
 
-    @RequestMapping(value = "/ComparisonofExpert/commitComparison")
+    @RequestMapping(value = "/ComparisonOfExpert/commitComparison")
     public String eComparison (Model model,
                                @RequestParam(value = "id1", required = false, defaultValue = "12")Long id1,
                                @RequestParam(value = "id2", required = false, defaultValue = "34")Long id2
@@ -68,9 +68,9 @@ public class ECooperateController {
         return "ComparisonofExpert";
     }
 
-    @RequestMapping(value = "/ComparisonofExpert/ExpertInsterests")
+    @RequestMapping(value = "/ComparisonOfExpert/expertInterests")
     public @ResponseBody List<KeywordAndInvolveTimes> eInterests(@RequestParam(value = "id", required = false)Long id){
-
         return keywordRepository.getKeywordsByAuthor(id);
     }
+
 }

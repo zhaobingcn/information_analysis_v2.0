@@ -3,17 +3,23 @@
  */
 var id1 = $("#author-1-id").val()
 function loadInterestFirstInstitution(id) {
-    alert(id);
     var $loadWindow = document.getElementById('first-institution-interest');
     var myChart = echarts.init($loadWindow);
-     $.ajax({
-     url : "/ComparisonofExpert/ExpertInsterests",
-     type : "get",
-     dataType : "json",
-     data : {
-     "id" : id
-     },
-     success : function (finalData) {
+    $.ajax({
+    url : "/ComparisonOfExpert/expertInterests",
+    type : "get",
+    dataType : "json",
+    data : {
+    "id" : id
+    },
+    success : function (finalData) {
+        console.info(finalData.length)
+        // console.info(finalData.size())
+        relData = []
+        for(var i=0; i<finalData.length; i++){
+            var row ={name: finalData[i].keyword.name, value:finalData[i].times}
+            relData.push(row)
+        }
     var option = {
         tooltip: {},
         toolbox: {
@@ -45,67 +51,7 @@ function loadInterestFirstInstitution(id) {
                     shadowColor: '#333'
                 }
             },
-            data:[ {
-                "name" : "直扩信号检测",
-                "value" : 1
-            }, {
-                "name" : "wideband detection",
-                "value" : 1
-            }, {
-                "name" : "非周期长码直扩",
-                "value" : 1
-            }, {
-                "name" : "码片速率",
-                "value" : 1
-            }, {
-                "name" : "autocorrelation",
-                "value" : 1
-            }, {
-                "name" : "non-cooperative",
-                "value" : 1
-            }, {
-                "name" : "宽带检测",
-                "value" : 1
-            }, {
-                "name" : "细微特征",
-                "value" : 1
-            }, {
-                "name" : "correlation estimators",
-                "value" : 1
-            }, {
-                "name" : "delay-product",
-                "value" : 1
-            }, {
-                "name" : "自相关",
-                "value" : 1
-            }, {
-                "name" : "DSSS signal interception",
-                "value" : 1
-            }, {
-                "name" : "特征提取",
-                "value" : 1
-            }, {
-                "name" : "个体识别",
-                "value" : 1
-            }, {
-                "name" : "波动相关法",
-                "value" : 1
-            }, {
-                "name" : "非合作",
-                "value" : 1
-            }, {
-                "name" : "non-periodic long-code Direct Sequence Spread Spectrum(DSSS)",
-                "value" : 1
-            }, {
-                "name" : "chip-rate",
-                "value" : 1
-            }, {
-                "name" : "通信侦察",
-                "value" : 1
-            }, {
-                "name" : "延迟相乘",
-                "value" : 1
-            } ]
+            data:relData
         }]
     };
     myChart.setOption(option);
