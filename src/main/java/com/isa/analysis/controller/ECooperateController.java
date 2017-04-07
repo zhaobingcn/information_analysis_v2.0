@@ -7,6 +7,7 @@ import com.isa.analysis.sdn.repository.AuthorRepository;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
+import com.isa.analysis.service.ExpertDetailPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,9 @@ public class ECooperateController {
 
     @Autowired
     private InstitutionRepository institutionRepository;
+
+    @Autowired
+    private ExpertDetailPageService expertDetailPageService;
 
     @RequestMapping(value = "/ComparisonOfExpert/commitComparison")
     public String eComparison (Model model,
@@ -70,7 +74,11 @@ public class ECooperateController {
         return keywordRepository.getKeywordsByAuthor(id);
     }
 
-//    @RequestMapping(value = "/ComparisonOfExpert/comparisonAcievements")
-//    public @ResponseBody List<>
+    @RequestMapping(value = "/ComparisonOfExpert/abilityOfExpert")
+    public @ResponseBody Map<String, Object> abilityOfExpert(
+            @RequestParam(value = "id", required = false)Long id
+    ){
+        return expertDetailPageService.generateAuthorAbility(id);
+    }
 
 }

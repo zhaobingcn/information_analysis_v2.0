@@ -3,7 +3,7 @@
  */
 // var id2 = $("#author-2-id").val()
 // var window2 = 'second-institution-interest'
-function loadInterestSecondInstitution(id, winsow) {
+function loadInterestSecondInstitution(id, window) {
     var $loadWindow = document.getElementById(window);
     var myChart = echarts.init($loadWindow);
      $.ajax({

@@ -24,6 +24,8 @@ public interface ExpertDetailPageService {
      */
     Map<String, Object> generateAuthorAbility(String name, String institution);
 
+    Map<String, Object> generateAuthorAbility(Long id);
+
     /**
      * 作者发过的论文详情,带有分页功能
      */

@@ -115,6 +115,58 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     }
 
     @Override
+    public Map<String, Object> generateAuthorAbility(Long id) {
+        int resarchWidth=0, quoteCount=0, papersCount=0, resarchInfluence=0,cooperateAuthors=0;
+        double rearchDepath;
+        List<KeywordAndInvolveTimes> keywords = keywordRepository.getKeywordsByAuthor(id);
+        resarchWidth = keywords.size();
+        if(resarchWidth > 50){
+            resarchWidth = 50;
+        }
+        long allKeywordsCount = 0;
+        for(KeywordAndInvolveTimes keywordDetail:keywords){
+            allKeywordsCount += keywordDetail.getTimes();
+        }
+        rearchDepath = (double)allKeywordsCount/resarchWidth;
+        if(rearchDepath > 2.0){
+            rearchDepath = 2.0;
+        }
+        Collection<Author> workTogetherAuthors = authorRepository.getWorkTogetherAuthorsByAuthor(id);
+        for(Author author: workTogetherAuthors){
+            cooperateAuthors += restApiRepository.getDegreeOfNode(author.getId(), "all");
+        }
+
+        if(cooperateAuthors > 200){
+            cooperateAuthors = 200;
+        }
+        Collection<Paper>  authorPapers = paperRepository.findByAuthor(id);
+        papersCount = authorPapers.size();
+        if(papersCount > 30){
+            papersCount = 30;
+        }
+        for(Paper paper: authorPapers){
+            quoteCount += paper.getQuote();
+        }
+        if(quoteCount > 200){
+            quoteCount = 200;
+        }
+        resarchInfluence = quoteCount + papersCount * 10;
+        if(resarchInfluence > 200){
+            resarchInfluence = 200;
+        }
+        Map<String, Object> abilityData = new HashMap<>();
+        List<Object> data = new ArrayList<>();
+        data.add(papersCount);
+        data.add(quoteCount);
+        data.add(rearchDepath);
+        data.add(resarchWidth);
+        data.add(cooperateAuthors);
+        data.add(resarchInfluence);
+        abilityData.put("data", data);
+        return abilityData;
+    }
+
+    @Override
     public List<Map<String, Object>> generateAuthorsPapersPages(String name, String institution, int skip, int limit) {
         List<Paper> papers = paperRepository.getPapersByAuthorWithPages(name, institution, skip, limit);
         List<Map<String, Object>> papersInMap = new ArrayList<>();

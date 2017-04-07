@@ -31,7 +31,7 @@ public interface PaperRepository extends GraphRepository<Paper> {
     Collection<Paper> findByAuthor(@Param("name")String name, @Param("institution")String institution);
 
     @Query("match (a:Author)-[:publish]-(p:Paper) where id(a) = {authorId} return p")
-    Collection<Paper> findByAuthorId(@Param("authorId")Long authorId);
+    Collection<Paper> findByAuthor(@Param("authorId")Long authorId);
 
     /**
      * 得到一个作者的论文的数

@@ -45,7 +45,7 @@ public interface AuthorRepository extends GraphRepository<Author>{
      * 查询和一个作者合作过的其他作者,使id参数
      */
     @Query("match (a:Author)-[w:work_together]-(b:Author) where id(a) = {id} return b as authors")
-    Collection<Author> getWorkTogetherAuthorsById(@Param("id")Long id);
+    Collection<Author> getWorkTogetherAuthorsByAuthor(@Param("id")Long id);
 
     /**
      * 利用全文索引查找作者信息

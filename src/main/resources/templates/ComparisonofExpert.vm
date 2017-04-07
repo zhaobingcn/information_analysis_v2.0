@@ -373,7 +373,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="expert-ability-comparison" style="width: 100%; height: 275px;">
+                            <div id="expert-ability-comparison-1" style="width: 100%; height: 275px;">
 
                             </div>
                         </div>
@@ -389,7 +389,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="expert-ability-comparison" style="width: 100%; height: 275px;">
+                            <div id="expert-ability-comparison-2" style="width: 100%; height: 275px;">
 
                             </div>
                         </div>
@@ -667,6 +667,12 @@
         var window2 = 'second-institution-interest'
         loadInterestSecondInstitution(id1, window1);
         loadInterestSecondInstitution(id2, window2);
+
+        var ability_window1 = 'expert-ability-comparison-1'
+        var ability_window2 = 'expert-ability-comparison-2'
+
+        loadAbilityExpertCompare(id1, ability_window1)
+        loadAbilityExpertCompare(id2, ability_window2)
     </script>
     <!-- 专家二研究方向云图 -->
 ##    <script type="text/javascript" src = "../js/expertComparsion/secondExpertInterestCompare.js"></script>
