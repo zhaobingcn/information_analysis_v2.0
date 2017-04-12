@@ -1,5 +1,6 @@
 package com.isa.analysis.service.runtime;
 
+import com.mongodb.DB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,10 +18,7 @@ public class Scheduler {
 
     @Scheduled(cron="0 0 22 * * ?") //每分钟执行一次
     public void statusCheck() {
-        logger.info("每分钟执行一次。开始……");
-        //statusTask.healthCheck();
-        logger.info("开始执行了");
-        logger.info("每分钟执行一次。结束。");
+
     }
 
 //    @Scheduled(fixedRate=20000)
