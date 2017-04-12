@@ -121,7 +121,7 @@ function loadRelationshipInstitutionCompare(depath) {
     };
 
     var BJData = [
-        [{name: '北京'}, {name: '上海', value: 95}],
+        [{name: '北京'}, {name: '电子科技集团36所', value: 95}],
         [{name: '北京'}, {name: '广州', value: 90}],
         [{name: '北京'}, {name: '大连', value: 80}],
         [{name: '北京'}, {name: '南宁', value: 70}],
