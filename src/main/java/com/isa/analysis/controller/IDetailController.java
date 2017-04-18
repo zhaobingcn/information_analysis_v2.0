@@ -37,7 +37,6 @@ public class IDetailController {
                 }
                 ans.add(an);
             }
-
         }
         return ans;
     }

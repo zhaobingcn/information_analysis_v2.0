@@ -122,6 +122,6 @@ function loadThemeRiver() {
      }]
      };
      myChart.setOption(option);*/
-     }
+}
 
     loadThemeRiver();
