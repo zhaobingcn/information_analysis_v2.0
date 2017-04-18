@@ -2,6 +2,7 @@ package com.isa.analysis.sdn.repository;
 
 import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.Paper;
+import com.isa.analysis.sdn.entity.Patent;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.annotation.QueryResult;
@@ -38,6 +39,11 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return p limit {limit}")
     List<Paper> getPaperOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
+    /**
+     * 查询一个机构申请的专利
+     */
+    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return p limit {limit}")
+    List<Patent> getPatentOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
 
 

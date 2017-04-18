@@ -22,7 +22,6 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
     @Autowired
     private InstitutionRepository institutionRepository;
 
-
     @Override
     public Map<String, Integer> generateInstitutionPublishedPapers(Long id, int limit) {
         List<Paper> papersOfInstitution = new ArrayList<>();
@@ -33,8 +32,13 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
         }
         for (Paper oneOfPaper:
              papersOfInstitution) {
-            papersNumOnDate.put(oneOfPaper.getDate(),0);
+            String date = oneOfPaper.getDate();
+            String yearOfDate = date.substring(0,4);
+            if(papersNumOnDate.containsKey(yearOfDate)){
+                int num = papersNumOnDate.get(yearOfDate);
+                papersNumOnDate.put(yearOfDate,num+1);
+            }
         }
-        return null;
+        return papersNumOnDate;
     }
 }
