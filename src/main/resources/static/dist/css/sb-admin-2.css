@@ -457,3 +457,30 @@ table.dataTable thead .sorting:after {
   font-size: 24px;
   text-align: center;
 }
+/*热门关键词矢量图css*/
+.svg-position {
+  position: absolute;
+  left: -30px;
+}
+.node {
+  cursor: pointer;
+}
+
+.node:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node--leaf {
+  /*最小的节点填充颜色*/
+}
+
+.label {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.label{
+  pointer-events: none;
+}
