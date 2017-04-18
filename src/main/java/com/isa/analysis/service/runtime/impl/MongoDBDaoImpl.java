@@ -1,11 +1,10 @@
-package com.isa.analysis.service.runtime;
+package com.isa.analysis.service.runtime.impl;
 
+import com.isa.analysis.service.runtime.MongoDBDao;
 import com.mongodb.*;
-import org.bson.BSONObject;
 
 import java.net.UnknownHostException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Created by zhzy on 17-4-12.
@@ -280,7 +279,6 @@ public class MongoDBDaoImpl implements MongoDBDao {
 
         return false;
     }
-
     /**
      * 方法名：main
      * 作者：zhouyh
@@ -297,7 +295,7 @@ public class MongoDBDaoImpl implements MongoDBDao {
 //        String dateString = formatter.format(times);
 //        //设置查找条件
 //        HashMap<Object, Object> timeConfig = new HashMap<>();
-////        System.out.println(dateString);
+//        System.out.println(dateString);
 //        timeConfig.put("$gte", dateString);
 //        ArrayList<DBObject> c = a.find("wanFang", "paperinfo", new String[]{"spidertime"}, new Object[]{timeConfig}, -1);
 //        if(!c.isEmpty()){

@@ -5,8 +5,8 @@ function loadThemeRiver() {
     var myChart = echarts.init(document.getElementById("themeriver"));
     var seriesData = [
         ['2006', 22, '论文发表量'],
-        ['2007', 2, '论文发表量'],
-        ['2008', 10, '论文发表量'],
+        ['2007', 0, '论文发表量'],
+        ['2008', 0, '论文发表量'],
         ['2009', 45, '论文发表量'],
         ['2010', 60, '论文发表量'],
         ['2011', 31, '论文发表量'],
