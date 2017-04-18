@@ -432,3 +432,28 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+/*关键词详情页css*/
+.container-fluid-position {
+  position: relative;
+  top: 45px;
+}
+.color-fill {
+  background-color: #4EB88B;
+}
+.near-head-rect {
+  width: 10px;
+  height: 80%;
+  position: absolute;
+  top: 30px;
+}
+.header-div {
+  position: relative;
+  left: 30px;
+}
+.part-header {
+  padding-top: 20px;
+}
+.part-header >p {
+  font-size: 24px;
+  text-align: center;
+}
