@@ -4,17 +4,26 @@
 function loadInterestInstitution() {
     var $loadWindow = document.getElementById('institution-research-point');
     var myChart = echarts.init($loadWindow);
-    /*var authorName = $("#authorsName").text();
-    var authorInstitution = $("#authorsInstitution").val();
     $.ajax({
-        url : "/detailOfExpert/InterestOfExpert",
+        url : "/table/institutionPoint",
         type : "get",
         dataType : "json",
         data : {
-            "name" : authorName,
-            "institution" : authorInstitution
+            "limit": 30,
+            "institutionId":1
         },
-        success : function (finalData) {*/
+        success : function (finalData) {
+
+            var data = new Array();
+            for(var i = 0;i < finalData.length;i++){
+                var a = {"name":finalData[i].keyword.name,
+                          "value":finalData[i].times,
+                          "id":finalData[i].keyword.id
+                          };
+                data.push(a);
+            }
+
+
             var option = {
                 tooltip: {},
                 series: [ {
@@ -40,7 +49,8 @@ function loadInterestInstitution() {
                             shadowColor: '#333'
                         }
                     },
-                    data: [ {
+                    data: data
+                    /*[ {
                         "name" : "FPGA",
                         "value" : 554
                     }, {
@@ -490,12 +500,12 @@ function loadInterestInstitution() {
                     }, {
                         "name" : "物联网",
                         "value" : 66
-                    } ]
+                    } ]*/
                 }]
             };
             myChart.setOption(option);
-     //   }
-   // })
+        }
+    })
 }
 
 loadInterestInstitution();

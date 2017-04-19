@@ -3,7 +3,7 @@
  */
 function loadThemeRiver() {
     var myChart = echarts.init(document.getElementById("themeriver"));
-    var seriesData = [
+    /*var seriesData = [
         ['2006', 22, '论文发表量'],
         ['2007', 0, '论文发表量'],
         ['2008', 0, '论文发表量'],
@@ -74,7 +74,54 @@ function loadThemeRiver() {
             }
         }]
     };
-    myChart.setOption(option);
+    myChart.setOption(option);*/
+
+    $.ajax({
+        url:"/tables/institution",
+        type:"get",
+        dataType:"json",
+        data:{"limit": 30,"institutionId":1},
+        success: function (seriesData){
+            var option = {
+                title: {
+                    text: '科研机构成果汇总',
+                    subtext: '',
+                    x: 'center',
+                    y: 'top'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    textStyle: {
+                        align: 'left'
+                    }
+                },
+                legend: {
+                    top: 'bottom',
+                    data: ['论文发表量', '专利申请量', '项目承接量']
+                },
+                singleAxis: {
+                    top: '30%',
+                    bottom: '20%',
+                    type: 'value',
+                    scale: true
+                },
+                series: [{
+                    type: 'themeRiver',
+                    data: seriesData,
+                    //splitNumber: 30,
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    }
+                }]
+            };
+
+
+
+            myChart.setOption(option);
+        }
+    });
 }
 
 loadThemeRiver();

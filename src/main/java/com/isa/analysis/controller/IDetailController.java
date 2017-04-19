@@ -1,6 +1,8 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.service.InstitutionInformationService;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +26,15 @@ public class IDetailController {
         return "tables";
     }
 
+    /*
+    * 科研机构的成果汇总
+    * */
     @RequestMapping(value = "/tables/institution")
-    public @ResponseBody List<List<String>> influentialExperts(
+    public @ResponseBody List<List<String>> institutionAchievements(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
         Map<String,Integer> institutionPapersOnYear = institutionInformationService.generateInstitutionPublishedPapers(institutionId,limit);
-        List<List<String>> ans = new ArrayList<List<String>>();
+        List<List<String>> ans = new ArrayList<>();
         for (Map.Entry<String,Integer> entry:institutionPapersOnYear.entrySet()
              ) {
             List<String> an = new ArrayList<>();
@@ -40,7 +45,17 @@ public class IDetailController {
         }
         return ans;
     }
-    //public String blank(){
-    //    return "/tables";
-    //}
+
+    /*
+    * 科研机构的研究方向聚焦
+    * */
+    @RequestMapping(value = "/table/institutionPoint")
+    public  @ResponseBody List<KeywordAndInvolveTimes> institutionInterest(
+            @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
+            @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
+    ){
+
+
+        return institutionInformationService.generateInstitutionKeywordAndInvolveTimes(institutionId,limit);
+    }
 }

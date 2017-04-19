@@ -4,6 +4,7 @@ import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.entity.Patent;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
+import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.annotation.QueryResult;
 import org.springframework.data.neo4j.repository.GraphRepository;
@@ -11,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2016/12/30.
@@ -40,10 +42,20 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     List<Paper> getPaperOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
     /**
-     * 查询一个机构申请的专利
+     * 查询一个机构申请的专利（待做）
      */
-    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return p limit {limit}")
-    List<Patent> getPatentOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
+
+    /**
+     * 查询一个机构的项目承接（待做）
+     */
+
+    /**
+     * 查询一个机构的研究方向聚焦
+     */
+
+    @Query("match (k:Keyword)<-[t:involve]-(p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return k as keyword,count(t) as times limit {limit}")
+    List<KeywordAndInvolveTimes> getKeyWordTimesOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
+
 
 
 
