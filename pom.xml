@@ -141,6 +141,13 @@
             <version>${guava.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20151123</version>
+        </dependency>
+
+
         <!--java 机器学习,类似于python的 numpy-->
         <dependency>
             <groupId>org.nd4j</groupId>
