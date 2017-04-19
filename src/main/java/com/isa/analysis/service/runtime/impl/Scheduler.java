@@ -30,17 +30,17 @@ public class Scheduler {
  */
         String createAuthorCypher = "create (a:Author{name:{name}, institution:{institution}) return id(a)";
         String createPaperCypher = "create (a:Paper{title:{title}, link:{link}, }) return id(a)";
-        String createJournalCypher = "create (a:Journal{}) return id(a)";
-        String createInstitutionCypher = "create (a:Institution{}) return id(a)";
-        String createKeywordCypher = "create (a:Keyword{}) return id(a)";
+        String createJournalCypher = "create (a:Journal{name:{name}}) return id(a)";
+        String createInstitutionCypher = "create (a:Institution{name:{name}, location:{location}}) return id(a)";
+        String createKeywordCypher = "create (a:Keyword{name:{name}}) return id(a)";
 
         String createRelationShip = "create (a)-[r]->(b) where id(a) = {ida} AND id(b) = {idb}";
 
-        String queryAuthor ="match (a:Author{name:{name}, institution:{institution}) return a";
-        String queryPaper = "match (p:Paper{title:{title}}) return p";
-        String queryJournal = "match (j:Journal{name:{name}}) return j";
-        String queryInstitution = "match (i:Institution{name:{name}}) return i";
-        String queryKeyword = "match (k:Keyword{name:{name}}) return k";
+        String queryAuthor ="match (a:Author{name:{name}, institution:{institution}) return id(a)";
+        String queryPaper = "match (p:Paper{title:{title}}) return id(p)";
+        String queryJournal = "match (j:Journal{name:{name}}) return id(j)";
+        String queryInstitution = "match (i:Institution{name:{name}}) return id(i)";
+        String queryKeyword = "match (k:Keyword{name:{name}}) return id(k)";
 
         String queryRelationship = "match (a)-[r]->(b) where id(a) = {iad} AND id(b) = {idb} return id(r)";
 
