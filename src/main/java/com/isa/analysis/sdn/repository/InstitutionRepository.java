@@ -32,9 +32,17 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     List<InstitutionAndCooperateTimes> getCooperateInstitutionByAuthorId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
     /**
-     * 查询一个机构的合作机构
+     * 查询一个机构的合作机构以及合作次数
      */
 
+    @Query("match (a:Institution)-[t:cooperate]-(b:Institution) where id(a)={id} return b as ins,t.weight as times limit {limit}")
+    List<InstitutionAndCooperateTimes> getCooperateInstitutionAndCooperateTimesByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
+
+    /**
+     * 查询一个机构的所在地
+     */
+    @Query("match (a:Institution) where id(a)={id} return a.location")
+    String getInstitutionLocationByInstitutionId(@Param(value = "id") Long id);
     /**
      * 查询一个机构发表的论文
      */
@@ -49,12 +57,7 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
      * 查询一个机构的项目承接（待做）
      */
 
-    /**
-     * 查询一个机构的研究方向聚焦
-     */
 
-    @Query("match (k:Keyword)<-[t:involve]-(p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return k as keyword,count(t) as times limit {limit}")
-    List<KeywordAndInvolveTimes> getKeyWordTimesOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
 
 

@@ -92,23 +92,23 @@ public class Scheduler {
         return true;
     }
 
-    public static void main(String[] args) throws Exception{
-        UtilRead in = new UtilRead();
-        BufferedReader bufferedReader = in.getBufferedReaderForJson("D:/new.dat");
-        String line = "";
-        while (true) {
-            line = bufferedReader.readLine();
-            if (line == null || line.trim().equals("")) {
-                break;
-            }
-            System.out.println(line);
-            ConvertToNode convert = new ConvertToNode();
-            JSONObject objectLine = new JSONObject(line);
-            List<Map<String, String>> authors = convert.getAuthors(objectLine);
-
-            for (Map<String, String> map : authors) {
-                System.out.println(map.get("name"));
-            }
-        }
-    }
+//    public static void main(String[] args) throws Exception{
+//        UtilRead in = new UtilRead();
+//        BufferedReader bufferedReader = in.getBufferedReaderForJson("D:/new.dat");
+//        String line = "";
+//        while (true) {
+//            line = bufferedReader.readLine();
+//            if (line == null || line.trim().equals("")) {
+//                break;
+//            }
+//            System.out.println(line);
+//            ConvertToNode convert = new ConvertToNode();
+//            JSONObject objectLine = new JSONObject(line);
+//            List<Map<String, String>> authors = convert.getAuthors(objectLine);
+//
+//            for (Map<String, String> map : authors) {
+//                System.out.println(map.get("name"));
+//            }
+//        }
+//    }
 }

@@ -1,6 +1,7 @@
 package com.isa.analysis.service.impl;
 
 import com.isa.analysis.sdn.entity.Paper;
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
@@ -49,26 +50,30 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
     }
 
     @Override
-    public List<Map<String, Object>> generateInstitutionKeywordTimes(Long id, int limit) {
-        List<Map<String,Object>> keywordAndTimesList = new ArrayList<>();
-        List<KeywordAndInvolveTimes> keywordAndInvolveTimes = institutionRepository.getKeyWordTimesOfInstitutionByInstitutionId(id,limit);
-        //Map<String,Integer> keywordAndTimesMap = institutionRepository.getKeyWordTimesOfInstitutionByInstitutionId(id,limit);
-        for (KeywordAndInvolveTimes entry : keywordAndInvolveTimes
-                ) {
-            Map<String,Object> keywordNameAndTimes = new HashMap<>();
-            keywordNameAndTimes.put("name",entry.getKeyword().getName());
-            keywordNameAndTimes.put("value",entry.getTimes());
-            keywordAndTimesList.add(keywordNameAndTimes);
-        }
-
-        return keywordAndTimesList;
-
-    }
-
-    @Override
     public List<KeywordAndInvolveTimes> generateInstitutionKeywordAndInvolveTimes(Long id, int limit) {
 
         return keywordRepository.getKeyWordTimesOfInstitutionByInstitutionId(id,limit);
+    }
+
+    @Override
+    public List<List<Map<String,Object>>> generateInstitutionAndCooperateTimes(Long id, int limit) {
+        List<InstitutionAndCooperateTimes> cooperateInstitutionAndTimes = institutionRepository.getCooperateInstitutionAndCooperateTimesByInstitutionId(id,limit);
+        String institutionLocation = institutionRepository.getInstitutionLocationByInstitutionId(id);
+        Map<String,Object> location = new HashMap<>();
+        location.put("name",institutionLocation);
+        List<List<Map<String,Object>>> result = new ArrayList<>();
+        for (InstitutionAndCooperateTimes oneOfRecord : cooperateInstitutionAndTimes
+             ) {
+            List<Map<String,Object>> oneOfResult = new ArrayList<>();
+            Map<String,Object> mapOfResult = new HashMap<>();
+            mapOfResult.put("name",oneOfRecord.getInstitution().getLocation());
+            mapOfResult.put("value",oneOfRecord.getTimes());
+            oneOfResult.add(location);
+            oneOfResult.add(mapOfResult);
+            result.add(oneOfResult);
+        }
+
+        return result;
     }
 
 

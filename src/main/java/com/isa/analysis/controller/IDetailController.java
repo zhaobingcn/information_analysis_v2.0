@@ -54,8 +54,20 @@ public class IDetailController {
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
     ){
-
-
         return institutionInformationService.generateInstitutionKeywordAndInvolveTimes(institutionId,limit);
     }
+
+    /*
+    * 科研机构的合作机构以及合作次数
+    *
+    * */
+    @RequestMapping(value = "/table/institutionCoo")
+    public  @ResponseBody List<List<Map<String,Object>>> institutionCooperateTimes(
+            @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
+            @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
+    ){
+        Long id = new Long(1);
+        return institutionInformationService.generateInstitutionAndCooperateTimes(id,limit);
+    }
+
 }
