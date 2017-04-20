@@ -63,10 +63,54 @@ public class TestController {
     @RequestMapping(value = "/test5")
     public @ResponseBody Map<String, Object> test5() {
         Map<String, String> zhaobing = new HashMap<>();
-        zhaobing.put("name", "zhaobing");
-        zhaobing.put("institution", "北京邮电大学");
+        zhaobing.put("name", "刘静");
+        zhaobing.put("institution", "电子科技集团36所");
         Map<String, Object> result = new HashMap<>();
         result.put("result", neo4jTemplateRepository.createNodeOfAuthor(zhaobing));
         return result;
     }
+
+    @RequestMapping(value = "/test6")
+    public @ResponseBody Map<String, Object> test6() {
+        Map<String, Object> zhaobingPaper = new HashMap<>();
+
+        zhaobingPaper.put("title", "今天的另一篇论文");
+        zhaobingPaper.put("quote", 6);
+        zhaobingPaper.put("link", "123456");
+        zhaobingPaper.put("date", "20151108");
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createNodeOfPaper(zhaobingPaper));
+        return result;
+    }
+
+    @RequestMapping(value = "test7")
+    public @ResponseBody Map<String, Object> test7(){
+        Map<String, String> zhaobingInstitution = new HashMap<>();
+        zhaobingInstitution.put("name", "赵炳的学校");
+        zhaobingInstitution.put("location", "北京");
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createNodeOfInstitution(zhaobingInstitution));
+        return result;
+    }
+
+    @RequestMapping(value = "test8")
+    public @ResponseBody Map<String, Object> test8(){
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createNodeOfKeyword("赵炳FPGA"));
+        return result;
+    }
+
+    @RequestMapping(value = "test9")
+    public @ResponseBody Map<String, Object> test9(){
+
+        Map<String, String> zhaobingJournal = new HashMap<>();
+        zhaobingJournal.put("name", "赵炳的杂志");
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createNodeOfJournal(zhaobingJournal));
+        return result;
+    }
+
+
+
 }
