@@ -3,12 +3,14 @@ package com.isa.analysis.controller;
 import com.isa.analysis.sdn.entity.*;
 import com.isa.analysis.sdn.entity.QueryResult.AuthorAndWorkTogetherTimes;
 import com.isa.analysis.sdn.repository.*;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +30,9 @@ public class TestController {
     private WorkTogetherRepository workTogetherRepository;
     @Autowired
     private KeywordRepository keywordRepository;
+
+    @Autowired
+    private Neo4jTemplateRepository neo4jTemplateRepository;
 
 
     @RequestMapping(value = "/test")
@@ -53,5 +58,15 @@ public class TestController {
     @RequestMapping(value = "/test4")
     public @ResponseBody String test4(){
         return keywordRepository.getKeywordsByAuthor("詹毅", "电子科技集团36所").toString();
+    }
+
+    @RequestMapping(value = "/test5")
+    public @ResponseBody Map<String, Object> test5() {
+        Map<String, String> zhaobing = new HashMap<>();
+        zhaobing.put("name", "zhaobing");
+        zhaobing.put("institution", "北京邮电大学");
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createNodeOfAuthor(zhaobing));
+        return result;
     }
 }

@@ -4,11 +4,14 @@ import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.impl.MapUtil;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Neo4jSession;
+import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.template.Neo4jOperations;
+import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Driver;
 import java.util.*;
 
 /**
@@ -82,20 +85,24 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     @Transactional
     public Long createNodeOfAuthor(Map<String, String> author){
 
-        String createAuthorCypher = "create (a:Author{name:{name}, institution:{institution}) return id(a) as id";
-        String queryAuthor ="match (a:Author{name:{name}, institution:{institution}) return id(a) as id";
+//        String createAuthorCypher = "create (a:Author) where a.name={name} AND where a.institution={institution} return id(a) as id";
+        String queryAuthor ="MATCH (n:Author) where n.name={name} and n.institution={institution} return id(n) as id";
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         Map<String, String> param = new HashMap<>();
         param.put("name", author.get("name"));
         param.put("institution", author.get("institution"));
         Result result =  neo4jTemplate.query(queryAuthor, param);
-        Iterator<Map<String, Object>> mapId = result.iterator();
-        if(mapId.hasNext()){
-            return Long.parseLong(mapId.next().get("id").toString());
-        }else{
-            Result result1 = neo4jTemplate.query(createAuthorCypher, author);
-            Iterator<Map<String, Object>> mapId1 = result1.iterator();
-            return Long.parseLong(mapId1.next().get("id").toString());
-        }
+//        Iterator<Map<String, Object>> mapId = result.iterator();
+//        if(mapId.hasNext()){
+//            return Long.parseLong(mapId.next().get("id").toString());
+//        }else{
+//            Result result1 = neo4jTemplate.query(createAuthorCypher, author);
+//            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+//            return Long.parseLong(mapId1.next().get("id").toString());
+//        }
+        return 1l;
     }
+
 }
