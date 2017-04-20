@@ -15,6 +15,7 @@ function loadInterestInstitution() {
         success : function (finalData) {
 
             var data = new Array();
+
             for(var i = 0;i < finalData.length;i++){
                 var a = {"name":finalData[i].keyword.name,
                           "value":finalData[i].times,

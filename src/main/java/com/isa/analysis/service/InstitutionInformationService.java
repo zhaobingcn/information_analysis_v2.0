@@ -30,5 +30,5 @@ public interface InstitutionInformationService {
      * @param id 科研机构的id
      * @return 该科研机构每个引用的关键词及对应引用次数
      */
-    List<List<Map<String,Object>>> generateInstitutionAndCooperateTimes(Long id,int limit);
+    List<Object> generateInstitutionAndCooperateTimes(Long id,int limit);
 }

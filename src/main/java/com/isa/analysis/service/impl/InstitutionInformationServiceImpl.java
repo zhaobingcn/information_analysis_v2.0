@@ -56,23 +56,17 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
     }
 
     @Override
-    public List<List<Map<String,Object>>> generateInstitutionAndCooperateTimes(Long id, int limit) {
+    public List<Object> generateInstitutionAndCooperateTimes(Long id, int limit) {
         List<InstitutionAndCooperateTimes> cooperateInstitutionAndTimes = institutionRepository.getCooperateInstitutionAndCooperateTimesByInstitutionId(id,limit);
         String institutionLocation = institutionRepository.getInstitutionLocationByInstitutionId(id);
-        Map<String,Object> location = new HashMap<>();
-        location.put("name",institutionLocation);
-        List<List<Map<String,Object>>> result = new ArrayList<>();
+        List<Object> result = new ArrayList<>();
+        result.add(institutionLocation);
         for (InstitutionAndCooperateTimes oneOfRecord : cooperateInstitutionAndTimes
              ) {
-            List<Map<String,Object>> oneOfResult = new ArrayList<>();
-            Map<String,Object> mapOfResult = new HashMap<>();
-            mapOfResult.put("name",oneOfRecord.getInstitution().getLocation());
-            mapOfResult.put("value",oneOfRecord.getTimes());
-            oneOfResult.add(location);
-            oneOfResult.add(mapOfResult);
-            result.add(oneOfResult);
+            if(oneOfRecord.getInstitution().getLocation()!=null&&!(oneOfRecord.getInstitution().getLocation().equals(""))){
+                result.add(oneOfRecord);
+            }
         }
-
         return result;
     }
 

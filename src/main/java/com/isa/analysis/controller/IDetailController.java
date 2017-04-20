@@ -1,5 +1,6 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.service.InstitutionInformationService;
 import org.apache.commons.collections.map.HashedMap;
@@ -61,13 +62,13 @@ public class IDetailController {
     * 科研机构的合作机构以及合作次数
     *
     * */
-    @RequestMapping(value = "/table/institutionCoo")
-    public  @ResponseBody List<List<Map<String,Object>>> institutionCooperateTimes(
+    @RequestMapping(value = "/tables/institutionCoo")
+    public  @ResponseBody List<Object> institutionCooperateTimes(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
     ){
-        Long id = new Long(1);
-        return institutionInformationService.generateInstitutionAndCooperateTimes(id,limit);
+        //Long id = new Long(1);
+        return institutionInformationService.generateInstitutionAndCooperateTimes(institutionId,limit);
     }
 
 }
