@@ -3,6 +3,7 @@ package com.isa.analysis.sdn.repository.impl;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.impl.MapUtil;
 import org.neo4j.ogm.model.Result;
+import org.neo4j.ogm.session.Neo4jSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Repository;
@@ -60,6 +61,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public List<Map<String, Object>> getAuthorsComparsionInformations(Long id) {
 
         String cypher = "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} with k.name as keyword, " +
@@ -74,5 +76,26 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
             comparsionInformations.add(row);
         }
         return comparsionInformations;
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfAuthor(Map<String, String> author){
+
+        String createAuthorCypher = "create (a:Author{name:{name}, institution:{institution}) return id(a) as id";
+        String queryAuthor ="match (a:Author{name:{name}, institution:{institution}) return id(a) as id";
+
+        Map<String, String> param = new HashMap<>();
+        param.put("name", author.get("name"));
+        param.put("institution", author.get("institution"));
+        Result result =  neo4jTemplate.query(queryAuthor, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return Long.parseLong(mapId.next().get("id").toString());
+        }else{
+            Result result1 = neo4jTemplate.query(createAuthorCypher, author);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
     }
 }

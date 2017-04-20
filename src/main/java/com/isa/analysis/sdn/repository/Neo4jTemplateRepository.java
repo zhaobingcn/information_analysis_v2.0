@@ -31,5 +31,7 @@ public interface Neo4jTemplateRepository {
 
     List<Map<String, Object>> getAuthorsComparsionInformations(Long id);
 
+    Long createNodeOfAuthor(Map<String, String> author);
+
 
 }

@@ -1,11 +1,15 @@
 package com.isa.analysis.service.runtime.impl;
 
+import com.isa.analysis.service.runtime.MongoDBDao;
 import com.mongodb.DBObject;
 import com.mongodb.util.Util;
 import org.json.JSONObject;
+import org.neo4j.ogm.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.neo4j.template.Neo4jOperations;
+import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +27,12 @@ public class Scheduler {
 
     @Autowired
     ConvertToNode convertToNode;
+
+    @Autowired
+    private Neo4jOperations neo4jTemplate;
+
+    @Autowired
+    MongoDBDao mongoDBDao;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Scheduled(cron="0 0 22 * * ?") //每晚22点开始执行
@@ -47,7 +57,6 @@ public class Scheduler {
 
         String queryRelationship = "match (a)-[r]->(b) where id(a) = {iad} AND id(b) = {idb} return id(r)";
 
-        MongoDBDaoImpl a = MongoDBDaoImpl.getMongoDBDaoImplInstance();
         Date date = new Date();
         //获取当前时间-24小时的时间
         long times = date.getTime()-1000*60*60*24;
@@ -58,7 +67,7 @@ public class Scheduler {
         System.out.println(dateString);
         timeConfig.put("$lte", dateString);
 
-        ArrayList<DBObject> c = a.find("wanFang", "paperinfo", new String[]{"spidertime"}, new Object[]{timeConfig}, -1);
+        ArrayList<DBObject> c = mongoDBDao.find("wanFang", "paperinfo", new String[]{"spidertime"}, new Object[]{timeConfig}, -1);
 
         if(c.isEmpty()){
             logger.info("MongoDB中没有更新，不需要导入数据");
@@ -68,10 +77,10 @@ public class Scheduler {
                 String lines = line.toString();
                 JSONObject objectLine = new JSONObject(lines);
                 List<Map<String, String>> authors = convertToNode.getAuthors(objectLine);
-
-//                for (Map<String, String> map : authors) {
-//                    System.out.println(map.get("name"));
-//                }
+                List<Long> authorsId = new ArrayList<>();
+                for (Map<String, String> author : authors) {
+                    authorsId.add(1l);
+                }
 
                 List<Map<String, String>> institutions = convertToNode.getInsittution(objectLine);
 //                for (Map<String, String> map : institutions) {
@@ -105,13 +114,8 @@ public class Scheduler {
 
 
 
-    public Long createNodeOfAuthor(){
-        String createAuthorCypher = "create (a:Author{name:{name}, institution:{institution}) return id(a)";
+    public Long createNodeOfPaper(Map<String, String> paper){
 
-        return 0l;
-    }
-
-    public Long createNodeOfPaper(){
         return 0l;
     }
 
@@ -131,7 +135,7 @@ public class Scheduler {
         return true;
     }
 
-    public static void main(String[] args) throws Exception{
+//    public static void main(String[] args) throws Exception{
 //        UtilRead in = new UtilRead();
 //        BufferedReader bufferedReader = in.getBufferedReaderForJson("./Logs/new.dat");
 //        String line = "";
@@ -149,7 +153,12 @@ public class Scheduler {
 //                System.out.println(map.get("name"));
 //            }
 //        }
-        Scheduler a = new Scheduler();
-        a.checkFromMongoDB();
-    }
+//        Scheduler a = new Scheduler();
+//        a.checkFromMongoDB();
+//        Map<String, String> zhaobing = new HashMap<>();
+//        zhaobing.put("name", "赵兵");
+//        zhaobing.put("institution", "北京邮电大学");
+//        System.out.println(a.createNodeOfAuthor(zhaobing));
+
+//    }
 }
