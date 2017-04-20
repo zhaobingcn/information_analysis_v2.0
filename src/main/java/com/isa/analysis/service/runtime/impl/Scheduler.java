@@ -5,9 +5,11 @@ import com.mongodb.util.Util;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.io.BufferedReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -19,7 +21,8 @@ import java.util.*;
 @Component
 public class Scheduler {
 
-    ConvertToNode convert = new ConvertToNode();
+    @Autowired
+    ConvertToNode convertToNode;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Scheduled(cron="0 0 22 * * ?") //每晚22点开始执行
@@ -53,7 +56,8 @@ public class Scheduler {
         //设置查找条件
         HashMap<Object, Object> timeConfig = new HashMap<>();
         System.out.println(dateString);
-        timeConfig.put("$gte", dateString);
+        timeConfig.put("$lte", dateString);
+
         ArrayList<DBObject> c = a.find("wanFang", "paperinfo", new String[]{"spidertime"}, new Object[]{timeConfig}, -1);
 
         if(c.isEmpty()){
@@ -61,7 +65,36 @@ public class Scheduler {
         }
         else{
             for(DBObject line: c){
-                JSONObject readLine = new JSONObject(line);
+                String lines = line.toString();
+                JSONObject objectLine = new JSONObject(lines);
+                List<Map<String, String>> authors = convertToNode.getAuthors(objectLine);
+
+//                for (Map<String, String> map : authors) {
+//                    System.out.println(map.get("name"));
+//                }
+
+                List<Map<String, String>> institutions = convertToNode.getInsittution(objectLine);
+//                for (Map<String, String> map : institutions) {
+//                    System.out.println(map.get("name"));
+//                }
+
+                Map<String, Object> paper = convertToNode.getPaper(objectLine);
+//                System.out.println(paper.get("title"));
+
+                Map<String, String> journal = convertToNode.getJournal(objectLine);
+//                System.out.println(journal.get("name"));
+//
+                List<String> include = convertToNode.getInclude(objectLine);
+//                for(String inc:include){
+//                    System.out.println(inc);
+//                }
+//
+                List<String> keywords = convertToNode.getKeyWords(objectLine);
+//                for(String key:keywords){
+//                    System.out.println(key);
+//                }
+//                System.out.println(objectLine.toString());
+
 
             }
         }
@@ -72,43 +105,51 @@ public class Scheduler {
 
 
 
-    public boolean createNodeOfAuthor(){
-        return true;
+    public Long createNodeOfAuthor(){
+        String createAuthorCypher = "create (a:Author{name:{name}, institution:{institution}) return id(a)";
+
+        return 0l;
     }
 
-    public boolean createNodeOfPaper(){
-        return true;
+    public Long createNodeOfPaper(){
+        return 0l;
     }
 
-    public boolean createNodeOfInstitution(){
-        return true;
+    public Long createNodeOfInstitution(){
+        return 0l;
     }
 
-    public boolean createNodeOfKeyword(){
-        return true;
+    public Long createNodeOfKeyword(){
+        return 0l;
     }
 
-    public boolean createNodeOfJournal(){
+    public Long createNodeOfJournal(){
+        return 0l;
+    }
+
+    public boolean createRelationship(){
         return true;
     }
 
     public static void main(String[] args) throws Exception{
-        UtilRead in = new UtilRead();
-        BufferedReader bufferedReader = in.getBufferedReaderForJson("D:/new.dat");
-        String line = "";
-        while (true) {
-            line = bufferedReader.readLine();
-            if (line == null || line.trim().equals("")) {
-                break;
-            }
-            System.out.println(line);
-            ConvertToNode convert = new ConvertToNode();
-            JSONObject objectLine = new JSONObject(line);
-            List<Map<String, String>> authors = convert.getAuthors(objectLine);
-
-            for (Map<String, String> map : authors) {
-                System.out.println(map.get("name"));
-            }
-        }
+//        UtilRead in = new UtilRead();
+//        BufferedReader bufferedReader = in.getBufferedReaderForJson("./Logs/new.dat");
+//        String line = "";
+//        while (true) {
+//            line = bufferedReader.readLine();
+//            if (line == null || line.trim().equals("")) {
+//                break;
+//            }
+//            System.out.println(line);
+//            ConvertToNode convert = new ConvertToNode();
+//            JSONObject objectLine = new JSONObject(line);
+//            List<Map<String, String>> authors = convert.getAuthors(objectLine);
+//
+//            for (Map<String, String> map : authors) {
+//                System.out.println(map.get("name"));
+//            }
+//        }
+        Scheduler a = new Scheduler();
+        a.checkFromMongoDB();
     }
 }
