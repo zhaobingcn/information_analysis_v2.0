@@ -126,6 +126,16 @@ public class Scheduler {
                     }
                 }
 
+                //创建论文到关键词关系
+                for(int i=0; i<keywordsId.size(); i++){
+                    neo4jTemplateRepository.createRelationship(paperId, keywordsId.get(i), "involve", 1);
+                }
+
+                //创建作者到论文的关系
+                for(int i=0; i<authorsId.size(); i++){
+                    neo4jTemplateRepository.createRelationship(authorsId.get(i), paperId, "publish", 1);
+                }
+
             }
         }
     }
@@ -155,6 +165,5 @@ public class Scheduler {
 //        zhaobing.put("name", "赵兵");
 //        zhaobing.put("institution", "北京邮电大学");
 //        System.out.println(a.createNodeOfAuthor(zhaobing));
-
 //    }
 }
