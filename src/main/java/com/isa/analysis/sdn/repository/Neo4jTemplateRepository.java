@@ -72,5 +72,5 @@ public interface Neo4jTemplateRepository {
      * @param id2
      * @return
      */
-    boolean createRelationship(Long id1, Long id2);
+    Long createRelationship(Long id1, Long id2, String relationshipType, int weight);
 }

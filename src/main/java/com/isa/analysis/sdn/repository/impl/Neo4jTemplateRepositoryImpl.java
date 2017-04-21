@@ -2,6 +2,7 @@ package com.isa.analysis.sdn.repository.impl;
 
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.impl.MapUtil;
+import org.apache.commons.collections.map.HashedMap;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Neo4jSession;
 import org.neo4j.ogm.session.Session;
@@ -27,6 +28,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     private MapUtil mapUtil;
 
     @Override
+    @Transactional
     public Long getCountOfEntities(Class entityClass) {
         Long entityCount = neo4jTemplate.count(entityClass);
         return entityCount;
@@ -106,9 +108,10 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public Long createNodeOfPaper(Map<String, Object> paper) {
         String createPaper = "create (p:Paper{title:{title}, quote:{quote}, link:{link}, date:{date}}) return id(p) as id";
-        String queryPaper = "match (a:Paper) where a.title={title} return id(a) as id";
+        String queryPaper = "match (a:Paper) where a.link={link} return id(a) as id";
 
         Map<String, String> param = new HashMap<>();
         param.put("link", paper.get("link").toString());
@@ -124,6 +127,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public Long createNodeOfInstitution(Map<String, String> institution) {
         String createInstitution = "create (i:Institution{name:{name}, location:{location}}) return id(i) as id";
         String queryInstitution = "match (i:Institution{name:{name}}) return id(i) as id";
@@ -142,6 +146,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public Long createNodeOfKeyword(String name) {
         String createKeyword = "create (k:Keyword{name:{name}}) return id(k) as id";
         String queryKeyword = "match (k:Keyword{name:{name}}) return id(k) as id";
@@ -160,6 +165,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public Long createNodeOfJournal(Map<String, String> journal) {
         String createJournal = "create (j:Journal{name:{name}}) return id(j) as id";
         String queryJournal = "match (j:Journal{name:{name}}) return id(j) as id";
@@ -176,17 +182,35 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
-    public boolean createRelationship(Long id1, Long id2 ) {
+    @Transactional
+    public Long createRelationship(Long id1, Long id2 , String relationshipType, int weight) {
 
         String createRelationship = "match (a) where id(a) = {id1} " +
                 "with a " +
                 "match (b) where id(b) = {id2} " +
                 "with a,b " +
-                "create (a)-[w:weight]->(b)";
-        String queryRelationship = "match (a)-[]-(b) where id(a) = {id1} " +
-                "AND id(b) = {id2} return ";
-        return false;
+                "create (a)-[rel:" + relationshipType + "{weight:{weight}}]->(b) return id(rel) as id";
+        String queryRelationship = "match (a)-[rel:" + relationshipType + "]-(b) where id(a) = {id1} " +
+                "AND id(b) = {id2} return id(rel) as id";
+
+        String updateRelationship =  "match (a)-[rel:" + relationshipType + "]-(b) where id(a) = {id1} " +
+                "AND id(b) = {id2} set rel.weight = rel.weight + " + weight + " return id(rel) as id";
+
+        Map<String, Object> param = new HashMap<>();
+        param.put("id1", id1);
+        param.put("id2", id2);
+        Result result = neo4jTemplate.query(queryRelationship, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            param.put("weight", weight);
+            Result result1 = neo4jTemplate.query(updateRelationship, param);
+            Iterator<Map<String, Object>> newMapId = result.iterator();
+            return Long.parseLong(newMapId.next().get("id").toString());
+        }else{
+            param.put("weight", weight);
+            Result result1 = neo4jTemplate.query(createRelationship, param);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
     }
-
-
 }

@@ -6,6 +6,7 @@ import com.isa.analysis.sdn.repository.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -111,6 +112,20 @@ public class TestController {
         return result;
     }
 
+    @RequestMapping(value = "test10")
+    public @ResponseBody Map<String, Object> test10(){
+
+        long id1 = 234443l;
+        long id2 = 234441l;
+
+        int weight = 1;
+
+        String relationshipType = "related";
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", neo4jTemplateRepository.createRelationship(id1, id2, relationshipType, weight));
+        return result;
+    }
 
 
 }
