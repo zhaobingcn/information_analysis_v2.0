@@ -2,12 +2,14 @@ package com.isa.analysis.service.runtime.impl;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 /**
  * Created by zhzy on 17-4-19.
  */
+@Component
 public class ConvertToNode {
     public List<Map<String, String>> getAuthors(JSONObject object){
         List<Map<String, String>> authors = new ArrayList<>();

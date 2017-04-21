@@ -2,6 +2,7 @@ package com.isa.analysis.service.runtime.impl;
 
 import com.isa.analysis.service.runtime.MongoDBDao;
 import com.mongodb.*;
+import org.springframework.stereotype.Component;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by zhzy on 17-4-12.
  */
+@Component
 public class MongoDBDaoImpl implements MongoDBDao {
     /**
      * MongoClient的实例代表数据库连接池，是线程安全的，可以被多线程共享，客户端在多线程条件下仅维持一个实例即可
