@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.annotation.QueryResult;
  * Created by hexu on 2017/1/6.
  */
 @QueryResult
-public class InstitutionAndCooperateTimes{
+public class InstitutionAndCooperateTimes implements Comparable{
     Institution ins;
     Long times;
 
@@ -27,5 +27,12 @@ public class InstitutionAndCooperateTimes{
 
     public void setTimes(Long times) {
         this.times = times;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        InstitutionAndCooperateTimes other = (InstitutionAndCooperateTimes)o;
+        Long otherTimes = other.getTimes();
+        return this.getTimes().compareTo(otherTimes);
     }
 }

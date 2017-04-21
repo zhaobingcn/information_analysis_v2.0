@@ -6,11 +6,13 @@ import com.isa.analysis.service.InstitutionInformationService;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +25,12 @@ public class IDetailController {
     private InstitutionInformationService institutionInformationService;
 
     @RequestMapping(value = "/tables")
-    public String tables(){
+    public String tables(Model model,
+                         @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
+                         @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
+
+        List<InstitutionAndCooperateTimes> institutionAndCooperateTimesList = institutionInformationService.generateInstitutionCooperateTimes(institutionId,limit);
+        model.addAttribute("institutionAndCooperateTimesList", institutionAndCooperateTimesList);
         return "tables";
     }
 

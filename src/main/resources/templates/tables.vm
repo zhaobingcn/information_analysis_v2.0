@@ -543,7 +543,14 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
+                                #foreach($institutionAndCooperateTimes in $institutionAndCooperateTimesList)
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-institution fa-fw"></i> $institutionAndCooperateTimes.institution.name
+                                        <span class="pull-right text-muted small"><em>$institutionAndCooperateTimes.times</em>
+                                    </span>
+                                    </a>
+                                #end
+                                #*<a href="#" class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
                                     <span class="pull-right text-muted small"><em>40 次</em>
                                     </span>
@@ -577,7 +584,7 @@
                                     <i class="fa fa-institution fa-fw"></i> 中国电子科技集团66所
                                     <span class="pull-right text-muted small"><em>33 次</em>
                                     </span>
-                                </a>
+                                </a>*#
                             </div>
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">查看详情</a>

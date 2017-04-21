@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import weka.core.stopwords.Null;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Sgc on 2017/4/18 0018.
@@ -55,6 +52,9 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
         return keywordRepository.getKeyWordTimesOfInstitutionByInstitutionId(id,limit);
     }
 
+    /*
+    * 返回本机构所在地和合作机构以及合作次数
+    * */
     @Override
     public List<Object> generateInstitutionAndCooperateTimes(Long id, int limit) {
         List<InstitutionAndCooperateTimes> cooperateInstitutionAndTimes = institutionRepository.getCooperateInstitutionAndCooperateTimesByInstitutionId(id,limit);
@@ -66,6 +66,26 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
             if(oneOfRecord.getInstitution().getLocation()!=null&&!(oneOfRecord.getInstitution().getLocation().equals(""))){
                 result.add(oneOfRecord);
             }
+        }
+        return result;
+    }
+
+    /*
+    * 返回合作机构以及合作次数
+    * */
+    @Override
+    public List<InstitutionAndCooperateTimes> generateInstitutionCooperateTimes(Long id, int limit) {
+        List<InstitutionAndCooperateTimes> cooperateInstitutionAndTimes = institutionRepository.getCooperateInstitutionAndCooperateTimesByInstitutionId(id,limit);
+        Collections.sort(cooperateInstitutionAndTimes);
+        Collections.reverse(cooperateInstitutionAndTimes);
+        List<InstitutionAndCooperateTimes> result = new ArrayList<>();
+        int count = 0;
+        for (InstitutionAndCooperateTimes oneOfRecord : cooperateInstitutionAndTimes
+             ) {
+            result.add(oneOfRecord);
+            count++;
+            if(count > 7)
+                break;
         }
         return result;
     }
