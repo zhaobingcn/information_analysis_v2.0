@@ -135,13 +135,6 @@ public class Scheduler {
         }
     }
 
-    public Long createNodeOfJournal(){
-        return 0l;
-    }
-
-    public boolean createRelationship(){
-        return true;
-    }
 
 //    public static void main(String[] args) throws Exception{
 //        UtilRead in = new UtilRead();
