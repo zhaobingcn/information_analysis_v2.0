@@ -9,13 +9,9 @@ import org.neo4j.ogm.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.template.Neo4jOperations;
-import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.processing.SupportedSourceVersion;
-import java.io.BufferedReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -139,28 +135,17 @@ public class Scheduler {
         }
     }
 
+    public Long createNodeOfJournal(){
+        return 0l;
+    }
 
-<<<<<<< Updated upstream
-    public boolean createNodeOfInstitution(){
+    public boolean createRelationship(){
         return true;
     }
 
-    public boolean createNodeOfKeyword(){
-        return true;
-    }
-
-    public boolean createNodeOfJournal(){
-        return true;
-    }
-
-//    public static void main(String[] args) throws Exception{
-//        UtilRead in = new UtilRead();
-//        BufferedReader bufferedReader = in.getBufferedReaderForJson("D:/new.dat");
-=======
 //    public static void main(String[] args) throws Exception{
 //        UtilRead in = new UtilRead();
 //        BufferedReader bufferedReader = in.getBufferedReaderForJson("./Logs/new.dat");
->>>>>>> Stashed changes
 //        String line = "";
 //        while (true) {
 //            line = bufferedReader.readLine();
@@ -176,8 +161,6 @@ public class Scheduler {
 //                System.out.println(map.get("name"));
 //            }
 //        }
-<<<<<<< Updated upstream
-=======
 //        Scheduler a = new Scheduler();
 //        a.checkFromMongoDB();
 //        Map<String, String> zhaobing = new HashMap<>();
@@ -185,6 +168,5 @@ public class Scheduler {
 //        zhaobing.put("institution", "北京邮电大学");
 //        System.out.println(a.createNodeOfAuthor(zhaobing));
 
->>>>>>> Stashed changes
 //    }
 }

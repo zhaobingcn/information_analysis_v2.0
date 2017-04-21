@@ -31,5 +31,47 @@ public interface Neo4jTemplateRepository {
 
     List<Map<String, Object>> getAuthorsComparsionInformations(Long id);
 
+    /**
+     * 建立作者节点
+     * @param author
+     * @return
+     */
+    Long createNodeOfAuthor(Map<String, String> author);
 
+
+    /**
+     * 建立论文节点
+     * @param paper
+     * @return
+     */
+    Long createNodeOfPaper(Map<String, Object> paper);
+
+    /**
+     * 建立机构节点
+     * @param institution
+     * @return
+     */
+    Long createNodeOfInstitution(Map<String, String> institution);
+
+    /**
+     * 建立关键词节点
+     * @param name
+     * @return
+     */
+    Long createNodeOfKeyword(String name);
+
+    /**
+     * 建立所属杂志节点
+     * @param journal
+     * @return
+     */
+    Long createNodeOfJournal(Map<String, String> journal);
+
+    /**
+     * 建立关系 如果关系已存在则修改weight属性值
+     * @param id1
+     * @param id2
+     * @return
+     */
+    Long createRelationship(Long id1, Long id2, String relationshipType, int weight);
 }
