@@ -111,11 +111,6 @@ public class Scheduler {
                 Long journalId = neo4jTemplateRepository.createNodeOfJournal(journal);
                 neo4jTemplateRepository.createRelationship(paperId, journalId, "included_in", 1);
 
-                //创建
-                List<String> include = convertToNode.getInclude(objectLine);
-                for(String inc:include){
-                    System.out.println(inc);
-                }
 
                 //创建关键词节点，返回的关系列表用于创建关系
                 List<Long> keywordsId = new ArrayList<>();
