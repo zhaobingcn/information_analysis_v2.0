@@ -119,6 +119,7 @@ public class Scheduler {
                     keywordsId.add(neo4jTemplateRepository.createNodeOfKeyword(keyword));
                 }
 
+                //创建关键词之间的关系
                 for(int i=0; i<keywordsId.size()-1; i++){
                     for(int j = i+1; j<keywordsId.size(); j++){
                         neo4jTemplateRepository.createRelationship(keywordsId.get(i), keywordsId.get(j),
