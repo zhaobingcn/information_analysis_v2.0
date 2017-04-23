@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -19,7 +20,7 @@ import java.util.*;
 /**
  * Created by zhzy on 17-4-11.
  */
-@Component
+@Service
 public class Scheduler {
 
     @Autowired
@@ -32,7 +33,7 @@ public class Scheduler {
     MongoDBDao mongoDBDao;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Scheduled(cron="0 0 22 * * ?") //每晚22点开始执行
+//    @Scheduled(cron="0 0 22 * * ?") //每晚22点开始执行
     public void checkFromMongoDB() {
 
 /*
@@ -40,7 +41,7 @@ public class Scheduler {
  */
         Date date = new Date();
         //获取当前时间-24小时的时间
-        long times = date.getTime()-1000*60*60*24;
+        long times = date.getTime()-1000*60*60*24*13;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(times);
         //设置查找条件
@@ -54,6 +55,7 @@ public class Scheduler {
             logger.info("MongoDB中没有更新，不需要导入数据");
         }
         else{
+            System.out.println("找到了");
             for(DBObject line: c){
                 String lines = line.toString();
                 JSONObject objectLine = new JSONObject(lines);
@@ -134,7 +136,7 @@ public class Scheduler {
 
                 //创建作者到论文的关系
                 for(int i=0; i<authorsId.size(); i++){
-                    neo4jTemplateRepository.createRelationship(authorsId.get(i), paperId, "publish", 1);
+                    neo4jTemplateRepository.createRelationship(authorsId.get(i), paperId, "publish", (int)(1.0/authorsId.size()*100));
                 }
 
             }

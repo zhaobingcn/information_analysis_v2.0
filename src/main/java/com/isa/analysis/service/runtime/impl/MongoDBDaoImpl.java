@@ -139,7 +139,10 @@ public class MongoDBDaoImpl implements MongoDBDao {
                     for(int i=0; i<keys.length; i++){    //填充查询条件
                         queryObj.put(keys[i], values[i]);
                     }
-                    cursor = dbCollection.find(queryObj);   //查询获取数据
+
+                    BasicDBObject queryConfig = new BasicDBObject();
+                    queryConfig.put("_id", 0);
+                    cursor = dbCollection.find(queryObj, queryConfig);   //查询获取数据
                     int count = 0;
                     if(num != -1){  //判断是否是返回全部数据，num=-1返回查询全部数据，num!=-1则返回指定的num数据
                         while(count<num && cursor.hasNext()){
