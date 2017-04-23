@@ -2,17 +2,12 @@ package com.isa.analysis.sdn.repository.impl;
 
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.impl.MapUtil;
-import org.apache.commons.collections.map.HashedMap;
 import org.neo4j.ogm.model.Result;
-import org.neo4j.ogm.session.Neo4jSession;
-import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.template.Neo4jOperations;
-import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Driver;
 import java.util.*;
 
 /**
@@ -87,7 +82,6 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     @Transactional
     public Long createNodeOfAuthor(Map<String, String> author){
 
-        String createAuthor = "create (a:Author) set a.name={name}, a.institution={institution} return id(a) as id";
         String anotherQuery  ="create (a:Author{name:{name}, institution:{institution}}) return id(a) as id";
         String queryAuthor ="MATCH (n:Author) where n.name={name} and n.institution={institution} return id(n) as id";
 
@@ -97,10 +91,8 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         Result result =  neo4jTemplate.query(queryAuthor, param);
         Iterator<Map<String, Object>> mapId = result.iterator();
         if(mapId.hasNext()){
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-            return Long.parseLong(mapId.next().get("id").toString());
+            return -1l;
         }else{
-            System.out.println("---------------------------------------------------");
             Result result1 = neo4jTemplate.query(anotherQuery, author);
             Iterator<Map<String, Object>> mapId1 = result1.iterator();
             return Long.parseLong(mapId1.next().get("id").toString());

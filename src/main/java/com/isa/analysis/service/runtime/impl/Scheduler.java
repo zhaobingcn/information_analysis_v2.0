@@ -33,7 +33,8 @@ public class Scheduler {
     MongoDBDao mongoDBDao;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-//    @Scheduled(cron="0 0 22 * * ?") //每晚22点开始执行
+    @Scheduled(cron="0 18 11 * * ?") //每晚22点开始执行
+//    @Scheduled(fixedRate=6000)
     public void checkFromMongoDB() {
 
 /*
@@ -44,10 +45,11 @@ public class Scheduler {
         long times = date.getTime()-1000*60*60*24*13;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(times);
+        System.out.println(dateString);
         //设置查找条件
         HashMap<Object, Object> timeConfig = new HashMap<>();
         System.out.println(dateString);
-        timeConfig.put("$lte", dateString);
+        timeConfig.put("$gte", dateString);
 
         ArrayList<DBObject> c = mongoDBDao.find("wanFang", "paperinfo", new String[]{"spidertime"}, new Object[]{timeConfig}, -1);
 
@@ -55,8 +57,8 @@ public class Scheduler {
             logger.info("MongoDB中没有更新，不需要导入数据");
         }
         else{
-            System.out.println("找到了");
             for(DBObject line: c){
+                System.out.println(line);
                 String lines = line.toString();
                 JSONObject objectLine = new JSONObject(lines);
 
@@ -64,7 +66,7 @@ public class Scheduler {
                 Map<String, Object> paper = convertToNode.getPaper(objectLine);
                 //删除可能重复的论文
                 if(paper.get("date").equals("000000")){
-                    break;
+                    continue;
                 }
 
                 Long paperId = neo4jTemplateRepository.createNodeOfPaper(paper);
@@ -138,35 +140,8 @@ public class Scheduler {
                 for(int i=0; i<authorsId.size(); i++){
                     neo4jTemplateRepository.createRelationship(authorsId.get(i), paperId, "publish", (int)(1.0/authorsId.size()*100));
                 }
-
             }
         }
     }
 
-
-//    public static void main(String[] args) throws Exception{
-//        UtilRead in = new UtilRead();
-//        BufferedReader bufferedReader = in.getBufferedReaderForJson("./Logs/new.dat");
-//        String line = "";
-//        while (true) {
-//            line = bufferedReader.readLine();
-//            if (line == null || line.trim().equals("")) {
-//                break;
-//            }
-//            System.out.println(line);
-//            ConvertToNode convert = new ConvertToNode();
-//            JSONObject objectLine = new JSONObject(line);
-//            List<Map<String, String>> authors = convert.getAuthors(objectLine);
-//
-//            for (Map<String, String> map : authors) {
-//                System.out.println(map.get("name"));
-//            }
-//        }
-//        Scheduler a = new Scheduler();
-//        a.checkFromMongoDB();
-//        Map<String, String> zhaobing = new HashMap<>();
-//        zhaobing.put("name", "赵兵");
-//        zhaobing.put("institution", "北京邮电大学");
-//        System.out.println(a.createNodeOfAuthor(zhaobing));
-//    }
 }
