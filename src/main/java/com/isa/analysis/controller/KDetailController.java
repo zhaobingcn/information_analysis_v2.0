@@ -14,8 +14,8 @@ import java.util.Map;
 @Controller
 public class KDetailController {
 
-//    @RequestMapping(value = "/allKeywords")
-//    public @ResponseBody Map<Keyword, Long>(){
-//        return null;
-//    }
+    @RequestMapping(value = "/allKeywords")
+    public String index(){
+        return "populartech";
+    }
 }
