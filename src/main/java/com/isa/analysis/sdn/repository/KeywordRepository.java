@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2016/12/30.
@@ -30,4 +31,22 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
 
     @Query("match (k:Keyword)<-[t:involve]-(p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return k as keyword,count(t) as times limit {limit}")
     List<KeywordAndInvolveTimes> getKeyWordTimesOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
+
+    /**
+     * 前20个社区
+     * @return
+     */
+    @Query("match (k:Keyword) return k.partition as partition, count(k) as score order by score desc limit 20")
+    List<Map<Long, Integer>> getKeywordsPartition();
+
+    /**
+     * 每个社区中limit个
+     * @param partition
+     * @param limit
+     * @return
+     */
+    @Query("match (p:Paper)-[i:involve]->(k:Keyword) where k.partition={partition} return k as keyword, " +
+            "count(i) as times order by times desc limit {limit}")
+    List<KeywordAndInvolveTimes> getKeywordsByPartition(@Param(value = "partition")Integer partition, @Param(value = "limit") Integer limit);
+
 }
