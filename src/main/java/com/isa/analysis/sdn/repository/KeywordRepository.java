@@ -47,6 +47,6 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
      */
     @Query("match (p:Paper)-[i:involve]->(k:Keyword) where k.partition={partition} return k as keyword, " +
             "count(i) as times order by times desc limit {limit}")
-    List<KeywordAndInvolveTimes> getKeywordsByPartition(@Param(value = "partition")Integer partition, @Param(value = "limit") Integer limit);
+    List<KeywordAndInvolveTimes> getKeywordsByPartition(@Param(value = "partition")Long partition, @Param(value = "limit") Integer limit);
 
 }

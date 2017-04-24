@@ -2,7 +2,9 @@ package com.isa.analysis.controller;
 
 import com.isa.analysis.sdn.entity.*;
 import com.isa.analysis.sdn.entity.QueryResult.AuthorAndWorkTogetherTimes;
+import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.*;
+import com.isa.analysis.service.KeywordViewService;
 import com.isa.analysis.service.runtime.impl.Scheduler;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class TestController {
 
     @Autowired
     private Neo4jTemplateRepository neo4jTemplateRepository;
+
+    @Autowired
+    private KeywordViewService keywordViewService;
 
     @Autowired
     Scheduler scheduler;
@@ -134,6 +139,16 @@ public class TestController {
     @RequestMapping(value = "test11")
     public @ResponseBody List<Map<Long, Integer>> test11(){
         return keywordRepository.getKeywordsPartition();
+    }
+
+    @RequestMapping(value = "test12")
+    public @ResponseBody List<KeywordAndInvolveTimes> test12(){
+        return keywordRepository.getKeywordsByPartition(2453l, 20);
+    }
+
+    @RequestMapping(value = "test13")
+    public @ResponseBody Map<String, Object> test13(){
+        return keywordViewService.generateKeywordView();
     }
 
 

@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by zhzy on 17-4-23.
  */
 @Controller
-public class KDetailController {
+public class KViewController {
 
     @RequestMapping(value = "/allKeywords")
     public String index(){
