@@ -49,4 +49,10 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
             "count(i) as times order by times desc limit {limit}")
     List<KeywordAndInvolveTimes> getKeywordsByPartition(@Param(value = "partition")Long partition, @Param(value = "limit") Integer limit);
 
+    /**
+     * 查询一个关键词相似度最高的5个关键词，根据名字查询
+     */
+    @Query("MATCH (k:Keyword{name:{name}})-[s:similar]-(k2:Keyword) RETURN k2.name as name, s.weight AS score ORDER BY score DESC LIMIT 5")
+    List<Map<String, Object>> getSimilarKeywords(@Param(value = "name")String name);
+
 }

@@ -292,7 +292,7 @@
             				<div class="panel-body">
             					<p id="paper-left">related papers</p>
             				</div>
-            				<div class="list-group">
+            				<div class="list-group" id = "paper-left-group">
 							    <a href="#" class="list-group-item">Cras justo odio</a>
 							    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
 							    <a href="#" class="list-group-item">Morbi leo risus</a>
@@ -309,7 +309,7 @@
             				<div class="panel-body">
             					<p id="keyword-right">key word</p>
             				</div>
-            				<div class="list-group">
+            				<div class="list-group" id="keyword-right-group">
 							    <a href="#" class="list-group-item">Cras justo odio</a>
 							    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
 							    <a href="#" class="list-group-item">Morbi leo risus</a>
