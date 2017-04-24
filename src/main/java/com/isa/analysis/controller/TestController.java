@@ -132,9 +132,8 @@ public class TestController {
     }
 
     @RequestMapping(value = "test11")
-    public void test11(){
-
-        scheduler.checkFromMongoDB();
+    public @ResponseBody List<Map<Long, Integer>> test11(){
+        return keywordRepository.getKeywordsPartition();
     }
 
 
