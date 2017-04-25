@@ -399,14 +399,14 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="col-lg-5">
-                                <div class="middle text-center">中国电子科技集团38所</div>
+                                <div class="middle text-center">$firstInstitutionName</div>
                             </div>
 
                             <div class="col-lg-2">
                                 <p class="middle text-center">VS</p>
                             </div>
                             <div class="col-lg-5">
-                                <div class="middle text-center">中国电子科技集团28所</div>
+                                <div class="middle text-center">$secondInstitutionName</div>
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -445,22 +445,22 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>直扩信号检测</td>
-                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstinstitutionpaper"> 55</td>
+                                    <td>$firstInstitutionKeywordAndInvolveTimesList[0].keyword.name</td>
+                                    <td data-toggle="modal" data-target="#myModal" data-whatever="firstinstitutionpaper"> $firstInstitutionKeywordAndInvolveTimesList[0].times</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>自相关</td>
-                                    <td>50</td>
+                                    <td>$firstInstitutionKeywordAndInvolveTimesList[1].keyword.name</td>
+                                    <td>$firstInstitutionKeywordAndInvolveTimesList[0].times</td>
                                     <td>20</td>
                                     <td>15</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>特征提取</td>
-                                    <td>45</td>
+                                    <td>$firstInstitutionKeywordAndInvolveTimesList[2].keyword.name</td>
+                                    <td>$firstInstitutionKeywordAndInvolveTimesList[0].times</td>
                                     <td>15</td>
                                     <td>5</td>
                                 </tr>
@@ -498,22 +498,22 @@
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>正交分码</td>
-                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondinstitutionpaper"> 65</div></td>
+                                    <td>$secondInstitutionKeywordAndInvolveTimesList[0].keyword.name</td>
+                                    <td><div data-toggle="modal" data-target="#myModal" data-whatever="secondinstitutionpaper"> $secondInstitutionKeywordAndInvolveTimesList[0].times</div></td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="patent">25</td>
                                     <td data-toggle="modal" data-target="#myModal" data-whatever="program">10</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>格码正交化</td>
-                                    <td>50</td>
+                                    <td>$secondInstitutionKeywordAndInvolveTimesList[1].keyword.name</td>
+                                    <td>$secondInstitutionKeywordAndInvolveTimesList[1].times</td>
                                     <td>20</td>
                                     <td>15</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>盲源分离</td>
-                                    <td>45</td>
+                                    <td>$secondInstitutionKeywordAndInvolveTimesList[2].keyword.name</td>
+                                    <td>$secondInstitutionKeywordAndInvolveTimesList[2].times</td>
                                     <td>15</td>
                                     <td>5</td>
                                 </tr>

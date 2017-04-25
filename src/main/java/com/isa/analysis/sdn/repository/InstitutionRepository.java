@@ -48,7 +48,7 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     /**
      * 查询一个机构发表的论文
      */
-    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return p limit {limit}")
+    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return  DISTINCT p ORDER BY p.date limit {limit}")
     List<Paper> getPaperOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
     /**
