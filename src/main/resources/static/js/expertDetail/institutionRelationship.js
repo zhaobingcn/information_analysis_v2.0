@@ -6,23 +6,18 @@ function loadRelationshipInstitution(depath) {
     var myChart = echarts.init(document.getElementById('institution-relationship'));
 
     $.ajax({
-        url:"/tables/institutionCoo",
+        url:"/InstitutionInformation/institutionCooperateTimes",
         type:"get",
         dataType:"json",
         data:{"limit": 30,"institutionId":1},
         success: function (finalData){
-            /*var BJData = [
 
-                [{name: finalData[0]}, {name: finalData[1].institution.location, value: finalData[2].times}],
-                [{name: finalData[0]}, {name: finalData[2].institution.location, value: finalData[3].times}],
-
-            ];*/
             var BJData = [];
             //BJData[0]=finalData[0];
             for(var i = 1;i < finalData.length;i++){
                 var oneOfBJData = [];
-                var a = {name:finalData[0]};
-                var b = {name:finalData[i].institution.location,value:finalData[i].times}
+                var a = {name:finalData[0]};//本机构所在城市
+                var b = {name:finalData[i].institution.location,value:finalData[i].times}//合作机构所在城市，合作次数
                 oneOfBJData.push(a);
                 oneOfBJData.push(b);
                 BJData.push(oneOfBJData);
@@ -220,7 +215,7 @@ function loadRelationshipInstitution(depath) {
                     });
             });
 
-            var legend = [finalData[0]+' Top10'];
+            var legend = [[finalData[0]+' Top10'],[finalData[1].institution.location]];
             var option = {
                 backgroundColor: '#ffffff',
                 title: {

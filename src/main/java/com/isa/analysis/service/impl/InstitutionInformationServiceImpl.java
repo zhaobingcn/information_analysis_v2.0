@@ -1,10 +1,12 @@
 package com.isa.analysis.service.impl;
 
+import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
+import com.isa.analysis.sdn.repository.PaperRepository;
 import com.isa.analysis.service.InstitutionInformationService;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.velocity.util.ArrayListWrapper;
@@ -26,6 +28,14 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
     @Autowired
     private KeywordRepository keywordRepository;
 
+    @Autowired
+    private PaperRepository paperRepository;
+
+    @Override
+    public String generateInstitutionName(Long id) {
+        return institutionRepository.getInstituionNameByInstitutionId(id);
+    }
+
     @Override
     public Map<String, Integer> generateInstitutionPublishedPapers(Long id, int limit) {
         List<Paper> papersOfInstitution = new ArrayList<>();
@@ -44,6 +54,22 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
             }
         }
         return papersNumOnDate;
+    }
+
+    @Override
+    public Map<String,Integer> generateInstitutionPapersAndQuote(Long id) {
+        List<Paper> paperList = paperRepository.getPaperOfInstitutionByInstitutionId(id);
+        int numOfPaper = 0;
+        int numOfPaperQuote = 0;
+        for (Paper paper : paperList
+             ) {
+            numOfPaper++;
+            numOfPaperQuote = numOfPaperQuote + paper.getQuote();
+        }
+        Map<String,Integer> result = new HashMap<>();
+        result.put("numOfPaper",numOfPaper);
+        result.put("numOfPaperQuote",numOfPaperQuote);
+        return result;
     }
 
     @Override
@@ -88,6 +114,16 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
                 break;
         }
         return result;
+    }
+
+    @Override
+    public List<Institution> generateCompeteInstitution(Long id, int limit) {
+        return institutionRepository.getCompeteInstitutionByByInstitutionId(id,limit);
+    }
+
+    @Override
+    public List<Institution> generatePotentialCooperateInstitution(Long id, int limit) {
+        return institutionRepository.getPotentialCooperateInstitutionByInstitutionId(id,limit);
     }
 
 

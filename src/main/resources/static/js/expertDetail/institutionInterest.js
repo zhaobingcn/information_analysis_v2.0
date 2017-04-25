@@ -5,7 +5,7 @@ function loadInterestInstitution() {
     var $loadWindow = document.getElementById('institution-research-point');
     var myChart = echarts.init($loadWindow);
     $.ajax({
-        url : "/table/institutionPoint",
+        url : "/InstitutionInformation/institutionInterest",
         type : "get",
         dataType : "json",
         data : {

@@ -63,4 +63,15 @@ public interface PaperRepository extends GraphRepository<Paper> {
             "return p order by p.date desc skip {skip} limit {limit}")
     List<Paper> getPapersByAuthorIdWithPages(@Param(value = "authorId")Long authorId, @Param(value = "skip") int skip, @Param(value = "limit") int limit);
 
+
+    /**
+     * 查询一个机构发的论文数量
+     *
+     * @param id 该机构的ID
+     * @return
+     */
+    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return distinct p")
+    List<Paper> getPaperOfInstitutionByInstitutionId(@Param(value = "id") Long id);
+
+
 }

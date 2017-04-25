@@ -309,7 +309,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.vm"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
+                            <a href="InstitutionInformation.vm"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 科研重点演化</a>
@@ -405,14 +405,14 @@
                         <div class="panel-body">
                             <div class="col-lg-4 col-xs-4">
                                 <i class="fa fa-institution fa-5x"></i>
-                                <div class="middle">中国电子科技集团38所</div>
+                                <div class="middle">$institutionName</div>
                             </div>
                             <div class="col-lg-8 col-xs-8">
                                 <div>
                                     <div id="big_stats" class="cf">
-                                        <div class="stat"> <i class="fa fa-link"></i> <span class="value">1057</span> </div>
+                                        <div class="stat"> <i class="fa fa-link"></i> <span class="value">$papersAndQuoteMap.numOfPaper</span> </div>
                                         <!-- .stat -->
-                                        <div class="stat"> <i class="fa fa-star"></i> <span class="value">2327</span> </div>
+                                        <div class="stat"> <i class="fa fa-star"></i> <span class="value">$papersAndQuoteMap.numOfPaperQuote</span> </div>
                                         <!-- .stat -->
                                         <div class="stat"> <i class="fa fa-strikethrough"></i> <span class="value">2536</span> </div>
                                         <!-- .stat -->
@@ -468,7 +468,16 @@
                         </div>
                         <!-- /.panel-heading -->
                         <ul class="list-group">
+                            #foreach($competeInstitution in $competeInstitutionList)
                                 <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> $competeInstitution.name
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                            #end
+
+                               #* <li class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> 中国电子科技集团15所
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs">加 入 对 比</button>
@@ -485,7 +494,7 @@
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs">加 入 对 比</button>
                                     </span>
-                                </li>
+                                </li>*#
                         </ul>
                         <!-- /.list-group -->
                     </div>
@@ -497,7 +506,15 @@
                         </div>
                         <!-- /.panel-heading -->
                         <ul class="list-group">
-                            <li class="list-group-item">
+                            #foreach($potentialCooperateInstituton in $potentialCooperateInstitutonList)
+                                <li class="list-group-item">
+                                    <i class="fa fa-institution fa-fw"></i> $potentialCooperateInstituton.name
+                                    <span class="pull-right">
+                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                    </span>
+                                </li>
+                            #end
+                            #*<li class="list-group-item">
                                 <i class="fa fa-institution fa-fw"></i> 中国电子科技集团28所
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs" id = "compare-institution">加 入 对 比</button>
@@ -514,7 +531,7 @@
                                     <span class="pull-right">
                                         <button class="btn btn-default btn-xs">加 入 对 比</button>
                                     </span>
-                            </li>
+                            </li>*#
                         </ul>
                         <!-- /.list-group -->
                     </div>
@@ -546,7 +563,7 @@
                                 #foreach($institutionAndCooperateTimes in $institutionAndCooperateTimesList)
                                     <a href="#" class="list-group-item">
                                         <i class="fa fa-institution fa-fw"></i> $institutionAndCooperateTimes.institution.name
-                                        <span class="pull-right text-muted small"><em>$institutionAndCooperateTimes.times</em>
+                                        <span class="pull-right text-muted small"><em>$institutionAndCooperateTimes.times 次</em>
                                     </span>
                                     </a>
                                 #end

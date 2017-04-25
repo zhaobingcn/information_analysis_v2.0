@@ -4,6 +4,60 @@
 function loadInterestSecondInstitution() {
     var $loadWindow = document.getElementById('second-institution-interest');
     var myChart = echarts.init($loadWindow);
+
+    $.ajax({
+        url : "/ComparisonofInstitutions/firstInstitutionInterest",
+        type : "get",
+        dataType : "json",
+        data : {
+            "limit": 30,
+            "institutionId":117
+        },
+        success : function (finalData) {
+
+            var data = new Array();
+
+            for(var i = 0;i < finalData.length;i++){
+                var a = {"name":finalData[i].keyword.name,
+                    "value":finalData[i].times,
+                    "id":finalData[i].keyword.id
+                };
+                data.push(a);
+            }
+
+
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [0, 0],
+                    shape: 'circle',
+                    width: $loadWindow.clientWidth,
+                    height: $loadWindow.clientHeight,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                        Math.round(Math.random() * 160),
+                                        Math.round(Math.random() * 160),
+                                        Math.round(Math.random() * 160)
+                                    ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: data
+                }]
+            };
+            myChart.setOption(option);
+        }
+    })
+
     /*var authorName = $("#authorsName").text();
      var authorInstitution = $("#authorsInstitution").val();
      $.ajax({
@@ -15,7 +69,7 @@ function loadInterestSecondInstitution() {
      "institution" : authorInstitution
      },
      success : function (finalData) {*/
-    var option = {
+    /*var option = {
         tooltip: {},
         toolbox: {
             left: '5%',
@@ -284,7 +338,7 @@ function loadInterestSecondInstitution() {
             } ]
         }]
     };
-    myChart.setOption(option);
+    myChart.setOption(option);*/
     //   }
     // })
 }

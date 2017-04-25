@@ -28,6 +28,6 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
             "count(i) as times order by times desc limit {limit}")
     List<KeywordAndInvolveTimes> getSortedKeywordsByAuthorId(@Param(value = "id")Long id, @Param(value = "limit")int limit);
 
-    @Query("match (k:Keyword)<-[t:involve]-(p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return k as keyword,count(t) as times limit {limit}")
+    @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution) where id(i)={id} with DISTINCT p match (p)-[t:involve]-(k:Keyword) return k as keyword,count(t) as times ORDER BY times desc limit {limit}")
     List<KeywordAndInvolveTimes> getKeyWordTimesOfInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 }

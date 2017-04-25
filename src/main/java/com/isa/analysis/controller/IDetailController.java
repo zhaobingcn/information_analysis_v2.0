@@ -1,5 +1,6 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.service.InstitutionInformationService;
@@ -24,20 +25,30 @@ public class IDetailController {
     @Autowired
     private InstitutionInformationService institutionInformationService;
 
-    @RequestMapping(value = "/tables")
+    @RequestMapping(value = "/InstitutionInformation")
     public String tables(Model model,
                          @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
                          @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
 
         List<InstitutionAndCooperateTimes> institutionAndCooperateTimesList = institutionInformationService.generateInstitutionCooperateTimes(institutionId,limit);
+        List<Institution> competeInstitutionList = institutionInformationService.generateCompeteInstitution(institutionId,3);
+        List<Institution> potentialCooperateInstitutonList = institutionInformationService.generatePotentialCooperateInstitution(institutionId,3);
+        Map<String,Integer> papersAndQuoteMap = institutionInformationService.generateInstitutionPapersAndQuote(institutionId);
+        String institutionName = institutionInformationService.generateInstitutionName(institutionId);
         model.addAttribute("institutionAndCooperateTimesList", institutionAndCooperateTimesList);
+        model.addAttribute("competeInstitutionList", competeInstitutionList);
+        model.addAttribute("potentialCooperateInstitutonList", potentialCooperateInstitutonList);
+        model.addAttribute("papersAndQuoteMap", papersAndQuoteMap);
+        model.addAttribute("institutionName", institutionName);
         return "tables";
     }
+
+
 
     /*
     * 科研机构的成果汇总
     * */
-    @RequestMapping(value = "/tables/institution")
+    @RequestMapping(value = "/InstitutionInformation/institutionResult")
     public @ResponseBody List<List<String>> institutionAchievements(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
@@ -57,7 +68,7 @@ public class IDetailController {
     /*
     * 科研机构的研究方向聚焦
     * */
-    @RequestMapping(value = "/table/institutionPoint")
+    @RequestMapping(value = "/InstitutionInformation/institutionInterest")
     public  @ResponseBody List<KeywordAndInvolveTimes> institutionInterest(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
@@ -69,7 +80,7 @@ public class IDetailController {
     * 科研机构的合作机构以及合作次数
     *
     * */
-    @RequestMapping(value = "/tables/institutionCoo")
+    @RequestMapping(value = "/InstitutionInformation/institutionCooperateTimes")
     public  @ResponseBody List<Object> institutionCooperateTimes(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId
