@@ -63,6 +63,11 @@ public interface PaperRepository extends GraphRepository<Paper> {
             "return p order by p.date desc skip {skip} limit {limit}")
     List<Paper> getPapersByAuthorIdWithPages(@Param(value = "authorId")Long authorId, @Param(value = "skip") int skip, @Param(value = "limit") int limit);
 
+    /**
+     * 查询一个关键词相关度最高的论文
+     */
+    @Query("MATCH (k:Keyword{name:{name}})<-[i:involve]-(p:Paper) RETURN p LIMIT 5")
+    List<Paper> getPapersByKeywords(@Param(value = "name")String name);
 
     /**
      * 查询一个机构发的论文数量

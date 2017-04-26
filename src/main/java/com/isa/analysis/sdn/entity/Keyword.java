@@ -22,11 +22,24 @@ public class Keyword {
     @Property(name = "name")
     private String name;
 
+    @Property(name = "partition")
+    private Long partition;
+
     @Relationship(type = "involve", direction = Relationship.OUTGOING)
     private List<Paper> papers;
 
+    public Long getPartition() {
+        return partition;
+    }
+
+    public void setPartition(Long partition) {
+        this.partition = partition;
+    }
+
     @Relationship(type = "similar", direction = Relationship.UNDIRECTED)
     private List<Similar> silimars;
+
+
 
     public String getName() {
         return name;

@@ -82,10 +82,11 @@ function loadRelationshipPersonal(depath) {
             ]
         };
         myChart.setOption(option);
-        myChart.on("click", function(params) {
-            window.open('/detailOfExpert/cooperateOfAuthor?name=' + encodeURIComponent(params.name)
-                +"&&institution=" + encodeURIComponent(params.institution));
-        });
+        // myChart.on("click", function(params) {
+        //     window.open('/detailOfExpert/cooperateOfAuthor?name=' + encodeURIComponent(params.name)
+        //         +"&&institution=" + encodeURIComponent(params.institution));
+        // }
+        // );
     }
     });
 }

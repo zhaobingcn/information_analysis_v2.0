@@ -2,6 +2,7 @@ package com.isa.analysis.service.runtime.impl;
 
 import com.isa.analysis.service.runtime.MongoDBDao;
 import com.mongodb.*;
+import org.springframework.stereotype.Component;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by zhzy on 17-4-12.
  */
+@Component
 public class MongoDBDaoImpl implements MongoDBDao {
     /**
      * MongoClient的实例代表数据库连接池，是线程安全的，可以被多线程共享，客户端在多线程条件下仅维持一个实例即可
@@ -137,7 +139,10 @@ public class MongoDBDaoImpl implements MongoDBDao {
                     for(int i=0; i<keys.length; i++){    //填充查询条件
                         queryObj.put(keys[i], values[i]);
                     }
-                    cursor = dbCollection.find(queryObj);   //查询获取数据
+
+                    BasicDBObject queryConfig = new BasicDBObject();
+                    queryConfig.put("_id", 0);
+                    cursor = dbCollection.find(queryObj, queryConfig);   //查询获取数据
                     int count = 0;
                     if(num != -1){  //判断是否是返回全部数据，num=-1返回查询全部数据，num!=-1则返回指定的num数据
                         while(count<num && cursor.hasNext()){

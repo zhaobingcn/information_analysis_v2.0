@@ -23,6 +23,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     private MapUtil mapUtil;
 
     @Override
+    @Transactional
     public Long getCountOfEntities(Class entityClass) {
         Long entityCount = neo4jTemplate.count(entityClass);
         return entityCount;
@@ -60,6 +61,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     }
 
     @Override
+    @Transactional
     public List<Map<String, Object>> getAuthorsComparsionInformations(Long id) {
 
         String cypher = "match (a:Author)-[:publish]->(p:Paper)-[i:involve]->(k:Keyword) where id(a)={id} with k.name as keyword, " +
@@ -74,5 +76,138 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
             comparsionInformations.add(row);
         }
         return comparsionInformations;
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfAuthor(Map<String, String> author){
+
+        String anotherQuery  ="create (a:Author{name:{name}, institution:{institution}}) return id(a) as id";
+        String queryAuthor ="MATCH (n:Author) where n.name={name} and n.institution={institution} return id(n) as id";
+
+        Map<String, String> param = new HashMap<>();
+        param.put("name", author.get("name"));
+        param.put("institution", author.get("institution"));
+        Result result =  neo4jTemplate.query(queryAuthor, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return -1l;
+        }else{
+            Result result1 = neo4jTemplate.query(anotherQuery, author);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfPaper(Map<String, Object> paper) {
+        String createPaper = "create (p:Paper{title:{title}, quote:{quote}, link:{link}, date:{date}}) return id(p) as id";
+        String queryPaper = "match (a:Paper) where a.link={link} return id(a) as id";
+
+        Map<String, String> param = new HashMap<>();
+        param.put("link", paper.get("link").toString());
+        Result result = neo4jTemplate.query(queryPaper, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return Long.parseLong(mapId.next().get("id").toString());
+        }else{
+            Result result1 = neo4jTemplate.query(createPaper, paper);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfInstitution(Map<String, String> institution) {
+        String createInstitution = "create (i:Institution{name:{name}, location:{location}}) return id(i) as id";
+        String queryInstitution = "match (i:Institution{name:{name}}) return id(i) as id";
+
+        Map<String, String> param = new HashMap<>();
+        param.put("name", institution.get("name").toString());
+        Result result = neo4jTemplate.query(queryInstitution, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return Long.parseLong(mapId.next().get("id").toString());
+        }else{
+            Result result1 = neo4jTemplate.query(createInstitution, institution);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfKeyword(String name) {
+        String createKeyword = "create (k:Keyword{name:{name}}) return id(k) as id";
+        String queryKeyword = "match (k:Keyword{name:{name}}) return id(k) as id";
+
+        Map<String, String> param = new HashMap<>();
+        param.put("name", name);
+        Result result = neo4jTemplate.query(queryKeyword, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return Long.parseLong(mapId.next().get("id").toString());
+        }else{
+            Result result1 = neo4jTemplate.query(createKeyword, param);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long createNodeOfJournal(Map<String, String> journal) {
+        String createJournal = "create (j:Journal{name:{name}}) return id(j) as id";
+        String queryJournal = "match (j:Journal{name:{name}}) return id(j) as id";
+
+        Result result = neo4jTemplate.query(queryJournal, journal);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            return Long.parseLong(mapId.next().get("id").toString());
+        }else{
+            Result result1 = neo4jTemplate.query(createJournal, journal);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Long createRelationship(Long id1, Long id2 , String relationshipType, int weight) {
+
+        String createRelationship = "match (a) where id(a) = {id1} " +
+                "with a " +
+                "match (b) where id(b) = {id2} " +
+                "with a,b " +
+                "create (a)-[rel:" + relationshipType + "{weight:{weight}}]->(b) return id(rel) as id";
+        String queryRelationship = "match (a)-[rel:" + relationshipType + "]-(b) where id(a) = {id1} " +
+                "AND id(b) = {id2} return id(rel) as id";
+
+        String updateRelationship =  "match (a)-[rel:" + relationshipType + "]-(b) where id(a) = {id1} " +
+                "AND id(b) = {id2} set rel.weight = rel.weight + " + weight + " return id(rel) as id";
+
+        Map<String, Object> param = new HashMap<>();
+        param.put("id1", id1);
+        param.put("id2", id2);
+        Result result = neo4jTemplate.query(queryRelationship, param);
+        Iterator<Map<String, Object>> mapId = result.iterator();
+        if(mapId.hasNext()){
+            if(relationshipType.equals("cooperate") || relationshipType.equals("work_together")
+                    || relationshipType.equals("similar")) {
+                param.put("weight", weight);
+                Result result1 = neo4jTemplate.query(updateRelationship, param);
+                Iterator<Map<String, Object>> newMapId = result1.iterator();
+                return Long.parseLong(newMapId.next().get("id").toString());
+            }else{
+                return Long.parseLong(mapId.next().get("id").toString());
+            }
+        }else{
+            param.put("weight", weight);
+            Result result1 = neo4jTemplate.query(createRelationship, param);
+            Iterator<Map<String, Object>> mapId1 = result1.iterator();
+            return Long.parseLong(mapId1.next().get("id").toString());
+        }
     }
 }
