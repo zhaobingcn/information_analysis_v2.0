@@ -23,6 +23,11 @@ public interface ComparsionOfInstitutionsService {
      */
     String generateInstitutionName(Long id);
 
+    /**
+     * 按年份统计该科研机构发表的论文量
+     * @param id 科研机构的id
+     */
     Map<String, Integer> generateInstitutionPublishedPapers(Long id, int limit);
+
 
 }

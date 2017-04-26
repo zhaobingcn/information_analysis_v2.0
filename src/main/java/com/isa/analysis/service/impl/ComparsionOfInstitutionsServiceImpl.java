@@ -21,6 +21,7 @@ public class ComparsionOfInstitutionsServiceImpl implements ComparsionOfInstitut
     @Autowired
     private InstitutionRepository institutionRepository;
 
+
     @Override
     public List<KeywordAndInvolveTimes> generateInstitutionKeywordAndInvolveTimes(Long id, int limit) {
         return keywordRepository.getKeyWordTimesOfInstitutionByInstitutionId(id,limit);

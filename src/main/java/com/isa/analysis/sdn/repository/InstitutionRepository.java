@@ -17,6 +17,12 @@ import java.util.List;
 public interface InstitutionRepository extends GraphRepository<Institution> {
 
     /**
+     * 通过机构ID查询该机构实体
+     */
+    @Query("match (i:Institution) where id(i)={id} return i")
+    Institution getInstitutionByInstitutionId(@Param(value = "id") Long id);
+
+    /**
      * 通过机构ID查询该机构的名字
      */
     @Query("match (i:Institution) where id(i)={id} return i.name")
@@ -37,7 +43,7 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
      * 查询一个机构的合作机构以及合作次数
      */
 
-    @Query("match (a:Institution)-[t:cooperate]-(b:Institution) where id(a)={id} return b as ins,t.weight as times limit {limit}")
+    @Query("match (a:Institution)-[t:cooperate]-(b:Institution) where id(a)={id} return b as ins,t.weight as times ORDER BY times desc limit {limit}")
     List<InstitutionAndCooperateTimes> getCooperateInstitutionAndCooperateTimesByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
     /**

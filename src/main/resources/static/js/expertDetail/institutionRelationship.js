@@ -16,12 +16,13 @@ function loadRelationshipInstitution(depath) {
             //BJData[0]=finalData[0];
             for(var i = 1;i < finalData.length;i++){
                 var oneOfBJData = [];
-                var a = {name:finalData[0]};//本机构所在城市
-                var b = {name:finalData[i].institution.location,value:finalData[i].times}//合作机构所在城市，合作次数
+                var a = {name:finalData[0].location};//本机构所在城市
+                var b = {name:finalData[i].institution.location,value:(finalData[i].times*5+20)}//合作机构所在城市，合作次数
                 oneOfBJData.push(a);
                 oneOfBJData.push(b);
                 BJData.push(oneOfBJData);
             }
+
             var geoCoordMap = {
                 '上海': [121.4648, 31.2891],
                 '东莞': [113.8953, 22.901],
@@ -155,17 +156,19 @@ function loadRelationshipInstitution(depath) {
                 return res;
             };
 
+
+
             var color = [ '#199BCC'];
             var series = [];
-            [[finalData[0],BJData]].forEach(function (item, i) {
+            [[finalData[0].name+' :'+finalData[0].location,BJData]].forEach(function (item, i) {
                 series.push(
                     {   //连线效果
-                        name: item[0] + ' Top10',
+                        name: finalData[0].name+' :'+finalData[0].location ,
                         type: 'lines',
                         //zlevel: 2,
                         symbol: ['none'],
                         symbolSize: 10,
-                        /*飞机效果
+                        /*//飞机效果
                          effect: {
                          show: true,
                          period: 6,
@@ -184,7 +187,7 @@ function loadRelationshipInstitution(depath) {
                         data: convertData(item[1])
                     },
                     {  //亮点效果
-                        name: item[0] + ' Top10',
+                        name:  ' 合作机构',
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
                         //zlevel: 2,
@@ -208,14 +211,128 @@ function loadRelationshipInstitution(depath) {
                         },
                         data: item[1].map(function (dataItem) {
                             return {
+                                //[{name: '北京'}, {name: '邢台', value: 95}]
                                 name: dataItem[1].name,
-                                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])//cityToInstitutions(dataItem[1].name)
                             };
                         })
                     });
             });
 
-            var legend = [[finalData[0]+' Top10'],[finalData[1].institution.location]];
+            var series1 = [];
+            // var BJData = [
+            //[{name: '北京'}, {name: '邢台', value: 95}],
+            Array.prototype.contains = function (obj) {
+                var i = this.length;
+                while (i--) {
+                    if (this[i] === obj) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            var allCityArray = [];
+            var cooperateInstitution = finalData.slice(1);
+            var cityToInstitutions = function (city){//完成根据城市找机构功能
+                var institutions = [];
+                cooperateInstitution.forEach(function(cooperateInstitution){
+                    if(city == cooperateInstitution.institution.location){
+                        institutions.push(cooperateInstitution.institution.name);
+                    }
+                });
+                return institutions;
+            }//完成根据城市找机构功能
+            cooperateInstitution.forEach(function(cooperateInstitution){
+                if(!allCityArray.contains(cooperateInstitution.institution.location)){
+                    allCityArray.push(cooperateInstitution.institution.location);
+                }
+            });//获得所有涉及到的城市
+            var datas = [];
+            var getCooperateInstitutionByCity = function (city){
+                var Data = [];
+                cooperateInstitution.forEach(function(cooperateInstitution){
+                    for(var i = 0;i < BJData.length;i++){
+                        if(BJData[i][1].name == city){
+                            Data.push(BJData[i]);
+                        }
+                    }
+                });
+                datas.push(Data);
+            }//根据城市选出BJData形式的Data
+            var DATAS = [];
+            allCityArray.forEach(function (city) {
+                var institutions = cityToInstitutions(city);
+                var cityAndItsInstitution = {city:city,itsInstitution:institutions};
+                DATAS.push(cityAndItsInstitution,getCooperateInstitutionByCity(city));
+            });
+            var color1 = [ ];
+            for(var i = 0;i < DATAS.length;i++){
+                color1.push('#'+(9-i)+'9'+i+'BCC');
+            }
+            DATAS.forEach(function (item, i) {
+                series1.push(
+                    {   //连线效果
+                        name: item[0].city+':'+item[0].itsInstitution ,
+                        type: 'lines',
+                        //zlevel: 2,
+                        symbol: ['none'],
+                        symbolSize: 10,
+                        /*//飞机效果
+                         effect: {
+                         show: true,
+                         period: 6,
+                         trailLength: 0,
+                         symbol: planePath,
+                         symbolSize: 15
+                         },*/
+                        lineStyle: {
+                            normal: {
+                                color: color1[i],
+                                width: 1,
+                                //opacity: 0.6,
+                                curveness: 0.2
+                            }
+                        },
+                        data: convertData(item[1])
+                    },
+                    {  //亮点效果
+                        name:  ' 合作机构',
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        //zlevel: 2,
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{b}'
+                            }
+                        },
+                        symbolSize: function (val) {
+                            return val[2] / 8;
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: color[i]
+                            }
+                        },
+                        data: item[1].map(function (dataItem) {
+                            return {
+                                //[{name: '北京'}, {name: '邢台', value: 95}]
+                                name: dataItem[1].name,
+                                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])//cityToInstitutions(dataItem[1].name)
+                            };
+                        })
+                    });
+            });
+            var legend1 = [];
+            for(var i = 0;i < DATAS.length;i++){
+                legend1.push(DATAS[i][0].city+':'+DATAS[i][0].itsInstitution);
+            }
+
+            var legend = [finalData[0].name+' :'+finalData[0].location];
             var option = {
                 backgroundColor: '#ffffff',
                 title: {
@@ -233,7 +350,7 @@ function loadRelationshipInstitution(depath) {
                     orient: 'vertical',
                     top: 'bottom',
                     left: 'right',
-                    data: legend,
+                    data: legend1,
                     textStyle: {
                         color: '#000'
                     },
@@ -259,7 +376,7 @@ function loadRelationshipInstitution(depath) {
                         }
                     }
                 },
-                series: series
+                series: series1
             };
             myChart.setOption(option);
 
@@ -385,17 +502,17 @@ function loadRelationshipInstitution(depath) {
     };
 
     var BJData = [
-        [{name: '北京'}, {name: '邢台', value: 95}],
-        [{name: '北京'}, {name: '上海', value: 95}],
-        [{name: '北京'}, {name: '广州', value: 90}],
-        [{name: '北京'}, {name: '大连', value: 80}],
-        [{name: '北京'}, {name: '南宁', value: 70}],
-        [{name: '北京'}, {name: '南昌', value: 60}],
-        [{name: '北京'}, {name: '拉萨', value: 50}],
-        [{name: '北京'}, {name: '长春', value: 40}],
-        [{name: '北京'}, {name: '包头', value: 30}],
-        [{name: '北京'}, {name: '重庆', value: 20}],
-        [{name: '北京'}, {name: '常州', value: 10}]
+    [{name: '北京'}, {name: '邢台', value: 95}],
+    [{name: '北京'}, {name: '上海', value: 95}],
+    [{name: '北京'}, {name: '广州', value: 90}],
+    [{name: '北京'}, {name: '大连', value: 80}],
+    [{name: '北京'}, {name: '南宁', value: 70}],
+    [{name: '北京'}, {name: '南昌', value: 60}],
+    [{name: '北京'}, {name: '拉萨', value: 50}],
+    [{name: '北京'}, {name: '长春', value: 40}],
+    [{name: '北京'}, {name: '包头', value: 30}],
+    [{name: '北京'}, {name: '重庆', value: 20}],
+    [{name: '北京'}, {name: '常州', value: 10}]
     ];
 
     //var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';

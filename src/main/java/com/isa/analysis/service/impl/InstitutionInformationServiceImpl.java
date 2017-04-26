@@ -85,8 +85,9 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
     public List<Object> generateInstitutionAndCooperateTimes(Long id, int limit) {
         List<InstitutionAndCooperateTimes> cooperateInstitutionAndTimes = institutionRepository.getCooperateInstitutionAndCooperateTimesByInstitutionId(id,limit);
         String institutionLocation = institutionRepository.getInstitutionLocationByInstitutionId(id);
+        Institution thisInstitution = institutionRepository.getInstitutionByInstitutionId(id);
         List<Object> result = new ArrayList<>();
-        result.add(institutionLocation);
+        result.add(thisInstitution);
         for (InstitutionAndCooperateTimes oneOfRecord : cooperateInstitutionAndTimes
              ) {
             if(oneOfRecord.getInstitution().getLocation()!=null&&!(oneOfRecord.getInstitution().getLocation().equals(""))){
@@ -95,6 +96,7 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
         }
         return result;
     }
+
 
     /*
     * 返回合作机构以及合作次数

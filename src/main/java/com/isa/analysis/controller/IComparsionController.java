@@ -26,8 +26,6 @@ public class IComparsionController {
     @Autowired
     private InstitutionInformationService institutionInformationService;
 
-
-
     /*
     * 网页传来两个机构的ID
     * */
@@ -50,9 +48,31 @@ public class IComparsionController {
     }
 
 
-    @RequestMapping(value = "/ComparisonofInstitutions/test")
+
+    /*
+    * 两个机构各自的合作关系
+    * */
+    @RequestMapping(value = "/ComparisonofInstitutions/cooperateRelationshipComparsion")
     public  @ResponseBody
-    List<Integer> test(
+    List<List<Object>> cooperateRelationshipComparsionOfTwoInstitution(
+            @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
+            @RequestParam(value = "firstInstitutionId", required = false, defaultValue = "1")Long firstInstitutionId,
+            @RequestParam(value = "secondInstitutionId", required = false, defaultValue = "117")Long secondInstitutionId
+    ){
+        List<Object> firstInstitutionCooperateTimes = institutionInformationService.generateInstitutionAndCooperateTimes(firstInstitutionId,limit);
+        List<Object> secondInstitutionCooperateTimes = institutionInformationService.generateInstitutionAndCooperateTimes(secondInstitutionId,limit);
+        List<List<Object>> twoInstitutionCooperateTimes = new ArrayList<>();
+        twoInstitutionCooperateTimes.add(firstInstitutionCooperateTimes);
+        twoInstitutionCooperateTimes.add(secondInstitutionCooperateTimes);
+        return twoInstitutionCooperateTimes;
+    }
+
+    /*
+    * 两个机构发表的论文数量
+    * */
+    @RequestMapping(value = "/ComparisonofInstitutions/PapersCom")
+    public  @ResponseBody
+    List<Integer> paperNumOfTwoInstitution(
             @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
             @RequestParam(value = "firstInstitutionId", required = false, defaultValue = "1")Long firstInstitutionId,
             @RequestParam(value = "secondInstitutionId", required = false, defaultValue = "117")Long secondInstitutionId
@@ -65,7 +85,10 @@ public class IComparsionController {
              ) {
             numOfFirstInstitutionPaper.add((Integer)entry.getValue());
         }
-
+        for (Map.Entry entry : secondInstitution.entrySet()
+                ) {
+            numOfFirstInstitutionPaper.add((Integer)entry.getValue());
+        }
         return numOfFirstInstitutionPaper;
     }
 
