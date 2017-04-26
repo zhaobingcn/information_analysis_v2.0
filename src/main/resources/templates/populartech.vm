@@ -282,12 +282,15 @@
         <div  class="page-wrapper">
             <div class="container-fluid">
             	<div class="row">
-            		<div class="col-lg-6 col-xs-6 col-lg-push-2">
-            			<svg class="svg-position" width="1030" height="600"></svg>
+            		<div class="col-lg-12 col-xs-12">
+            			<svg id="svgdia" width="100%" height="630"></svg>
             		</div>
-            		<!-- /.col-lg-6 -->
-            		<div class="col-lg-4 col-xs-4 col-lg-pull-6 col-xs-pull-6" style="padding-top: 30px;padding-left: 0;">
-            			<div class="panel panel-green" style="opacity: 0.6;">
+            		<!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+            		<div class="col-lg-3 col-xs-3" style="padding-left: 0;position: absolute;top: 100px;">
+            			<div class="panel panel-green" style="opacity: 0.7;">
             				<div class="panel-heading">相关论文</div>
             				<div class="panel-body">
             					<p id="paper-left">related papers</p>
@@ -302,8 +305,8 @@
             			</div>
             			<!-- /.panel panel-green -->
             		</div>
-            		<!-- /.col-lg-4 -->
-            		<div class="col-lg-2 col-xs-2" style="padding-top: 30px;padding-right: 0;">
+            		<!-- /.col-lg-3 -->
+            		<div class="col-lg-2 col-xs-2 col-lg-push-10 col-xs-push-10" style="padding-right: 0;position: absolute;top: 100px;">
             			<div class="panel panel-green" style="opacity: 0.7;">
             				<div class="panel-heading">相关关键词</div>
             				<div class="panel-body">
