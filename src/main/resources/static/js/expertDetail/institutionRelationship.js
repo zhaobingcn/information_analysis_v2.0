@@ -247,23 +247,25 @@ function loadRelationshipInstitution(depath) {
                     allCityArray.push(cooperateInstitution.institution.location);
                 }
             });//获得所有涉及到的城市
-            var datas = [];
             var getCooperateInstitutionByCity = function (city){
                 var Data = [];
-                cooperateInstitution.forEach(function(cooperateInstitution){
+                //cooperateInstitution.forEach(function(cooperateInstitution){
                     for(var i = 0;i < BJData.length;i++){
                         if(BJData[i][1].name == city){
                             Data.push(BJData[i]);
                         }
                     }
-                });
-                datas.push(Data);
+                //});
+                return(Data);
             }//根据城市选出BJData形式的Data
             var DATAS = [];
             allCityArray.forEach(function (city) {
+                var datas =[];
                 var institutions = cityToInstitutions(city);
                 var cityAndItsInstitution = {city:city,itsInstitution:institutions};
-                DATAS.push(cityAndItsInstitution,getCooperateInstitutionByCity(city));
+                datas.push(cityAndItsInstitution);
+                datas.push(getCooperateInstitutionByCity(city));
+                DATAS.push(datas);
             });
             var color1 = [ ];
             for(var i = 0;i < DATAS.length;i++){
@@ -354,7 +356,7 @@ function loadRelationshipInstitution(depath) {
                     textStyle: {
                         color: '#000'
                     },
-                    selectedMode: 'single'
+                    //selectedMode: 'single'
                 },
                 geo: {
                     map: 'china', //引入china.js
