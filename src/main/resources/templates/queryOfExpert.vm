@@ -374,50 +374,55 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
-                <div class="col-lg-8">
-                    <div class="panel panel-red">
-                        <div class="panel-heading" >
-                            为您检索到如下结果：
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12" id = "author-list-div">
+                <div id="query-result" style="display: none">
+                    <div class="col-lg-8">
+                        <div class="panel panel-red">
+                            <div class="panel-heading" >
+                                为您检索到如下结果：
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12" id = "author-list-div">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <button type="button" id="query-result-button-one" class="btn btn-outline btn-default btn-block">首页</button>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button type="button" id="query-result-button-two" class="btn btn-outline btn-default btn-block">下一页</button>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button type="button" id="query-result-button-one" class="btn btn-outline btn-default btn-block">首页</button>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <button type="button" id="query-result-button-two" class="btn btn-outline btn-default btn-block">下一页</button>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
+                    <!-- /.col-lg-8 -->
 
-                <div class="col-lg-4">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            专家合作以及对比分析
-                        </div>
-                        <div class="panel-body" id="addprofessor">
-                        </div>
-                        <div class="panel-footer">
-                            <button type="button" id="cooperate-button" class="btn btn-outline btn-default btn-block" onclick="comparsionPage()">专家对比分析</button>
+                    <div class="col-lg-4">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                专家合作以及对比分析
+                            </div>
+                            <div class="panel-body" id="addprofessor">
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" id="cooperate-button" class="btn btn-outline btn-default btn-block" onclick="comparsionPage()">专家对比分析</button>
+                            </div>
                         </div>
                     </div>
+                    <!-- /.col-lg-4 -->
                 </div>
+                <!-- /#query-result -->
             </div>
             <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -441,6 +446,8 @@
     <script src = "/js/echarts.js"></script>
 
     <script src = "/js/queryExpert/comparsionPageOnclick.js"></script>
+
+    <script src="../js/queryExpert/showingQueryResult.js"></script>
 
     <script type="text/javascript">
 //        $("#compare-institution").click();

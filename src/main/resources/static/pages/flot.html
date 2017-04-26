@@ -414,7 +414,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline btn-danger btn-block">检索</button>
+                                            <button type="button" id="querybutton" class="btn btn-outline btn-danger btn-block">检索</button>
                                         </div>
                                     </div>
                                 </form>
@@ -426,17 +426,18 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
-                <div class="col-lg-8">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            为您检索到如下结果：
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                <div id="query-result" style="display: none">
+                    <div class="col-lg-8">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                为您检索到如下结果：
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
 
                                                 <div class="panel-heading">
                                                     <div class="row">
@@ -446,9 +447,9 @@
                                                         </div>
                                                         <div class="col-lg-5 col-md-5">
                                                             <a href="morris.html">
-                                                            <div>
-                                                                <span style="font-size: large">詹毅</span>
-                                                            </div>
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
                                                             </a>
                                                             <div>
                                                                 <span style="font-size: large">中国电子科技集团33所</span>
@@ -467,257 +468,259 @@
                                                     </div>
                                                 </div>
 
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2"  style="text-align: center">
+                                                            <i class="fa fa-user fa-4x"></i>
+                                                            <a href="#">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
+                                                            </a>
                                                             <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <span style="font-size: large">中国电子科技集团33所</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <div>
+                                                                <span style="font-size: large">发表文章：</span>
+                                                                <span style="font-size: large">26</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: large">被引用次数：</span>
+                                                                <span style="font-size: large">69</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
                                             </div>
-
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2" style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2" style="text-align: center">
+                                                            <i class="fa fa-user fa-4x"></i>
+                                                            <a href="#">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
+                                                            </a>
                                                             <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <span style="font-size: large">中国电子科技集团33所</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <div>
+                                                                <span style="font-size: large">发表文章：</span>
+                                                                <span style="font-size: large">26</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: large">被引用次数：</span>
+                                                                <span style="font-size: large">69</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
                                             </div>
-
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2" style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2" style="text-align: center">
+                                                            <i class="fa fa-user fa-4x"></i>
+                                                            <a href="#">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
+                                                            </a>
                                                             <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <span style="font-size: large">中国电子科技集团33所</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <div>
+                                                                <span style="font-size: large">发表文章：</span>
+                                                                <span style="font-size: large">26</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: large">被引用次数：</span>
+                                                                <span style="font-size: large">69</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
                                             </div>
-
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
 
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2"  style="text-align: center">
+                                                            <i class="fa fa-user fa-4x"></i>
+                                                            <a href="#">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
+                                                            </a>
                                                             <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <span style="font-size: large">中国电子科技集团33所</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <div>
+                                                                <span style="font-size: large">发表文章：</span>
+                                                                <span style="font-size: large">26</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: large">被引用次数：</span>
+                                                                <span style="font-size: large">69</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2"  style="text-align: center">
-                                                        <i class="fa fa-user fa-4x"></i>
-                                                        <a href="#">
-                                                        <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <a href="#">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2"  style="text-align: center">
+                                                            <i class="fa fa-user fa-4x"></i>
+                                                            <a href="#">
+                                                                <i class="fa fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <a href="#">
+                                                                <div>
+                                                                    <span style="font-size: large">詹毅</span>
+                                                                </div>
+                                                            </a>
                                                             <div>
-                                                                <span style="font-size: large">詹毅</span>
+                                                                <span style="font-size: large">中国电子科技集团33所</span>
                                                             </div>
-                                                        </a>
-                                                        <div>
-                                                            <span style="font-size: large">中国电子科技集团33所</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5">
-                                                        <div>
-                                                            <span style="font-size: large">发表文章：</span>
-                                                            <span style="font-size: large">26</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style="font-size: large">被引用次数：</span>
-                                                            <span style="font-size: large">69</span>
+                                                        <div class="col-lg-5 col-md-5">
+                                                            <div>
+                                                                <span style="font-size: large">发表文章：</span>
+                                                                <span style="font-size: large">26</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="font-size: large">被引用次数：</span>
+                                                                <span style="font-size: large">69</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <!--<a href="#">-->
-                                            <!--<div class="panel-footer">-->
-                                            <!--<span class="pull-left">查看详情</span>-->
-                                            <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-                                            <!--<div class="clearfix"></div>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
+                                                <!--<a href="#">-->
+                                                <!--<div class="panel-footer">-->
+                                                <!--<span class="pull-left">查看详情</span>-->
+                                                <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                                                <!--<div class="clearfix"></div>-->
+                                                <!--</div>-->
+                                                <!--</a>-->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a target="_blank" class="btn btn-default btn-lg btn-block" href="http://www.flotcharts.org/">下一页</a>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <a target="_blank" class="btn btn-default btn-lg btn-block" href="http://www.flotcharts.org/">下一页</a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
+                    <!-- /.col-lg-8 -->
 
-                <div class="col-lg-4">
-                    <div class="panel-red">
-                        <div class="panel-heading">
-                            专家合作以及对比分析
-                        </div>
-                        <div class="panel-body" id="addprofessor">
+                    <div class="col-lg-4">
+                        <div id="query-result-compare" class="panel-red">
+                            <div class="panel-heading">
+                                专家合作以及对比分析
+                            </div>
+                            <div class="panel-body" id="addprofessor">
 
-                        </div>
-                        <div class="panel-footer">
-                            <button type="button" class="btn btn-outline btn-primary">专家对比分析</button>
-                            <button type="button" class="btn btn-outline btn-primary">专家合作分析</button>
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-outline btn-primary">专家对比分析</button>
+                                <button type="button" class="btn btn-outline btn-primary">专家合作分析</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- /.row -->
             </div>
@@ -738,6 +741,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script src="../js/queryExpert/showingQueryResult.js"></script>
 
     <script type="text/javascript">
         var t = $("#addprofessor").empty();
