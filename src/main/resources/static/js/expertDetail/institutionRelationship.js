@@ -317,7 +317,7 @@ function loadRelationshipInstitution(depath) {
                         },
                         itemStyle: {
                             normal: {
-                                color: color[i]
+                                color: color1[i]
                             }
                         },
                         data: item[1].map(function (dataItem) {
