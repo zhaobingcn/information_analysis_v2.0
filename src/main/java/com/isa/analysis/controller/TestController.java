@@ -44,6 +44,9 @@ public class TestController {
     @Autowired
     Scheduler scheduler;
 
+    @Autowired
+    Neo4jSessionRepository neo4jSessionRepository;
+
 
     @RequestMapping(value = "/test")
     public @ResponseBody Collection<Paper> test(){
@@ -143,7 +146,7 @@ public class TestController {
 
     @RequestMapping(value = "test12")
     public @ResponseBody List<KeywordAndInvolveTimes> test12(){
-        return keywordRepository.getKeywordsByPartition(2453l, 20);
+        return keywordRepository.getKeywordsByPartition(11750l, 20);
     }
 
     @RequestMapping(value = "test13")
