@@ -210,4 +210,24 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
             return Long.parseLong(mapId1.next().get("id").toString());
         }
     }
+
+    @Override
+    public void community() {
+
+    }
+
+    @Override
+    public void betweenness() {
+
+    }
+
+    @Override
+    public void centrileness() {
+
+    }
+
+    @Override
+    public void pagerank() {
+
+    }
 }

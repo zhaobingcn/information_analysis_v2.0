@@ -33,13 +33,9 @@ public class Scheduler {
     MongoDBDao mongoDBDao;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Scheduled(cron="0 18 11 * * ?") //每晚22点开始执行
+    @Scheduled(cron="0 58 11 * * ?") //每晚22点开始执行
 //    @Scheduled(fixedRate=6000)
     public void checkFromMongoDB() {
-
-/*
-{ "_id" : ObjectId("58ed9b581d41c8682a33c232"), "institutions" : { "华东交通大学" : "南昌" }, "title" : "从认知语言学看二外词汇习得模式和教学", "url" : "http://s.wanfangdata.com.cn/Paper.aspx?q= 题名:深度学习", "include" : null, "spidertime" : "2017-04-12 11:13:28", "quote" : 0, "abstract" : { "Chinese" : "本文从认知心理学的角度出发,着重讨论了二外学习者在词汇习得过程中的认知特点和习得过程,希望能够给词汇教学提供教学参考.首先综述了先前研究提出的两个学习者词汇认知模式:层次网络模式、激活扩散模式,探讨了二语词汇深度习得模式,并由此构建了词汇教学的对策和方法,为英语教师提供了一定参考." }, "authors" : { "聂晶" : { "location" : "南昌", "institution" : "华东交通大学" } }, "date" : { "year" : "2009", "period" : "20" }, "journal" : "考试周刊", "keywords" : [ "认知语言学", "词汇习得模式", "二语词汇教学" ], "link" : "http://d.wanfangdata.com.cn/Periodical/kszk200920087" }
- */
         Date date = new Date();
         //获取当前时间-24小时的时间
         long times = date.getTime()-1000*60*60*24*13;
@@ -57,7 +53,13 @@ public class Scheduler {
             logger.info("MongoDB中没有更新，不需要导入数据");
         }
         else{
-            for(DBObject line: c){
+            createGraph(c);
+        }
+    }
+
+    public void createGraph(ArrayList<DBObject> c){
+        for(DBObject line: c){
+            try{
                 System.out.println(line);
                 String lines = line.toString();
                 JSONObject objectLine = new JSONObject(lines);
@@ -140,8 +142,15 @@ public class Scheduler {
                 for(int i=0; i<authorsId.size(); i++){
                     neo4jTemplateRepository.createRelationship(authorsId.get(i), paperId, "publish", (int)(1.0/authorsId.size()*100));
                 }
+            }catch (Exception e){
+                logger.info("该行数据出现错误");
+                e.printStackTrace();
             }
+
         }
     }
 
+    public void generateCommunity(){
+
+    }
 }

@@ -74,4 +74,24 @@ public interface Neo4jTemplateRepository {
      * @return
      */
     Long createRelationship(Long id1, Long id2, String relationshipType, int weight);
+
+    /**
+     * 运行社区发现算法
+     */
+    void community();
+
+    /**
+     * 查找关键节点
+     */
+    void betweenness();
+
+    /**
+     * 发现意见领袖
+     */
+    void centrileness();
+
+    /**
+     * 运行pagerank
+     */
+    void pagerank();
 }
