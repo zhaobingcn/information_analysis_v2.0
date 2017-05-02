@@ -517,7 +517,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="expert-relationship-comparison" style="width: 100%; height: 350px;">
+                            <div id="expert-relationship-comparison-1" style="width: 100%; height: 350px;">
 
                             </div>
                         </div>
@@ -532,7 +532,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="expert-relationship-comparison" style="width: 100%; height: 350px;">
+                            <div id="expert-relationship-comparison-2" style="width: 100%; height: 350px;">
 
                             </div>
                         </div>
@@ -673,6 +673,13 @@
 
         loadAbilityExpertCompare(id1, ability_window1)
         loadAbilityExpertCompare(id2, ability_window2)
+
+        var relationship_window1 = "expert-relationship-comparison-1";
+        var relationship_window2 = "expert-relationship-comparison-2";
+
+        loadRelationshipExpertCompare(id1, 2, relationship_window1);
+        loadRelationshipExpertCompare(id2, 2, relationship_window2);
+
     </script>
     <!-- 专家二研究方向云图 -->
 ##    <script type="text/javascript" src = "../js/expertComparsion/secondExpertInterestCompare.js"></script>

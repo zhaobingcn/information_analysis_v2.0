@@ -1,8 +1,9 @@
 /**
  * Created by lsy on 2017/2/28.
  */
-function loadRelationshipExpertCompare() {
-    var myChart = echarts.init(document.getElementById('expert-relationship-comparison'));
+function loadRelationshipExpertCompare(id, depath, window) {
+    var $loadWindow = document.getElementById(window);
+    var myChart = echarts.init($loadWindow);
     myChart.showLoading();
 
     $.ajax({
@@ -10,8 +11,8 @@ function loadRelationshipExpertCompare() {
         type: "get",
         dataType : "json",
         data:{
-            "id": 63,
-            "depath" : 3
+            "id": id,
+            "depath" : depath
         },
         success : function (graph) {
             myChart.hideLoading();
@@ -48,9 +49,9 @@ function loadRelationshipExpertCompare() {
                         name: '专家',
                         type: 'graph',
                         layout: 'force',
-                        // circular: {
-                        //     rotateLabel: true
-                        // },
+                        circular: {
+                            rotateLabel: true
+                        },
                         data: graph.nodes.map(function (node, idx) {
                             node.id = idx;
                             return node;
@@ -82,4 +83,3 @@ function loadRelationshipExpertCompare() {
         }
     });
 }
-loadRelationshipExpertCompare();
