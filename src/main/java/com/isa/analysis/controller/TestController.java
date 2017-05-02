@@ -4,6 +4,7 @@ import com.isa.analysis.sdn.entity.*;
 import com.isa.analysis.sdn.entity.QueryResult.AuthorAndWorkTogetherTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
 import com.isa.analysis.sdn.repository.*;
+import com.isa.analysis.service.KeywordDetailService;
 import com.isa.analysis.service.KeywordViewService;
 import com.isa.analysis.service.runtime.impl.Scheduler;
 import org.apache.commons.collections.map.HashedMap;
@@ -40,6 +41,12 @@ public class TestController {
 
     @Autowired
     private KeywordViewService keywordViewService;
+
+    @Autowired
+    private SimilarRepository similarRepository;
+
+    @Autowired
+    private KeywordDetailService keywordDetailService;
 
     @Autowired
     Scheduler scheduler;
@@ -155,4 +162,16 @@ public class TestController {
     }
 
 
+    @RequestMapping(value = "test14")
+    public @ResponseBody List<List<Keyword>> test14() {
+        return keywordRepository.getRelatedKeywordsWithDepath(45l);
+    }
+
+    @RequestMapping(value = "test15")
+    public @ResponseBody List<List<Similar>> test15() {
+        return similarRepository.getRelationshipsWithDeapth(45l);
+    }
+
+    @RequestMapping(value = "test16")
+    public @ResponseBody Map<String, Object> test16(){return keywordDetailService.generateKeywordsRelationship(45l);}
 }

@@ -1,17 +1,17 @@
 /**
  * Created by lsy on 2017/2/28.
  */
-function loadRelationshipExpertCompare(depath) {
+function loadRelationshipExpertCompare() {
     var myChart = echarts.init(document.getElementById('expert-relationship-comparison'));
     myChart.showLoading();
 
     $.ajax({
-        url : "/detailOfExpert/cooperateOfAuthor",
+        url : "/ComparisonOfExpert/cooperateOfAuthor",
         type: "get",
         dataType : "json",
         data:{
-            "id":id,
-            "depath" : depath
+            "id": 63,
+            "depath" : 3
         },
         success : function (graph) {
             myChart.hideLoading();

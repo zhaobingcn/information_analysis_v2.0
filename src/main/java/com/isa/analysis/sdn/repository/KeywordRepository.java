@@ -2,6 +2,7 @@ package com.isa.analysis.sdn.repository;
 
 import com.isa.analysis.sdn.entity.Keyword;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
+import com.isa.analysis.sdn.entity.Similar;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.annotation.QueryResult;
 import org.springframework.data.neo4j.repository.GraphRepository;
@@ -54,5 +55,8 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
      */
     @Query("MATCH (k:Keyword{name:{name}})-[s:similar]-(k2:Keyword) RETURN k2.name as name, s.weight AS score ORDER BY score DESC LIMIT 5")
     List<Map<String, Object>> getSimilarKeywords(@Param(value = "name")String name);
+
+    @Query("match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1..2]-(:Keyword) return nodes(p)")
+    List<List<Keyword>> getRelatedKeywordsWithDepath(@Param(value = "id")Long id);
 
 }

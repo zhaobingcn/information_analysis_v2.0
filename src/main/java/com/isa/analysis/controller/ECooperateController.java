@@ -8,6 +8,7 @@ import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.ExpertDetailPageService;
+import com.isa.analysis.service.RestApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,9 @@ public class ECooperateController {
 
     @Autowired
     private ExpertDetailPageService expertDetailPageService;
+
+    @Autowired
+    private RestApiService restApiService;
 
     @RequestMapping(value = "/ComparisonOfExpert/commitComparison")
     public String eComparison (Model model,
@@ -79,6 +83,15 @@ public class ECooperateController {
             @RequestParam(value = "id", required = false)Long id
     ){
         return expertDetailPageService.generateAuthorAbility(id);
+    }
+
+    @RequestMapping(value = "/ComparisonOfExpert/cooperateOfAuthor")
+    public @ResponseBody
+    Map<String, Object> cooperateRelation(
+            @RequestParam(value = "id", required = false, defaultValue = "63")Long id,
+            @RequestParam(value = "depath", required = false, defaultValue = "3")int depath
+    ){
+        return restApiService.generateWorkTogetherGraph(id, depath);
     }
 
 }

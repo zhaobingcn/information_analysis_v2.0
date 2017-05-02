@@ -46,7 +46,6 @@ public class MongoDBDaoImpl implements MongoDBDao {
             } catch (MongoException e){
                 e.printStackTrace();
             }
-
         }
     }
 
