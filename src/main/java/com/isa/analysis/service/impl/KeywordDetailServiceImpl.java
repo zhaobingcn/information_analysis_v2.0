@@ -25,8 +25,8 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
     @Override
     public Map<String, Object> generateKeywordsRelationship(Long id) {
 
-        List<List<Keyword>> keywords = keywordRepository.getRelatedKeywordsWithDepath(id);
-        List<List<Similar>> relationships = similarRepository.getRelationshipsWithDeapth(id);
+        List<List<Map<String, Object>>> keywords = keywordRepository.getRelatedKeywordsWithDepath(id);
+        List<List<Map<String, Object>>> relationships = similarRepository.getRelationshipsWithDeapth(id);
         /**
          * 两个结果list  node的和relationship的
          */
@@ -40,7 +40,9 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
         for(int i=0; i<relationships.size(); i++){
 
             for(int j=0; j<relationships.get(i).size(); j++){
-                System.out.println(relationships.get(i).get(j).getId());
+
+                System.out.println(relationships.get(i).get(j));
+
             }
         }
         return null;

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 17-5-2.
@@ -15,5 +16,5 @@ import java.util.List;
 public interface SimilarRepository extends GraphRepository<Similar> {
 
     @Query("match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1..2]-(:Keyword) return relationships(p)")
-    List<List<Similar>> getRelationshipsWithDeapth(@Param(value = "id") Long id);
+    List<List<Map<String, Object>>> getRelationshipsWithDeapth(@Param(value = "id") Long id);
 }

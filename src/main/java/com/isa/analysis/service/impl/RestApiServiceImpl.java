@@ -124,4 +124,6 @@ public class RestApiServiceImpl implements RestApiService {
         }
         return mapUtil.map("type", "force", "categories", categories, "nodes", nodes, "links", rels);
     }
+
+
 }

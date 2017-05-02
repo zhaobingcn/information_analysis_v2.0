@@ -57,6 +57,6 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
     List<Map<String, Object>> getSimilarKeywords(@Param(value = "name")String name);
 
     @Query("match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1..2]-(:Keyword) return nodes(p)")
-    List<List<Keyword>> getRelatedKeywordsWithDepath(@Param(value = "id")Long id);
+    List<List<Map<String, Object>>> getRelatedKeywordsWithDepath(@Param(value = "id")Long id);
 
 }
