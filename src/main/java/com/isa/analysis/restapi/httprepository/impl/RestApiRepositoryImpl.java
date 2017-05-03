@@ -49,6 +49,28 @@ public class RestApiRepositoryImpl implements RestApiRepository{
         return graphResult;
     }
 
+    @Override
+    public JSONObject getSimilarPaths(Long id, int depath) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", id);
+        String[] resultDataContents = new String[] {"graph", "rest"};
+        String query = "match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1.." +depath+ "]-(:Keyword) return p";
+        JSONObject commitParams = generateStatements(query, parameters, resultDataContents);
+        JSONObject graphResult = restQuery.httpPost(TRANSACTION_URL, commitParams);
+        return graphResult;
+    }
+
+    @Override
+    public JSONObject getSimilarPaths(String name, int depath) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", name);
+        String[] resultDataContents = new String[] {"graph", "rest"};
+        String query = "match (k:Keyword) where k.name = {name} with k match p = (k)-[:similar*1.." +depath+ "]-(:Keyword) return p";
+        JSONObject commitParams = generateStatements(query, parameters, resultDataContents);
+        JSONObject graphResult = restQuery.httpPost(TRANSACTION_URL, commitParams);
+        return graphResult;
+    }
+
 
     @Override
     public JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents){

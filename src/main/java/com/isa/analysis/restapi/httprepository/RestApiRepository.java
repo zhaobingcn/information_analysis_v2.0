@@ -22,6 +22,22 @@ public interface RestApiRepository {
     JSONObject getWorkTogetherPaths(Long id, int depath);
 
     /**
+     * 查询途中关键词关系的子图，可以定义深度，使用id作为参数
+     * @param id
+     * @param depath
+     * @return
+     */
+    JSONObject getSimilarPaths(Long id, int depath);
+
+    /**
+     * 使用关键词名字作为参数
+     * @param name
+     * @param depath
+     * @return
+     */
+    JSONObject getSimilarPaths(String name, int depath);
+
+    /**
      * 生成rest 请求的参数格式
      * @param query
      * @param parameters
@@ -36,4 +52,6 @@ public interface RestApiRepository {
      * @return
      */
     Long getDegreeOfNode(Long id, String type);
+
+
 }

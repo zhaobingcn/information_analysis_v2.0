@@ -19,8 +19,8 @@ import java.util.Map;
 @Service
 public class RestApiServiceTest {
 
-    @Autowired
-    private RestQuery restQuery;
+//    @Autowired
+    private RestQuery restQuery = new RestQuery();
 
     final String TRANSACTION_URL = "http://neo4j:654321@localhost:7474/db/data/transaction/commit";
     final String CYPHER_URL = "http://neo4j:654321@localhost:7474/db/data/cypher";
@@ -63,21 +63,24 @@ public class RestApiServiceTest {
         }
     }
 
-    public JSONObject generateWorkTogetherGraph(String name, String institution){
+    public void generateWorkTogetherGraph(Long id, int depath){
 
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("name", name);
-        parameters.put("institution", institution);
-
+        parameters.put("id", id);
         String[] resultDataContents = new String[] {"graph", "rest"};
-        return null;
+        String query = "match path = (a:Author)" +
+                "-[:work_together*" + depath + "]-(b:Author) where id(a)={id} return path";
+        JSONObject commitParams = generateStatements(query, parameters, resultDataContents);
+        JSONObject graphResult = restQuery.httpPost(TRANSACTION_URL, commitParams);
+        Map<String, Object> map = graphResult.toMap();
+        System.out.println(map.toString());
     }
 
 
 
 //    public static void main(String[] args){
 //        RestApiServiceTest t = new RestApiServiceTest();
-//        t.test();
+//        t.generateWorkTogetherGraph(63l,3);
 //    }
 
     public JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents){

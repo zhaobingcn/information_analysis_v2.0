@@ -24,17 +24,17 @@ public class RestApiServiceImpl implements RestApiService {
     @Override
     public Map<String, Object> generateWorkTogetherGraph(String name, String institution, int depath) {
         JSONObject restResult = restApiRepository.getWorkTogetherPaths(name, institution, depath);
-        return generateGraph(restResult, depath);
+        return generateAuthorGraph(restResult, depath);
     }
 
     @Override
     public Map<String, Object> generateWorkTogetherGraph(Long id, int depath) {
         JSONObject restResult = restApiRepository.getWorkTogetherPaths(id, depath);
-        return generateGraph(restResult, depath);
+        return generateAuthorGraph(restResult, depath);
     }
 
     @Override
-    public Map<String, Object> generateGraph(JSONObject restResult, int depath) {
+    public Map<String, Object> generateAuthorGraph(JSONObject restResult, int depath) {
         /**
          * 两个结果list  node的和relationship的
          */
@@ -124,6 +124,108 @@ public class RestApiServiceImpl implements RestApiService {
         }
         return mapUtil.map("type", "force", "categories", categories, "nodes", nodes, "links", rels);
     }
+
+    @Override
+    public Map<String, Object> generateSimilarGraph(Long id, int depath) {
+        JSONObject restResult = restApiRepository.getSimilarPaths(id, depath);
+        return generateKeywordGraph(restResult, depath);
+    }
+
+    @Override
+    public Map<String, Object> generateSimilarGraph(String name, int depath) {
+        JSONObject restResult = restApiRepository.getSimilarPaths(name, depath);
+        return generateKeywordGraph(restResult, depath);
+    }
+
+    @Override
+    public Map<String, Object> generateKeywordGraph(JSONObject restResult, int depath) {
+        /**
+         * 两个结果list  node的和relationship的
+         */
+        List<Map<String, Object>> nodes = new ArrayList<>();
+        List<Map<String, Object>> rels = new ArrayList<>();
+        /**
+         * 用来查询node和relationship是否多次出现过
+         */
+        Map<Long, Integer> checkNodes = new HashMap<>();
+        HashSet<Long> checkRels = new HashSet<>();
+        int categoriesCount = depath+1;
+        int nodeId = 0;
+        try{
+            JSONArray paths  = restResult.getJSONArray("results").getJSONObject(0).getJSONArray("data");
+            int length = paths.length();
+            /**
+             * 遍历每一条作者合作路径，既返回graph又返回rest
+             */
+            for(int pathIndex=0; pathIndex<length; pathIndex++){
+                JSONObject graphPath =  paths.getJSONObject(pathIndex).getJSONObject("graph");
+                JSONObject restPath = paths.getJSONObject(pathIndex).getJSONArray("rest").getJSONObject(0);
+
+                JSONArray graphPathRelationships = graphPath.getJSONArray("relationships");
+                JSONArray graphPathNodes = graphPath.getJSONArray("nodes");
+
+                /**
+                 * 利用rest返回的node url构建node id的list,为了在下一步解决是起始节点的几层关系
+                 */
+                JSONArray restPathNodes = restPath.getJSONArray("nodes");
+                List<String> restPathNodesIds = new ArrayList<>();
+                for(int restNodeIndex = 0; restNodeIndex < restPathNodes.length(); restNodeIndex ++){
+                    String restNodeUrl = restPathNodes.getString(restNodeIndex);
+                    int beginIndex = restNodeUrl.lastIndexOf("node/") + 5;
+                    String restNodeId = restNodeUrl.substring(beginIndex);
+                    restPathNodesIds.add(restNodeId);
+                }
+
+
+                for(int pathNodeIndex = 0; pathNodeIndex < graphPathNodes.length(); pathNodeIndex++){
+                    JSONObject anode = graphPathNodes.getJSONObject(pathNodeIndex);
+                    if(checkNodes.containsKey(Long.parseLong(anode.getString("id")))){
+                        /**
+                         * 如果路径中该节点与起始节点直接距离更小，那么用更小的距离代替原距离
+                         */
+                        if(restPathNodesIds.indexOf(anode.getString("id")) < Long.parseLong(nodes.get(checkNodes.get(Long.parseLong(anode.getString("id")))).get("category").toString())){
+                            Map<String, Object> author = nodes.get(checkNodes.get(Long.parseLong(anode.getString("id"))));
+                            author.replace("category",  restPathNodesIds.indexOf(anode.getString("id")));
+                        }
+                    }else{
+                        Map<String, Object> keyword = new HashMap<>();
+                        keyword.put("name", anode.getJSONObject("properties").getString("name"));
+                        keyword.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
+                        checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);
+                        nodeId++;
+                        nodes.add(keyword);
+                    }
+                }
+
+                for(int relationshipIndex = 0; relationshipIndex < graphPathRelationships.length(); relationshipIndex++){
+                    JSONObject arelationship = graphPathRelationships.getJSONObject(relationshipIndex);
+                    if(checkRels.contains(Long.parseLong(arelationship.getString("id")))){
+                        continue;
+                    }else{
+                        checkRels.add(Long.parseLong(arelationship.getString("id")));
+                        int startNodeId, endNodeId;
+                        startNodeId = checkNodes.get(Long.parseLong(arelationship.getString("startNode")));
+                        endNodeId = checkNodes.get(Long.parseLong(arelationship.getString("endNode")));
+                        HashMap<String, Object> rel = new HashMap<>();
+                        rel.put("source", startNodeId);
+                        rel.put("target", endNodeId);
+                        rel.put("value", arelationship.getJSONObject("properties").getString("weight"));
+                        rel.put("type", arelationship.getString("type"));
+                        rels.add(rel);
+                    }
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        List<Map<String, Object>> categories = new ArrayList<>();
+        categories.add(mapUtil.map("name", "该关键词", "keyword", null, "base", "Author"));
+        for(int categoryIndex=1; categoryIndex<categoriesCount; categoryIndex++){
+            categories.add(mapUtil.map("name", categoryIndex + "层相似", "keyword", null, "base", "Author"));
+        }
+        return mapUtil.map("type", "force", "categories", categories, "nodes", nodes, "links", rels);
+    }
+
 
 
 }

@@ -20,5 +20,11 @@ public interface RestApiService {
 
     Map<String, Object> generateWorkTogetherGraph(Long id, int depath);
 
-    Map<String, Object> generateGraph(JSONObject restResult, int depath);
+    Map<String, Object> generateAuthorGraph(JSONObject restResult, int depath);
+
+    Map<String, Object> generateSimilarGraph(Long id, int depath);
+
+    Map<String, Object> generateSimilarGraph(String name, int depath);
+
+    Map<String, Object> generateKeywordGraph(JSONObject restResult, int depath);
 }
