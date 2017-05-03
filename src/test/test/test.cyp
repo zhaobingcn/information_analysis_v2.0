@@ -1,0 +1,1 @@
+match (k:Keyword) where id(k)=45 with k match p = (k)-[:similar*1..2]-(:Keyword) return nodes(p)

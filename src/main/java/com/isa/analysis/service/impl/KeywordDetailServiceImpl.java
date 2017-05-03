@@ -6,6 +6,7 @@ import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.SimilarRepository;
 import com.isa.analysis.service.KeywordDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.SynthesizedAnnotation;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -25,8 +26,8 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
     @Override
     public Map<String, Object> generateKeywordsRelationship(Long id) {
 
-        List<List<Map<String, Object>>> keywords = keywordRepository.getRelatedKeywordsWithDepath(id);
-        List<List<Map<String, Object>>> relationships = similarRepository.getRelationshipsWithDeapth(id);
+        List<List<Keyword>> keywords = keywordRepository.getRelatedKeywordsWithDepath(id);
+//        List<List<Map<String, Object>>> relationships = similarRepository.getRelationshipsWithDeapth(id);
         /**
          * 两个结果list  node的和relationship的
          */
@@ -37,12 +38,9 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
          */
         Map<Long, Integer> checkNodes = new HashMap<>();
         HashSet<Long> checkRels = new HashSet<>();
-        for(int i=0; i<relationships.size(); i++){
-
-            for(int j=0; j<relationships.get(i).size(); j++){
-
-                System.out.println(relationships.get(i).get(j));
-
+        for(List<Keyword> list: keywords){
+            for(Keyword keyword: list){
+                System.out.println(keyword);
             }
         }
         return null;

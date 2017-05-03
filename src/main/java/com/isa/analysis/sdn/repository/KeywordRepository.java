@@ -37,7 +37,7 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
      * 前20个社区
      * @return
      */
-    @Query("match (k:Keyword) return k.partition as partition, count(k) as score order by score desc limit 20")
+    @Query("match (k:Keyword) where exists(k.partition) return k.partition as partition, count(k) as score order by score desc limit 20")
     List<Map<Long, Integer>> getKeywordsPartition();
 
     /**
@@ -57,6 +57,6 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
     List<Map<String, Object>> getSimilarKeywords(@Param(value = "name")String name);
 
     @Query("match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1..2]-(:Keyword) return nodes(p)")
-    List<List<Map<String, Object>>> getRelatedKeywordsWithDepath(@Param(value = "id")Long id);
+    List<List<Keyword>> getRelatedKeywordsWithDepath(@Param(value = "id")Long id);
 
 }

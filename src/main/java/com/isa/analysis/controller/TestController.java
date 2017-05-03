@@ -163,7 +163,7 @@ public class TestController {
 
 
     @RequestMapping(value = "test14")
-    public @ResponseBody List<List<Map<String, Object>>> test14() {
+    public @ResponseBody List<List<Keyword>> test14() {
         return keywordRepository.getRelatedKeywordsWithDepath(45l);
     }
 
