@@ -4,8 +4,16 @@
 function loadKeywordRelationship() {
     var myChart = echarts.init(document.getElementById("keyword-relationship"));
     myChart.showLoading();
-    $.getJSON('../data/dataofrelationship.json', function (json) {
-        myChart.hideLoading();
+    $.ajax({
+        url : "/keywordDetail/keywordsRelationship",
+        type: "get",
+        dataType : "json",
+        data:{
+            "id": id,
+            "depath" : depath
+        },
+        success : function (json) {
+
         var option = {
             animationDurationUpdate: 1500,
             animationEasingUpdate: 'quinticInOut',
@@ -15,13 +23,13 @@ function loadKeywordRelationship() {
                     layout: 'none',
                     // progressiveThreshold: 700,
                     //有关各点的信息
-                    data: json.nodes.map(function (node) {
+                    data: json.nodes.map(function (node, idx) {
                         return {
-                            x: node.x,
-                            y: node.y,
-                            id: node.id,
-                            name: node.label,
-                            symbolSize: node.size,
+                            x: Math.random()*1000,
+                            y: Math.random()*1000,
+                            id: idx,
+                            name: node.name,
+                            symbolSize: node.value,
                             itemStyle: {
                                 normal: {
                                     color: node.color
@@ -32,8 +40,8 @@ function loadKeywordRelationship() {
                     //有关各边的信息
                     edges: json.edges.map(function (edge) {
                         return {
-                            source: edge.sourceID,
-                            target: edge.targetID
+                            source: edge.source,
+                            target: edge.target
                         };
                     }),
                     //显示标签于右侧
@@ -56,7 +64,7 @@ function loadKeywordRelationship() {
             ]
         };
             myChart.setOption(option);
-    });
+    }});
 }
 
 loadKeywordRelationship();
