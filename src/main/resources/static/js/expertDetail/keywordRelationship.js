@@ -2,6 +2,7 @@
  * Created by lsy on 2017/3/14.
  */
 function loadKeywordRelationship() {
+    alert("进入函数了")
     var myChart = echarts.init(document.getElementById("keyword-relationship"));
     myChart.showLoading();
     $.ajax({
@@ -9,11 +10,12 @@ function loadKeywordRelationship() {
         type: "get",
         dataType : "json",
         data:{
-            "id": id,
-            "depath" : depath
+            "id": 28,
+            "depath" : 2
         },
         success : function (json) {
-
+            // alert(json.nodes[0].toString());
+        myChart.hideLoading();
         var option = {
             animationDurationUpdate: 1500,
             animationEasingUpdate: 'quinticInOut',
@@ -24,21 +26,22 @@ function loadKeywordRelationship() {
                     // progressiveThreshold: 700,
                     //有关各点的信息
                     data: json.nodes.map(function (node, idx) {
+                        // alert(idx);
                         return {
-                            x: Math.random()*1000,
-                            y: Math.random()*1000,
+                            x: Math.random()*250,
+                            y: Math.random()*100,
                             id: idx,
                             name: node.name,
-                            symbolSize: node.value,
+                            symbolSize: Math.sqrt(node.value)*2,
                             itemStyle: {
                                 normal: {
-                                    color: node.color
+                                    color: "#" +(Math.random()*0Xffffff<<0).toString(16)
                                 }
                             }
                         };
                     }),
                     //有关各边的信息
-                    edges: json.edges.map(function (edge) {
+                    edges: json.links.map(function (edge) {
                         return {
                             source: edge.source,
                             target: edge.target
