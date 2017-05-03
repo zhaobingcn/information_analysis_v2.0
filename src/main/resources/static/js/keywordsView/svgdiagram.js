@@ -6,6 +6,7 @@ window.onresize=function(){
     changeDivWidth();
 }
 function changeDivWidth(){
+    document.getElementById("svg-div").style.height = document.documentElement.clientHeight + "px";
     document.getElementsByTagName("svg").width=document.documentElement.clientWidth;
     var svg = d3.select("svg"),
         margin = 100,
