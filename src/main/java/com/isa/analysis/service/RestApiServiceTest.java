@@ -68,8 +68,7 @@ public class RestApiServiceTest {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", id);
         String[] resultDataContents = new String[] {"graph", "rest"};
-        String query = "match path = (a:Author)" +
-                "-[:work_together*" + depath + "]-(b:Author) where id(a)={id} return path";
+        String query = "match (k:Keyword) where id(k)={id} with k match p = (k)-[:similar*1.." +depath+ "]-(:Keyword) return p";
         JSONObject commitParams = generateStatements(query, parameters, resultDataContents);
         JSONObject graphResult = restQuery.httpPost(TRANSACTION_URL, commitParams);
         Map<String, Object> map = graphResult.toMap();
@@ -80,7 +79,7 @@ public class RestApiServiceTest {
 
 //    public static void main(String[] args){
 //        RestApiServiceTest t = new RestApiServiceTest();
-//        t.generateWorkTogetherGraph(63l,3);
+//        t.generateWorkTogetherGraph(45l,3);
 //    }
 
     public JSONObject generateStatements(String query, Map<String, Object> parameters, String[] resultDataContents){

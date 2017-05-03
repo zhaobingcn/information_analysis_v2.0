@@ -21,8 +21,6 @@ import java.util.Map;
 @Controller
 public class KViewController {
 
-
-
     @Autowired
     private PaperRepository paperRepository;
 

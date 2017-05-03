@@ -191,6 +191,7 @@ public class RestApiServiceImpl implements RestApiService {
                         Map<String, Object> keyword = new HashMap<>();
                         keyword.put("name", anode.getJSONObject("properties").getString("name"));
                         keyword.put("value", restApiRepository.getDegreeOfNode(Long.parseLong(anode.getString("id")), "all"));
+                        keyword.put("category", restPathNodesIds.indexOf(anode.getString("id")));
                         checkNodes.put(Long.parseLong(anode.getString("id")), nodeId);
                         nodeId++;
                         nodes.add(keyword);
@@ -218,10 +219,11 @@ public class RestApiServiceImpl implements RestApiService {
         }catch(Exception e){
             e.printStackTrace();
         }
+
         List<Map<String, Object>> categories = new ArrayList<>();
-        categories.add(mapUtil.map("name", "该关键词", "keyword", null, "base", "Author"));
+        categories.add(mapUtil.map("name", "关键词", "keyword", null, "base", "Keyword"));
         for(int categoryIndex=1; categoryIndex<categoriesCount; categoryIndex++){
-            categories.add(mapUtil.map("name", categoryIndex + "层相似", "keyword", null, "base", "Author"));
+            categories.add(mapUtil.map("name", categoryIndex + "层关系", "keyword", null, "base", "Keyword"));
         }
         return mapUtil.map("type", "force", "categories", categories, "nodes", nodes, "links", rels);
     }

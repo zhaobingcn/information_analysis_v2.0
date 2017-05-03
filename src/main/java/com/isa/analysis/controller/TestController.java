@@ -7,10 +7,8 @@ import com.isa.analysis.sdn.repository.*;
 import com.isa.analysis.service.KeywordDetailService;
 import com.isa.analysis.service.KeywordViewService;
 import com.isa.analysis.service.runtime.impl.Scheduler;
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
