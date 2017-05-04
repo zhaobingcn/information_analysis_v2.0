@@ -4,47 +4,54 @@
 function loadKeywordInfo(depath) {
     var myChart = echarts.init(document.getElementById('keyword-relationship-info'));
     myChart.showLoading();
-    $.get('../data/les-miserables.gexf', function (xml) {
-        myChart.hideLoading();
 
-        var graph = echarts.dataTool.gexf.parse(xml);
-        var categories = [];
-        for (var i = 0; i < 9; i++) {
-            categories[i] = {
-                name: '关键词' + (i+1)
-            };
-        }
-        //categories[0] = {};
+    $.ajax({
+        url : "/keywordDetail/keywordsRelationship",
+        type: "get",
+        dataType : "json",
+        data:{
+            "id": 28,
+            "depath" : 2
+        },
+        success : function (graph) {
+        myChart.hideLoading();
+        alert("进入函数了")
         graph.nodes.forEach(function (node) {
+
             node.itemStyle = null;
-            node.symbolSize = 10;
-            node.value = node.symbolSize;
-            node.category = node.attributes.modularity_class;
-            // Use random x, y
-            node.x = node.y = null;
-            node.draggable = true;
+            node.value = node.value;
+            node.symbolSize = Math.pow(node.value, 1/3)*4;
+            node.label = {
+                normal: {
+                    show: node.symbolSize > 5
+                }
+            };
+            node.category = node.category;
         });
         var option = {
             title: {
-                
+
             },
             tooltip: {},
             legend: [{
                 // selectedMode: 'single',
                 show: false,
-                data: categories.map(function (a) {
+                data: graph.categories.map(function (a) {
                     return a.name;
                 })
             }],
             animation: false,
             series : [
                 {
-                    name: 'Les Miserables',
+                    name: '关键词关联网络',
                     type: 'graph',
                     layout: 'force',
-                    data: graph.nodes,
+                    data: graph.nodes.map(function (node, idx) {
+                        node.id = idx;
+                        return node;
+                    }),
                     links: graph.links,
-                    categories: categories,
+                    categories: graph.categories,
                     roam: true,
                     label: {
                         normal: {
@@ -53,12 +60,19 @@ function loadKeywordInfo(depath) {
                     },
                     force: {
                         repulsion: 100
-                    }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: 'source',
+                            curveness: 0.0,
+                        }
+                    },
+                    // edgeSymbol: ['arrow', 'arrow']
                 }
             ]
         };
 
         myChart.setOption(option);
-    }, 'xml');
+    }})
 }
 loadKeywordInfo();
