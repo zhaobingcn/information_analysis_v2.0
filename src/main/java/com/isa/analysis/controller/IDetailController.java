@@ -40,7 +40,7 @@ public class IDetailController {
         model.addAttribute("potentialCooperateInstitutonList", potentialCooperateInstitutonList);
         model.addAttribute("papersAndQuoteMap", papersAndQuoteMap);
         model.addAttribute("institutionName", institutionName);
-        return "tables";
+        return "InstitutionInformation";
     }
 
 
