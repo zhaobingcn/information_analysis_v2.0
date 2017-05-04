@@ -47,6 +47,6 @@ public class KViewController {
 
     @RequestMapping(value = "/allKeywords/showRelatedPapers")
     public @ResponseBody List<Paper> relatedPapers(@RequestParam(value = "name", defaultValue = "FPGA", required = false)String name){
-        return paperRepository.getPapersByKeywords(name);
+        return paperRepository.getPapersByKeywords(name, 5);
     }
 }

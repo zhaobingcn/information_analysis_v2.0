@@ -1,5 +1,7 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.sdn.entity.Paper;
+import com.isa.analysis.sdn.repository.PaperRepository;
 import com.isa.analysis.service.KeywordDetailService;
 import com.isa.analysis.service.RestApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,8 +25,12 @@ public class KDetailController {
     @Autowired
     private KeywordDetailService keywordDetailService;
 
+    @Autowired
+    private PaperRepository paperRepository;
+
     @RequestMapping(value = "/keywordDetail")
-    public String keywordDetail(){
+    public String keywordDetail(@RequestParam(name = "name", required = false, defaultValue = "48")String name){
+        List<Paper> papers = paperRepository.getPapersByKeywords(name, 8);
         return "keyword";
     }
 
@@ -37,4 +44,6 @@ public class KDetailController {
     public @ResponseBody Map<String, Object> keywordTrend(@RequestParam(name = "id", required = false, defaultValue = "48")Long id){
         return keywordDetailService.generateKeywordsTrend(id);
     }
+
+
 }
