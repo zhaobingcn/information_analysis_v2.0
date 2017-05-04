@@ -286,13 +286,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.vm"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                            <a href="/index"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="queryOfExpert.vm">专家信息查询</a>
+                                    <a href="/queryOfExpert">专家信息查询</a>
                                 </li>
                                 <li>
                                     <a href="recommendOfExpert.vm">专家推荐</a>
@@ -315,7 +315,7 @@
                                     <a href="panels-wells.html">科研重点查询</a>
                                 </li>
                                 <li>
-                                    <a href="#">科研热点详情</a>
+                                    <a href="/allKeywords">科研热点详情</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -293,14 +293,14 @@
             			<div class="panel panel-green" style="opacity: 0.7;">
             				<div class="panel-heading">相关论文</div>
             				<div class="panel-body">
-            					<p id="paper-left">related papers</p>
+            					<p id="paper-left">数据挖掘</p>
             				</div>
             				<div class="list-group" id = "paper-left-group">
-							    <a href="#" class="list-group-item">Cras justo odio</a>
-							    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-							    <a href="#" class="list-group-item">Morbi leo risus</a>
-							    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-							    <a href="#" class="list-group-item">Vestibulum at eros</a>
+							    <a href="#" class="list-group-item">从数据挖掘到知识发现</a>
+							    <a href="#" class="list-group-item">数据挖掘技术及其所面临的问题</a>
+							    <a href="#" class="list-group-item">计算机犯罪取证技术研究</a>
+							    <a href="#" class="list-group-item">医学中的人工智能应用</a>
+							    <a href="#" class="list-group-item">Web挖掘在电子商务系统中的应用</a>
 							</div>
             			</div>
             			<!-- /.panel panel-green -->
@@ -310,14 +310,14 @@
             			<div class="panel panel-green" style="opacity: 0.7;">
             				<div class="panel-heading">相关关键词</div>
             				<div class="panel-body">
-            					<p id="keyword-right">key word</p>
+            					<p id="keyword-right">数据挖掘</p>
             				</div>
             				<div class="list-group" id="keyword-right-group">
-							    <a href="#" class="list-group-item">Cras justo odio</a>
-							    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-							    <a href="#" class="list-group-item">Morbi leo risus</a>
-							    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-							    <a href="#" class="list-group-item">Vestibulum at eros</a>
+							    <a href="#" class="list-group-item">关联规则</a>
+							    <a href="#" class="list-group-item">数据仓库</a>
+							    <a href="#" class="list-group-item">决策树</a>
+							    <a href="#" class="list-group-item">大数据</a>
+							    <a href="#" class="list-group-item">聚类</a>
 							</div>
             			</div>
             			<!-- /.panel panel-green -->
