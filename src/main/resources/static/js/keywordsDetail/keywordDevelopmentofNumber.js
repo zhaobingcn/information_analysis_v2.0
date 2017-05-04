@@ -7,6 +7,7 @@ function loadKeywordDevelopmentofNumber() {
     myChart.showLoading();
 
     $.get('../data/dataofnumber.json', function (data) {
+        alert("asdasdasd")
         myChart.hideLoading();
 
         //圆圈边缘阴影

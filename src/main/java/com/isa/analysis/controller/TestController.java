@@ -170,6 +170,4 @@ public class TestController {
         return similarRepository.getRelationshipsWithDeapth(45l);
     }
 
-    @RequestMapping(value = "test16")
-    public @ResponseBody Map<String, Object> test16(){return keywordDetailService.generateKeywordsRelationship(45l);}
 }
