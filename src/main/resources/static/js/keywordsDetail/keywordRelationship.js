@@ -32,7 +32,7 @@ function loadKeywordRelationship() {
                             y: Math.random()*100,
                             id: idx,
                             name: node.name,
-                            symbolSize: Math.sqrt(node.value)*2,
+                            symbolSize: Math.pow(node.value, 1/3)*4,
                             itemStyle: {
                                 normal: {
                                     color: "#" +(Math.random()*0Xffffff<<0).toString(16)

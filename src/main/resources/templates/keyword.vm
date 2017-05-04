@@ -728,11 +728,11 @@
 
 
 <!-- 技术发展趋势图 -->
-<script type="text/javascript" src = "../js/expertDetail/keywordDevelopmentofNumber.js"></script>
+<script type="text/javascript" src = "../js/keywordsDetail/keywordDevelopmentofNumber.js"></script>
 <!-- 关键词关联网络图 -->
-<script type="text/javascript" src = "../js/expertDetail/keywordRelationship.js"></script>
+<script type="text/javascript" src = "../js/keywordsDetail/keywordRelationship.js"></script>
 <!-- 关键词关联详细信息力引导布局图 -->
-<script type="text/javascript" src = "../js/expertDetail/keywordRelationshipInfo.js"></script>
+<script type="text/javascript" src = "../js/keywordsDetail/keywordRelationshipInfo.js"></script>
 
 <!--script type="text/javascript">
     window.onresize = function () {
