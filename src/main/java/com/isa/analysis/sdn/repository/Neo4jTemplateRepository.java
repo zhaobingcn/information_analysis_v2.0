@@ -76,6 +76,14 @@ public interface Neo4jTemplateRepository {
     Long createRelationship(Long id1, Long id2, String relationshipType, int weight);
 
     /**
+     *
+     */
+    Long getKeywordRelatedPapersCount(Integer year, Long keywordId);
+
+    Long getKeywordRelatedInstitutionsCount(Integer year, Long keywordId);
+
+    Long getKeywordRelatedAuthorsCount(Integer year, Long keywordId);
+    /**
      * 运行社区发现算法
      */
     void community();

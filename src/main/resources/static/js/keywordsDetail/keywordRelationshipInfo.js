@@ -15,7 +15,6 @@ function loadKeywordInfo(depath) {
         },
         success : function (graph) {
         myChart.hideLoading();
-        alert("进入函数了")
         graph.nodes.forEach(function (node) {
 
             node.itemStyle = null;
