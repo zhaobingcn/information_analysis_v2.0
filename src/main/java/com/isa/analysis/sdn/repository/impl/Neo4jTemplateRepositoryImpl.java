@@ -221,7 +221,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         Long count = 0l;
         Iterator<Map<String, Object>> countMap = result.iterator();
         while (countMap.hasNext()){
-            count = Long.parseLong(countMap.next().toString());
+            count = Long.parseLong(countMap.next().get("count").toString());
         }
         return count;
     }
@@ -235,7 +235,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         Long count = 0l;
         Iterator<Map<String, Object>> countMap = result.iterator();
         while (countMap.hasNext()){
-            count = Long.parseLong(countMap.next().toString());
+            count = Long.parseLong(countMap.next().get("count").toString());
         }
         return count;
     }
@@ -249,7 +249,7 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
         Long count = 0l;
         Iterator<Map<String, Object>> countMap = result.iterator();
         while (countMap.hasNext()){
-            count = Long.parseLong(countMap.next().toString());
+            count = Long.parseLong(countMap.next().get("count").toString());
         }
         return count;
     }

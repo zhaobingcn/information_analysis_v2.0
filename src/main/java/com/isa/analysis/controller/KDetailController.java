@@ -1,5 +1,6 @@
 package com.isa.analysis.controller;
 
+import com.isa.analysis.service.KeywordDetailService;
 import com.isa.analysis.service.RestApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class KDetailController {
     @Autowired
     private RestApiService restApiService;
 
+    @Autowired
+    private KeywordDetailService keywordDetailService;
+
     @RequestMapping(value = "/keywordDetail")
     public String keywordDetail(){
         return "keyword";
@@ -27,5 +31,10 @@ public class KDetailController {
     public @ResponseBody Map<String, Object> keywordsRelationship(@RequestParam(name = "id", required = false, defaultValue = "45")Long id,
                                              @RequestParam(name = "depath", required = false, defaultValue = "2")int depath){
         return restApiService.generateSimilarGraph(id, depath);
+    }
+
+    @RequestMapping(value = "/keywordDetail/keywordTrend")
+    public @ResponseBody Map<String, Object> keywordTrend(@RequestParam(name = "id", required = false, defaultValue = "48")Long id){
+        return keywordDetailService.generateKeywordsTrend(id);
     }
 }

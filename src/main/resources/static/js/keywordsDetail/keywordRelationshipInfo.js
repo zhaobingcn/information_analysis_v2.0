@@ -39,7 +39,9 @@ function loadKeywordInfo(depath) {
                     return a.name;
                 })
             }],
-            animation: false,
+            // animation: true,
+            animationDuration: 3000,
+            animationEasingUpdate: 'quinticInOut',
             series : [
                 {
                     name: '关键词关联网络',

@@ -33,10 +33,25 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
 
         int startYear = 2006;
         int endYear = 2016;
-        for(int i=startYear; i<=endYear; i++){
+        String keywordName = keywordRepository.findOne(id).getName().toString();
+        List<Object> series = new ArrayList<>();
+        List<Object> years = new ArrayList<>();
+        for(int year=startYear; year<=endYear; year++){
             List<Object> inYear = new ArrayList<>();
-            inYear.add(neo4jTemplateRepository.);
+            inYear.add(neo4jTemplateRepository.getKeywordRelatedAuthorsCount(year, id));
+            inYear.add(neo4jTemplateRepository.getKeywordRelatedInstitutionsCount(year, id));
+            inYear.add(neo4jTemplateRepository.getKeywordRelatedPapersCount(year, id));
+            inYear.add(keywordName);
+            inYear.add(year);
+            List<Object> yearList = new ArrayList<>();
+            yearList.add(inYear);
+            series.add(yearList);
+            years.add(year);
         }
-        return null;
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", new String[]{keywordName});
+        map.put("timeline", years);
+        map.put("series", series);
+        return map;
     }
 }
