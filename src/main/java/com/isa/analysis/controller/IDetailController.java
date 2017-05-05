@@ -3,6 +3,7 @@ package com.isa.analysis.controller;
 import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.sdn.entity.QueryResult.KeywordAndInvolveTimes;
+import com.isa.analysis.sdn.repository.InstitutionRepository;
 import com.isa.analysis.service.InstitutionInformationService;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class IDetailController {
     @Autowired
     private InstitutionInformationService institutionInformationService;
 
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
     @RequestMapping(value = "/InstitutionInformation")
     public String tables(Model model,
                          /*@RequestParam(value = "limit", required = false, defaultValue = "30")int limit,*/
@@ -34,12 +38,13 @@ public class IDetailController {
         List<Institution> competeInstitutionList = institutionInformationService.generateCompeteInstitution(institutionId,3);
         List<Institution> potentialCooperateInstitutonList = institutionInformationService.generatePotentialCooperateInstitution(institutionId,3);
         Map<String,Integer> papersAndQuoteMap = institutionInformationService.generateInstitutionPapersAndQuote(institutionId);
-        String institutionName = institutionInformationService.generateInstitutionName(institutionId);
+//        String institutionName = institutionInformationService.generateInstitutionName(institutionId);
+        Institution institution = institutionRepository.findOne(institutionId);
         model.addAttribute("institutionAndCooperateTimesList", institutionAndCooperateTimesList);
         model.addAttribute("competeInstitutionList", competeInstitutionList);
         model.addAttribute("potentialCooperateInstitutonList", potentialCooperateInstitutonList);
         model.addAttribute("papersAndQuoteMap", papersAndQuoteMap);
-        model.addAttribute("institutionName", institutionName);
+        model.addAttribute("institution", institution);
         return "InstitutionInformation";
     }
 
