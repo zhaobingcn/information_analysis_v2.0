@@ -46,9 +46,11 @@ public class KDetailController {
     private AuthorRepository authorRepository;
 
     @RequestMapping(value = "/keywordDetail")
-    public String keywordDetail(@RequestParam(name = "id", required = false, defaultValue = "7")Long id, Model model){
+    public String keywordDetail(@RequestParam(name = "name", required = false, defaultValue = "Turbo码")String name, Model model){
 
-        Keyword keyword = keywordRepository.findOne(id);
+        Keyword keyword = keywordRepository.findByName(name);
+        Long id = keyword.getId();
+//        Keyword keyword = keywordRepository.findOne(id);
 
         List<Paper> papers = paperRepository.getTopPapersByKeywordId(id, 8);
         List<Institution> institutions = institutionRepository.getTopInstitutionByKeywordId(id, 8);

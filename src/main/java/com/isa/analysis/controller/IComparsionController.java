@@ -31,7 +31,6 @@ public class IComparsionController {
     * */
     @RequestMapping(value = "/ComparisonofInstitutions")
     public String blank(Model model,
-                        @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
                         @RequestParam(value = "firstInstitutionId", required = false, defaultValue = "1")Long firstInstitutionId,
                         @RequestParam(value = "secondInstitutionId", required = false, defaultValue = "117")Long secondInstitutionId){
         List<KeywordAndInvolveTimes> firstInstitutionKeywordAndInvolveTimesList = comparsionOfInstitutionsService.generateInstitutionKeywordAndInvolveTimes(firstInstitutionId,3);

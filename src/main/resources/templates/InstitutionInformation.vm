@@ -441,6 +441,8 @@
                             <div class="col-lg-4 col-xs-4">
                                 <i class="fa fa-institution fa-5x"></i>
                                 <div class="middle">$institutionName</div>
+
+
                             </div>
                             <div class="col-lg-8 col-xs-8">
                                 <div>
@@ -507,7 +509,7 @@
                                 <li class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> $competeInstitution.name
                                     <span class="pull-right">
-                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                        <button class="btn btn-default btn-xs" onclick="window.open('/index')">加 入 对 比</button>
                                     </span>
                                 </li>
                             #end
