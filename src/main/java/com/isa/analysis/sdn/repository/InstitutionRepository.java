@@ -73,8 +73,8 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     @Query("match (i:Institution)-[:works_in]-(a:Author)-[:publish]-(p:Paper) where id(i)={id} with DISTINCT  p"+
             " match (p)-[t:involve]-(k:Keyword) with k,count(t) as times where times > 1 match (p:Paper)-[:involve]-(k) with DISTINCT p"+
             " match (i1:Institution) match (i:Institution)-[:works_in]-(:Author)-[:publish]-(p:Paper) where id(i1)={id} "+
-            "AND NOT (i1)-[:cooperate]-(i)  with i,count(p) as times ORDER BY times desc return i limit {limit}")
-    List<Institution> getCompeteInstitutionByByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
+            "AND NOT (i1)-[:cooperate]-(i) AND NOT id(i)={id}  with i,count(p) as times ORDER BY times desc return i limit {limit}")
+    List<Institution> getCompeteInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
     /**
      * 查询一个机构的潜在合作机构（根据这个机构下的作者，有共同合作作者的作者所在的机构）

@@ -120,7 +120,7 @@ public class InstitutionInformationServiceImpl implements InstitutionInformation
 
     @Override
     public List<Institution> generateCompeteInstitution(Long id, int limit) {
-        return institutionRepository.getCompeteInstitutionByByInstitutionId(id,limit);
+        return institutionRepository.getCompeteInstitutionByInstitutionId(id,limit);
     }
 
     @Override
