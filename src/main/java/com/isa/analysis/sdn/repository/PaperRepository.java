@@ -81,5 +81,10 @@ public interface PaperRepository extends GraphRepository<Paper> {
     @Query("match (p:Paper)<-[:publish]-(a:Author)-[:works_in]->(i:Institution)where id(i)={id} return distinct p")
     List<Paper> getPaperOfInstitutionByInstitutionId(@Param(value = "id") Long id);
 
+    /**
+     * 查找一个关键词下的top论文
+     */
 
+    @Query(" match (p:Paper)-[:involve]->(k:Keyword) where id(k)={id} return p order by p.quote desc limit {limit}")
+    List<Paper> getTopPapersByKeywordId(@Param("id")Long id, @Param("limit")Integer limit);
 }

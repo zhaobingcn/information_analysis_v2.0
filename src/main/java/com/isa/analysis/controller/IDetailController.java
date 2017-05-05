@@ -27,10 +27,9 @@ public class IDetailController {
 
     @RequestMapping(value = "/InstitutionInformation")
     public String tables(Model model,
-                         @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
                          @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
 
-        List<InstitutionAndCooperateTimes> institutionAndCooperateTimesList = institutionInformationService.generateInstitutionCooperateTimes(institutionId,limit);
+        List<InstitutionAndCooperateTimes> institutionAndCooperateTimesList = institutionInformationService.generateInstitutionCooperateTimes(institutionId,7);
         List<Institution> competeInstitutionList = institutionInformationService.generateCompeteInstitution(institutionId,3);
         List<Institution> potentialCooperateInstitutonList = institutionInformationService.generatePotentialCooperateInstitution(institutionId,3);
         Map<String,Integer> papersAndQuoteMap = institutionInformationService.generateInstitutionPapersAndQuote(institutionId);

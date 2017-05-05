@@ -69,4 +69,12 @@ public interface AuthorRepository extends GraphRepository<Author>{
      */
     @Query("match (a:Author)-[:publish]->(p:Paper) where id(a) = {id} return sum(p.quote) as quoteCount")
     int getPapersQuoteCountById(@Param("id")Long id);
+
+    /**
+     * 查找一个关键词下面的top作者
+     */
+    @Query("match (a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) WHERE id(k)={id} WITH a,collect(p) AS papers " +
+            "RETURN a ORDER BY (reduce(sum=0, p IN papers|sum+p.quote + 10)) DESC LIMIT {limit}")
+    List<Author> getTopAuthorsByKeywordsId(@Param("id")Long id, @Param("limit")Integer limit);
+
 }

@@ -181,4 +181,18 @@ public class TestController {
         return keywordDetailService.generateKeywordsTrend(48l);
     }
 
+    @RequestMapping(value = "test20")
+    public @ResponseBody List<Author> test20(){
+        return authorRepository.getTopAuthorsByKeywordsId(7l, 8);
+    }
+
+    @RequestMapping(value = "test21")
+    public @ResponseBody List<Paper> test21(){
+        return paperRepository.getTopPapersByKeywordId(7l, 8);
+    }
+    @RequestMapping(value = "test22")
+    public @ResponseBody List<Institution> test22(){
+        return institutionRepository.getTopInstitutionByKeywordId(7l, 8);
+    }
+
 }

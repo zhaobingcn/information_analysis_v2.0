@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2016/12/30.
@@ -83,8 +84,12 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
             " match (i1:Institution)-[:works_in]-(a3:Author) match (i:Institution) where id(i)={id} AND NOT (i)-[:cooperate]-(i1) return i1,count(a3) as times ORDER BY times desc limit{limit}")
     List<Institution> getPotentialCooperateInstitutionByInstitutionId(@Param(value = "id") Long id, @Param(value = "limit")long limit);
 
-
-
+    /**
+     * 查询一个关键词的权威机构
+     */
+    @Query("MATCH (i:Institution)<-[works_in]-(a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) WHERE id(k)={id} WITH i,collect(DISTINCT(p)) AS papers" +
+            " RETURN i ORDER BY (reduce(sum=0, p IN papers|sum + p.quote + 10)) DESC LIMIT {limit}")
+    List<Institution> getTopInstitutionByKeywordId(@Param("id")Long id, @Param("limit")Integer limit);
 
 
 }

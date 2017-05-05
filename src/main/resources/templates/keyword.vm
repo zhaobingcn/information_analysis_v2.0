@@ -393,8 +393,8 @@
                 <div class="col-lg-12 col-xs-12">
                     <div class="color-fill near-head-rect"></div>
                     <div class="header-div">
-                        <h1 class="page-header">Key Word</h1>
-                        <p id="keyword-intro">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍换行介绍</p>
+                        <h1 class="page-header">$keyword.name</h1>
+                        <p id="keyword-intro">关键词介绍</p>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -478,18 +478,12 @@
                     <div class="col-lg-5 col-xs-5" style="padding-right: 0;">
                         <div class="panel panel-green">
                             <div class="list-group" style="padding: 10px;">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家一
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家二
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家三
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家四
-                                </a>
+                                #foreach($author in $authors1)
+                                    #set($authorHref = "/detailOfExpert?name=" + $author.name + "&&institution=" + $author.institution )
+                                    <a href=$authorHref  class="list-group-item">
+                                        <i class="fa fa-user fa-fw"></i> $author.name
+                                    </a>
+                                #end
                             </div>
                             <!-- /.list-group-->
                         </div>
@@ -499,18 +493,12 @@
                     <div class="col-lg-5 col-xs-5" style="padding-left: 0;">
                         <div class="panel panel-green">
                             <div class="list-group" style="padding: 10px;">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家一
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家二
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家三
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-user fa-fw"></i> 专家四
-                                </a>
+                                #foreach($author in $authors2)
+                                    #set($authorHref = "/detailOfExpert?name=" + $author.name + "&&institution=" + $author.institution )
+                                    <a href=$authorHref class="list-group-item">
+                                        <i class="fa fa-user fa-fw"></i> $author.name
+                                    </a>
+                                #end
                             </div>
                             <!-- /.list-group-->
                         </div>
@@ -538,18 +526,12 @@
                     <div class="col-lg-5 col-xs-5" style="padding-right: 0;">
                         <div class="panel panel-green">
                             <div class="list-group" style="padding: 10px;">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构一
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构二
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构三
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构四
-                                </a>
+                                #foreach($institution in $institutions1)
+                                    #set($institutionHref = "/InstitutionInformation?institutionId=" + $institution.getId())
+                                    <a href=$institutionHref class="list-group-item">
+                                        <i class="fa fa-institution fa-fw"></i> $institution.name
+                                    </a>
+                                #end
                             </div>
                             <!-- /.list-group-->
                         </div>
@@ -559,18 +541,12 @@
                     <div class="col-lg-5 col-xs-5" style="padding-left: 0;">
                         <div class="panel panel-green">
                             <div class="list-group" style="padding: 10px;">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构一
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构二
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构三
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-institution fa-fw"></i> 机构四
-                                </a>
+                                #foreach($institution in $institutions2)
+                                    #set($institutionHref = "/InstitutionInformation?institutionId=" + $institution.getId())
+                                    <a href=$institutionHref class="list-group-item">
+                                        <i class="fa fa-institution fa-fw"></i> $institution.name
+                                    </a>
+                                #end
                             </div>
                             <!-- /.list-group-->
                         </div>
@@ -627,62 +603,65 @@
                     <div class="col-lg-10 col-xs-10">
                         <div class="panel panel-green">
                             <div class="list-group" style="padding: 10px;">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文一
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文二
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文三
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文四
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文五
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文六
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文七
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-star fa-fw"></i> 论文八
-                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
-                                </span>
-                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
-                                </span>
-                                </a>
+                                #foreach($paper in $papers)
+                                    <a href=$paper.link class="list-group-item">
+                                        <i class="fa fa-star fa-fw"></i> $paper.title
+                                        <span class="pull-right text-muted small">引用量：<em>$paper.quote 次</em>
+                                        </span>
+                                        <span class="pull-right text-muted small">时间：<span>$paper.date</span>&emsp;
+                                        </span>
+                                    </a>
+                                #end
+
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文二
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文三
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文四
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文五
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文六
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文七
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
+##                                <a href="#" class="list-group-item">
+##                                    <i class="fa fa-star fa-fw"></i> 论文八
+##                                    <span class="pull-right text-muted small">引用量：<em>40 次</em>
+##                                </span>
+##                                    <span class="pull-right text-muted small">作者：<span>某某某</span>&emsp;
+##                                </span>
+##                                </a>
                             </div>
                             <!-- /.list-group-->
                         </div>
