@@ -291,6 +291,41 @@
                             <!-- /input-group -->
                         </li>
                         <li>
+                            <a href="index.vm"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="queryOfExpert.vm">专家能力度量</a>
+                                </li>
+                                <li>
+                                    <a href="recommendOfExpert.vm">专家推荐</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="ComparisonofExpert.vm">机构能力度量</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="panels-wells.html">科研重点查询</a>
+                                </li>
+                                <li>
+                                    <a href="#">科研热点详情</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        #*<li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
                         </li>
                         <li>
@@ -379,7 +414,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li>*#
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

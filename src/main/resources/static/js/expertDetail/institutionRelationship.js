@@ -279,14 +279,14 @@ function loadRelationshipInstitution(depath) {
                         //zlevel: 2,
                         symbol: ['none'],
                         symbolSize: 10,
-                        /*//飞机效果
+                        //效果
                          effect: {
                          show: true,
                          period: 6,
                          trailLength: 0,
-                         symbol: planePath,
-                         symbolSize: 15
-                         },*/
+                         symbol: 'arrow',
+                         symbolSize: 9
+                         },
                         lineStyle: {
                             normal: {
                                 color: color1[i],

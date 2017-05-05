@@ -180,14 +180,15 @@ function loadRelationshipInstitutionCompare(depath) {
                         name: item[0],
                         type: 'lines',
                         zlevel: 1,
-                        /*飞机划过拖延线效果
+                        //飞机划过拖延线效果
                          effect: {
                          show: true,
                          period: 6,
-                         trailLength: 0.7,
-                         color: '#fff',
-                         symbolSize: 3
-                         },*/
+                         trailLength: 0,
+                         //color: '#fff',
+                         symbol: 'arrow',
+                         symbolSize: 8
+                         },
                         lineStyle: {
                             normal: {
                                 color: color[i],
