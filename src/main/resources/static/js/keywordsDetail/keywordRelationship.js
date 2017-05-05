@@ -2,9 +2,10 @@
  * Created by lsy on 2017/3/14.
  */
 function loadKeywordRelationship() {
-    alert("进入函数了")
     var myChart = echarts.init(document.getElementById("keyword-relationship"));
     myChart.showLoading();
+    var width = document.getElementById("keyword-relationship").clientWidth;
+    var height = document.getElementById("keyword-relationship").clientHeight;
     $.ajax({
         url : "/keywordDetail/keywordsRelationship",
         type: "get",
@@ -28,11 +29,11 @@ function loadKeywordRelationship() {
                     data: json.nodes.map(function (node, idx) {
                         // alert(idx);
                         return {
-                            x: Math.random()*250,
-                            y: Math.random()*100,
+                            x: Math.random()*width,
+                            y: Math.random()*height,
                             id: idx,
                             name: node.name,
-                            symbolSize: Math.sqrt(node.value)*2,
+                            symbolSize: Math.pow(node.value, 1/3)*4,
                             itemStyle: {
                                 normal: {
                                     color: "#" +(Math.random()*0Xffffff<<0).toString(16)
@@ -58,7 +59,7 @@ function loadKeywordRelationship() {
                     focusNodeAdjacency: true,
                     lineStyle: {
                         normal: {
-                            width: 0.5,
+                            width: 1.0,
                             curveness: 0.3,
                             opacity: 0.7
                         }

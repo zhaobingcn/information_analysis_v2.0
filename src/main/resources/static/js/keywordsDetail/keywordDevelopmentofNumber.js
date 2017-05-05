@@ -6,7 +6,14 @@ function loadKeywordDevelopmentofNumber() {
     var myChart = echarts.init(document.getElementById("keyword-development-of-num"));
     myChart.showLoading();
 
-    $.get('../data/dataofnumber.json', function (data) {
+    $.ajax({
+        url : "/keywordDetail/keywordTrend",
+        type: "get",
+        dataType : "json",
+        data:{
+            "id": 48
+        },
+        success : function (data) {
         myChart.hideLoading();
 
         //圆圈边缘阴影
@@ -21,7 +28,7 @@ function loadKeywordDevelopmentofNumber() {
         };
         //总人口转换函数
         var sizeFunction = function (x) {
-            var y = Math.sqrt(x / 5e8) + 0.1;
+            var y = Math.sqrt(x / 5e8) + 1;
             return y * 40;
         };
         // 提示框内容格式
@@ -118,8 +125,8 @@ function loadKeywordDevelopmentofNumber() {
                 xAxis: {
                     type: 'log',
                     name: '研究该方向专家人数',
-                    max: 100000,
-                    min: 300,
+                    max: 20,
+                    // min: 1,
                     nameGap: 25,
                     nameLocation: 'middle',
                     nameTextStyle: {
@@ -140,7 +147,7 @@ function loadKeywordDevelopmentofNumber() {
                 yAxis: {
                     type: 'value',
                     name: '参与研究机构数',
-                    max: 100,
+                    max: 20,
                     nameTextStyle: {
                         color: '#444',
                         fontSize: 16
@@ -216,7 +223,7 @@ function loadKeywordDevelopmentofNumber() {
 
         myChart.setOption(option);
 
-    });
+    }});
 }
 
 loadKeywordDevelopmentofNumber();

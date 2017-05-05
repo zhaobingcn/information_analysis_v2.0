@@ -3,8 +3,10 @@ package com.isa.analysis.sdn.repository.impl;
 import com.isa.analysis.sdn.repository.Neo4jTemplateRepository;
 import com.isa.analysis.service.impl.MapUtil;
 import org.neo4j.ogm.model.Result;
+import org.neo4j.ogm.result.ResultRestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.template.Neo4jOperations;
+import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -209,6 +211,47 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
             Iterator<Map<String, Object>> mapId1 = result1.iterator();
             return Long.parseLong(mapId1.next().get("id").toString());
         }
+    }
+
+    @Override
+    @Transactional
+    public Long getKeywordRelatedPapersCount(Integer year, Long keywordId) {
+        String cypher = "match (k:Keyword)<-[:involve]-(p:Paper) where id(k) = {keywordId} AND toInt(p.date)>=" +year+ "01 AND toInt(p.date)<" + year+1 + "01 return count(distinct(p)) as count";
+        Result result = neo4jTemplate.query(cypher, mapUtil.map("keywordId", keywordId));
+        Long count = 0l;
+        Iterator<Map<String, Object>> countMap = result.iterator();
+        while (countMap.hasNext()){
+            count = Long.parseLong(countMap.next().get("count").toString());
+        }
+        return count;
+    }
+
+    @Override
+    @Transactional
+    public Long getKeywordRelatedInstitutionsCount(Integer year, Long keywordId) {
+        String cypher = "match (k:Keyword)<-[:involve]-(p:Paper) where id(k) = {keywordId} AND toInt(p.date)>=" +year+ "01 AND toInt(p.date)<" + year+1 + "01 with p " +
+                "match (p)<-[:publish]-(a:Author)-[:works_in]->(i:Institution) return count(distinct(i)) as count";
+        Result result = neo4jTemplate.query(cypher, mapUtil.map("keywordId", keywordId));
+        Long count = 0l;
+        Iterator<Map<String, Object>> countMap = result.iterator();
+        while (countMap.hasNext()){
+            count = Long.parseLong(countMap.next().get("count").toString());
+        }
+        return count;
+    }
+
+    @Override
+    @Transactional
+    public Long getKeywordRelatedAuthorsCount(Integer year, Long keywordId) {
+        String cypher = "match (k:Keyword)<-[:involve]-(p:Paper) where id(k) = {keywordId} AND toInt(p.date)>=" +year+ "01 AND toInt(p.date)<" + year+1 + "01 with p " +
+                "match (p)<-[:publish]-(a:Author) return count (distinct(a)) as count";
+        Result result = neo4jTemplate.query(cypher, mapUtil.map("keywordId", keywordId));
+        Long count = 0l;
+        Iterator<Map<String, Object>> countMap = result.iterator();
+        while (countMap.hasNext()){
+            count = Long.parseLong(countMap.next().get("count").toString());
+        }
+        return count;
     }
 
     @Override

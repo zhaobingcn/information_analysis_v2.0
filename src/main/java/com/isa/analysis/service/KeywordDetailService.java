@@ -9,8 +9,8 @@ public interface KeywordDetailService {
 
 
     /**
-     * 生成keyword页面的而第一个图
-     * @return
+     * 生成word页面关键词演化图形数据
      */
-    Map<String, Object> generateKeywordsRelationship(Long id);
+
+    Map<String, Object> generateKeywordsTrend(Long id);
 }

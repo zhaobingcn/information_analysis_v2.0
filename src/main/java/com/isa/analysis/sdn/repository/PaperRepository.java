@@ -66,8 +66,11 @@ public interface PaperRepository extends GraphRepository<Paper> {
     /**
      * 查询一个关键词相关度最高的论文
      */
-    @Query("MATCH (k:Keyword{name:{name}})<-[i:involve]-(p:Paper) RETURN p LIMIT 5")
-    List<Paper> getPapersByKeywords(@Param(value = "name")String name);
+    @Query("MATCH (k:Keyword{name:{name}})<-[i:involve]-(p:Paper) RETURN p LIMIT {limit}")
+    List<Paper> getPapersByKeywords(@Param(value = "name")String name, @Param(value = "limit")int limit);
+
+    @Query("MATCH (k:Keyword)<-[i:involve]-(p:Paper) where id(k) = {id} RETURN p LIMIT {limit}")
+    List<Paper> getPapersByKeywords(@Param(value = "id")Long id, @Param(value = "limit")int limit);
 
     /**
      * 查询一个机构发的论文数量
