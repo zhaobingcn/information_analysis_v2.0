@@ -209,13 +209,9 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
     }
 
     @Override
-    public Map<String, Object> generateAuthorsCooperateInstitution(String name, String institution) {
+    public List<InstitutionAndCooperateTimes> generateAuthorsCooperateInstitution(String name, String institution) {
         List<InstitutionAndCooperateTimes> institutionAndCooperateTimes = institutionRepository.getCooperateInstitutionByAuthor(name, institution);
-        Map<String, Object> cooperateInstitution = new LinkedMap();
-        for(InstitutionAndCooperateTimes ainstitution: institutionAndCooperateTimes){
-            cooperateInstitution.put(ainstitution.getInstitution().getName(), ainstitution.getTimes());
-        }
-        return cooperateInstitution;
+        return institutionAndCooperateTimes;
     }
 
     @Override

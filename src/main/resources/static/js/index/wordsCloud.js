@@ -11,7 +11,7 @@ function loadWordsCloudData() {
             $wordList = $("#list-influential-words").empty();
             for(var i=0; i<10; i++){
                 $wordList.append(
-                "<a href=\"#\" class=\"list-group-item\">" +
+                "<a href=\"/keywordDetail?name=" +words.data[i].name+ "\" class=\"list-group-item\">" +
                     "<i class=\"fa fa-star fa-fw\"></i>" + words.data[i].name +
                     "<span class=\"pull-right text-muted small\">" +
                     "<em>" + words.data[i].value + "次" +

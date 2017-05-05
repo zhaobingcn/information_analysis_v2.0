@@ -1,6 +1,8 @@
 package com.isa.analysis.service;
 
 
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +49,7 @@ public interface ExpertDetailPageService {
     /**
      * 作者合作过的机构列表
      */
-    Map<String, Object> generateAuthorsCooperateInstitution(String name, String institution);
+    List<InstitutionAndCooperateTimes> generateAuthorsCooperateInstitution(String name, String institution);
 
     /**
      * 作者的论文数量

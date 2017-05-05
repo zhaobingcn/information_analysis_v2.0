@@ -1,6 +1,7 @@
 package com.isa.analysis.controller;
 
 import com.isa.analysis.restapi.httprepository.RestApiRepository;
+import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
 import com.isa.analysis.service.ExpertDetailPageService;
 import com.isa.analysis.service.IndexPageService;
 import com.isa.analysis.service.RestApiService;
@@ -40,7 +41,7 @@ public class EDetailController {
         int skip=0, limit=8;
         List<Map<String, Object>> authorsPapersList = expertDetailPageService.generateAuthorsPapersPages(name, institution, skip, limit);
         List<Map<String, Object>> cooperateAuthorsList = expertDetailPageService.generateAuthorsCooperate(name, institution);
-        Map<String, Object> cooperateInstitutionsList = expertDetailPageService.generateAuthorsCooperateInstitution(name, institution);
+        List<InstitutionAndCooperateTimes> cooperateInstitutionsList = expertDetailPageService.generateAuthorsCooperateInstitution(name, institution);
         model.addAttribute("authorsPapersList", authorsPapersList);
         model.addAttribute("cooperateAuthorsList",cooperateAuthorsList);
         model.addAttribute("cooperateInstitutionsList", cooperateInstitutionsList);

@@ -598,7 +598,8 @@
                         <div class="panel-body">
                             <div class="list-group">
                                 #foreach($institutionAndCooperateTimes in $institutionAndCooperateTimesList)
-                                    <a href="#" class="list-group-item">
+                                    #set($insHref = "/InstitutionInformation?institutionId=" + $institutionAndCooperateTimes.institution.getId())
+                                    <a href=$insHref class="list-group-item">
                                         <i class="fa fa-institution fa-fw"></i> $institutionAndCooperateTimes.institution.name
                                         <span class="pull-right text-muted small"><em>$institutionAndCooperateTimes.times 次</em>
                                     </span>
