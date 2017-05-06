@@ -6,6 +6,7 @@ import com.isa.analysis.sdn.repository.PaperRepository;
 import com.isa.analysis.service.ExpertQueryPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
     private MapUtil mapUtil;
 
     @Override
+    @Transactional
     public List<Map<String, Object>> generateSearchAuthors(String name, String institution) {
         String queryContext = "";
         if(!name.equals("") && !institution.equals("")){

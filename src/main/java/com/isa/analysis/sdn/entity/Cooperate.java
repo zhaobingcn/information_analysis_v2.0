@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.*;
 /**
  * Created by zhzy on 2017/1/2.
  */
-@JsonIdentityInfo(generator = JSOGGenerator.class)
+//@JsonIdentityInfo(generator = JSOGGenerator.class)
 @RelationshipEntity(type = "cooperate")
 public class Cooperate {
 

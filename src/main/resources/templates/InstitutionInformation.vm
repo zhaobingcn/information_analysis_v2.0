@@ -509,9 +509,9 @@
                             #foreach($competeInstitution in $competeInstitutionList)
                                 <li class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> $competeInstitution.name
+                                    #set($num = $competeInstitution.getId())
                                     <span class="pull-right">
-                                        #set($comHref = "/ComparisonofInstitutions?firstInstitutionId=" ++ "&&secondInstitutionId=")
-                                        <button class="btn btn-default btn-xs" onclick="window.open('/index')">加 入 对 比</button>
+                                        <button class="btn btn-default btn-xs" onclick="compareInstitutions($num)">加 入 对 比</button>
                                     </span>
                                 </li>
                             #end
@@ -548,8 +548,9 @@
                             #foreach($potentialCooperateInstituton in $potentialCooperateInstitutonList)
                                 <li class="list-group-item">
                                     <i class="fa fa-institution fa-fw"></i> $potentialCooperateInstituton.name
+                                    #set($num = $potentialCooperateInstituton.getId())
                                     <span class="pull-right">
-                                        <button class="btn btn-default btn-xs">加 入 对 比</button>
+                                        <button class="btn btn-default btn-xs" onclick="compareInstitutions($num)">加 入 对 比</button>
                                     </span>
                                 </li>
                             #end
@@ -721,10 +722,11 @@
         }
     </script>-->
 
-    <script type="text/javascript">
-        $("#compare-institution").click(function () {
-            window.open("/ComparisonofInstitutions");
-        })
+    <script>
+        function compareInstitutions(id2) {
+            var id1 = $("#institution-id").val()
+            window.open("/ComparisonofInstitutions?firstInstitutionId=" +id1+ "&&secondInstitutionId=" +id2+ "");
+        }
     </script>
 </body>
 

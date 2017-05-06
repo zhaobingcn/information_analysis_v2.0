@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.*;
 /**
  * @author zhaobing
  */
-@JsonIdentityInfo(generator = JSOGGenerator.class)
+//@JsonIdentityInfo(generator = JSOGGenerator.class)
 @RelationshipEntity(type = "works_in")
 public class WorksIn {
     @GraphId

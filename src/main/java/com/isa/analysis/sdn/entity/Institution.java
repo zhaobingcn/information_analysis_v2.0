@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by zhzy on 2016/12/30.
  */
-@JsonIdentityInfo(generator = JSOGGenerator.class)
+//@JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity(label = "Institution")
 public class Institution {
     @GraphId

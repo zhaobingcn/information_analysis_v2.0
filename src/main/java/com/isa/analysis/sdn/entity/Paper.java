@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by zhzy on 2016/12/30.
  */
-@JsonIdentityInfo(generator = JSOGGenerator.class)
-@NodeEntity(label = "Paper")
+//@JsonIdentityInfo(generator = JSOGGenerator.class)
+//@NodeEntity(label = "Paper")
 public class Paper {
 
     @GraphId

@@ -30,7 +30,7 @@ public class IDetailController {
     private InstitutionRepository institutionRepository;
 
     @RequestMapping(value = "/InstitutionInformation")
-    public String tables(Model model,
+    public String institutionInformation(Model model,
                          /*@RequestParam(value = "limit", required = false, defaultValue = "30")int limit,*/
                          @RequestParam(value = "institutionId", required = false, defaultValue = "1")Long institutionId){
 

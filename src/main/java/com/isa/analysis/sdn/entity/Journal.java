@@ -15,7 +15,7 @@ import java.util.Collection;
 /**
  * Created by zhzy on 2016/12/30.
  */
-@JsonIdentityInfo(generator = JSOGGenerator.class)
+//@JsonIdentityInfo(generator = JSOGGenerator.class)
 
 @NodeEntity(label = "Journal")
 
