@@ -447,7 +447,6 @@
 
     <script src = "/js/queryExpert/comparsionPageOnclick.js"></script>
 
-    <script src="../js/queryExpert/showingQueryResult.js"></script>
 
     <script type="text/javascript">
 //        $("#compare-institution").click();
