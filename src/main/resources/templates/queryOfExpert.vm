@@ -374,7 +374,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
-                <div id="query-result" style="display: none">
+                <div id="query-result">
                     <div class="col-lg-8">
                         <div class="panel panel-red">
                             <div class="panel-heading" >
