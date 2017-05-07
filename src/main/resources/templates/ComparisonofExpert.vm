@@ -553,7 +553,7 @@
                             <!-- /.panel-heading -->
                             <div class="list-group">
                                 #foreach($institution in $cooperateInstitutions1)
-                                    <a href="/tables" class="list-group-item">
+                                    <a href="/InstitutionInformation?institutionId=$institution.getInstitution().getId()" class="list-group-item">
                                         <i class="fa fa-institution fa-fw"></i> $institution.getInstitution().getName()
                                         <span class="pull-right text-muted small"><em>$institution.getTimes() 次</em>
                                     </span>
@@ -574,7 +574,7 @@
                             <!-- /.panel-heading -->
                             <div class="list-group">
                                 #foreach($institution in $cooperateInstitutions2)
-                                    <a href="/tables" class="list-group-item">
+                                    <a href="/InstitutionInformation?institutionId=$institution.getInstitution().getId()" class="list-group-item">
                                         <i class="fa fa-institution fa-fw"></i> $institution.getInstitution().getName()
                                         <span class="pull-right text-muted small"><em>$institution.getTimes() 次</em>
                                     </span>
@@ -679,6 +679,8 @@
 
         loadRelationshipExpertCompare(id1, 2, relationship_window1);
         loadRelationshipExpertCompare(id2, 2, relationship_window2);
+
+        loadPaperExpertCompare(id1, id2);
 
     </script>
     <!-- 专家二研究方向云图 -->

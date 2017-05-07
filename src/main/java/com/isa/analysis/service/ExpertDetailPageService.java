@@ -61,4 +61,6 @@ public interface ExpertDetailPageService {
     Map<Integer, ArrayList<Integer>> generateAuthorsAchievement(String name, String institution);
 
 
+    Map<Integer, ArrayList<Integer>> generateAuthorsAchievement(Long id);
+
 }

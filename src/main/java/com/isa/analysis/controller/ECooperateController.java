@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +94,35 @@ public class ECooperateController {
             @RequestParam(value = "depath", required = false, defaultValue = "3")int depath
     ){
         return restApiService.generateWorkTogetherGraph(id, depath);
+    }
+
+    @RequestMapping(value = "/ComparisonOfExpert/achievements")
+    public @ResponseBody Map<String, Object> authorsAchievements(@RequestParam(value = "id1", required = false, defaultValue = "63")Long id1
+                                                                 ,@RequestParam(value = "id2", required = false, defaultValue = "65")Long id2
+    ){
+        Map<Integer, ArrayList<Integer>> authorAchievement1 = expertDetailPageService.generateAuthorsAchievement(id1);
+        Map<Integer, ArrayList<Integer>> authorAchievement2 = expertDetailPageService.generateAuthorsAchievement(id2);
+        List<Integer> author1QuoteInYear = new ArrayList<>();
+        List<Integer> author1PublishInYear = new ArrayList<>();
+
+        List<Integer> author2QuoteInYear = new ArrayList<>();
+        List<Integer> author2PublishInYear = new ArrayList<>();
+
+        for(Map.Entry<Integer, ArrayList<Integer>> achievementInYear: authorAchievement1.entrySet()){
+            author1QuoteInYear.add(achievementInYear.getValue().get(1));
+            author1PublishInYear.add(achievementInYear.getValue().get(0));
+        }
+
+        for(Map.Entry<Integer, ArrayList<Integer>> achievementInYear: authorAchievement2.entrySet()){
+            author2QuoteInYear.add(achievementInYear.getValue().get(1));
+            author2PublishInYear.add(achievementInYear.getValue().get(0));
+        }
+        Map<String, Object> finalAchievementData = new HashMap<>();
+        finalAchievementData.put("author1QuoteInYear", author1QuoteInYear);
+        finalAchievementData.put("author1PublishInYear", author1PublishInYear);
+        finalAchievementData.put("author2QuoteInYear", author2QuoteInYear);
+        finalAchievementData.put("author2PublishInYear", author2PublishInYear);
+        return  finalAchievementData;
     }
 
 }

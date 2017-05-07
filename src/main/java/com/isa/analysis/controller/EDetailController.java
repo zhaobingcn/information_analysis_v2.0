@@ -118,5 +118,4 @@ public class EDetailController {
         return finalAchievementData;
     }
 
-
 }

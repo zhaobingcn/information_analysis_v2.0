@@ -240,4 +240,24 @@ public class ExpertDetailPageServiceImpl implements ExpertDetailPageService {
         }
         return authorsAchievement;
     }
+
+    @Override
+    public Map<Integer, ArrayList<Integer>> generateAuthorsAchievement(Long id) {
+        Collection<Paper> papers = paperRepository.findByAuthor(id);
+        Map<Integer, ArrayList<Integer>> authorsAchievement = new LinkedHashMap<>();
+        for(int i=2006; i<2017; i++){
+            ArrayList<Integer> countAndQuote = new ArrayList<>();
+            countAndQuote.add(0);
+            countAndQuote.add(0);
+            authorsAchievement.put(i, countAndQuote);
+        }
+        for(Paper paper: papers){
+            int year = Integer.parseInt(paper.getDate().substring(0,4));
+            if(year >=2006 && year <=2016){
+                authorsAchievement.get(year).set(0, authorsAchievement.get(year).get(0) + 1);
+                authorsAchievement.get(year).set(1, authorsAchievement.get(year).get(1) + paper.getQuote());
+            }
+        }
+        return authorsAchievement;
+    }
 }
