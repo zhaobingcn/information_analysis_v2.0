@@ -95,7 +95,8 @@ function loadPreviousPage() {
             "</div>" +
             "</div>"
         ).appendTo(authorsList).click(function () {
-            if(t.children.length < 2){
+
+            if (t.children().length < 2){
                 $(this).children().clone().appendTo(t).click(function () {
                     $(this).remove();
                 });
