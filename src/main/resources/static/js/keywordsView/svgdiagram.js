@@ -16,7 +16,7 @@ function changeDivWidth(){
 
     var color = d3.scaleLinear()
         .domain([-1, 5])
-        .range(["hsl(0,30%,100%)", "hsl(188,50%,60%)"])
+        .range(["hsla(0,30%,100%,0.0)", "hsla(188,50%,60%,0.7)"])
         .interpolate(d3.interpolateHcl); //在两个HCL颜色间插值
 
     var pack = d3.pack()

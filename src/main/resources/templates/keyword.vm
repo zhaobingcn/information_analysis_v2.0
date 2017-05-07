@@ -468,7 +468,7 @@
                         <div class="panel panel-green" style="width: 100%; height: 140px;">
                             <div class="panel-body" >
                                 <div class="part-header">
-                                    <p>领域专家</br>Top8</p>
+                                    <p>领域专家</br>Tops</p>
                                 </div>
                             </div>
                         </div>
@@ -516,7 +516,7 @@
                         <div class="panel panel-green" style="width: 100%; height: 140px;">
                             <div class="panel-body" >
                                 <div class="part-header">
-                                    <p>领域机构</br>Top8</p>
+                                    <p>领域机构</br>Tops</p>
                                 </div>
                             </div>
                         </div>
@@ -593,7 +593,7 @@
                         <div class="panel panel-green" style="width: 100%; height: 140px;">
                             <div class="panel-body" >
                                 <div class="part-header">
-                                    <p>领域论文</br>Top8</p>
+                                    <p>领域论文</br>Tops</p>
                                 </div>
                             </div>
                         </div>
