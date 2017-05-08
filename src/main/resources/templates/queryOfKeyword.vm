@@ -333,7 +333,7 @@
             <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">专家信息查询</h1>
+                    <h1 class="page-header">科研重点查询</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -342,22 +342,16 @@
                 <div class="col-lg-12">
                     <div class="panel panel-red">
                         <div class="panel-heading">
-                            搜索要查找的专家
+                            搜索要查找的研究方向
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
                                 <form role="form">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-8">
                                         <div class="form-group input-group">
-                                            <span class="input-group-addon">姓名</span>
-                                            <input type="text" class="form-control" placeholder="输入专家姓名" value="詹毅" id="authorsName">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">机构</span>
-                                            <input type="text" class="form-control" placeholder="输入专家机构" value="电子科技集团36所" id="authorsInstitution">
+                                            <span class="input-group-addon">关键词</span>
+                                            <input type="text" class="form-control" placeholder="输入关键词名称" value="" id="authorsName">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -375,7 +369,7 @@
                 <!-- /.col-lg-12 -->
 
                 <div id="query-result">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="panel panel-red">
                             <div class="panel-heading" >
                                 为您检索到如下结果：
@@ -404,18 +398,6 @@
                     </div>
                     <!-- /.col-lg-8 -->
 
-                    <div class="col-lg-4">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                专家合作以及对比分析
-                            </div>
-                            <div class="panel-body" id="addprofessor">
-                            </div>
-                            <div class="panel-footer">
-                                <button type="button" id="cooperate-button" class="btn btn-outline btn-default btn-block" onclick="comparsionPage()">专家对比分析</button>
-                            </div>
-                        </div>
-                    </div>
                     <!-- /.col-lg-4 -->
                 </div>
                 <!-- /#query-result -->
