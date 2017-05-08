@@ -278,10 +278,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -295,7 +295,7 @@
                                     <a href="/queryOfExpert">专家信息查询</a>
                                 </li>
                                 <li>
-                                    <a href="recommendOfExpert.vm">专家推荐</a>
+                                    <a href="/recommendOfExpert">专家推荐</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -304,7 +304,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="ComparisonofExpert.vm">机构能力度量</a>
+                                    <a href="queryOfInstitution.vm">科研机构查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -312,7 +312,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">科研重点查询</a>
+                                    <a href="queryOfKeyword.vm">科研重点查询</a>
                                 </li>
                                 <li>
                                     <a href="/allKeywords">科研热点详情</a>

@@ -283,24 +283,24 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.vm"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                            <a href="/index"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="queryOfExpert.vm">专家能力度量</a>
+                                    <a href="/queryOfExpert">专家信息查询</a>
                                 </li>
                                 <li>
-                                    <a href="recommendOfExpert.vm">专家推荐</a>
+                                    <a href="/recommendOfExpert">专家推荐</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -309,7 +309,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="ComparisonofExpert.vm">机构能力度量</a>
+                                    <a href="queryOfInstitution.vm">科研机构查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -317,104 +317,14 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">科研重点查询</a>
+                                    <a href="queryOfKeyword.vm">科研重点查询</a>
                                 </li>
                                 <li>
-                                    <a href="#">科研热点详情</a>
+                                    <a href="/allKeywords">科研热点详情</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        #*<li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">专家能力度量</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">专家合作分析</a>
-                                </li>
-                                <li>
-                                    <a href="professorRecommend.html">专家推荐</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="InstitutionInformation.vm"><i class="fa fa-table fa-fw"></i> 科研机构分析</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 科研重点演化</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研机构能力度量<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> 技术体系分析<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">技术体系生成</a>
-                                </li>
-                                <li>
-                                    <a href="#">科研热点追踪</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="ComparisonofInstitutions.vm">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>*#
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
