@@ -5,15 +5,12 @@ var authors;
 var theCurrentPage = 0;
 var allPagesCount = 3;
 var thePageSize = 6;
-var t = $("#addprofessor").empty();
-document.getElementById("searchAuthors").onclick = function () {
-    var name = $("#authorsName").val();
-    var institution = $("#authorsInstitution").val();
-    if(name=="" && institution==""){
+document.getElementById("searchInstitutions").onclick = function () {
+    var name = $("#institutionName").val();
+    if(name==""){
         return;
     }
-    
-    authors = getQueryData();
+    institutions = getQueryData();
     theCurrentPage = 0;
     loadNextPage(theCurrentPage);
 }
@@ -46,26 +43,25 @@ function setButtonValue() {
 }
 
 function getQueryData() {
-    var name = $("#authorsName").val();
-    var institution = $("#authorsInstitution").val();
-    var authorsDetail;
+    var name = $("#institutionName").val();
+    var institutionsDetail;
     $.ajax({
         url : "/queryOfExpert/commitQuery",
         data : {"name": name,
                 "institution": institution},
         dataType: "json",
         async : false,
-        success : function (authorsData) {
-            authorsDetail = authorsData;
+        success : function (institutionsData) {
+            institutionsDetail = institutionsData;
         }
         }
     );
-    return authorsDetail;
+    return institutionsDetail;
 }
 
 function loadPreviousPage() {
     theCurrentPage = theCurrentPage - 1;
-    var authorsList = $("#author-list-div").empty();
+    var authorsList = $("#institution-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i<theCurrentPage * thePageSize; i++){
         $(
         "<div class=\"col-lg-6 col-sm-12\">" +
@@ -94,14 +90,7 @@ function loadPreviousPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(authorsList).click(function () {
-
-            if (t.children().length < 2){
-                $(this).children().clone().appendTo(t).click(function () {
-                    $(this).remove();
-                });
-            }
-        });
+        );
     }
 }
 
@@ -136,13 +125,6 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(authorsList).click(function () {
-
-            if (t.children().length < 2){
-                $(this).children().clone().appendTo(t).click(function () {
-                    $(this).remove();
-                });
-            }
-        });
+        );
     }
 }

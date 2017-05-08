@@ -5,7 +5,6 @@ var authors;
 var theCurrentPage = 0;
 var allPagesCount = 3;
 var thePageSize = 6;
-var t = $("#addprofessor").empty();
 document.getElementById("searchAuthors").onclick = function () {
     var name = $("#authorsName").val();
     var institution = $("#authorsInstitution").val();
@@ -51,12 +50,11 @@ function getQueryData() {
     var authorsDetail;
     $.ajax({
         url : "/queryOfExpert/commitQuery",
-        data : {"name": name,
-                "institution": institution},
+        data : {"name": name},
         dataType: "json",
         async : false,
-        success : function (authorsData) {
-            authorsDetail = authorsData;
+        success : function (keywordsData) {
+            keywordsDetail = keywordsData;
         }
         }
     );
@@ -94,14 +92,7 @@ function loadPreviousPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(authorsList).click(function () {
-
-            if (t.children().length < 2){
-                $(this).children().clone().appendTo(t).click(function () {
-                    $(this).remove();
-                });
-            }
-        });
+        );
     }
 }
 
@@ -136,13 +127,6 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(authorsList).click(function () {
-
-            if (t.children().length < 2){
-                $(this).children().clone().appendTo(t).click(function () {
-                    $(this).remove();
-                });
-            }
-        });
+        );
     }
 }

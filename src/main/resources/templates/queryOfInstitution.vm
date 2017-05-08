@@ -351,12 +351,12 @@
                                     <div class="col-lg-8">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">机构名</span>
-                                            <input type="text" class="form-control" placeholder="输入专家姓名" value="电子科技集团36所" id="authorsName">
+                                            <input type="text" class="form-control" placeholder="输入机构名称" value="电子科技集团36所" id="institutionName">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchAuthors">检索</button>
+                                            <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchInstitutions">检索</button>
                                         </div>
                                     </div>
                                 </form>
