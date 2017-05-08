@@ -339,6 +339,7 @@
                     <div class="color-fill near-head-rect"></div>
                     <div class="header-div">
                         <h1 class="page-header">$keyword.name</h1>
+                        <input type="hidden" value="$keyword.getId()" id="keyword-id">
                         <p id="keyword-intro">关键词介绍</p>
                     </div>
                 </div>
@@ -658,15 +659,18 @@
 <!-- 关键词关联详细信息力引导布局图 -->
 <script type="text/javascript" src = "../js/keywordsDetail/keywordRelationshipInfo.js"></script>
 
-<!--script type="text/javascript">
+<script type="text/javascript">
+    var id = $("#keyword-id").val();
+    var depath = 2;
+    loadKeywordDevelopmentofNumber(id);
+    loadKeywordRelationship(id , depath);
+    loadKeywordInfo(id , depath);
     window.onresize = function () {
-        loadAbilityInstitution();
-        loadAchievementInstitutionData();
-        loadRelationshipInstitution();
-        loadStaffInstitution();
-        loadInterestInstitution();
+        loadKeywordDevelopmentofNumber(id);
+        loadKeywordRelationship(id , depath);
+        loadKeywordInfo(id , depath);
     }
-</script>-->
+</script>
 </body>
 
 </html>

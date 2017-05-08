@@ -2,7 +2,7 @@
  * Created by lsy on 2017/3/14.
  */
 
-function loadKeywordDevelopmentofNumber() {
+function loadKeywordDevelopmentofNumber(id) {
     var myChart = echarts.init(document.getElementById("keyword-development-of-num"));
     myChart.showLoading();
 
@@ -11,7 +11,7 @@ function loadKeywordDevelopmentofNumber() {
         type: "get",
         dataType : "json",
         data:{
-            "id": 48
+            "id": id
         },
         success : function (data) {
         myChart.hideLoading();
@@ -225,5 +225,3 @@ function loadKeywordDevelopmentofNumber() {
 
     }});
 }
-
-loadKeywordDevelopmentofNumber();

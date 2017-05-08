@@ -1,7 +1,7 @@
 /**
  * Created by lsy on 2017/4/11.
  */
-function loadKeywordInfo(depath) {
+function loadKeywordInfo(id , depath) {
     var myChart = echarts.init(document.getElementById('keyword-relationship-info'));
     myChart.showLoading();
 
@@ -10,8 +10,8 @@ function loadKeywordInfo(depath) {
         type: "get",
         dataType : "json",
         data:{
-            "id": 28,
-            "depath" : 2
+            "id": id,
+            "depath" : depath
         },
         success : function (graph) {
         myChart.hideLoading();
@@ -76,4 +76,3 @@ function loadKeywordInfo(depath) {
         myChart.setOption(option);
     }})
 }
-loadKeywordInfo();
