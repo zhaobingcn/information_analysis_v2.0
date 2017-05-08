@@ -301,7 +301,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="queryOfInstitution.vm">科研机构查询</a>
+                                    <a href="/queryOfInstitution">科研机构查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -309,7 +309,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="queryOfKeyword.vm">科研重点查询</a>
+                                    <a href="/queryOfKeyword">科研重点查询</a>
                                 </li>
                                 <li>
                                     <a href="/allKeywords">科研热点详情</a>

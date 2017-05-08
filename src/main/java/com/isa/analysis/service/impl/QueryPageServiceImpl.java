@@ -38,7 +38,7 @@ public class QueryPageServiceImpl implements QueryPageService {
     private MapUtil mapUtil;
 
     @Override
-    @Transactional
+//    @Transactional
     public List<Map<String, Object>> generateSearchAuthors(String name, String institution) {
         String queryContext = "";
         if(!name.equals("") && !institution.equals("")){
@@ -51,7 +51,6 @@ public class QueryPageServiceImpl implements QueryPageService {
         List<Author> authors = authorRepository.findByFulltextIndexSearch("author", queryContext , 18);
         List<Map<String, Object>> authorsResult = new ArrayList<>();
         for(Author author:authors){
-            System.out.println(author.getName() + author.getInstitution());
             authorsResult.add(
                 mapUtil.map(
                         "author", author,

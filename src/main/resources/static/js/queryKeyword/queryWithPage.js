@@ -73,7 +73,7 @@ function loadPreviousPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + keywords[i].involvetimes + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\">" + keywords[i].involvetimes + "</span> </div>" +
             "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + keywords[i].keyword.name + "</span> </div>" +
             "<input type='hidden' value= '"+ keywords[i].keyword.name + "' id='queryKeywordId'>" +
             "</div>" +
@@ -102,7 +102,7 @@ function loadNextPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + keywords[i].involvetimes + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\">" + keywords[i].involvetimes + "</span> </div>" +
             "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + keywords[i].keyword.name + "</span> </div>" +
             "<input type='hidden' value= '"+ keywords[i].keyword.name + "' id='queryKeywordId'>" +
             "</div>" +
