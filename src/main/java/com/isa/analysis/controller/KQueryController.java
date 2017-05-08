@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sun.misc.Contended;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2017/5/8.
@@ -27,9 +28,7 @@ public class KQueryController {
     }
 
     @RequestMapping(value = "/queryOfKeyword/commitQuery")
-    public @ResponseBody List<Keyword> commitQuery(@RequestParam(value = "name", required = false, defaultValue = "合成")String name){
-
-
+    public @ResponseBody List<Map<String, Object>> commitQuery(@RequestParam(value = "name", required = false, defaultValue = "合成")String name){
         return queryPageService.generateSearchKeywords(name);
     }
 }

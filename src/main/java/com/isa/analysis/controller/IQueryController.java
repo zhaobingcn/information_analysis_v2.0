@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhzy on 2017/5/8.
@@ -25,7 +26,7 @@ public class IQueryController {
     }
 
     @RequestMapping(value = "/queryOfInstitution/commitQuery")
-    public @ResponseBody List<Institution> commitQuery(@RequestParam(value = "name", required = false, defaultValue = "电子科技集团36")String name){
+    public @ResponseBody List<Map<String, Object>> commitQuery(@RequestParam(value = "name", required = false, defaultValue = "电子科技集团36")String name){
 
         return queryPageService.generateSearchInstitutions(name);
     }

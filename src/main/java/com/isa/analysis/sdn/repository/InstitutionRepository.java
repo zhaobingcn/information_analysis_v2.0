@@ -98,5 +98,11 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
     List<Institution> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
 
+    @Query("match (i:Institution)<-[:works_in]-(a) where id(i) = {institutionId} return count(a)")
+    Long getAuthorsCount(@Param(value = "institutionId")Long institutionId);
+
+    @Query("match (i:Institution)<-[:works_in]-(a:Author)-[:publish]->(p) where id(i) = {institutionId}" +
+            "return count(distinct(p))")
+    Long getPapersCount(@Param(value = "institutionId")Long institutionId);
 
 }

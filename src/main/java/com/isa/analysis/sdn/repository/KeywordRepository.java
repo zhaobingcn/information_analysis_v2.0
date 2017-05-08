@@ -8,6 +8,7 @@ import org.springframework.data.neo4j.annotation.QueryResult;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -67,4 +68,6 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
     @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
     List<Keyword> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
 
+    @Query("match (k:Keyword)<-[i:involve]-() where id(k) = {keywordId} return count(i)")
+    Long getKeywordInvolveTimes(@Param(value = "keywordId")Long keywordId);
 }

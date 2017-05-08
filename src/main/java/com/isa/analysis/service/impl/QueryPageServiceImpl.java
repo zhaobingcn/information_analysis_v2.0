@@ -65,22 +65,43 @@ public class QueryPageServiceImpl implements QueryPageService {
     }
 
     @Override
-    public List<Institution> generateSearchInstitutions(String name) {
+    public List<Map<String, Object>> generateSearchInstitutions(String name) {
         String queryContext = "";
         if(!name.equals("")){
             queryContext =  "name:(" + name + ")";
         }
+
         List<Institution> institutions = institutionRepository.findByFulltextIndexSearch("institution", queryContext, 18);
-        return institutions;
+        List<Map<String, Object>> institutionsResult = new ArrayList<>();
+        for(Institution institution:institutions){
+            institutionsResult.add(
+                    mapUtil.map(
+                            "institution", institution,
+                            "authorsCount", institutionRepository.getAuthorsCount(institution.getId()),
+                            "papersCount", institutionRepository.getPapersCount(institution.getId())
+                    )
+            );
+        }
+
+        return institutionsResult;
     }
 
     @Override
-    public List<Keyword> generateSearchKeywords(String name) {
+    public List<Map<String, Object>> generateSearchKeywords(String name) {
         String queryContext = "";
         if(!name.equals("")){
             queryContext =  "name:(" + name + ")";
         }
         List<Keyword> keywords = keywordRepository.findByFulltextIndexSearch("keyword", queryContext, 18);
-        return keywords;
+        List<Map<String, Object>> keywordsResult = new ArrayList<>();
+        for(Keyword keyword: keywords){
+            keywordsResult.add(
+                    mapUtil.map(
+                            "keyword", keyword,
+                            "involvetimes",keywordRepository.getKeywordInvolveTimes(keyword.getId())
+                    )
+            );
+        }
+        return keywordsResult;
     }
 }

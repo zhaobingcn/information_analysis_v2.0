@@ -20,7 +20,7 @@ public interface QueryPageService {
      */
     List<Map<String, Object>> generateSearchAuthors(String name, String institution);
 
-    List<Institution> generateSearchInstitutions(String name);
+    List<Map<String, Object>> generateSearchInstitutions(String name);
 
-    List<Keyword> generateSearchKeywords(String name);
+    List<Map<String, Object>> generateSearchKeywords(String name);
 }
