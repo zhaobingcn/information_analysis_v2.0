@@ -28,8 +28,9 @@ function loadKeywordDevelopmentofNumber(id) {
         };
         //总人口转换函数
         var sizeFunction = function (x) {
-            var y = Math.sqrt(x / 5e8) + 1;
-            return y * 40;
+            // var y = Math.sqrt(x) + 1;
+            // return y;
+            return x;
         };
         // 提示框内容格式
         var schema = [
@@ -125,7 +126,7 @@ function loadKeywordDevelopmentofNumber(id) {
                 xAxis: {
                     type: 'log',
                     name: '研究该方向专家人数',
-                    max: 20,
+                    max: data.maxAuthorsCount,
                     // min: 1,
                     nameGap: 25,
                     nameLocation: 'middle',
@@ -147,7 +148,7 @@ function loadKeywordDevelopmentofNumber(id) {
                 yAxis: {
                     type: 'value',
                     name: '参与研究机构数',
-                    max: 20,
+                    max: data.maxInstitutionsCount,
                     nameTextStyle: {
                         color: '#444',
                         fontSize: 16

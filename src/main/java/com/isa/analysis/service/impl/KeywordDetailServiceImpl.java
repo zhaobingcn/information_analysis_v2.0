@@ -36,10 +36,20 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
         String keywordName = keywordRepository.findOne(id).getName().toString();
         List<Object> series = new ArrayList<>();
         List<Object> years = new ArrayList<>();
+        long maxAuthorsCount = 0;
+        long maxInstitutionsCount = 0;
         for(int year=startYear; year<=endYear; year++){
             List<Object> inYear = new ArrayList<>();
-            inYear.add(neo4jTemplateRepository.getKeywordRelatedAuthorsCount(year, id));
-            inYear.add(neo4jTemplateRepository.getKeywordRelatedInstitutionsCount(year, id));
+            long authorsCount = neo4jTemplateRepository.getKeywordRelatedAuthorsCount(year, id);
+            inYear.add(authorsCount);
+            if(authorsCount > maxAuthorsCount){
+                maxAuthorsCount = authorsCount;
+            }
+            long institutionsCount = neo4jTemplateRepository.getKeywordRelatedInstitutionsCount(year, id);
+            inYear.add(institutionsCount);
+            if(institutionsCount > maxInstitutionsCount){
+                maxInstitutionsCount = institutionsCount;
+            }
             inYear.add(neo4jTemplateRepository.getKeywordRelatedPapersCount(year, id));
             inYear.add(keywordName);
             inYear.add(year);
@@ -52,6 +62,8 @@ public class KeywordDetailServiceImpl implements KeywordDetailService{
         map.put("keywords", new String[]{keywordName});
         map.put("timeline", years);
         map.put("series", series);
+        map.put("maxAuthorsCount", maxAuthorsCount);
+        map.put("maxInstitutionsCount", maxInstitutionsCount);
         return map;
     }
 }
