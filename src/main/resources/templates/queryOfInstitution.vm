@@ -377,8 +377,10 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-lg-12" id = "author-list-div">
+                                    <div class="col-lg-12" id = "institution-list-div">
+                                        <table>
 
+                                        </table>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 package com.isa.analysis.sdn.repository;
 
+import com.isa.analysis.sdn.entity.Author;
 import com.isa.analysis.sdn.entity.Institution;
 import com.isa.analysis.sdn.entity.Paper;
 import com.isa.analysis.sdn.entity.QueryResult.InstitutionAndCooperateTimes;
@@ -90,6 +91,12 @@ public interface InstitutionRepository extends GraphRepository<Institution> {
     @Query("MATCH (i:Institution)<-[works_in]-(a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) WHERE id(k)={id} WITH i,collect(DISTINCT(p)) AS papers" +
             " RETURN i ORDER BY (reduce(sum=0, p IN papers|sum + p.quote + 10)) DESC LIMIT {limit}")
     List<Institution> getTopInstitutionByKeywordId(@Param("id")Long id, @Param("limit")Integer limit);
+
+    /**
+     * 利用全文索引查找机构信息
+     */
+    @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
+    List<Institution> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
 
 
 }

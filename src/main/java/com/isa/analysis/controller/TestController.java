@@ -49,9 +49,6 @@ public class TestController {
     @Autowired
     Scheduler scheduler;
 
-    @Autowired
-    Neo4jSessionRepository neo4jSessionRepository;
-
 
     @RequestMapping(value = "/test")
     public @ResponseBody Collection<Paper> test(){

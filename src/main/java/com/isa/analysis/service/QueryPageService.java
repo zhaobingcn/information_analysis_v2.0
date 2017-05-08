@@ -1,6 +1,8 @@
 package com.isa.analysis.service;
 
 import com.isa.analysis.sdn.entity.Author;
+import com.isa.analysis.sdn.entity.Institution;
+import com.isa.analysis.sdn.entity.Keyword;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Map;
 /**
  * Created by zhzy on 2017/1/5.
  */
-public interface ExpertQueryPageService {
+public interface QueryPageService {
 
     /**
      * 全文搜索查找作者
@@ -17,4 +19,8 @@ public interface ExpertQueryPageService {
      * @return
      */
     List<Map<String, Object>> generateSearchAuthors(String name, String institution);
+
+    List<Institution> generateSearchInstitutions(String name);
+
+    List<Keyword> generateSearchKeywords(String name);
 }

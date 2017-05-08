@@ -61,4 +61,10 @@ public interface KeywordRepository extends GraphRepository<Keyword> {
 
     Keyword findByName(@Param(value = "name")String name);
 
+    /**
+     * 利用全文索引查找关键词信息
+     */
+    @Query("call userdefined.index.ChineseFullIndexSearch({indexName},{queryContext},{limit})")
+    List<Keyword> findByFulltextIndexSearch(@Param("indexName") String indexName, @Param("queryContext") String queryContext, @Param("limit") long limit);
+
 }

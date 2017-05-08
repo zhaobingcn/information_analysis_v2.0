@@ -1,6 +1,6 @@
 package com.isa.analysis.controller;
 
-import com.isa.analysis.service.ExpertQueryPageService;
+import com.isa.analysis.service.QueryPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class EQueryController {
 
     @Autowired
-    private ExpertQueryPageService expertQueryPageService;
+    private QueryPageService queryPageService;
 
     @RequestMapping(value = "/queryOfExpert")
     public String expertQuery(){
@@ -28,6 +28,6 @@ public class EQueryController {
     public @ResponseBody List<Map<String, Object>> commitQuery(@RequestParam(value = "name", required = false)String name,
                                                                @RequestParam(value = "institution", required = false)String institution
                                                                ){
-        return expertQueryPageService.generateSearchAuthors(name, institution);
+        return queryPageService.generateSearchAuthors(name, institution);
     }
 }

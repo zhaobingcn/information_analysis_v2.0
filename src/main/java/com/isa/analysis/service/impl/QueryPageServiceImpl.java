@@ -1,9 +1,13 @@
 package com.isa.analysis.service.impl;
 
 import com.isa.analysis.sdn.entity.Author;
+import com.isa.analysis.sdn.entity.Institution;
+import com.isa.analysis.sdn.entity.Keyword;
 import com.isa.analysis.sdn.repository.AuthorRepository;
+import com.isa.analysis.sdn.repository.InstitutionRepository;
+import com.isa.analysis.sdn.repository.KeywordRepository;
 import com.isa.analysis.sdn.repository.PaperRepository;
-import com.isa.analysis.service.ExpertQueryPageService;
+import com.isa.analysis.service.QueryPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +20,19 @@ import java.util.Map;
  * Created by zhzy on 2017/1/5.
  */
 @Service
-public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
+public class QueryPageServiceImpl implements QueryPageService {
 
     @Autowired
     private AuthorRepository authorRepository;
 
     @Autowired
     private PaperRepository paperRepository;
+
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
+    @Autowired
+    private KeywordRepository keywordRepository;
 
     @Autowired
     private MapUtil mapUtil;
@@ -52,5 +62,25 @@ public class ExpertQueryPageServiceImpl implements ExpertQueryPageService{
             );
         }
         return authorsResult;
+    }
+
+    @Override
+    public List<Institution> generateSearchInstitutions(String name) {
+        String queryContext = "";
+        if(!name.equals("")){
+            queryContext =  "name:(" + name + ")";
+        }
+        List<Institution> institutions = institutionRepository.findByFulltextIndexSearch("institution", queryContext, 18);
+        return institutions;
+    }
+
+    @Override
+    public List<Keyword> generateSearchKeywords(String name) {
+        String queryContext = "";
+        if(!name.equals("")){
+            queryContext =  "name:(" + name + ")";
+        }
+        List<Keyword> keywords = keywordRepository.findByFulltextIndexSearch("keyword", queryContext, 18);
+        return keywords;
     }
 }
