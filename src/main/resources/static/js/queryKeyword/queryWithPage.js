@@ -5,14 +5,13 @@ var authors;
 var theCurrentPage = 0;
 var allPagesCount = 3;
 var thePageSize = 6;
-document.getElementById("searchAuthors").onclick = function () {
-    var name = $("#authorsName").val();
-    var institution = $("#authorsInstitution").val();
-    if(name=="" && institution==""){
+document.getElementById("searchKeywords").onclick = function () {
+    var name = $("#keywordName").val();
+    if(name==""){
         return;
     }
     
-    authors = getQueryData();
+    keywords = getQueryData();
     theCurrentPage = 0;
     loadNextPage(theCurrentPage);
 }
@@ -45,11 +44,10 @@ function setButtonValue() {
 }
 
 function getQueryData() {
-    var name = $("#authorsName").val();
-    var institution = $("#authorsInstitution").val();
-    var authorsDetail;
+    var name = $("#keywordName").val();
+    var keywordsDetail;
     $.ajax({
-        url : "/queryOfExpert/commitQuery",
+        url : "/queryOfKeyword/commitQuery",
         data : {"name": name},
         dataType: "json",
         async : false,
@@ -58,77 +56,63 @@ function getQueryData() {
         }
         }
     );
-    return authorsDetail;
+    return keywordsDetail;
 }
 
 function loadPreviousPage() {
     theCurrentPage = theCurrentPage - 1;
-    var authorsList = $("#author-list-div").empty();
+    var keywordsList = $("#keyword-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i<theCurrentPage * thePageSize; i++){
         $(
-        "<div class=\"col-lg-6 col-sm-12\">" +
+            "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
-            "<div class=\"panel-heading\" style='height: 100px'>" +
+            "<div class=\"panel-heading\" style='height: 75px'>" +
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
-            "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            "<i class=\"fa fa-star fa-4x\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
-        "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-        "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
-        "</div>" +
-        "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\">" +
-            "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + keywords[i].involvetimes + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + keywords[i].keyword.name + "</span> </div>" +
+            "<input type='hidden' value= '"+ keywords[i].keyword.name + "' id='queryKeywordId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).appendTo(keywordsList).click(function () {
+            var name = $(this).find("#queryKeywordId").val();
+            window.open("/keywordDetail?name=" + name);
+        });
     }
 }
 
 function loadNextPage() {
     theCurrentPage = theCurrentPage + 1;
-    var authorsList = $("#author-list-div").empty();
+    var keywordsList = $("#keyword-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i< theCurrentPage * thePageSize; i++){
         $(
             "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
-            "<div class=\"panel-heading\" style='height: 100px'>" +
+            "<div class=\"panel-heading\" style='height: 75px'>" +
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
-            "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            "<i class=\"fa fa-star fa-4x\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
-            "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-            "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
-            "</div>" +
-            "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\">" +
-            "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"#\">" + keywords[i].involvetimes + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + keywords[i].keyword.name + "</span> </div>" +
+            "<input type='hidden' value= '"+ keywords[i].keyword.name + "' id='queryKeywordId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
             "</div>"
-        ).click(function () {
-            alert("asdasd");
+        ).appendTo(keywordsList).click(function () {
+            var name = $(this).find("#queryKeywordId").val();
+            window.open("/keywordDetail?name=" + name);
         });
     }
 }

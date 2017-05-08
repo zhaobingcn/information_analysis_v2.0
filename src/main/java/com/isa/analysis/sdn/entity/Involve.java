@@ -55,7 +55,4 @@ public class Involve {
         this.keyword = keyword;
     }
 
-
-
-
 }

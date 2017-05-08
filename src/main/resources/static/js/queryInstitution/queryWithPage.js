@@ -89,7 +89,8 @@ function loadPreviousPage() {
             "</div>" +
             "</div>"
         ).appendTo(institutionsList).click(function () {
-            window.open("/InstitutionInformation?institutionId=" + institutions[i].id);
+            var id = $(this).find("#queryAuthorId").val();
+            window.open("/InstitutionInformation?institutionId=" + id);
         });
     }
 }
@@ -125,7 +126,8 @@ function loadNextPage() {
             "</div>" +
             "</div>"
         ).appendTo(institutionsList).click(function () {
-            window.open("/InstitutionInformation?institutionId=" + institutions[i].id);
+            var id = $(this).find("#queryAuthorId").val();
+            window.open("/InstitutionInformation?institutionId=" + id);
         });
     }
 }

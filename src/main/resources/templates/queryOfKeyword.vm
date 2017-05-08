@@ -351,12 +351,12 @@
                                     <div class="col-lg-8">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">关键词</span>
-                                            <input type="text" class="form-control" placeholder="输入关键词名称" value="" id="authorsName">
+                                            <input type="text" class="form-control" placeholder="输入关键词名称" value="" id="keywordName">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchAuthors">检索</button>
+                                            <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchKeywords">检索</button>
                                         </div>
                                     </div>
                                 </form>
@@ -423,11 +423,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="/dist/js/sb-admin-2.js"></script>
 
-    <script src="/js/queryExpert/queryWithPage.js"></script>
-
     <script src = "/js/echarts.js"></script>
 
-    <script src = "/js/queryExpert/comparsionPageOnclick.js"></script>
+    <script src="/js/queryKeyword/queryWithPage.js"></script>
+
 
 
     <script type="text/javascript">
