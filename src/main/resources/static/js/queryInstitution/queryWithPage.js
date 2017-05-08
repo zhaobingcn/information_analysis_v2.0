@@ -46,9 +46,8 @@ function getQueryData() {
     var name = $("#institutionName").val();
     var institutionsDetail;
     $.ajax({
-        url : "/queryOfExpert/commitQuery",
-        data : {"name": name,
-                "institution": institution},
+        url : "/queryOfInstitution/commitQuery",
+        data : {"name": name},
         dataType: "json",
         async : false,
         success : function (institutionsData) {
@@ -61,27 +60,26 @@ function getQueryData() {
 
 function loadPreviousPage() {
     theCurrentPage = theCurrentPage - 1;
-    var authorsList = $("#institution-list-div").empty();
+    var institutionsList = $("#institution-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i<theCurrentPage * thePageSize; i++){
         $(
-        "<div class=\"col-lg-6 col-sm-12\">" +
+            "<div class=\"col-lg-6 col-sm-12\">" +
             "<div class=\"panel panel-default\">" +
             "<div class=\"panel-heading\" style='height: 100px'>" +
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
-            "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            "<i class=\"fa fa-institution fa-4x\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
-        "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-        "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
-        "</div>" +
-        "<div id=\"small_stats\" class=\"cf\">" +
+            "<div class=\"stat\"> <i class=\"fa fa-location-arrow\"></i> <span class=\"value\">" + institutions[i].institution.location + "</span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-file\"></i> <span class=\"value\">" + institutions[i].papersCount + "</span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-users\"></i> <span class=\"value\">" + institutions[i].authorsCount + "</span></div> " +
+            "</div>" +
+            "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
-            "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
+            "<span class=\"value\">" + institutions[i].institution.name + "</span>" +
+            "<input type='hidden' value= '"+ institutions[i].id + "' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -90,13 +88,13 @@ function loadPreviousPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).appendTo(institutionsList);
     }
 }
 
 function loadNextPage() {
     theCurrentPage = theCurrentPage + 1;
-    var authorsList = $("#author-list-div").empty();
+    var institutionsList = $("#institution-list-div").empty();
     for(var i=(theCurrentPage-1) * thePageSize; i< theCurrentPage * thePageSize; i++){
         $(
             "<div class=\"col-lg-6 col-sm-12\">" +
@@ -104,19 +102,18 @@ function loadNextPage() {
             "<div class=\"panel-heading\" style='height: 100px'>" +
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
-            "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            "<i class=\"fa fa-institution fa-4x\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
-            "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
-            "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
+            "<div class=\"stat\"> <i class=\"fa fa-location-arrow\"></i> <span class=\"value\">" + institutions[i].institution.location + "</span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-file\"></i> <span class=\"value\">" + institutions[i].papersCount + "</span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-users\"></i> <span class=\"value\">" + institutions[i].authorsCount + "</span></div> " +
             "</div>" +
             "<div id=\"small_stats\" class=\"cf\">" +
             "<div class=\"stat\">" +
-            "<span class=\"value\">" + authors[i].author.institution + "</span>" +
-            "<input type='hidden' value= '"+ authors[i].id + "' id='queryAuthorId'>" +
+            "<span class=\"value\">" + institutions[i].institution.name + "</span>" +
+            "<input type='hidden' value= '"+ institutions[i].id + "' id='queryAuthorId'>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -125,6 +122,6 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).appendTo(institutionsList);
     }
 }

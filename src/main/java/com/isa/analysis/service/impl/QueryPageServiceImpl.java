@@ -77,6 +77,7 @@ public class QueryPageServiceImpl implements QueryPageService {
             institutionsResult.add(
                     mapUtil.map(
                             "institution", institution,
+                            "id", institution.getId(),
                             "authorsCount", institutionRepository.getAuthorsCount(institution.getId()),
                             "papersCount", institutionRepository.getPapersCount(institution.getId())
                     )
@@ -98,6 +99,7 @@ public class QueryPageServiceImpl implements QueryPageService {
             keywordsResult.add(
                     mapUtil.map(
                             "keyword", keyword,
+                            "id", keyword.getId(),
                             "involvetimes",keywordRepository.getKeywordInvolveTimes(keyword.getId())
                     )
             );
