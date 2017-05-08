@@ -127,6 +127,8 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        );
+        ).click(function () {
+            alert("asdasd");
+        });
     }
 }

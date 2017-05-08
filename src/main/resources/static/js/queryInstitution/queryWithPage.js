@@ -88,7 +88,9 @@ function loadPreviousPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(institutionsList);
+        ).appendTo(institutionsList).click(function () {
+            window.open("/InstitutionInformation?institutionId=" + institutions[i].id);
+        });
     }
 }
 
@@ -122,6 +124,8 @@ function loadNextPage() {
             "</div>" +
             "</div>" +
             "</div>"
-        ).appendTo(institutionsList);
+        ).appendTo(institutionsList).click(function () {
+            window.open("/InstitutionInformation?institutionId=" + institutions[i].id);
+        });
     }
 }
