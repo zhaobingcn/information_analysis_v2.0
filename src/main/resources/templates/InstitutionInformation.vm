@@ -353,7 +353,6 @@
                                 <div class="middle">$institution.name</div>
                                 <input type="hidden" value="$institution.getId()" id = "institution-id">
 
-
                             </div>
                             <div class="col-lg-8 col-xs-8">
                                 <div>
@@ -629,6 +628,14 @@
     <script type="text/javascript" src = "../js/institutionDetail/institutionalStaff.js"></script>
     <!-- 研究方向聚焦云图 -->
     <script type="text/javascript" src = "../js/institutionDetail/institutionInterest.js"></script>
+
+    <script type="text/javascript">
+        var id = $("#institution-id").val();
+//        alert(id + "+++++++++++++")
+        loadThemeRiver(id);
+        loadInterestInstitution(id);
+        loadRelationshipInstitution(id);
+    </script>
 
     <!--script type="text/javascript">
         window.onresize = function () {
