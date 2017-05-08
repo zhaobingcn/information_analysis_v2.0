@@ -1,9 +1,13 @@
 /**
- * Created by lsy on 2017/2/24.
+ * Created by lsy on 2017/2/23.
  */
-function loadStaffFirstInstitution() {
-    var myChart = echarts.init(document.getElementById("first-institutional-staff"));
+function loadStaffInstitution() {
+    var myChart = echarts.init(document.getElementById("institutional-staff"));
     var option = {
+        title : {
+            text: '某某某科研机构',
+            x:'center'
+        },
         tooltip : {
             trigger: 'item',
             formatter: "{b} : {c} ({d}%)"
@@ -15,10 +19,10 @@ function loadStaffFirstInstitution() {
         },
         series : [
             {
-                // name: '访问来源',
-                radius: '65%',
+               // name: '访问来源',
                 type: 'pie',
-                center: ['55%', '50%'],
+                radius : '55%',
+                center: ['53%', '57%'],
                 data:[
                     {value:335, name:'院士'},
                     {value:310, name:'教授'},
@@ -38,4 +42,4 @@ function loadStaffFirstInstitution() {
     };
     myChart.setOption(option);
 }
-loadStaffFirstInstitution();
+loadStaffInstitution();

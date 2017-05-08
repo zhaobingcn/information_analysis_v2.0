@@ -624,23 +624,39 @@
     <script src="../js/china.js"></script>
 
 
-    <!-- 科研机构合作关系对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionRelationshipCompare.js"></script>
-    <!-- 科研机构论文发表量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionPublishPaperCompare.js"></script>
-    <!-- 科研机构专利申请量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionPatentCompare.js"></script>
-    <!-- 科研机构项目承接量对比图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionProgramCompare.js"></script>
-    <!-- 科研机构一研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionInterestCompare.js"></script>
-    <!-- 科研机构二研究方向云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionInterestCompare.js"></script>
-    <!-- 科研机构一人员组成图 -->
-    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionStaffCompare.js"></script>
-    <!-- 科研机构二人员组成图 -->
-    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionStaffCompare.js"></script>
+##    <!-- 科研机构合作关系对比图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionRelationshipCompare.js"></script>
+##    <!-- 科研机构论文发表量对比图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionPublishPaperCompare.js"></script>
+##    <!-- 科研机构专利申请量对比图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionPatentCompare.js"></script>
+##    <!-- 科研机构项目承接量对比图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionProgramCompare.js"></script>
+##    <!-- 科研机构一研究方向云图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionInterestCompare.js"></script>
+##    <!-- 科研机构二研究方向云图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionInterestCompare.js"></script>
+##    <!-- 科研机构一人员组成图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/firstinstitutionStaffCompare.js"></script>
+##    <!-- 科研机构二人员组成图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/secondinstitutionStaffCompare.js"></script>
 
+    <!-- 科研机构合作关系对比图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/institutionRelationshipCompare.js"></script>
+    <!-- 科研机构论文发表量对比图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/institutionPublishPaperCompare.js"></script>
+    <!-- 科研机构专利申请量对比图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/institutionPatentCompare.js"></script>
+    <!-- 科研机构项目承接量对比图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/institutionProgramCompare.js"></script>
+    <!-- 科研机构一研究方向云图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/firstinstitutionInterestCompare.js"></script>
+    <!-- 科研机构二研究方向云图 -->
+    <script type="text/javascript" src = "../js/institutionComparsion/secondinstitutionInterestCompare.js"></script>
+##    <!-- 科研机构一人员组成图 -->
+##    <script type="text/javascript" src = "../js/institutionComparsion/firstinstitutionStaffCompare.js"></script>
+##    <!-- 科研机构二人员组成图 -->
+##    <script type="text/javascript" src = "../js/institutionComparsion/secondinstitutionStaffCompare.js"></script>
     <!--<script type="text/javascript">
     window.onresize = function () {
         loadProgramInstitutionCompare ();

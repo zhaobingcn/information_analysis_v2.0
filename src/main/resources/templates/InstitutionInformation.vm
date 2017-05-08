@@ -613,14 +613,22 @@
 
 
 
+##    <!-- 事件河流图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionAchievementThemeRiver.js"></script>
+##    <!-- 研究机构关系图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionRelationship.js"></script>
+##    <!-- 研究成员构成图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionalStaff.js"></script>
+##    <!-- 研究方向聚焦云图 -->
+##    <script type="text/javascript" src = "../js/expertDetail/institutionInterest.js"></script>
     <!-- 事件河流图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionAchievementThemeRiver.js"></script>
+    <script type="text/javascript" src = "../js/institutionDetail/institutionAchievementThemeRiver.js"></script>
     <!-- 研究机构关系图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionRelationship.js"></script>
+    <script type="text/javascript" src = "../js/institutionDetail/institutionRelationship.js"></script>
     <!-- 研究成员构成图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionalStaff.js"></script>
+    <script type="text/javascript" src = "../js/institutionDetail/institutionalStaff.js"></script>
     <!-- 研究方向聚焦云图 -->
-    <script type="text/javascript" src = "../js/expertDetail/institutionInterest.js"></script>
+    <script type="text/javascript" src = "../js/institutionDetail/institutionInterest.js"></script>
 
     <!--script type="text/javascript">
         window.onresize = function () {
