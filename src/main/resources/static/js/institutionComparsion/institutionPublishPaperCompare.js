@@ -18,7 +18,7 @@ function loadPublishPaperInstitutionCompare () {
         url:"/ComparisonofInstitutions/PapersCom",
         type:"get",
         dataType:"json",
-        data:{"limit": 30,"firstInstitutionId":1,"secondInstitutionId":117},
+        data:{"limit": 30,"firstInstitutionId":12,"secondInstitutionId":2},
         success: function (seriesData){
 
             var firstInstitutionPaperNum = seriesData.slice(0,11);
