@@ -72,9 +72,9 @@ public class IComparsionController {
     @RequestMapping(value = "/ComparisonofInstitutions/PapersCom")
     public  @ResponseBody
     List<Integer> paperNumOfTwoInstitution(
-            @RequestParam(value = "limit", required = false, defaultValue = "30")int limit,
-            @RequestParam(value = "firstInstitutionId", required = false, defaultValue = "1")Long firstInstitutionId,
-            @RequestParam(value = "secondInstitutionId", required = false, defaultValue = "117")Long secondInstitutionId
+            @RequestParam(value = "limit", required = false, defaultValue = "300")int limit,
+            @RequestParam(value = "firstInstitutionId", required = false, defaultValue = "12")Long firstInstitutionId,
+            @RequestParam(value = "secondInstitutionId", required = false, defaultValue = "2")Long secondInstitutionId
     ){
         Map<String, Integer> firstInstitution = comparsionOfInstitutionsService.generateInstitutionPublishedPapers(firstInstitutionId,limit);
         Map<String, Integer> secondInstitution = comparsionOfInstitutionsService.generateInstitutionPublishedPapers(secondInstitutionId,limit);

@@ -163,7 +163,7 @@ function loadRelationshipInstitution(depath) {
             [[finalData[0].name+' :'+finalData[0].location,BJData]].forEach(function (item, i) {
                 series.push(
                     {   //连线效果
-                        name: finalData[0].name+' :'+finalData[0].location ,
+                        name: finalData[0].name+' :'+finalData[0].location + '\n',
                         type: 'lines',
                         //zlevel: 2,
                         symbol: ['none'],
@@ -262,6 +262,9 @@ function loadRelationshipInstitution(depath) {
             allCityArray.forEach(function (city) {
                 var datas =[];
                 var institutions = cityToInstitutions(city);
+                for(var i = 0;i < institutions.length;i++){
+                    institutions[i] = '\n'+institutions[i];
+                }
                 var cityAndItsInstitution = {city:city,itsInstitution:institutions};
                 datas.push(cityAndItsInstitution);
                 datas.push(getCooperateInstitutionByCity(city));
