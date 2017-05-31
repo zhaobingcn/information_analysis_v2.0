@@ -23,6 +23,17 @@ public class Author {
     @Property(name = "institution")
     private String institution;
 
+    @Property(name = "nodeRank")
+    private Long nodeRank;
+
+    public Long getNodeRank() {
+        return nodeRank;
+    }
+
+    public void setNodeRank(Long nodeRank) {
+        this.nodeRank = nodeRank;
+    }
+
     @Relationship(type = "works_in", direction = Relationship.OUTGOING)
     private WorksIn work;
 

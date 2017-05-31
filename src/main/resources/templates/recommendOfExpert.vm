@@ -379,21 +379,18 @@
                                     <div class="form-group">
                                         <label>选择推荐方式</label>
                                         <select class="form-control">
-                                            <option>按照专家影响力推荐</option>
+                                            <option>按照社交影响力推荐</option>
                                             <option>按照专家成果推荐</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label>选择备选推荐数量</label>
-                                        <select class="form-control">
-                                            <option>5</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                        </select>
-                                    </div>
+##                                    <div class="form-group">
+##                                        <label>选择备选推荐数量</label>
+##                                        <select class="form-control">
+##                                            <option>5</option>
+##                                            <option>10</option>
+##                                            <option>20</option>
+##                                        </select>
+##                                    </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-outline btn-primary btn-block">检索</button>
                                     </div>
