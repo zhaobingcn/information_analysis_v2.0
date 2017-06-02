@@ -88,18 +88,18 @@ public interface Neo4jTemplateRepository {
      */
     void community();
 
-    /**
-     * 查找关键节点
-     */
-    void betweenness();
-
-    /**
-     * 发现意见领袖
-     */
-    void centrileness();
-
-    /**
-     * 运行pagerank
-     */
-    void pagerank();
+//    /**
+//     * 查找关键节点
+//     */
+//    void betweenness();
+//
+//    /**
+//     * 发现意见领袖
+//     */
+//    void centrileness();
+//
+//    /**
+//     * 运行pagerank
+//     */
+//    void pagerank();
 }

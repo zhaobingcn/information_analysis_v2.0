@@ -258,19 +258,4 @@ public class Neo4jTemplateRepositoryImpl implements Neo4jTemplateRepository {
     public void community() {
 
     }
-
-    @Override
-    public void betweenness() {
-
-    }
-
-    @Override
-    public void centrileness() {
-
-    }
-
-    @Override
-    public void pagerank() {
-
-    }
 }
