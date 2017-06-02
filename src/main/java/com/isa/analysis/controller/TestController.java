@@ -192,4 +192,15 @@ public class TestController {
         return institutionRepository.getTopInstitutionByKeywordId(7l, 8);
     }
 
+    @RequestMapping(value = "test23")
+    public @ResponseBody List<AuthorAndWorkTogetherTimes> test23(){
+        return authorRepository.getTopAuthorsByKeyowrdsPageRank("load", "", "", "", "夏丹", "");
+
+    }
+    @RequestMapping(value = "test24")
+    public @ResponseBody List<AuthorAndWorkTogetherTimes> test24(){
+        return authorRepository.getTopAuthorsByKeywordsAchievement("load", "", "", "", "夏丹", "");
+
+    }
+
 }

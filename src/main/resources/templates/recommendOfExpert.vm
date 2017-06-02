@@ -341,58 +341,51 @@
                             <i class="fa fa-bar-chart-o fa-fw"></i> 搜索想要查找的专家
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form role="form" action="/recommendOfExpert" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">关键词</span>
-                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                        <input type="text" class="form-control" id = "keyword1" placeholder="输入查询关键词">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">关键词</span>
-                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                        <input type="text" class="form-control" id = "keyword2" placeholder="输入查询关键词">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">关键词</span>
-                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                        <input type="text" class="form-control" id = "keyword3" placeholder="输入查询关键词">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">关键词</span>
-                                        <input type="text" class="form-control" placeholder="输入查询关键词">
+                                        <input type="text" class="form-control" id = "keyword4" placeholder="输入查询关键词">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon">回避机构</span>
-                                        <input type="text" class="form-control" placeholder="回避单位名称/人员姓名(选填)">
+                                        <span class="input-group-addon">回避人员</span>
+                                        <input type="text" class="form-control" id = "iname1" placeholder="回避人员">
                                     </div>
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon">回避机构</span>
-                                        <input type="text" class="form-control" placeholder="回避单位名称/人员姓名(选填)">
+                                        <span class="input-group-addon">回避人员</span>
+                                        <input type="text" class="form-control" id = "iname2" placeholder="回避人员">
                                     </div>
                                     <div class="form-group">
                                         <label>选择推荐方式</label>
-                                        <select class="form-control">
-                                            <option>按照社交影响力推荐</option>
-                                            <option>按照专家成果推荐</option>
+                                        <select class="form-control" id="method-select">
+                                            <option value="1">按照社交影响力推荐</option>
+                                            <option value="2">按照专家成果推荐</option>
                                         </select>
                                     </div>
-##                                    <div class="form-group">
-##                                        <label>选择备选推荐数量</label>
-##                                        <select class="form-control">
-##                                            <option>5</option>
-##                                            <option>10</option>
-##                                            <option>20</option>
-##                                        </select>
-##                                    </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline btn-primary btn-block">检索</button>
+                                        <button type="button" class="btn btn-outline btn-primary btn-block" onclick="postTopExperts()">检索</button>
+##                                        <input type="submit" value="检索" class="btn btn-outline btn-primary btn-block"></input>
                                     </div>
                                 </div>
                             </div>
@@ -457,148 +450,11 @@
                                             <th>#</th>
                                             <th>姓名</th>
                                             <th>所属机构</th>
-                                            <th>论文数</th>
                                             <th>查看详情</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr class="info">
-                                            <td>1</td>
-                                            <td>赵知劲</td>
-                                            <td>中国电子科技集团26所</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>2</td>
-                                            <td>沈雷</td>
-                                            <td>中核工业集团</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>3</td>
-                                            <td>胡俊</td>
-                                            <td>中航工业集团</td>
-                                            <td>
-                                                35
-                                            </td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="info">
-                                            <td>4</td>
-                                            <td>张红旗</td>
-                                            <td>中国电子科技集团26所</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>5</td>
-                                            <td>郭磊</td>
-                                            <td>中核工业集团</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>6</td>
-                                            <td>张静</td>
-                                            <td>中航工业集团</td>
-                                            <td>55</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="info">
-                                            <td>7</td>
-                                            <td>庞国明</td>
-                                            <td>中国电子科技集团26所</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>8</td>
-                                            <td>张织</td>
-                                            <td>中核工业集团</td>
-                                            <td>34</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>9</td>
-                                            <td>夏丹</td>
-                                            <td>中航工业集团</td>
-                                            <td>55</td>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="">
-                                                        <!--<span class="pull-left">查看详情</span>-->
-                                                        <span class="pull-left"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <tbody id = "show-experts-detail">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -639,68 +495,12 @@
 
 <script src="/js/echarts.js"></script>
 
+<script src="/js/recommendExperts/topExperts.js"></script>
+
 <!-- 专家能力排行图 -->
-<script type="text/javascript">
-    var myChart = echarts.init(document.getElementById("professor-list"));
-
-    option = {
-//        color: ['#3398DB'],
-
-        title :{
-            text : '按照专家影响力推荐',
-            x : 'center'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        yAxis: [{
-            type: 'category',
-            data: ["赵知劲", "沈雷", "胡俊", "张红旗", "郭磊", "张静", "庞国明", "张织", "夏丹"],
-            axisTick: {
-                alignWithLabel: true
-            }
-        }],
-        xAxis: [{
-            type: 'value'
-        }],
-        backgroundColor: '#ffffff',
-        series: [{
-            name: 'Top 10',
-            type: 'bar',
-            data: [7700, 8800, 9900, 11100, 14200, 16000, 18400, 20500, 22600],
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight',
-                    textStyle: {
-                        color: 'white' //color of value
-                    }
-                }
-            },
-            itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                        offset: 0,
-                        color: 'lightBlue' // 0% 处的颜色
-                    }, {
-                        offset: 1,
-                        color: '#3398DB' // 100% 处的颜色
-                    }], false)
-                }
-            }
-        }]
-    };
-    myChart.setOption(option);
-</script>
+##<script type="text/javascript">
+##
+##</script>
 
 </body>
 

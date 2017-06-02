@@ -81,12 +81,11 @@ public interface AuthorRepository extends GraphRepository<Author>{
     /**
      * 专家推荐页面的查找，几个关键词查找出最相关的作者,按照论文成果排
      */
-
     @Query("match (a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) " +
             "WHERE k.name= {kname1} OR k.name= {kname2} OR k.name= {kname3} OR k.name= {kname4} " +
             "AND a.name<>{aname1} AND a.name<>{aname2} with a,collect(p) AS papers " +
-            "RETURN a ORDER BY (reduce(sum=0, p IN papers|sum+p.quote + 10)) DESC LIMIT 10")
-    List<Author> getTopAuthorsByKeywords(@Param("kname1")String kname1,
+            "RETURN a as author, (reduce(sum=0, p IN papers|sum+p.quote + 10)) as times ORDER BY times DESC LIMIT 9")
+    List<AuthorAndWorkTogetherTimes> getTopAuthorsByKeywordsAchievement(@Param("kname1")String kname1,
                                          @Param("kname2")String kname2,
                                          @Param("kname3")String kname3,
                                          @Param("kname4")String kname4,
@@ -97,6 +96,15 @@ public interface AuthorRepository extends GraphRepository<Author>{
     /**
      * 专家推荐页面的查找，几个关键词查找出最相关的作者,按照PageRank排
      */
+    @Query("match (a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) " +
+            "WHERE k.name= {kname1} OR k.name= {kname2} OR k.name= {kname3} OR k.name= {kname4} " +
+            "AND a.name<>{aname1} AND a.name<>{aname2} return a as author, a.nodeRank as times order by times desc limit 9")
+    List<AuthorAndWorkTogetherTimes> getTopAuthorsByKeyowrdsPageRank(@Param("kname1")String kname1,
+                                                 @Param("kname2")String kname2,
+                                                 @Param("kname3")String kname3,
+                                                 @Param("kname4")String kname4,
+                                                 @Param("aname1")String aname1,
+                                                 @Param("aname2")String aname2);
 
 
 
