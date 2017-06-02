@@ -76,9 +76,15 @@
                         yaxis[8-i] = data[i].author.name;
                         xaxis[8-i] = data[i].times;
                     }
+                    var text;
+                    if(select == 1){
+                        text = "按社交影响力推荐";
+                    }else{
+                        text = "按专家研究成果推荐";
+                    }
                     option = {
                         title :{
-                            text : '按照专家影响力推荐',
+                            text : text,
                             x : 'center'
                         },
                         tooltip: {
