@@ -199,7 +199,7 @@ public class TestController {
     }
     @RequestMapping(value = "test24")
     public @ResponseBody List<AuthorAndWorkTogetherTimes> test24(){
-        return authorRepository.getTopAuthorsByKeywordsAchievement("load", "", "", "", "夏丹", "");
+        return authorRepository.getTopAuthorsByKeywordsAchievement("人工智能", "", "", "", "夏丹", "");
 
     }
 
