@@ -500,9 +500,8 @@
 <script type="text/javascript">
     $('#searchAuthors').click(function () {
         document.getElementById('display-expert').style.display='block';
-        document.getElementById('display-expert-graph').style.display='block';
     });
-
+//    postTopExperts();
     window.onresize = function () {
         postTopExperts();
     }

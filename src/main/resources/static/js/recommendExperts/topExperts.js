@@ -3,6 +3,7 @@
  */
 
     function postTopExperts() {
+    document.getElementById('display-expert-graph').style.display='block';
 
     var keyword1 = $("#keyword1").val();
     if(keyword1 == null){

@@ -663,7 +663,8 @@
     var id = $("#keyword-id").val();
     var depth = 2;
     loadKeywordDevelopmentofNumber(id);
-    loadKeywordRelationship(id , depath);
+    loadKeywordDevelopmentofNumber(id);
+    loadKeywordRelationship(id , depth);
     loadKeywordInfo(id , depth);
     window.onresize = function () {
         loadKeywordDevelopmentofNumber(id);
