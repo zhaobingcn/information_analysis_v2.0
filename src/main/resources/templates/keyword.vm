@@ -661,14 +661,14 @@
 
 <script type="text/javascript">
     var id = $("#keyword-id").val();
-    var depath = 2;
+    var depth = 2;
     loadKeywordDevelopmentofNumber(id);
     loadKeywordRelationship(id , depath);
-    loadKeywordInfo(id , depath);
+    loadKeywordInfo(id , depth);
     window.onresize = function () {
         loadKeywordDevelopmentofNumber(id);
-        loadKeywordRelationship(id , depath);
-        loadKeywordInfo(id , depath);
+        loadKeywordRelationship(id , depth);
+        loadKeywordInfo(id , depth);
     }
 </script>
 </body>
