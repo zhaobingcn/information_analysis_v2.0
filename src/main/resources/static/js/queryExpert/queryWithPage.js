@@ -74,7 +74,7 @@ function loadPreviousPage() {
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
             "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            // "<i class=\"fa fa-plus\" id=\"add\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
@@ -116,7 +116,7 @@ function loadNextPage() {
             "<div class=\"row\">" +
             "<div class=\"col-lg-2 col-xs-2\" style=\"text-align: center\">" +
             "<i class=\"fa fa-user fa-4x\"></i>" +
-            "<i class=\"fa fa-plus\" id=\"add\"></i>" +
+            // "<i class=\"fa fa-plus\" id=\"add\"></i>" +
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
