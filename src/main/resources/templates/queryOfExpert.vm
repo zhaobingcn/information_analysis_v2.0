@@ -374,7 +374,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
-                <div id="query-result">
+                <div id="query-result" style="display: none">
                     <div class="col-lg-8">
                         <div class="panel panel-red">
                             <div class="panel-heading" >
@@ -446,6 +446,8 @@
     <script src = "/js/echarts.js"></script>
 
     <script src = "/js/queryExpert/comparsionPageOnclick.js"></script>
+
+    <script src="/js/queryExpert/showingQueryResult.js"></script>
 
 
     <script type="text/javascript">
