@@ -635,6 +635,11 @@
         loadThemeRiver(id);
         loadInterestInstitution(id);
         loadRelationshipInstitution(id);
+        window.onresize = function () {
+            loadThemeRiver(id);
+            loadInterestInstitution(id);
+            loadRelationshipInstitution(id);
+        }
     </script>
 
     <!--script type="text/javascript">

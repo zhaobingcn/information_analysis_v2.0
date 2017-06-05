@@ -682,6 +682,16 @@
 
         loadPaperExpertCompare(id1, id2);
 
+        window.onresize = function () {
+            loadInterestSecondInstitution(id1, window1);
+            loadInterestSecondInstitution(id2, window2);
+            loadAbilityExpertCompare(id1, ability_window1)
+            loadAbilityExpertCompare(id2, ability_window2)
+            loadRelationshipExpertCompare(id1, 2, relationship_window1);
+            loadRelationshipExpertCompare(id2, 2, relationship_window2);
+            loadPaperExpertCompare(id1, id2);
+        }
+
     </script>
     <!-- 专家二研究方向云图 -->
 ##    <script type="text/javascript" src = "../js/expertComparsion/secondExpertInterestCompare.js"></script>

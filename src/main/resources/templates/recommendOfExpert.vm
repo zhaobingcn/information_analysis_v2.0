@@ -502,6 +502,10 @@
         document.getElementById('display-expert').style.display='block';
         document.getElementById('display-expert-graph').style.display='block';
     });
+
+    window.onresize = function () {
+        postTopExperts();
+    }
 </script>
 
 <!-- 专家能力排行图 -->
