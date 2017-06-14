@@ -6,11 +6,14 @@ var theCurrentPage = 0;
 var allPagesCount = 3;
 var thePageSize = 6;
 document.getElementById("searchKeywords").onclick = function () {
+    clear();
     var name = $("#keywordName").val();
     if(name==""){
         return;
     }
-    
+    if(!onSearchCheck()){
+        return;
+    }
     keywords = getQueryData();
     theCurrentPage = 0;
     loadNextPage(theCurrentPage);
@@ -45,6 +48,9 @@ function setButtonValue() {
 
 function getQueryData() {
     var name = $("#keywordName").val();
+    if(checkSpaceInStr(name)){
+        name = name.replace(/\s/g, "");
+    }
     var keywordsDetail;
     $.ajax({
         url : "/queryOfKeyword/commitQuery",
@@ -115,4 +121,39 @@ function loadNextPage() {
             window.open("/keywordDetail?name=" + name);
         });
     }
+}
+
+//正则匹配非法字符
+function isSearch(s)
+{
+    var patrn=/[^`￥！……&×（）《》：/、~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]*[`￥！……&×（）《》：/、~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]/;
+    if (!patrn.exec(s)) return false
+    return true
+}
+//对输入框进行校验，校验成功返回true
+function onSearchCheck()
+{
+    var flag = true;
+    var name = $("#keywordName").val();
+
+    if(isSearch(name )){
+        document.getElementById('warning').style.display='block';
+        flag =false;
+    }
+
+    return flag;
+}
+//将提示信息和搜索结果框重新隐藏起来
+function clear() {
+
+    document.getElementById('warning').style.display='none';
+
+}
+//检测字符串中是否有空格
+function checkSpaceInStr(str) {
+    var indexOfSpace = str.indexOf(" ");
+    if(indexOfSpace >= 0){
+        return true;
+    }
+    return false;
 }

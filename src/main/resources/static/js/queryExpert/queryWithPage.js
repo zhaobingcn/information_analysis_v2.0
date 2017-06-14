@@ -7,9 +7,13 @@ var allPagesCount = 3;
 var thePageSize = 6;
 var t = $("#addprofessor").empty();
 document.getElementById("searchAuthors").onclick = function () {
+    clear();
     var name = $("#authorsName").val();
     var institution = $("#authorsInstitution").val();
     if(name=="" && institution==""){
+        return;
+    }
+    if(!onSearchCheck()){
         return;
     }
 
@@ -48,6 +52,12 @@ function setButtonValue() {
 function getQueryData() {
     var name = $("#authorsName").val();
     var institution = $("#authorsInstitution").val();
+    if(checkSpaceInStr(name)){
+        name = name.replace(/\s/g, "");
+    }
+    if(checkSpaceInStr(institution)){
+        institution = institution.replace(/\s/g, "");
+    }
     var authorsDetail;
     $.ajax({
         url : "/queryOfExpert/commitQuery",
@@ -145,4 +155,44 @@ function loadNextPage() {
             }
         });
     }
+}
+
+//正则匹配非法字符
+function isSearch(s)
+{
+    var patrn=/[^`￥！……&×（）《》：/、~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]*[`￥！……&×（）《》：/、~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]/;
+    if (!patrn.exec(s)) return false
+    return true
+}
+//对输入框进行校验，校验成功返回true
+function onSearchCheck()
+{
+    var flag = true;
+    var name = $("#authorsName").val();
+    var institution = $("#authorsInstitution").val();
+
+    if(isSearch(name )){
+        document.getElementById('warning').style.display='block';
+        flag =false;
+    }
+    else if(isSearch(institution)){
+        document.getElementById('warning').style.display='block';
+        flag =false;
+    }
+
+    return flag;
+}
+//将提示信息和搜索结果框重新隐藏起来
+function clear() {
+
+    document.getElementById('warning').style.display='none';
+
+}
+//检测字符串中是否有空格
+function checkSpaceInStr(str) {
+    var indexOfSpace = str.indexOf(" ");
+    if(indexOfSpace >= 0){
+        return true;
+    }
+    return false;
 }

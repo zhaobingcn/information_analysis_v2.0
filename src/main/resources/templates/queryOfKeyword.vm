@@ -359,6 +359,11 @@
                                             <button type="button" class="btn btn-outline btn-danger btn-block" id = "searchKeywords">检索</button>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12" style="padding: 0 15;">
+                                        <div class="alert alert-warning" style="display: none;height: 20px;padding: 0;margin-bottom: 0" id ="warning">
+                                            <strong>警告</strong>不能输入非法字符
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
