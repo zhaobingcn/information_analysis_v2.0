@@ -9,25 +9,43 @@
     if(keyword1 == null){
         keyword1 = "";
     }
+    if(checkSpaceInStr(keyword1)){
+        keyword1 = keyword1.replace(/\s/g, "");
+    }
     var keyword2 = $("#keyword2").val();
     if(keyword2 == null){
         keyword2 = "";
+    }
+    if(checkSpaceInStr(keyword2)){
+        keyword2 = keyword2.replace(/\s/g, "");
     }
     var keyword3 = $("#keyword3").val();
     if(keyword3 == null){
         keyword3 = "";
     }
+    if(checkSpaceInStr(keyword3)){
+        keyword3 = keyword3.replace(/\s/g, "");
+    }
     var keyword4 = $("#keyword4").val();
     if(keyword4 == null){
         keyword4 = "";
+    }
+    if(checkSpaceInStr(keyword4)){
+        keyword4 = keyword4.replace(/\s/g, "");
     }
     var iname1 = $("#iname1").val();
     if(iname1 == null){
         iname1 = "";
     }
+    if(checkSpaceInStr(iname1)){
+        iname1 = iname1.replace(/\s/g, "");
+    }
     var iname2 = $("#iname2").val();
     if(iname2 == null){
         iname2 = "";
+    }
+    if(checkSpaceInStr(iname2)){
+        iname2 = iname2.replace(/\s/g, "");
     }
     var table = $("#show-experts-detail").empty();
     var select = $("#method-select").val();
@@ -142,3 +160,64 @@
             }
         )
     }
+
+//检测字符串中是否有空格
+function checkSpaceInStr(str) {
+    var indexOfSpace = str.indexOf(" ");
+    if(indexOfSpace >= 0){
+        return true;
+    }
+    return false;
+}
+//正则匹配非法字符
+function isSearch(s)
+{
+    var patrn=/[^`~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]*[`~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]/;
+    if (!patrn.exec(s)) return false
+    return true
+}
+//对输入框进行校验，校验成功返回true
+function onSearchCheck()
+{
+    var flag = true;
+    var keyword1 = $("#keyword1").val();
+    var keyword2 = $("#keyword2").val();
+    var keyword3 = $("#keyword3").val();
+    var keyword4 = $("#keyword4").val();
+    var iname1 = $("#iname1").val();
+    var iname2 = $("#iname2").val();
+    if(isSearch(keyword1)){
+        document.getElementById('warning1').style.display='block';
+        flag =false;
+    }
+    else if(isSearch(keyword2)){
+        document.getElementById('warning1').style.display='block';
+        flag =false;
+    }
+    if(isSearch(keyword3)){
+        document.getElementById('warning2').style.display='block';
+        flag =false;
+    }
+    else if(isSearch(keyword4)){
+        document.getElementById('warning2').style.display='block';
+        flag =false;
+    }
+    if(isSearch(iname1)){
+        document.getElementById('warning3').style.display='block';
+        flag =false;
+    }
+    if(isSearch(iname2)){
+        document.getElementById('warning4').style.display='block';
+        flag =false;
+    }
+    return flag;
+}
+//将提示信息和搜索结果框重新隐藏起来
+function clear() {
+    document.getElementById('display-expert-graph').style.display='none';
+    document.getElementById('display-expert').style.display='none';
+    document.getElementById('warning1').style.display='none';
+    document.getElementById('warning2').style.display='none';
+    document.getElementById('warning3').style.display='none';
+    document.getElementById('warning4').style.display='none';
+}

@@ -355,6 +355,11 @@
                                         <input type="text" class="form-control" id = "keyword2" placeholder="输入查询关键词">
                                     </div>
                                 </div>
+                                <div class="col-lg-12" style="padding: 0 15;">
+                                    <div class="alert alert-warning" style="display: none;height: 20px;padding: 0;margin-bottom: 0" id ="warning1">
+                                        <strong>警告</strong>不能输入非法字符
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">关键词</span>
@@ -367,14 +372,29 @@
                                         <input type="text" class="form-control" id = "keyword4" placeholder="输入查询关键词">
                                     </div>
                                 </div>
+                                <div class="col-lg-12" style="padding: 0 15;">
+                                    <div class="alert alert-warning" style="display: none;height: 20px;padding: 0;margin-bottom: 0" id ="warning2">
+                                        <strong>警告</strong>不能输入非法字符
+                                    </div>
+                                </div>
                                 <div class="col-lg-12">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">回避人员</span>
                                         <input type="text" class="form-control" id = "iname1" placeholder="回避人员">
                                     </div>
+                                    <div class="col-lg-12" style="padding: 0 ;">
+                                        <div class="alert alert-warning" style="display: none;height: 20px;padding: 0;margin-bottom: 0" id ="warning3">
+                                            <strong>警告</strong>不能输入非法字符
+                                        </div>
+                                    </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">回避人员</span>
                                         <input type="text" class="form-control" id = "iname2" placeholder="回避人员">
+                                    </div>
+                                    <div class="col-lg-12" style="padding: 0 ;">
+                                        <div class="alert alert-warning" style="display: none;height: 20px;padding: 0;margin-bottom: 0" id ="warning4">
+                                            <strong>警告</strong>不能输入非法字符
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>选择推荐方式</label>
@@ -499,12 +519,18 @@
 
 <script type="text/javascript">
     $('#searchAuthors').click(function () {
-        document.getElementById('display-expert').style.display='block';
+        clear();
+        onSearchCheck();
+        if(onSearchCheck()){
+            document.getElementById('display-expert').style.display='block';
+            postTopExperts();
+        }
+
     });
 //    postTopExperts();
-    window.onresize = function () {
-        postTopExperts();
-    }
+//    window.onresize = function () {
+//        postTopExperts();
+//    }
 </script>
 
 <!-- 专家能力排行图 -->
