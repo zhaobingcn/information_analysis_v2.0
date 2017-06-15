@@ -84,7 +84,7 @@ public interface AuthorRepository extends GraphRepository<Author>{
     @Query("match (a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) " +
             "WHERE k.name in [{kname1},{kname2},{kname3},{kname4}] " +
             "AND a.name<>{aname1} AND a.name<>{aname2} with a,collect(p) AS papers " +
-            "RETURN a as author, (reduce(sum=0, p IN papers|sum+p.quote + 10)) as times ORDER BY times DESC LIMIT 9")
+            "RETURN distinct a as author, (reduce(sum=0, p IN papers|sum+p.quote + 10)) as times ORDER BY times DESC LIMIT 9")
     List<AuthorAndWorkTogetherTimes> getTopAuthorsByKeywordsAchievement(@Param("kname1")String kname1,
                                          @Param("kname2")String kname2,
                                          @Param("kname3")String kname3,
@@ -98,7 +98,7 @@ public interface AuthorRepository extends GraphRepository<Author>{
      */
     @Query("match (a:Author)-[:publish]->(p:Paper)-[:involve]->(k:Keyword) " +
             "WHERE k.name in [{kname1},{kname2},{kname3},{kname4}] " +
-            "AND a.name<>{aname1} AND a.name<>{aname2} return a as author, a.nodeRank as times order by times desc limit 9")
+            "AND a.name<>{aname1} AND a.name<>{aname2} return distinct a as author, a.nodeRank as times order by times desc limit 9")
     List<AuthorAndWorkTogetherTimes> getTopAuthorsByKeyowrdsPageRank(@Param("kname1")String kname1,
                                                  @Param("kname2")String kname2,
                                                  @Param("kname3")String kname3,
