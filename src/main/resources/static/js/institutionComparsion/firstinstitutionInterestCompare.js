@@ -17,7 +17,7 @@ function loadInterestFirstInstitution() {
      success : function (finalData) {*/
 
     $.ajax({
-        url : "/ComparisonofInstitutions/secondInstitutionInterest",
+        url : "/analysis/ComparisonofInstitutions/secondInstitutionInterest",
         type : "get",
         dataType : "json",
         data : {

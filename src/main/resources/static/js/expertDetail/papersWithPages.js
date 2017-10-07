@@ -44,7 +44,7 @@ function loadPreviousPage(pageSize, currentPage, name, institution) {
     var limit = pageSize;
     theCurrentPage = theCurrentPage -1;
     $.ajax({
-       url: "/detailOfExpert/papersWithPages",
+       url: "/analysis/detailOfExpert/papersWithPages",
        type: "get",
        dataType: "json",
        data: {
@@ -75,7 +75,7 @@ function loadNextPage(pageSize, currentPage, name, institution) {
     var limit = pageSize;
     theCurrentPage = theCurrentPage +1;
     $.ajax({
-        url: "/detailOfExpert/papersWithPages",
+        url: "/analysis/detailOfExpert/papersWithPages",
         type: "get",
         dataType: "json",
         data: {

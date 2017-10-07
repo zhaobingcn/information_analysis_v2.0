@@ -7,7 +7,7 @@ function loadRelationshipExpertCompare(id, depath, window) {
     myChart.showLoading();
 
     $.ajax({
-        url : "/ComparisonOfExpert/cooperateOfAuthor",
+        url : "/analysis/ComparisonOfExpert/cooperateOfAuthor",
         type: "get",
         dataType : "json",
         data:{

@@ -7,7 +7,7 @@ function loadAbilityPersonal() {
     var authorName = $("#authorsName").text();
     var authorInstitution = $("#authorsInstitution").val();
     $.ajax({
-        url: "/detailOfExpert/abilityOfExpert",
+        url: "/analysis/detailOfExpert/abilityOfExpert",
         type: "get",
         dataType: "json",
         data:{

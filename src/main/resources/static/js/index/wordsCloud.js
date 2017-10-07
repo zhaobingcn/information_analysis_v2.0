@@ -2,7 +2,7 @@ function loadWordsCloudData() {
     var myChart = echarts.init(document.getElementById("echarts-word-cloud"));
     myChart.showLoading();
     $.ajax({
-        url:"/pages/wordsCloud",
+        url:"/analysis/pages/wordsCloud",
         dataType:"json",
         type:"get",
         data:{"limit": 150},

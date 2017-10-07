@@ -12,18 +12,18 @@
     <title>军事科研情报分析</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
     <!-- 给页面page部分加上neo4j的背景图片 -->
     <style type="text/css">
         .page-wrapper{
-            background-image: url(../img/neo4j_background.gif);
+            background-image: url(img/neo4j_background.gif);
         }
     </style>
 
@@ -290,10 +290,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfExpert">专家信息查询</a>
+                                    <a href="/analysis/queryOfExpert">专家信息查询</a>
                                 </li>
                                 <li>
-                                    <a href="/recommendOfExpert">专家推荐</a>
+                                    <a href="/analysis/recommendOfExpert">专家推荐</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -302,7 +302,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfInstitution">科研机构查询</a>
+                                    <a href="/analysis/queryOfInstitution">科研机构查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -310,10 +310,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfKeyword">科研重点查询</a>
+                                    <a href="/analysis/queryOfKeyword">科研重点查询</a>
                                 </li>
                                 <li>
-                                    <a href="/allKeywords">科研热点详情</a>
+                                    <a href="/analysis/allKeywords">科研热点详情</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -600,42 +600,42 @@
 
 
     <!-- jQuery -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/dist/js/sb-admin-2.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
 
     <!-- echarts.js -->
-    <script src="../js/echarts.js"></script>
-    <script src="../js/echarts-wordcloud.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/echarts-wordcloud.min.js"></script>
 
     <!-- china.js -->
-    <script src="../js/china.js"></script>
+    <script src="js/china.js"></script>
 
 
     <!-- 科研机构合作关系对比图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/institutionRelationshipCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/institutionRelationshipCompare.js"></script>
     <!-- 科研机构论文发表量对比图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/institutionPublishPaperCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/institutionPublishPaperCompare.js"></script>
     <!-- 科研机构专利申请量对比图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/institutionPatentCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/institutionPatentCompare.js"></script>
     <!-- 科研机构项目承接量对比图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/institutionProgramCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/institutionProgramCompare.js"></script>
     <!-- 科研机构一研究方向云图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/firstinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/firstinstitutionInterestCompare.js"></script>
     <!-- 科研机构二研究方向云图 -->
-    <script type="text/javascript" src = "../js/institutionComparsion/secondinstitutionInterestCompare.js"></script>
+    <script type="text/javascript" src = "js/institutionComparsion/secondinstitutionInterestCompare.js"></script>
 ##    <!-- 科研机构一人员组成图 -->
 ##    <script type="text/javascript" src = "../js/institutionComparsion/firstinstitutionStaffCompare.js"></script>
 ##    <!-- 科研机构二人员组成图 -->

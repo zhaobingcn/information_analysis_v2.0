@@ -4,7 +4,7 @@
 function loadAbilityExpertCompare(id, window) {
     var myChart = echarts.init(document.getElementById(window));
     $.ajax({
-        url: "/ComparisonOfExpert/abilityOfExpert",
+        url: "/analysis/ComparisonOfExpert/abilityOfExpert",
         type: "get",
         dataType: "json",
         data:{

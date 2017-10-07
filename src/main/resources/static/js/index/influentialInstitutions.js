@@ -1,7 +1,7 @@
 function loadInstitutionData(){
     var myChart = echarts.init(document.getElementById("10-hot-institutions"));
     $.ajax({
-        url:"/pages/influentialInstitutions",
+        url:"/analysis/pages/influentialInstitutions",
         type:"get",
         dataType:"json",
         data:{"limit": 9},

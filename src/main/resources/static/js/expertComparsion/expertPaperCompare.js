@@ -4,7 +4,7 @@
 function loadPaperExpertCompare (id1, id2) {
     var myChart = echarts.init(document.getElementById('expert-paper-comparison'));
     $.ajax({
-        url : "/ComparisonOfExpert/achievements",
+        url : "/analysis/ComparisonOfExpert/achievements",
         type: "get",
         dataType : "json",
         data:{

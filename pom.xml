@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.isa.analysis</groupId>
-  <artifactId>information_analysis_v2.0</artifactId>
+  <artifactId>analysis</artifactId>
   <packaging>war</packaging>
   <version>v2.0</version>
-  <name>information_analysis_v2.0</name>
+  <name>analysis</name>
   <url>http://maven.apache.org</url>
 
     <parent>
@@ -58,26 +58,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional><!--optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入-->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-devtools</artifactId>-->
+            <!--<optional>true</optional>&lt;!&ndash;optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入&ndash;&gt;-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.voodoodyne.jackson.jsog</groupId>
             <artifactId>jackson-jsog</artifactId>
             <version>1.1</version>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
         </dependency>
 
         <!-- spring-data-commons版本有冲突，要升级 -->
@@ -109,6 +109,13 @@
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-ogm-core</artifactId>
             <version>${ogm-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -181,14 +188,14 @@
 
 
     <build>
-        <finalName>information_analysis_v2.0</finalName>
+        <finalName>analysis</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork><!-- 如果没有该项配置， 这个detools不会起作用，即应用不会restart -->
-                </configuration>
+                <!--<configuration>-->
+                    <!--<fork>true</fork>&lt;!&ndash; 如果没有该项配置， 这个detools不会起作用，即应用不会restart &ndash;&gt;-->
+                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>

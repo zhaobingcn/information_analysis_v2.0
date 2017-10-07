@@ -6,7 +6,7 @@ function loadRelationshipInstitutionCompare(depath) {
     ///ComparisonofInstitutions/cooperateRelationshipComparsion
 
     $.ajax({
-        url:"/ComparisonofInstitutions/cooperateRelationshipComparsion",
+        url:"/analysis/ComparisonofInstitutions/cooperateRelationshipComparsion",
         type:"get",
         dataType:"json",
         data:{"limit": 30,"firstInstitutionId":1,"secondInstitutionId":117},

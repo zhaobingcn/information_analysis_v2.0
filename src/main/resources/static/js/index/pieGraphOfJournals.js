@@ -4,7 +4,7 @@
 function loadPieGraphOfJournalData(){
     var myChart = echarts.init(document.getElementById("hot-journal"));
     $.ajax({
-        url : "/pages/influentialJournals",
+        url : "/analysis/pages/influentialJournals",
         dataType: "json",
         data: {"limit": 10},
         type : "get",

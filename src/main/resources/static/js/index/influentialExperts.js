@@ -4,7 +4,7 @@
 function loadExpertsData() {
 var myChart = echarts.init(document.getElementById("10-hot-authors"));
     $.ajax({
-        url:"/pages/influentialExperts",
+        url:"/analysis/pages/influentialExperts",
         dataType:"json",
         type:"get",
         data:{"limit": 9},

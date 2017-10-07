@@ -7,7 +7,7 @@ function loadKeywordRelationship(id , depath) {
     var width = document.getElementById("keyword-relationship").clientWidth;
     var height = document.getElementById("keyword-relationship").clientHeight;
     $.ajax({
-        url : "/keywordDetail/keywordsRelationship",
+        url : "/analysis/keywordDetail/keywordsRelationship",
         type: "get",
         dataType : "json",
         data:{

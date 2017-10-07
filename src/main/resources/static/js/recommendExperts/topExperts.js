@@ -51,9 +51,9 @@
     var select = $("#method-select").val();
     var url;
     if(select == 1){
-        url = "/recommendOfExpert/getTopExpertsByPageRank";
+        url = "/analysis/recommendOfExpert/getTopExpertsByPageRank";
     }else{
-        url = "/recommendOfExpert/getTopExpertsByAchievement";
+        url = "/analysis/recommendOfExpert/getTopExpertsByAchievement";
     }
         $.ajax(
             {url : url,
@@ -76,7 +76,7 @@
                                 "<td>" +data[i].author.name+ "</td>" +
                                 "<td>" +data[i].author.institution+ "</td>" +
                                 "<td>" +
-                                "<a href=\"" +  "/detailOfExpert/?name=" +data[i].author.name+ "&&institution=" +data[i].author.institution+ "\">" +
+                                "<a href=\"" +  "/analysis/detailOfExpert/?name=" +data[i].author.name+ "&&institution=" +data[i].author.institution+ "\">" +
                                 "<div class=\"\">" +
                                 "<span class=\"pull-left\"><i class=\"fa fa-arrow-circle-right\"></i></span>" +
                                 "<div class=\"clearfix\"></div>" +

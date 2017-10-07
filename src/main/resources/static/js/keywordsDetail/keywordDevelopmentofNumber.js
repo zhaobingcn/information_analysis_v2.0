@@ -7,7 +7,7 @@ function loadKeywordDevelopmentofNumber(id) {
     myChart.showLoading();
 
     $.ajax({
-        url : "/keywordDetail/keywordTrend",
+        url : "/analysis/keywordDetail/keywordTrend",
         type: "get",
         dataType : "json",
         data:{

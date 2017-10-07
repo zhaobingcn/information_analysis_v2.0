@@ -6,7 +6,7 @@ function loadInterestSecondInstitution() {
     var myChart = echarts.init($loadWindow);
 
     $.ajax({
-        url : "/ComparisonofInstitutions/firstInstitutionInterest",
+        url : "/analysis/ComparisonofInstitutions/firstInstitutionInterest",
         type : "get",
         dataType : "json",
         data : {

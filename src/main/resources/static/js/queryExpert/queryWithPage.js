@@ -60,7 +60,7 @@ function getQueryData() {
     }
     var authorsDetail;
     $.ajax({
-        url : "/queryOfExpert/commitQuery",
+        url : "/analysis/queryOfExpert/commitQuery",
         data : {"name": name,
                 "institution": institution},
         dataType: "json",

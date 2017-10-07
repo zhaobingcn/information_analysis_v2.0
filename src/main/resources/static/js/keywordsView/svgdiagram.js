@@ -47,13 +47,13 @@ function changeDivWidth(){
                     document.getElementById("keyword-right").innerHTML = d.data.name;
                     document.getElementById("paper-left").innerHTML = d.data.name;
                     var paramName = d.data.name;
-                    d3.json("/allKeywords/showSimilarKeywords?name=" + encodeURIComponent(paramName), function (error, root) {
+                    d3.json("/analysis/allKeywords/showSimilarKeywords?name=" + encodeURIComponent(paramName), function (error, root) {
                         var keywordsList = $("#keyword-right-group").empty();
                         for (var i = 0; i < 5; i++) {
-                            $("<a href=\"/keywordDetail?name=" + root[i].name + "\" class=\"list-group-item\">" + root[i].name + "</a>").appendTo(keywordsList);
+                            $("<a href=\"/analysis/keywordDetail?name=" + root[i].name + "\" class=\"list-group-item\">" + root[i].name + "</a>").appendTo(keywordsList);
                         }
                     });
-                    d3.json("/allKeywords/showRelatedPapers?name=" + encodeURIComponent(paramName), function (error, root) {
+                    d3.json("/analysis/allKeywords/showRelatedPapers?name=" + encodeURIComponent(paramName), function (error, root) {
                         var papersList = $("#paper-left-group").empty();
                         for (var i = 0; i < 5; i++) {
                             $("<a href=\" " + root[i].link + "\" class=\"list-group-item\">" + root[i].title + "</a>").appendTo(papersList);

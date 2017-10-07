@@ -8,7 +8,7 @@ function loadInterestPersonal() {
     var authorName = $("#authorsName").text();
     var authorInstitution = $("#authorsInstitution").val();
     $.ajax({
-        url : "/detailOfExpert/InterestOfExpert",
+        url : "/analysis/detailOfExpert/InterestOfExpert",
         type : "get",
         dataType : "json",
         data : {

@@ -53,7 +53,7 @@ function getQueryData() {
     }
     var keywordsDetail;
     $.ajax({
-        url : "/queryOfKeyword/commitQuery",
+        url : "/analysis/queryOfKeyword/commitQuery",
         data : {"name": name},
         dataType: "json",
         async : false,
@@ -89,7 +89,7 @@ function loadPreviousPage() {
             "</div>"
         ).appendTo(keywordsList).click(function () {
             var name = $(this).find("#queryKeywordId").val();
-            window.open("/keywordDetail?name=" + name);
+            window.open("/analysis/keywordDetail?name=" + name);
         });
     }
 }
@@ -118,7 +118,7 @@ function loadNextPage() {
             "</div>"
         ).appendTo(keywordsList).click(function () {
             var name = $(this).find("#queryKeywordId").val();
-            window.open("/keywordDetail?name=" + name);
+            window.open("/analysis/keywordDetail?name=" + name);
         });
     }
 }

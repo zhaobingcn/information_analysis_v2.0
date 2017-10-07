@@ -7,7 +7,7 @@ function loadInterestSecondInstitution(id, window) {
     var $loadWindow = document.getElementById(window);
     var myChart = echarts.init($loadWindow);
      $.ajax({
-     url : "/ComparisonOfExpert/expertInterests",
+     url : "/analysis/ComparisonOfExpert/expertInterests",
      type : "get",
      dataType : "json",
      data : {

@@ -53,7 +53,7 @@ function getQueryData() {
     }
     var institutionsDetail;
     $.ajax({
-        url : "/queryOfInstitution/commitQuery",
+        url : "/analysis/queryOfInstitution/commitQuery",
         data : {"name": name},
         dataType: "json",
         async : false,
@@ -97,7 +97,7 @@ function loadPreviousPage() {
             "</div>"
         ).appendTo(institutionsList).click(function () {
             var id = $(this).find("#queryAuthorId").val();
-            window.open("/InstitutionInformation?institutionId=" + id);
+            window.open("/analysis/InstitutionInformation?institutionId=" + id);
         });
     }
 }
@@ -134,7 +134,7 @@ function loadNextPage() {
             "</div>"
         ).appendTo(institutionsList).click(function () {
             var id = $(this).find("#queryAuthorId").val();
-            window.open("/InstitutionInformation?institutionId=" + id);
+            window.open("/analysis/InstitutionInformation?institutionId=" + id);
         });
     }
 }

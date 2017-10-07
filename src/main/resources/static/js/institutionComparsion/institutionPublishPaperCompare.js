@@ -15,7 +15,7 @@ function loadPublishPaperInstitutionCompare () {
      success : function (achievement) {*/
 
     $.ajax({
-        url:"/ComparisonofInstitutions/PapersCom",
+        url:"/analysis/ComparisonofInstitutions/PapersCom",
         type:"get",
         dataType:"json",
         data:{"limit": 30,"firstInstitutionId":12,"secondInstitutionId":2},

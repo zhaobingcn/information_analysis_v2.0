@@ -6,7 +6,7 @@ function loadKeywordInfo(id , depath) {
     myChart.showLoading();
 
     $.ajax({
-        url : "/keywordDetail/keywordsRelationship",
+        url : "/analysis/keywordDetail/keywordsRelationship",
         type: "get",
         dataType : "json",
         data:{

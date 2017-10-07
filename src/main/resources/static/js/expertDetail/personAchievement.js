@@ -7,7 +7,7 @@ function loadAchievementData () {
     var authorName = $("#authorsName").text();
     var authorInstitution = $("#authorsInstitution").val();
     $.ajax({
-        url : "/detailOfExpert/authorsAchievement",
+        url : "/analysis/detailOfExpert/authorsAchievement",
         dataType : "json",
         type : "get",
         data : {"name" : authorName,

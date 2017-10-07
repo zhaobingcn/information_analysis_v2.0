@@ -77,7 +77,7 @@ function loadThemeRiver() {
     myChart.setOption(option);*/
 
     $.ajax({
-        url:"/InstitutionInformation/institutionResult",
+        url:"/analysis/InstitutionInformation/institutionResult",
         type:"get",
         dataType:"json",
         data:{"limit": 30,"institutionId":1},

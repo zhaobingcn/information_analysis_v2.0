@@ -6,7 +6,7 @@ function loadRelationshipInstitution(depath) {
     var myChart = echarts.init(document.getElementById('institution-relationship'));
 
     $.ajax({
-        url:"/InstitutionInformation/institutionCooperateTimes",
+        url:"/analysis/InstitutionInformation/institutionCooperateTimes",
         type:"get",
         dataType:"json",
         data:{"limit": 30,"institutionId":1},

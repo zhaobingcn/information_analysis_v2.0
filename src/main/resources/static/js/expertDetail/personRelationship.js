@@ -8,7 +8,7 @@ function loadRelationshipPersonal(depath) {
     var authorName = $("#authorsName").text();
     var authorInstitution = $("#authorsInstitution").val();
     $.ajax({
-        url : "/detailOfExpert/cooperateOfAuthor",
+        url : "/analysis/detailOfExpert/cooperateOfAuthor",
         type: "get",
         dataType : "json",
         data:{
