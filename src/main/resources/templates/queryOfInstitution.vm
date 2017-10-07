@@ -351,7 +351,7 @@
                                     <div class="col-lg-8">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">机构名</span>
-                                            <input type="text" class="form-control" placeholder="输入机构名称" value="电子科技集团36所" id="institutionName">
+                                            <input type="text" class="form-control" placeholder="输入机构名称" value="" id="institutionName">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">

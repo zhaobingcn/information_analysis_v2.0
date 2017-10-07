@@ -35,7 +35,7 @@ function loadKeywordDevelopmentofNumber(id) {
         // 提示框内容格式
         var schema = [
             {name: 'Expert', index: 0, text: '研究该方向专家人数', unit: '人'},
-            {name: 'Institution', index: 1, text: '参与研究机构数', unit: '所'},
+            {name: 'Institution', index: 1, text: '参与研究机构数', unit: '个'},
             {name: 'Papernumber', index: 2, text: '论文数', unit: ''},
             {name: 'Keyword', index: 3, text: '关键词', unit: ''}
         ];

@@ -351,13 +351,13 @@
                                     <div class="col-lg-4">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">姓名</span>
-                                            <input type="text" class="form-control" placeholder="输入专家姓名" value="詹毅" id="authorsName">
+                                            <input type="text" class="form-control" placeholder="输入专家姓名" value="" id="authorsName">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">机构</span>
-                                            <input type="text" class="form-control" placeholder="输入专家机构" value="电子科技集团36所" id="authorsInstitution">
+                                            <input type="text" class="form-control" placeholder="输入专家机构" value="" id="authorsInstitution">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
