@@ -88,7 +88,7 @@ function loadPreviousPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/analysis/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
         "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
         "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
         "</div>" +
@@ -130,7 +130,7 @@ function loadNextPage() {
             "</div>" +
             "<div class=\"col-lg-10 col-xs-10\">" +
             "<div id=\"small_stats\" class=\"cf\">" +
-            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
+            "<div class=\"stat\"> <i class=\"fa fa-link\"></i> <span class=\"value\"><a href=\"/analysis/detailOfExpert?name=" + authors[i].author.name+"&&institution=" + authors[i].author.institution + "\">" + authors[i].author.name + "</a></span> </div>" +
             "<div class=\"stat\"> <i class=\"fa fa-star\"></i> <span class=\"value\">" + authors[i].papersCount + "</span> </div>" +
             "<div class=\"stat\"> <i class=\"fa fa-strikethrough\"></i> <span class=\"value\">" + authors[i].quoteCount + "</span></div> " +
             "</div>" +

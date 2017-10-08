@@ -291,7 +291,7 @@
 ##                        <!-- /input-group -->
 ##                    </li>
                     <li>
-                        <a href="/index"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                        <a href="/analysis/index"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>

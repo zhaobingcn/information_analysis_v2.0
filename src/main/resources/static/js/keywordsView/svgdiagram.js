@@ -23,7 +23,7 @@ function changeDivWidth(){
         .size([diameter - margin, diameter - margin])  //布局尺寸，宽*高
         .padding(2);  //各圆形间边距
 
-    d3.json("/allKeywords/showSvg", function(error, root) {
+    d3.json("/analysis/allKeywords/showSvg", function(error, root) {
         if (error) throw error;
 
         root = d3.hierarchy(root)
