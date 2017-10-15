@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by zhzy on 2017/1/5.
@@ -60,6 +58,18 @@ public class QueryPageServiceImpl implements QueryPageService {
                 )
             );
         }
+
+        Collections.sort(authorsResult, new Comparator<Map<String, Object>>() {
+            @Override
+            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                if((((Author)o1.get("author")).getName()).equals(((Author)o2.get("author")).getName())){
+                    return Integer.parseInt(o1.get("papersCount").toString()) - Integer.parseInt(o2.get("papersCount").toString());
+                }else {
+                    return 0;
+                }
+            }
+        });
+
         return authorsResult;
     }
 
@@ -82,6 +92,7 @@ public class QueryPageServiceImpl implements QueryPageService {
                     )
             );
         }
+
 
         return institutionsResult;
     }
