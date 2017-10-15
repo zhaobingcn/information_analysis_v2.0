@@ -32,7 +32,7 @@ public class KViewController {
 
     @RequestMapping(value = "allKeywords")
     public String allKeywords(){
-        return "/populartech";
+        return "populartech";
     }
 
     @RequestMapping(value = "/allKeywords/showSvg")

@@ -43,7 +43,7 @@ public class IComparsionController {
         model.addAttribute("firstInstitutionName",firstInstitutionName);
         model.addAttribute("secondInstitutionName",secondInstitutionName);
 
-        return "/ComparisonofInstitutions";
+        return "ComparisonofInstitutions";
     }
 
 

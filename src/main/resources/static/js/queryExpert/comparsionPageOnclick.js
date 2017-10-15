@@ -10,6 +10,6 @@ function comparsionPage() {
         document.getElementById('warning').style.display='block';
     }
     if($("#addprofessor").children().length >= 2 && id1 != id2){
-        window.open("/analysis/ComparisonOfExpert/commitComparison?id1="+id1+"&&id2="+id2);
+        window.location("/analysis/ComparisonOfExpert/commitComparison?id1="+id1+"&&id2="+id2);
     }
 }
