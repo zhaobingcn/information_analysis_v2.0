@@ -28,9 +28,9 @@ function loadKeywordDevelopmentofNumber(id) {
         };
         //总人口转换函数
         var sizeFunction = function (x) {
-            // var y = Math.sqrt(x) + 1;
-            // return y;
-            return x;
+            var y = Math.pow(x, 0.45) + 1;
+            return y;
+            // return x;
         };
         // 提示框内容格式
         var schema = [
@@ -191,7 +191,7 @@ function loadKeywordDevelopmentofNumber(id) {
                         itemStyle: itemStyle,
                         data: data.series[0],
                         symbolSize: function (val) {
-                            return sizeFunction(val[2]);
+                            return sizeFunction(val[1] * val[2]);
                         }
                     }
                 ],
@@ -216,7 +216,7 @@ function loadKeywordDevelopmentofNumber(id) {
                     itemStyle: itemStyle,
                     data: data.series[n],
                     symbolSize: function (val) {
-                        return sizeFunction(val[2]);
+                        return sizeFunction(val[1] * val[2]);
                     }
                 }
             });
