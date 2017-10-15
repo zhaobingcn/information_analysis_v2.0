@@ -294,10 +294,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 领域专家分析<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfExpert">专家信息查询</a>
+                                    <a href="/analysis/queryOfExpert">专家信息查询</a>
                                 </li>
                                 <li>
-                                    <a href="/recommendOfExpert">专家推荐</a>
+                                    <a href="/analysis/recommendOfExpert">专家推荐</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -306,7 +306,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 科研机构分析 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfInstitution">科研机构查询</a>
+                                    <a href="/analysis/queryOfInstitution">科研机构查询</a>
                                 </li>
                             </ul>
                         </li>
@@ -314,10 +314,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> 科研技术体系查询<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/queryOfKeyword">科研重点查询</a>
+                                    <a href="/analysis/queryOfKeyword">科研重点查询</a>
                                 </li>
                                 <li>
-                                    <a href="/allKeywords">科研热点详情</a>
+                                    <a href="/analysis/allKeywords">科研热点详情</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

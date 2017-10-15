@@ -40,7 +40,7 @@ public class Neo4jConfig extends Neo4jConfiguration {
             e.printStackTrace();
         }
 
-        String uri = "http://" +prop.get("neo4j.name")+ ":" +prop.get("neo4j.password")+ "@localhost:7474";
+        String uri = "http://" +prop.get("neo4j.name")+ ":" +prop.get("neo4j.password")+ "@" +prop.get("neo4j.address")+ ":7474";
 
         org.neo4j.ogm.config.Configuration config = new org.neo4j.ogm.config.Configuration();
         config.driverConfiguration()

@@ -4,8 +4,10 @@ import com.isa.analysis.service.runtime.MongoDBDao;
 import com.mongodb.*;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  * Created by zhzy on 17-4-12.
@@ -24,6 +26,13 @@ public class MongoDBDaoImpl implements MongoDBDao {
      */
     private MongoDBDaoImpl(){
         if(mongoClient == null){
+
+            Properties prop = new Properties();
+            try {
+                prop.load(this.getClass().getResourceAsStream("/mongodb.properties"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             MongoClientOptions.Builder build = new MongoClientOptions.Builder();
             build.connectionsPerHost(50);   //与目标数据库能够建立的最大connection数量为50
             build.autoConnectRetry(true);   //自动重连数据库启动
@@ -37,9 +46,12 @@ public class MongoDBDaoImpl implements MongoDBDao {
             build.connectTimeout(1000*60*1);    //与数据库建立连接的timeout设置为1分钟
 
             MongoClientOptions myOptions = build.build();
+
+
             try {
                 //数据库连接实例
-                mongoClient = new MongoClient("10.168.103.82", myOptions);
+
+                mongoClient = new MongoClient(prop.getProperty("mongodb.address"), myOptions);
             } catch (UnknownHostException e) {
                 // TODO 这里写异常处理的代码
                 e.printStackTrace();

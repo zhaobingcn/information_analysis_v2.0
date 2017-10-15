@@ -12,18 +12,18 @@
     <title>军事科研情报分析</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -624,40 +624,40 @@
 
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
 
     <!-- echarts.js -->
-    <script src="js/echarts.js"></script>
-    <script src="js/echarts-wordcloud.min.js"></script>
-    <script src="js/dataTool.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <script src="../js/echarts-wordcloud.min.js"></script>
+    <script src="../js/dataTool.min.js"></script>
 
     <!-- china.js -->
-    <script src="js/china.js"></script>
+    <script src="../js/china.js"></script>
 
 
     <!-- 专家能力值对比图 -->
-    <script type="text/javascript" src = "js/expertComparsion/expertAbilityCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/expertAbilityCompare.js"></script>
     <!-- 专家合作关系对比图 -->
-    <script type="text/javascript" src = "js/expertComparsion/expertRelationshipCompare.js">
+    <script type="text/javascript" src = "../js/expertComparsion/expertRelationshipCompare.js">
     </script>
     <!-- 专家论文发表与引用量对比图 -->
-    <script type="text/javascript" src = "js/expertComparsion/expertPaperCompare.js"></script>
+    <script type="text/javascript" src = "../js/expertComparsion/expertPaperCompare.js"></script>
     <!-- 专家一研究方向云图 -->
-    <script type="text/javascript" src = "js/expertComparsion/secondExpertInterestCompare.js">
+    <script type="text/javascript" src = "../js/expertComparsion/secondExpertInterestCompare.js">
     </script>
 
     <script type="text/javascript">
