@@ -63,7 +63,7 @@ public class QueryPageServiceImpl implements QueryPageService {
             @Override
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
                 if((((Author)o1.get("author")).getName()).equals(((Author)o2.get("author")).getName())){
-                    return Integer.parseInt(o1.get("papersCount").toString()) - Integer.parseInt(o2.get("papersCount").toString());
+                    return Integer.parseInt(o2.get("papersCount").toString()) - Integer.parseInt(o1.get("papersCount").toString());
                 }else {
                     return 0;
                 }
@@ -92,6 +92,16 @@ public class QueryPageServiceImpl implements QueryPageService {
                     )
             );
         }
+        Collections.sort(institutionsResult, new Comparator<Map<String, Object>>() {
+            @Override
+            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                if((((Institution)o1.get("institution")).getName()).equals(((Institution)o2.get("institution")).getName())){
+                    return Integer.parseInt(o2.get("papersCount").toString()) - Integer.parseInt(o1.get("papersCount").toString());
+                }else {
+                    return 0;
+                }
+            }
+        });
 
 
         return institutionsResult;
@@ -114,6 +124,18 @@ public class QueryPageServiceImpl implements QueryPageService {
                     )
             );
         }
+
+        Collections.sort(keywordsResult, new Comparator<Map<String, Object>>() {
+            @Override
+            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                if((((Keyword)o1.get("keyword")).getName()).equals(((Keyword)o2.get("keyword")).getName())){
+                    return Integer.parseInt(o2.get("involvetimes").toString()) - Integer.parseInt(o1.get("involvetimes").toString());
+                }else {
+                    return 0;
+                }
+            }
+        });
+
         return keywordsResult;
     }
 }
